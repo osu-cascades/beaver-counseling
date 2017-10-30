@@ -7,10 +7,34 @@
 		text-align: center;
 	}
 
+	.Row
+	{
+	    display: table;
+	    width: 120%; /*Optional*/
+	    table-layout: fixed; /*Optional*/
+	    border-spacing: 4px; /*Optional*/
+	}
+	.Column
+	{
+	    display: table-cell;
+	}
 </style>
 
 
 <div class="center">
-	<div class="top" style="float: center"><h1>Admin Home</h1></div>
+	<div class="top" style="float: center; width: -8em;"><h1>Admin Home</h1></div>
 	<div class="top" style="float: right; width: 8em;"><a href="">sign out</a></div>
+</div>
+
+
+<div class="Row">
+    <div class="Column">
+			<button>View Clients</button>
+		</div>
+    <div class="Column">
+			<button>Client Reports</button>
+		</div>
+    <div class="Column">
+			<button>Manage Users</button>
+		</div>
 </div>
