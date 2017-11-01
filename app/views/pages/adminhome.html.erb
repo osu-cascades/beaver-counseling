@@ -21,20 +21,22 @@
 </style>
 
 
-<div class="center">
-	<div class="top" style="float: center; width: -8em;"><h1>Admin Home</h1></div>
-	<div class="top" style="float: right; width: 8em;"><a href="">sign out</a></div>
+<div style="text-align: center; float: right;">
+	<a href="">sign out</a>
 </div>
 
+<div style="text-align: center;">
+	<h1>Admin Home</h1>
+</div>
 
 <div class="Row">
     <div class="Column">
-			<button>View Clients</button>
+			<button> <%= link_to 'View Clients', page_path('adminviewclients') %> </button>
 		</div>
     <div class="Column">
-			<button>Client Reports</button>
+			<button> <%= link_to 'Client Reports', page_path('adminclientreports') %> </button>
 		</div>
     <div class="Column">
-			<button>Manage Users</button>
+			<button> <%= link_to 'Manage Users', page_path('adminmanageusers') %> </button>
 		</div>
 </div>
