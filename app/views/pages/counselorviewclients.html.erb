@@ -11,7 +11,7 @@
 	  display: inline-block;
 	}
 
-	table, th, td {	
+	table, th, td {
     border: 1px solid black;
 	}
 
@@ -31,10 +31,10 @@
   <button type="submit">Search</button></p>
 
   <div class="search-terms"> <!--Need display inline block to work. </p> tags were like new lines and messed it up-->
-  		Search by   
+  		Search by
   		Name: <input id="search1" name="item1" type="checkbox">
   		ID: <input id="search2" name="item2" type="checkbox">
-  		Phone Number: <input id="search3" name="item3" type="checkbox"> 
+  		Phone Number: <input id="search3" name="item3" type="checkbox">
   </div>
 </div>
 
@@ -55,7 +55,7 @@
     <td>541-233-5444</td>
     <td>jill@gmail.com</td>
     <td>Broc</td>
-    <td><button>More</button></td>
+		<td><button> <%= link_to 'Counselor View Clients', page_path('counselorviewmore') %> </button></td>
   </tr>
   <tr>
     <td>Jill Smith</td>
@@ -64,6 +64,6 @@
     <td>541-233-5444</td>
     <td>jill@gmail.com</td>
     <td>Broc</td>
-    <td><button>More</button></td>
+    <td><button> <%= link_to 'Counselor View Clients', page_path('counselorviewmore') %> </button></td>
   </tr>
-</table> 
+</table>
