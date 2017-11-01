@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 	get 'pages/adminviewclients' => 'high_voltage/pages#show', id: 'adminviewclients'
 	get 'pages/adminclientreports' => 'high_voltage/pages#show', id: 'adminclientreports'
 	get 'pages/adminmanageusers' => 'high_voltage/pages#show', id: 'adminmanageusers'
+	get 'pages/viewmore' => 'high_voltage/pages#show', id: 'viewmore'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
