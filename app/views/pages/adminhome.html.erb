@@ -18,6 +18,10 @@
 	{
 	    display: table-cell;
 	}
+
+	table, th, td {
+		border: 1px solid black;
+	}
 </style>
 
 
@@ -40,4 +44,34 @@
     <div class="Column">
 			<button> <%= link_to 'Manage Users', page_path('adminmanageusers') %> </button>
 		</div>
-</div>
+</div><br>
+
+<table style="width:100%">
+ <tr>
+	 <th>Name</th>
+	 <th>ID#</th>
+	 <th>Age</th>
+	 <th>Phone#</th>
+	 <th>Email</th>
+	 <th>Counselor</th>
+	 <th>View More</th>
+ </tr>
+ <tr>
+	 <td>Jill Smith</td>
+	 <td>1223</td>
+	 <td>50</td>
+	 <td>541-233-5444</td>
+	 <td>jill@gmail.com</td>
+	 <td>Broc</td>
+	 <td><button> <%= link_to 'Admin View Clients', page_path('adminviewmore') %> </button></td>
+ </tr>
+ <tr>
+	 <td>Jill Smith</td>
+	 <td>1223</td>
+	 <td>50</td>
+	 <td>541-233-5444</td>
+	 <td>jill@gmail.com</td>
+	 <td>Broc</td>
+	 <td><button> <%= link_to 'Admin View Clients', page_path('adminviewmore') %> </button></td>
+ </tr>
+</table>
