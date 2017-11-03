@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-
-  get 'register/clientregistration'
-  get 'home/index'
-  root to: 'home#index'
-	#root 'high_voltage/pages#show', id: 'welcome'
+  
+	root 'high_voltage/pages#show', id: 'welcome'
 
   get 'pages/welcome' => 'high_voltage/pages#show', id: 'welcome'
 	get 'pages/adminhome' => 'high_voltage/pages#show', id: 'adminhome'
