@@ -8,8 +8,8 @@
 <div class="center">
 	<h1>Welcome to OSU Cascades Counseling Clinic</h1>
 
-	<button> <%= link_to 'New Clients Register Here', page_path('newclientregistration') %> </button>
+	<%= button_to "New Clients Register Here", page_path('newclientregistration'), :method => :get %>
 	<br><br>
 	<button> <%= link_to 'Counselor login', page_path('login') %> </button>
-	
+
 </div>
