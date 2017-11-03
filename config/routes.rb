@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-	root 'high_voltage/pages#show', id: 'welcome'
+  get 'register/clientregistration'
+  get 'home/index'
+  root to: 'home#index'
+	#root 'high_voltage/pages#show', id: 'welcome'
 
   get 'pages/welcome' => 'high_voltage/pages#show', id: 'welcome'
 	get 'pages/adminhome' => 'high_voltage/pages#show', id: 'adminhome'
