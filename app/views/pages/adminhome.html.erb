@@ -7,18 +7,6 @@
 		text-align: center;
 	}
 
-	.Row
-	{
-	    display: table;
-	    width: 120%; /*Optional*/
-	    table-layout: fixed; /*Optional*/
-	    border-spacing: 4px; /*Optional*/
-	}
-	.Column
-	{
-	    display: table-cell;
-	}
-
 	table, th, td {
 		border: 1px solid black;
 	}
@@ -33,17 +21,26 @@
 	<h1>Admin Home</h1>
 </div>
 
+<div style="position: fixed; left: 50%;"
+	<div style="float: left;">
+	  <button> <%= link_to 'Client Reports', page_path('adminclientreports') %> </button>
+	</div>
+	<div style="float: right; width: 60%;">
+		<button> <%= link_to 'Manage Users', page_path('adminmanageusers') %> </button>
+	</div>
+</div><br>
 
-<div class="Row">
-    <div class="Column">
-			<button> <%= link_to 'View Clients', page_path('adminviewclients') %> </button>
-		</div>
-    <div class="Column">
-			<button> <%= link_to 'Client Reports', page_path('adminclientreports') %> </button>
-		</div>
-    <div class="Column">
-			<button> <%= link_to 'Manage Users', page_path('adminmanageusers') %> </button>
-		</div>
+<div>
+	<p>Search:
+	<input type="text" placeholder="Search for...">
+  <button type="submit">Search</button></p>
+
+  <div class="search-terms"> <!--Need display inline block to work. </p> tags were like new lines and messed it up-->
+  		Search by
+  		Name: <input id="search1" name="item1" type="checkbox">
+  		ID: <input id="search2" name="item2" type="checkbox">
+  		Phone Number: <input id="search3" name="item3" type="checkbox">
+  </div>
 </div><br>
 
 <table style="width:100%">
