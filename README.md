@@ -2,7 +2,13 @@
 
 BeaverCounseling Application will enable OSU Cascades Counseling Clinic clients to fill out and sign clinic forms digitally. This data will be stored electronically, allowing clinic staff to search and access client information.
 
-### Installing
+## Table of Contents
+
+- [Install](#install)
+- [Getting Started](#Getting Started)
+- [Deployment](#Deployment Started)
+
+## Install
 
 Before running this web app you will need to install rails 5.1.4 and ruby 2.4.2.
 You will also need to install PostgreSQL.
