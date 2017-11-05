@@ -6,7 +6,7 @@ BeaverCounseling Application will enable OSU Cascades Counseling Clinic clients 
 
 - [Install](#install)
 - [Getting Started](#getting-started)
-- [Deployment](#deployment-started)
+- [Deployment](#deployment)
 
 ## Install
 
