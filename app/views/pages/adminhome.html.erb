@@ -37,6 +37,7 @@
 	<form style="display: inline-block;" class="button_to" method="get" action="/pages/searchresults">
 		<input type="submit" text="Search">
 	</form>
+	<input type='checkbox'>Show Archived</input>
 </div><br>
 
 <table style="width:100%">
@@ -48,6 +49,7 @@
 	 <th>Email</th>
 	 <th>Counselor</th>
 	 <th>View More</th>
+	 <th>Archive</th>
  </tr>
  <tr>
 	 <td>Jill Smith</td>
@@ -57,6 +59,7 @@
 	 <td>jill@gmail.com</td>
 	 <td>Broc</td>
 	 <td><button> <%= link_to 'Admin View Clients', page_path('adminviewmore') %> </button></td>
+	 <td><button onclick = "alert('Client Archived')">Archive</button>
  </tr>
  <tr>
 	 <td>Jill Smith</td>
@@ -66,5 +69,6 @@
 	 <td>jill@gmail.com</td>
 	 <td>Broc</td>
 	 <td><button> <%= link_to 'Admin View Clients', page_path('adminviewmore') %> </button></td>
+	 <td><button onclick = "alert('Client Archived')">Archive</button>
  </tr>
 </table>
