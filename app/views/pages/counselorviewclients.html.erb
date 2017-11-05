@@ -26,17 +26,13 @@
 </div>
 
 <div>
-	<p>Search:
-	<input type="text" placeholder="Search for...">
-  <button type="submit">Search</button></p>
-
-  <div class="search-terms"> <!--Need display inline block to work. </p> tags were like new lines and messed it up-->
-  		Search by
-  		Name: <input id="search1" name="item1" type="checkbox">
-  		ID: <input id="search2" name="item2" type="checkbox">
-  		Phone Number: <input id="search3" name="item3" type="checkbox">
-  </div>
-</div>
+	Search:
+	<input style="display: inline-block;" class="" type="text" placeholder="Search for...">
+	<!-- 	<%= button_to "Search", page_path('searchresults'), :method => :get %> -->
+	<form style="display: inline-block;" class="button_to" method="get" action="/pages/searchresults">
+		<input type="submit" text="Search">
+	</form>
+</div><br>
 
  <table style="width:100%">
   <tr>
