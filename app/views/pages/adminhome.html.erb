@@ -23,10 +23,10 @@
 
 <div style="position: fixed; left: 50%;"
 	<div style="float: left;">
-	  <button> <%= link_to 'Client Reports', page_path('adminclientreports') %> </button>
+	<%= button_to "Client Reports", page_path('adminclientreports'), :method => :get %>
 	</div>
 	<div style="float: right; width: 60%;">
-		<button> <%= link_to 'Manage Users', page_path('adminmanageusers') %> </button>
+	<%= button_to "Manage Users", page_path('adminmanageusers'), :method => :get %>
 	</div>
 </div><br>
 
@@ -58,7 +58,7 @@
 	 <td>541-233-5444</td>
 	 <td>jill@gmail.com</td>
 	 <td>Broc</td>
-	 <td><button> <%= link_to 'Admin View Clients', page_path('adminviewmore') %> </button></td>
+	 <td><%= button_to "View More", page_path('adminviewmore'), :method => :get %></td>
 	 <td><button onclick = "alert('Client Archived')">Archive</button>
  </tr>
  <tr>
@@ -68,7 +68,7 @@
 	 <td>541-233-5444</td>
 	 <td>jill@gmail.com</td>
 	 <td>Broc</td>
-	 <td><button> <%= link_to 'Admin View Clients', page_path('adminviewmore') %> </button></td>
+	 <td><%= button_to "View More", page_path('adminviewmore'), :method => :get %></td>
 	 <td><button onclick = "alert('Client Archived')">Archive</button>
  </tr>
 </table>

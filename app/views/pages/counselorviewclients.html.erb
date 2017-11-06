@@ -50,7 +50,7 @@
     <td>50</td>
     <td>541-233-5444</td>
     <td>jill@gmail.com</td>
-		<td><button> <%= link_to 'View More', page_path('counselorviewmore') %> </button></td>
+		<td><%= button_to "View More", page_path('counselorviewmore'), :method => :get %></td>
   </tr>
   <tr>
     <td>Jill Smith</td>
@@ -58,6 +58,6 @@
     <td>50</td>
     <td>541-233-5444</td>
     <td>jill@gmail.com</td>
-    <td><button> <%= link_to 'View More', page_path('counselorviewmore') %> </button></td>
+    <td><%= button_to "View More", page_path('counselorviewmore'), :method => :get %></td>
   </tr>
 </table>
