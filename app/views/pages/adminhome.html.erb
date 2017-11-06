@@ -7,36 +7,69 @@
 		text-align: center;
 	}
 
-	.Row
-	{
-	    display: table;
-	    width: 120%; /*Optional*/
-	    table-layout: fixed; /*Optional*/
-	    border-spacing: 4px; /*Optional*/
-	}
-	.Column
-	{
-	    display: table-cell;
+	table, th, td {
+		border: 1px solid black;
 	}
 </style>
 
 
 <div style="text-align: center; float: right;">
-	<a href="">sign out</a>
+	<a href="/pages/login">sign out</a>
 </div>
 
 <div style="text-align: center;">
 	<h1>Admin Home</h1>
 </div>
 
-<div class="Row">
-    <div class="Column">
-			<button> <%= link_to 'View Clients', page_path('adminviewclients') %> </button>
-		</div>
-    <div class="Column">
-			<button> <%= link_to 'Client Reports', page_path('adminclientreports') %> </button>
-		</div>
-    <div class="Column">
-			<button> <%= link_to 'Manage Users', page_path('adminmanageusers') %> </button>
-		</div>
-</div>
+<div style="position: fixed; left: 50%;"
+	<div style="float: left;">
+	<%= button_to "Client Reports", page_path('adminclientreports'), :method => :get %>
+	</div>
+	<div style="float: right; width: 60%;">
+	<%= button_to "Manage Users", page_path('adminmanageusers'), :method => :get %>
+	</div>
+</div><br>
+
+<div>
+	Search:
+	<input style="display: inline-block;" class="" type="text" placeholder="Search for...">
+	<!-- 	<%= button_to "Search", page_path('searchresults'), :method => :get %> -->
+	<form style="display: inline-block;" class="button_to" method="get" action="/pages/searchresults">
+		<input type="submit" text="Search">
+	</form>
+	<input type='checkbox'>Show Archived</input>
+</div><br>
+
+<table style="width:100%">
+ <tr>
+	 <th>Name</th>
+	 <th>ID#</th>
+	 <th>Age</th>
+	 <th>Phone#</th>
+	 <th>Email</th>
+	 <th>Counselor</th>
+	 <th>View More</th>
+	 <th>Archive</th>
+ </tr>
+ <tr>
+	 <td>Jill Smith</td>
+	 <td>1223</td>
+	 <td>50</td>
+	 <td>541-233-5444</td>
+	 <td>jill@gmail.com</td>
+	 <td>Broc</td>
+	 <td><%= button_to "View More", page_path('adminviewmore'), :method => :get %></td>
+	 <td><button onclick = "alert('Client Archived')">Archive</button>
+ </tr>
+ <tr>
+	 <td>Jill Smith</td>
+	 <td>1223</td>
+	 <td>50</td>
+	 <td>541-233-5444</td>
+	 <td>jill@gmail.com</td>
+	 <td>Broc</td>
+	 <td><%= button_to "View More", page_path('adminviewmore'), :method => :get %></td>
+	 <td><button onclick = "alert('Client Archived')">Archive</button>
+ </tr>
+</table>
+
