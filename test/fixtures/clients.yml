@@ -5,3 +5,6 @@ valid:
 
 invalid:
   first_name: 23.0
+
+with_apostrophe_in_name:
+  first_name: D'Angelo

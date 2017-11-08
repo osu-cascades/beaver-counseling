@@ -24,7 +24,7 @@ class ClientTest < ActiveSupport::TestCase
 
   test "Client first name with apostrophe is valid" do
     client_with_apostrophe = clients(:with_apostrophe_in_name)
-    asset(client_with_apostrophe.valid?)
+    assert(client_with_apostrophe.valid?)
   end
 
 end
