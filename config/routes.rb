@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :clients
 	root 'high_voltage/pages#show', id: 'welcome'
 
   get 'pages/searchresults' => 'high_voltage/pages#show', id: 'searchresults'
