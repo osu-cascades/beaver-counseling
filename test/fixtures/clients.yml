@@ -4,4 +4,4 @@ valid:
   first_name: Jack
 
 invalid:
-  first_name: 23
+  first_name: 23.0

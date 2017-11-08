@@ -12,9 +12,9 @@ class ClientTest < ActiveSupport::TestCase
     assert_equal(client_name, client.first_name)
   end
 
-  test "Client without a first name is not valid" do
-    invalid_client = clients(:invalid)
-    assert_not(invalid_client.valid?)
+  test "Client with a first name is valid" do
+    valid_client = clients(:valid)
+    assert(valid_client.valid?)
   end
 
   test "Client first name must be a string" do
