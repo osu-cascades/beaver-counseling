@@ -5,6 +5,11 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# bootstrap all the way!!!
+gem 'bootstrap-sass', '3.3.7'
+# add devise for sessions
+gem 'devise'
+# specify rails version
 ruby "2.4.2"
 gem 'high_voltage', '~> 3.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

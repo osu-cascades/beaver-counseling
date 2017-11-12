@@ -18,7 +18,9 @@
 </style>
 
 <div style="text-align: center; float: right;">
-	<a href="/pages/login">sign out</a>
+	<li><%= link_to "Home",   root_path %></li>
+  <li><%= link_to "Log in", '/auth/login' %></li>
+  <li><%= link_to 'Log out', '/auth/logout', method: :delete%></li>
 </div>
 
 <div style="text-align: center;">
