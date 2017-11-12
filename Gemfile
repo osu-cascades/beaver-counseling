@@ -7,6 +7,7 @@ end
 
 # bootstrap all the way!!!
 gem 'bootstrap-sass', '3.3.7'
+
 # add devise for sessions
 gem 'devise'
 # specify rails version
