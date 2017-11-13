@@ -20,4 +20,4 @@
 
 .DS_Store
 .DS_Store?
-/config/database.yml
+.config/database.yml
