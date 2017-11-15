@@ -3,6 +3,16 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def after_sign_in_path_for(resource)
+    if current_user.role == 1
+      admin_root_path
+    elsif current_user.role == 2
+      user_root_path
+    else
+      root_path
+    end
+  end
+
   def devise_parameter_sanitizer
     if resource_class == Users
       Users::ParameterSanitizer.new(Users, :users, params)
