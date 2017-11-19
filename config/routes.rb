@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 	get 'pages/adminclientreports' => 'high_voltage/pages#show', id: 'adminclientreports'
 	get 'pages/adminmanageusers' => 'high_voltage/pages#show', id: 'adminmanageusers'
 	get 'pages/adminviewmore' => 'high_voltage/pages#show', id: 'adminviewmore'
+
+	get 'pages/counselorhome' => 'high_voltage/pages#show', id: 'counselorhome'
 	get 'pages/counselorviewmore' => 'high_voltage/pages#show', id: 'counselorviewmore'
 	get 'pages/searchresults' => 'high_voltage/pages#show', id: 'searchresults'
 

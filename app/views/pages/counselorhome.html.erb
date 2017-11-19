@@ -17,12 +17,6 @@
 
 </style>
 
-<div style="text-align: center; float: right;">
-	<li><%= link_to "Home",   root_path %></li>
-  <li><%= link_to "Log in", '/auth/login' %></li>
-  <li><%= link_to 'Log out', '/auth/logout', method: :delete%></li>
-</div>
-
 <div style="text-align: center;">
 	<h1>Counselor View Clients</h1>
 </div>
@@ -45,6 +39,8 @@
     <th>Phone#</th>
     <th>Email</th>
     <th>View More</th>
+		<th>Signatures</th>
+		<th>3 Forms</th>
   </tr>
   <tr>
     <td>Jill Smith</td>
@@ -53,6 +49,12 @@
     <td>541-233-5444</td>
     <td>jill@gmail.com</td>
 		<td><%= button_to "View More", page_path('counselorviewmore'), :method => :get %></td>
+		<td><a href="/">signed: </a><input type="checkbox" checked></td>
+		<td>
+			<a href="/">audio_video: </a><input type="checkbox">
+			&nbsp;<a href="/">counseling_consent: </a><input type="checkbox">
+			&nbsp;<a href="/">treatment: </a><input type="checkbox">
+		</td>
   </tr>
   <tr>
     <td>Jill Smith</td>
@@ -61,5 +63,11 @@
     <td>541-233-5444</td>
     <td>jill@gmail.com</td>
     <td><%= button_to "View More", page_path('counselorviewmore'), :method => :get %></td>
+		<td><a href="/">signed: </a><input type="checkbox" checked></td>
+		<td>
+			<a href="/">audio_video: </a><input type="checkbox">
+			&nbsp;<a href="/">counseling_consent: </a><input type="checkbox">
+			&nbsp;<a href="/">treatment: </a><input type="checkbox">
+		</td>
   </tr>
 </table>
