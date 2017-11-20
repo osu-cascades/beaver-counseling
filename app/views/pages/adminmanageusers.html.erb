@@ -55,7 +55,7 @@
 		<td><button>-</button></td>
 	</tr>
 	<tr>
-		<td><%= link_to "Create New Counselor", '/auth/register/cmon_let_me_in' %></td>
+		<!-- <td><%= link_to "Create New Counselor", '/auth/register/cmon_let_me_in' %></td> -->
 	</tr>
 	</table>
 </div>
@@ -63,3 +63,41 @@
 <div style="clear: both; text-align: center;">
 	<button onclick="alert('Changes saved')">Save</button>
 </div
+
+<div style="clear: both;">
+<% @users = User.all %>
+<% @users.each do |user| %>
+  <%= user.email %><br>
+	<%= user.role %><br>
+<% end %>
+</div>
+
+<h1>form</h1>
+<%= form_for User.new, url: create_user_path do |f| %>
+	<div class="field">
+		<%= f.label :email %><br />
+		<%= f.email_field :email, autofocus: true %>
+	</div>
+
+	<div class="field">
+		<%= f.label :password %>
+		<% if @minimum_password_length %>
+		<em>(<%= @minimum_password_length %> characters minimum)</em>
+		<% end %><br />
+		<%= f.password_field :password, autocomplete: "off" %>
+	</div>
+
+	<div class="field">
+		<%= f.label :password_confirmation %><br />
+		<%= f.password_field :password_confirmation, autocomplete: "off" %>
+	</div>
+
+	<div class="field">
+		<%= f.label :role %><br />
+		<%= f.text_field :role, autocomplete: "off" %>
+	</div>
+
+	<div class="actions">
+		<%= f.submit "Sign up" %>
+	</div>
+<% end %>

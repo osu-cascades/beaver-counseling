@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 	devise_for :users, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
 	#devise_for :users, controllers: { registrations: 'registrations' }
 
+	resources :users, except: :create
+	post 'create_user' => 'users#create', as: :create_user
+
 	#get 'user_root_path' => 'clients#index', as: :user_root
 	#get 'admin_root_path' => 'high_voltage/pages#show', as: :admin_root
 
