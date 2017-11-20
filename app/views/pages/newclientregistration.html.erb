@@ -1,15 +1,125 @@
 <style>
+  * {
+    margin: 0;
+  }
 
-textarea {
-    white-space: normal;
-    text-align: justify;
-    -moz-text-align-last: center; /* Firefox 12+ */
-    text-align-last: center;
-}
+  a {
+    color: white;
+    text-decoration: underline;
+  }
 
+  a:hover {
+    text-decoration: underline;
+  }
+
+  html, body {
+    margin: 0;
+    background-color: white;
+      height: 100%;
+  }
+
+  .logo {
+    margin-top: 35px;
+    margin-left: 50px;
+    width: 260px;
+  }
+
+  .banner {
+    margin: 0;
+    height: 100px;
+    background: url(/images/cascade_mountains.jpg) repeat #f4f2ec;
+  }
+
+  #header {
+    color: black;
+  }
+
+  form {
+    background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+    background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+    background: linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+    margin: 10px auto;
+    position: relative;
+    width: 80%;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #999;
+    border: inset 1px solid #333;
+    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  input {
+    width: 50%;
+    display: block;
+    border: 1px solid #999;
+    height: 25px;
+    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  /*Code to center title*/
+  .centerTitle {
+    text-align: center;
+    color: white;
+  }
+
+  /*Code to make things centered and white/black*/
+  .box {
+    color:white;
+    width:medium;
+    height:60px;
+    background:black;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  br {
+    display: block;
+    margin: 15px 0;
+  }
+
+  .radioButton {
+    display:inline-block;
+  }
+
+  /* Oh hell yeah */
+  @keyframes warningFun {
+      0%   {transform:rotate(0deg);}
+      50%  {transform:rotate(180deg) scale(20);}
+      100% {transform:rotate(360deg) scale(1);}
+  }
+
+  .warning {
+    display: block;
+    color: #990000;
+    font-size: 12px;
+    font-weight: normal;
+    animation-name: warningFun;
+    animation-duration: 5s;
+    transform-origin: 20% 20%;
+  }
+
+  textarea {
+      white-space: normal;
+      text-align: justify;
+      -moz-text-align-last: center; /* Firefox 12+ */
+      text-align-last: center;
+  }
 </style>
 
-<div style="padding-left: 2em;">
+
+<!-- <div style="padding-left: 2em;">
 	<div style="text-align: center;">
 		<h1>OSU Cascades Counseling Clinic</h1>
 	</div>
@@ -20,9 +130,9 @@ textarea {
 	Date of Birth: <input type="tel"><br>
   Phone number: <input type="text"><br>
   Email: <input type="text"><br>
-  Address: <input type="text"><br>
+  Address: <input type="text"><br> -->
 
-<form>
+<form name="myForm"><!-- onsubmit="return validateForm()" method="post" action="clients/create.php">-->
   <fieldset>
   <div class="centerTitle"><legend><h1 id="header">OSU Cascades Counseling Practicum <br> Client Information Form<h1></legend></div><br>
   <div class="boxed">
@@ -36,130 +146,127 @@ textarea {
     <input type="text" name="age"/>
     <label for="birthday">Date of Birth</label>
     <input type="date" name="birthday" placeholder="YYYYMMDD" max="1979-12-31"/><br>
-<!--	<label for="address">Address</label>
-<input type="text" name="address"/>
-<label for="address2">Address</label>
-<input type="text" name="address2"/>
-<label for="city">City</label>
-<input type="text" name="city"/>
-<label for="state">State</label>
-<input type="text" name="state"/>  STATES SHOWN at bottom of file
-<label for="zip">Zip</label>
-<input type="text" name="zip"/>
-<br>
-<label for="phone">Phone</label>
-<input type="text" name="phone"/>
-<label for="message">May we contact you at this number if necessary?</label>
-<br>
-<div class="radioButton">
-<label for="option1">Yes</label>
-<input type="radio" name="message" value="yes" />
-<label for="option1">No</label>
-<input type="radio" name="message" value="no" />
-</div>
+  	<label for="address">Address</label>
+    <input type="text" name="address"/>
+    <label for="address2">Address</label>
+    <input type="text" name="address2"/>
+    <label for="city">City</label>
+    <input type="text" name="city"/>
+    <label for="state">State</label>
+    <input type="text" name="state"/>  STATES SHOWN at bottom of file
+    <label for="zip">Zip</label>
+    <input type="text" name="zip"/>
+    <br>
+    <label for="phone">Phone</label>
+    <input type="text" name="phone"/>
+    <label for="message">May we contact you at this number if necessary?</label>
+    <br>
+    <div class="radioButton">
+    <label for="option1">Yes</label>
+    <input type="radio" name="message" value="yes" />
+    <label for="option1">No</label>
+    <input type="radio" name="message" value="no" />
+    </div>
+    <br>
+    <label for="email">Email</label>
+    <input type="email" name="email" size="40"/>
+    <br>
+    <label for="occupation">Occupation</label>
+    <input type="text" name="occupation"/>
+    <label for="employer">Employer</label>
+    <input type="text" name="employer"/>
+    <br>
+    <label for="workAddress">Employer's address</label>
+    <input type="text" name="workAddress"/>
+    <label for="workPhone">Work Phone</label>
+    <input type="text" name="workPhone"/>
+    <label for="workMessage">May we contact this person if necessary?</label>
+    <input type="radio" name="workMessage" value="yes" />Yes
+    <input type="radio" name="workMessage" value="no" />No
+    </div>
 
+    <div class="box"><h2 class="form-header">Spouse or Partner Information</h2></div>
 
-<br>
-<label for="email">Email</label>
-<input type="email" name="email" size="40"/>
-<br>
-<label for="occupation">Occupation</label>
-<input type="text" name="occupation"/>
-<label for="employer">Employer</label>
-<input type="text" name="employer"/>
-<br>
-<label for="workAddress">Employer's address</label>
-<input type="text" name="workAddress"/>
-<label for="workPhone">Work Phone</label>
-<input type="text" name="workPhone"/>
-<label for="workMessage">May we contact this person if necessary?</label>
-<input type="radio" name="workMessage" value="yes" />Yes
-<input type="radio" name="workMessage" value="no" />No
-</div>
+    <label for="partnerName">Name</label>
+    <input type="text" name="partnerName"/>
+    <label for="partnerAge">Age</label>
+    <input type="text" name="partnerAge"/>
+    <label for="partnerBday">Date of Birth</label>
+    <input type="date" name="partnerBday" placeholder="MM/DD/YYYY"/>
+    <label for="partnerOccupation">Occupation</label>
+    <input type="text" name="partnerOccupation"/>
+    <label for="partnerEmployer">Employer</label>
+    <input type="text" name="partnerEmployer"/>
+    <label for="partnerPhone">Phone</label>
+    <input type="text" name="partnerPhone"/>
 
-<div class="box"><h2 class="form-header">Spouse or Partner Information</h2></div>
+    <div class="box"><h2 class="form-header">Other Members of Your Household</h2></div>
 
-<label for="partnerName">Name</label>
-<input type="text" name="partnerName"/>
-<label for="partnerAge">Age</label>
-<input type="text" name="partnerAge"/>
-<label for="partnerBday">Date of Birth</label>
-<input type="date" name="partnerBday" placeholder="MM/DD/YYYY"/>
-<label for="partnerOccupation">Occupation</label>
-<input type="text" name="partnerOccupation"/>
-<label for="partnerEmployer">Employer</label>
-<input type="text" name="partnerEmployer"/>
-<label for="partnerPhone">Phone</label>
-<input type="text" name="partnerPhone"/>
+    Want to do like select a number of members of house
+    <label for="relativeFirstName">First Name</label>
+    <input type="text" name="relativeFirstName">
+    <label for="relativeLastName">Last Name</label>
+    <input type="text" name="relativeLastName">
+    <label for="relativeAge">Age</label>
+    <input type="number" name="relativeAge">
+    <label for="relativeDate">Date of Birth</label>
+    <input type="date" name="relativeDate" placeholder="MM/DD/YYYY">
+    <label for="relation">Relation</label>
+    <input type="text" name="relation">
 
-<div class="box"><h2 class="form-header">Other Members of Your Household</h2></div>
+    <div class="box"><h2 class="form-header">Emergency Contact</h2></div>
 
-<!-- Want to do like select a number of members of house --
-<label for="relativeFirstName">First Name</label>
-<input type="text" name="relativeFirstName">
-<label for="relativeLastName">Last Name</label>
-<input type="text" name="relativeLastName">
-<label for="relativeAge">Age</label>
-<input type="number" name="relativeAge">
-<label for="relativeDate">Date of Birth</label>
-<input type="date" name="relativeDate" placeholder="MM/DD/YYYY">
-<label for="relation">Relation</label>
-<input type="text" name="relation">
+    <label for="emergencyName">Name</label>
+    <input type="text" name="emergencyName">
+    <label for="emergencyRelation">Relation</label>
+    <input type="text" name="emergencyRelation">
+    <label for="emergencyAddress">Address</label>
+    <input type="text" name="emergencyAddress">
+    <label for="emergencyPhone">Phone</label>
+    <input type="text" name="emergencyPhone">
 
-<div class="box"><h2 class="form-header">Emergency Contact</h2></div>
+    <div class="box"><h2 class="form-header">Health Insurance</h2></div>
 
-<label for="emergencyName">Name</label>
-<input type="text" name="emergencyName">
-<label for="emergencyRelation">Relation</label>
-<input type="text" name="emergencyRelation">
-<label for="emergencyAddress">Address</label>
-<input type="text" name="emergencyAddress">
-<label for="emergencyPhone">Phone</label>
-<input type="text" name="emergencyPhone">
+    <label for="hasInsurance">Do you have health insurance?</label>
+    <input type="radio" name="hasInsurance" value="yes" />Yes
+    <input type="radio" name="hasInsurance" value="no" />No
+    <label for="insuranceCompany">If yes, what company?</label>
+    <br>
+    <input type="text" name="insuranceCompany">
 
-<div class="box"><h2 class="form-header">Health Insurance</h2></div>
+    <div class="box"><h2 class="form-header"> Medical Information</h2></div>
 
-<label for="hasInsurance">Do you have health insurance?</label>
-<input type="radio" name="hasInsurance" value="yes" />Yes
-<input type="radio" name="hasInsurance" value="no" />No
-<label for="insuranceCompany">If yes, what company?</label>
-<br>
-<input type="text" name="insuranceCompany">
-
-<div class="box"><h2 class="form-header"> Medical Information</h2></div>
-
-<label for="PCP">Primary Care Physician</label>
-<input type="text" name="PCP"/>
-<label for="PCPphone">Phone</label>
-<input type="text" name="PCPphone"/>
-<br>
-<label for="medications">Prescription Medications</label>
-<input type="text" name="medications"/>
-<br>
-<label for="seenBefore">Have you ever seen a counselor before?</label>
-<input type="radio" name="seenBefore" value="yes" />Yes
-<input type="radio" name="seenBefore" value="no" />No
-<br>
-<label for="previousCounselor">If yes, when and where?</label>
-<input type="text" name="previousCounselor"/>
-<br>
-<label for="reason">Reason for seeking help now?</label>
-<br>
-<textarea rows="10" cols="80">Reason for your visit.</textarea>
-<br>-->
-<input type="submit" name ="Submit" />
-
+    <label for="PCP">Primary Care Physician</label>
+    <input type="text" name="PCP"/>
+    <label for="PCPphone">Phone</label>
+    <input type="text" name="PCPphone"/>
+    <br>
+    <label for="medications">Prescription Medications</label>
+    <input type="text" name="medications"/>
+    <br>
+    <label for="seenBefore">Have you ever seen a counselor before?</label>
+    <input type="radio" name="seenBefore" value="yes" />Yes
+    <input type="radio" name="seenBefore" value="no" />No
+    <br>
+    <label for="previousCounselor">If yes, when and where?</label>
+    <input type="text" name="previousCounselor"/>
+    <br>
+    <label for="reason">Reason for seeking help now?</label>
+    <br>
+    <textarea rows="10" cols="80">Reason for your visit.</textarea>
+    <br>-->
+    <input type="submit" name ="Submit" />
 </fieldset>
 </form>
-
-  <br>
+</div>
+<!--   <br>
 	Sign Here: <br>
 	<textarea rows="4" cols="50">
 	</textarea><br><br>
 
 	<button style="text-align: center;" onclick="alert('data was submitted')">Submit</button>
-</div>
-
+</div>-->
+<!--
 <script>
 function validateForm() {
   var x = document.forms["myForm"]["date"].value;
@@ -222,4 +329,4 @@ return true;
 }
 }
  */
-</script>
+</script>-->
