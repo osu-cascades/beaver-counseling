@@ -17,87 +17,69 @@
 
 </style>
 
-<div style="text-align: center; float: right;">
-	<a href="/pages/login">sign out</a>
-</div>
-
 <div style="text-align: center;">
 	<h1>Admin Manage Users</h1>
 </div>
 
 
-
 <div style="float: left; margin: 2em;">
-<p>Counselors</p>
-	<table width="100%">
+<h3>Counselors</h3>
+<table width="100%">
 	<tr>
 		<th>Name</th>
 		<th>Username</th>
-		<th>Password</th>
+		<th>Role</th>
 		<th>Archive</th>
 	</tr>
-	<tr>
-		<td align="middle"><input type="text" value="Jill"></td>
-		<td align="middle"><input type="text" value="JillBake"</td>
-		<td align="middle"><input type="text" value="pass1"</td>
-		<td><button>-</button></td>
-	</tr>
-	<tr>
-		<td align="middle"><input type="text" value="John"></td>
-		<td align="middle"><input type="text" value="JSmith"</td>
-		<td align="middle"><input type="text" value="1234"</td>
-		<td><button>-</button></td>
-	</tr>
-	<tr>
-		<td align="middle"><input type="text" value="Beth"></td>
-		<td align="middle"><input type="text" value="bbeth"</td>
-		<td align="middle"><input type="text" value="super"</td>
-		<td><button>-</button></td>
-	</tr>
-	<tr>
-		<!-- <td><%= link_to "Create New Counselor", '/auth/register/cmon_let_me_in' %></td> -->
-	</tr>
-	</table>
+	<% @users = User.all %>
+	<% @users.each do |user| %>
+		<% if (user.role == 2) %>
+		<tr>
+			<td><%= user.name %></td>
+		  <td><%= user.email %></td>
+			<td><%= user.role %></td>
+			<td><button>-</button></td>
+		</tr>
+		<% end %>
+	<% end %>
+</table>
 </div>
 
-<div style="clear: both; text-align: center;">
-	<button onclick="alert('Changes saved')">Save</button>
-</div
+<div style="clear: both; margin: 2em;">
 
-<div style="clear: both;">
-<% @users = User.all %>
-<% @users.each do |user| %>
-  <%= user.email %><br>
-	<%= user.role %><br>
-<% end %>
+	<h3>Create New Counselor</h3>
+	<%= form_for User.new, url: create_user_path do |f| %>
+		<div class="field">
+			<%= f.label :name %><br />
+			<%= f.text_field :name %>
+		</div>
+
+		<div class="field">
+			<%= f.label :email %><br />
+			<%= f.email_field :email %>
+		</div>
+
+		<div class="field">
+			<%= f.label :password %>
+			<% if @minimum_password_length %>
+			<em>(<%= @minimum_password_length %> characters minimum)</em>
+			<% end %><br />
+			<%= f.password_field :password, autocomplete: "off" %>
+		</div>
+
+		<div class="field">
+			<%= f.label :password_confirmation %><br />
+			<%= f.password_field :password_confirmation, autocomplete: "off" %>
+		</div>
+
+		<div class="field" style="display: none;">
+			<%= f.label :role %><br />
+			<%= f.text_field :role, autocomplete: "off", value: 2 %>
+		</div>
+
+		<div class="actions">
+			<%= f.submit "Sign up" %>
+		</div>
+	<% end %>
+
 </div>
-
-<h1>form</h1>
-<%= form_for User.new, url: create_user_path do |f| %>
-	<div class="field">
-		<%= f.label :email %><br />
-		<%= f.email_field :email, autofocus: true %>
-	</div>
-
-	<div class="field">
-		<%= f.label :password %>
-		<% if @minimum_password_length %>
-		<em>(<%= @minimum_password_length %> characters minimum)</em>
-		<% end %><br />
-		<%= f.password_field :password, autocomplete: "off" %>
-	</div>
-
-	<div class="field">
-		<%= f.label :password_confirmation %><br />
-		<%= f.password_field :password_confirmation, autocomplete: "off" %>
-	</div>
-
-	<div class="field">
-		<%= f.label :role %><br />
-		<%= f.text_field :role, autocomplete: "off" %>
-	</div>
-
-	<div class="actions">
-		<%= f.submit "Sign up" %>
-	</div>
-<% end %>
