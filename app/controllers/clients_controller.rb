@@ -6,6 +6,7 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
     @clients = Client.all
+    @users = User.all
   end
 
   # GET /clients/1
@@ -25,6 +26,7 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
+    # created clients are assigned to the admin
     @user = User.find_by_role(1)
     @client = Client.new(client_params)
     @client.user_id = @user.id
@@ -43,6 +45,10 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json
   def update
+    # only the admin can change the user the client is assigned to
+    if (current_user.role == 1)
+    end
+
     respond_to do |format|
       if @client.update(client_params)
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
