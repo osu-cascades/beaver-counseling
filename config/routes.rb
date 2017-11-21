@@ -13,8 +13,6 @@ Rails.application.routes.draw do
 
 	get 'pages/welcome' => 'high_voltage/pages#show', id: 'welcome'
 	get 'pages/newclientregistration' => 'high_voltage/pages#show', id: 'newclientregistration'
-	#get 'pages/login' => 'high_voltage/pages#show', id: 'login'
-
 
 	get 'pages/adminhome' => 'high_voltage/pages#show', id: 'adminhome'
 	get 'pages/adminclientreports' => 'high_voltage/pages#show', id: 'adminclientreports'
