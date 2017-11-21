@@ -3,9 +3,6 @@ class UsersController < ApplicationController
 
   # arhive user
 
-  def adminhome
-  end
-
   def create
     # user create code (can't get here if not admin)
     #puts request.raw_post

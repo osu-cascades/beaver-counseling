@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     #byebug
     if current_user.role == 1
-      users_adminhome_path
+      pages_adminhome_path
     elsif current_user.role == 2
       pages_counselorhome_path
     else
