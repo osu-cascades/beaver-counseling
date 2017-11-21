@@ -21,9 +21,9 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="field">
+  <div class="field" style="display: none;">
     <%= f.label :role %><br />
-    <%= f.text_field :role, autocomplete: "off" %>
+    <%= f.text_field :role, autocomplete: "off", value: 1 %>
   </div>
 
   <div class="actions">
