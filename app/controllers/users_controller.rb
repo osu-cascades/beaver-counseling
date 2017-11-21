@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_action :authorize_admin, only: :create
 
+  # arhive user
+
+  def adminhome
+  end
+
   def create
     # user create code (can't get here if not admin)
     #puts request.raw_post
