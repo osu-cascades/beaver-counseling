@@ -38,7 +38,7 @@ class ClientsController < ApplicationController
 
     @client = Client.new
     @client.first_name = params[:client][:first_name]
-    @client.user_id = @id
+    #@client.user_id = @id
 
     respond_to do |format|
       if @client.save
