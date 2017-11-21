@@ -16,9 +16,12 @@
       <tr>
         <td><%= client.first_name %></td>
         <% @users.each do |user| %>
-          <% if (@user.id == client.user_id) %>
+
+  <%#   <% if (@user.id == client.user_id)  %>
             <td><%= user.name %></td>
-          <% end %>
+            <td><%= user.id %></td>
+  <%#   <% end %->
+
         <% end %>
         <td><%= link_to 'Show', client %></td>
         <td><%= link_to 'Edit', edit_client_path(client) %></td>
