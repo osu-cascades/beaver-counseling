@@ -17,12 +17,13 @@
         <td><%= client.first_name %></td>
         <% @users.each do |user| %>
 
-  <%#   <% if (@user.id == client.user_id)  %>
-            <td><%= user.name %></td>
+          <% if (user.id == client.user_id)  %>
+            <td><%= user.email %></td>
             <td><%= user.id %></td>
-  <%#   <% end %>
+          <% end %>
 
         <% end %>
+
         <td><%= link_to 'Show', client %></td>
         <td><%= link_to 'Edit', edit_client_path(client) %></td>
         <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
