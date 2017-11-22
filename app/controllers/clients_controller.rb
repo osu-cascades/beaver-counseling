@@ -27,15 +27,8 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     # created clients are assigned to the admin
-    @id = -1
-    @users = User.all
-    @users.each do |user|
-      if (@user.role == 1)
-        @id = @user.id
-      end
-    end
 
-    #@user = User.find_by_role(1)
+    @user = User.find_by_role(1)
     @client = Client.new(client_params)
     @client.user_id = @user.id
 
@@ -86,6 +79,6 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:first_name, :user_id)
+      params.require(:client).permit(:first_name)
     end
 end
