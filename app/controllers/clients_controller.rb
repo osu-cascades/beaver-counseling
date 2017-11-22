@@ -17,10 +17,13 @@ class ClientsController < ApplicationController
   # GET /clients/new
   def new
     @client = Client.new
+    @users = User.all
   end
 
   # GET /clients/1/edit
   def edit
+    @clients = Client.all
+    @users = User.all
   end
 
   # POST /clients

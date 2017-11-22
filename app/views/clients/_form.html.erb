@@ -16,9 +16,10 @@
     <%= form.text_field :first_name, id: :client_first_name %>
   </div>
 
-  <div class="field" style="display: none;">
+  <div class="field">
     <%= form.label :user_id %><br />
-    <%= form.text_field :user_id, autocomplete: "off" %>
+    <%= form.select :user_id, @users.collect { |user| [user.email, user.id] } %>
+    <!--id is being default set? -->
   </div>
 
   <div class="actions">
