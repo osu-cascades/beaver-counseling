@@ -27,18 +27,18 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     # created clients are assigned to the admin
-    #@id = -1
-    #@users = User.all
-    #@users.each do |user|
-    #  if (@user.role == 1)
-    #    @id = @user.id
-    #  end
-    #end
-    @user = User.find_by_role(1)
+    @id = -1
+    @users = User.all
+    @users.each do |user|
+      if (@user.role == 1)
+        @id = @user.id
+      end
+    end
+    #@user = User.find_by_role(1)
 
     @client = Client.new
     @client.first_name = params[:client][:first_name]
-    #@client.user_id = @id
+    @client.user_id = @id
 
     respond_to do |format|
       if @client.save
