@@ -34,11 +34,10 @@ class ClientsController < ApplicationController
         @id = @user.id
       end
     end
-    #@user = User.find_by_role(1)
 
-    @client = Client.new
-    @client.first_name = params[:client][:first_name]
-    @client.user_id = @id
+    #@user = User.find_by_role(1)
+    @client = Client.new(client_params)
+    @client.user_id = @user.id
 
     respond_to do |format|
       if @client.save
