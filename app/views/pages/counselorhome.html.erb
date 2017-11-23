@@ -30,6 +30,13 @@
 	</form>
   <input type='checkbox'>Show Archived</input>
 </div><br>
+	<% @clients = Client.all %>
+	<% @clients.each do |client| %>
+		<% if current_user.id == client.user_id %>
+			<%= client.first_name %>
+			<%= client.id %>
+		<% end %>
+	<% end %>
 
  <table style="width:100%">
   <tr>
