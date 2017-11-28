@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :except => [:new, :create, :show] #Adding acception to authentication. anybody can create client
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   # GET /clients

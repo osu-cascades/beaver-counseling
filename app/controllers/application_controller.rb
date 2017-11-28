@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    #byebug
     if current_user.role == 1
       pages_adminhome_path
     elsif current_user.role == 2
