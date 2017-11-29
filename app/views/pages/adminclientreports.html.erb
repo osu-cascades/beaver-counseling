@@ -19,24 +19,68 @@
 
 <canvas id="bar-chart-horizontal" width="200" height="60"></canvas>
 <script>
+
+//$('element').val(<%= @clients.to_json %>);
+var clients = <%= raw Client.all.to_json %>
+var ages = [];
+
+for (var i = 0; i < clients.length; i++) {
+	ages.push(parseInt(clients[i].age));
+}
+
+var labels = [];
+
+function getNumClientsAtAge(ages) {
+	var unique = {}; // key:age value:numOfOcurrences
+	var currentAge;
+	for (var i = 0; i < ages.length; i++) { // for unique in list
+		currentAge = ages[i];
+		if (!(currentAge in unique)) {
+			unique[currentAge] = 1;
+		} else {
+			var num = parseInt(unique[currentAge])
+			num += 1
+			unique[currentAge] = num;
+		}
+	}
+
+	var ocurrences = [];
+	for (var key in unique) {
+			labels.push(key);
+			ocurrences.push(unique[key]);
+	}
+	console.log(labels);
+	console.log(ocurrences);
+	return ocurrences;
+}
+
 new Chart(document.getElementById("bar-chart-horizontal"), {
     type: 'horizontalBar',
     data: {
-      labels: ["2", "8", "4", "1", "4"],
+      labels: labels,
       datasets: [
         {
           label: "Age (years)",
           backgroundColor: ["#8e5ea2", "#3e95cd","#3cba9f","#e8c3b9","#c45850"],
-          data: [27,52,33,21,37]
+          data: getNumClientsAtAge(ages)
         }
       ]
     },
     options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Clients Age'
-      }
-    }
+			scales: {
+				xAxes: [{
+					ticks: {
+						beginAtZero: true,
+						min: 0,
+						stepSize: 1
+					}
+				}],
+	      legend: { display: false },
+	      title: {
+	        display: true,
+	        text: 'Clients Age',
+	      }
+	    }
+		}
 });
 </script>
