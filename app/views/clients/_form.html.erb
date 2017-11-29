@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :age %>
+    <%= form.text_field :age, id: :client_age%>
+  </div>
+
+  <div class="field">
     <%= form.label :user_id %><br />
     <%= form.select :user_id, @users.collect { |user| [user.email, user.id] } %>
     <!--id is being default set? -->
