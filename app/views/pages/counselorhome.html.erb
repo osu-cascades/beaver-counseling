@@ -1,3 +1,4 @@
+<!-- move to include in application or header-->
 <style>
 	.top{
 		display:inline-block;
@@ -14,79 +15,28 @@
 	table, th, td {
     border: 1px solid black;
 	}
-
 </style>
 
 <div style="text-align: center;">
 	<h1>Counselor View Clients</h1>
 </div>
-
-<!-- <div>
-	Search:
-	<input style="display: inline-block;" class="" type="text" placeholder="Search for...">
-	<form style="display: inline-block;" class="button_to" method="get" action="/pages/searchresults">
-		<input type="submit" text="Search">
-	</form>
-  <input type='checkbox'>Show Archived</input>
-</div><br> -->
-	<table style="width:100%;">
-		<tr>
-			<th>First Name</th>
-			<th>Age</th>
-			<th>ID</th>
-			<th>View More</th>
-		</tr>
-		<% @clients = Client.all %>
-		<% @clients.each do |client| %>
-			<% if current_user.id == client.user_id %>
-				<tr>
-					<td><%= client.first_name %></td>
-					<td><%= client.age %></td>
-					<td><%= client.id %></td>
-					<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
-				</tr>
-			<% end %>
+	
+<table style="width:100%;">
+	<tr>
+		<th>First Name</th>
+		<th>Age</th>
+		<th>ID</th>
+		<th>View More</th>
+	</tr>
+	<% @clients = Client.all %>
+	<% @clients.each do |client| %>
+		<% if current_user.id == client.user_id %>
+			<tr>
+				<td><%= client.first_name %></td>
+				<td><%= client.age %></td>
+				<td><%= client.id %></td>
+				<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
+			</tr>
 		<% end %>
-	</table>
-
- <!-- <table style="width:100%">
-  <tr>
-    <th>Name</th>
-    <th>ID#</th>
-    <th>Age</th>
-    <th>Phone#</th>
-    <th>Email</th>
-    <th>View More</th>
-		<th>Signatures</th>
-		<th>3 Forms</th>
-  </tr>
-  <tr>
-    <td>Jill Smith</td>
-    <td>1223</td>
-    <td>50</td>
-    <td>541-233-5444</td>
-    <td>jill@gmail.com</td>
-		<td><%= button_to "View More", page_path('counselorviewmore'), :method => :get %></td>
-		<td><a href="/">signed: </a><input type="checkbox" checked></td>
-		<td>
-			<a href="/">audio_video: </a><input type="checkbox">
-			&nbsp;<a href="/">counseling_consent: </a><input type="checkbox">
-			&nbsp;<a href="/">treatment: </a><input type="checkbox">
-		</td>
-  </tr>
-  <tr>
-    <td>Jill Smith</td>
-    <td>1223</td>
-    <td>50</td>
-    <td>541-233-5444</td>
-    <td>jill@gmail.com</td>
-    <td><%= button_to "View More", page_path('counselorviewmore'), :method => :get %></td>
-		<td><a href="/">signed: </a><input type="checkbox" checked></td>
-		<td>
-			<a href="/">audio_video: </a><input type="checkbox">
-			&nbsp;<a href="/">counseling_consent: </a><input type="checkbox">
-			&nbsp;<a href="/">treatment: </a><input type="checkbox">
-		</td>
-  </tr>
+	<% end %>
 </table>
- -->
