@@ -67,6 +67,11 @@ Next, run bundle install to download the necessary gems
 $ bundle install
 ```
 
+You will need to create to database
+```
+$ rake db:create
+```
+
 You will then need to migrate the database
 ```
 $ rake db:migrate

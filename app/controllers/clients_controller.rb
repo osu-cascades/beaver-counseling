@@ -50,8 +50,6 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1.json
   def update
     # only the admin can change the user the client is assigned to
-    if (current_user.role == 1)
-    end
 
     respond_to do |format|
       if @client.update(client_params)
