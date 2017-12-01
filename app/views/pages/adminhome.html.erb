@@ -43,7 +43,7 @@
 			<td><%= client.first_name %></td>
 			<td><%= client.id %></td>
 			<td><%= client.age %></td>
-			<td><%= button_to "View More", "/clients/" + client.id.to_s + "/edit", method: :get %></td>
+			<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
 		</tr>
 	<% end %>
 </table>

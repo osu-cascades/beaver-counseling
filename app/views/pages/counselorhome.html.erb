@@ -21,24 +21,35 @@
 	<h1>Counselor View Clients</h1>
 </div>
 
-<div>
+<!-- <div>
 	Search:
 	<input style="display: inline-block;" class="" type="text" placeholder="Search for...">
-	<!-- 	<%= button_to "Search", page_path('searchresults'), :method => :get %> -->
 	<form style="display: inline-block;" class="button_to" method="get" action="/pages/searchresults">
 		<input type="submit" text="Search">
 	</form>
   <input type='checkbox'>Show Archived</input>
-</div><br>
-	<% @clients = Client.all %>
-	<% @clients.each do |client| %>
-		<% if current_user.id == client.user_id %>
-			<%= client.first_name %>
-			<%= client.id %>
+</div><br> -->
+	<table style="width:100%;">
+		<tr>
+			<th>First Name</th>
+			<th>Age</th>
+			<th>ID</th>
+			<th>View More</th>
+		</tr>
+		<% @clients = Client.all %>
+		<% @clients.each do |client| %>
+			<% if current_user.id == client.user_id %>
+				<tr>
+					<td><%= client.first_name %></td>
+					<td><%= client.age %></td>
+					<td><%= client.id %></td>
+					<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
+				</tr>
+			<% end %>
 		<% end %>
-	<% end %>
+	</table>
 
- <table style="width:100%">
+ <!-- <table style="width:100%">
   <tr>
     <th>Name</th>
     <th>ID#</th>
@@ -78,3 +89,4 @@
 		</td>
   </tr>
 </table>
+ -->
