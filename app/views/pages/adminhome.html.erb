@@ -36,6 +36,7 @@
 		<th>ID</th>
 		<th>Age</th>
 		<th>View More</th>
+		<th>Counselor</th>
 	</tr>
 	<% @clients = Client.all %>
 	<% @clients.each do |client| %>
@@ -44,6 +45,7 @@
 			<td><%= client.id %></td>
 			<td><%= client.age %></td>
 			<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
+			<td><%= (User.find_by_id(client.user_id)).name %></td>
 		</tr>
 	<% end %>
 </table>
