@@ -45,7 +45,12 @@ $ rvm install ruby-2.4.2
 ```
 
 ###### Install PostgreSQL
-You will also need to download PostgreSQL. We used the Graphical Installer which can be found at: https://www.postgresql.org/download/
+You will also need to download PostgreSQL. We used the Graphical Installer which can be found at:
+https://postgresapp.com/
+
+You can also download manually via:
+https://www.postgresql.org/download/
+
 
 ## Getting Started
 
@@ -62,7 +67,17 @@ Next, run bundle install to download the necessary gems
 $ bundle install
 ```
 
-Then start the server
+You will then need to migrate the database
+```
+$ rake db:migrate
+```
+
+Then create the initial admin run the db:seed command
+```
+$ rake db:seed
+```
+
+Finally start the server
 ```
 $ rails server
 ```
