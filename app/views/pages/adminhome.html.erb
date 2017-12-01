@@ -35,6 +35,7 @@
 		<th>First Name</th>
 		<th>ID</th>
 		<th>Age</th>
+		<th>View More</th>
 	</tr>
 	<% @clients = Client.all %>
 	<% @clients.each do |client| %>
@@ -42,6 +43,7 @@
 			<td><%= client.first_name %></td>
 			<td><%= client.id %></td>
 			<td><%= client.age %></td>
+			<td><%= button_to "View More", "/clients/" + client.id.to_s + "/edit", method: :get %></td>
 		</tr>
 	<% end %>
 </table>
