@@ -44,6 +44,12 @@ You must specify a version number to install the newest stable Ruby version:
 $ rvm install ruby-2.4.2
 ```
 
+###### Install Rails
+At the time we made the app the most recent version was rails 5.1.4
+```
+$ gem install rails
+```
+
 ###### Install PostgreSQL
 You will also need to download PostgreSQL. We used the Graphical Installer which can be found at:
 https://postgresapp.com/
