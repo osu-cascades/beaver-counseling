@@ -3,10 +3,14 @@
 		color: green;
 		text-align: center
 	}
+	body {
+  		background-repeat: no-repeat;
+  		background-image: url("homebackground.jpg");
+	}
 </style>
 
 <div class="center">
-	<h1>Welcome to OSU Cascades Counseling Clinic</h1>
+	<h1 style="color: black;">Welcome to OSU Cascades Counseling Clinic</h1>
 
 	<%= button_to "New Clients Register Here", '/clients/new', :method => :get %>
 	<br>
