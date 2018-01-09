@@ -6,11 +6,7 @@ class UsersController < ApplicationController
   def create
     # user create code (can't get here if not admin)
     #puts request.raw_post
-    @user = User.new
-    @user.name = params[:user][:name]
-    @user.email = params[:user][:email]
-    @user.password = params[:user][:password]
-    @user.role = params[:user][:role]
+    @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
@@ -30,6 +26,10 @@ class UsersController < ApplicationController
   def authorize_admin
     return unless current_user.role != 1
     redirect_to root_path, alert: 'Admins only!'
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :role)
   end
 
 end
