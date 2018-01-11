@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129034239) do
+ActiveRecord::Schema.define(version: 20180111182641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,36 @@ ActiveRecord::Schema.define(version: 20171129034239) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "age"
+    t.datetime "currentDate"
+    t.string "firstName"
+    t.string "lastName"
+    t.datetime "dob"
+    t.string "phoneNumber"
+    t.boolean "leaveMessage"
+    t.string "email"
+    t.string "occupation"
+    t.string "employer"
+    t.string "employerAddress"
+    t.string "workPhone"
+    t.boolean "leaveMessageWork"
+    t.string "spouse_first_name"
+    t.string "spouse_last_name"
+    t.datetime "spouse_dob"
+    t.string "spouse_occupation"
+    t.string "spouse_employer"
+    t.string "spouse_phone"
+    t.string "emergency_name"
+    t.string "emergency_relation"
+    t.string "emergency_address"
+    t.string "emergency_phone"
+    t.boolean "health_insurance"
+    t.string "insurance_company"
+    t.string "physician"
+    t.string "physician_phone"
+    t.string "medication"
+    t.boolean "counselor_seen_before"
+    t.string "counselor_seen"
+    t.string "help_reason"
   end
 
   create_table "users", force: :cascade do |t|
