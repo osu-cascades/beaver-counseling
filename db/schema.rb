@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111182641) do
+ActiveRecord::Schema.define(version: 20180111184624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,16 +23,16 @@ ActiveRecord::Schema.define(version: 20180111182641) do
     t.integer "age"
     t.datetime "currentDate"
     t.string "firstName"
-    t.string "lastName"
+    t.string "last_name"
     t.datetime "dob"
-    t.string "phoneNumber"
-    t.boolean "leaveMessage"
+    t.string "phone_number"
+    t.boolean "leave_message"
     t.string "email"
     t.string "occupation"
     t.string "employer"
-    t.string "employerAddress"
-    t.string "workPhone"
-    t.boolean "leaveMessageWork"
+    t.string "employer_address"
+    t.string "work_phone"
+    t.boolean "leave_message_work"
     t.string "spouse_first_name"
     t.string "spouse_last_name"
     t.datetime "spouse_dob"
