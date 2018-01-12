@@ -17,7 +17,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'chartkick'
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'devise'
 gem 'high_voltage', '~> 3.0.0'
