@@ -33,7 +33,7 @@ class ClientsController < ApplicationController
 
     @user = User.find_by_role(1)
     @client = Client.new(client_params)
-    @client.user_id = @user.id
+    @client.counselor_id = @user.id
 
     respond_to do |format|
       if @client.save
@@ -80,6 +80,6 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:first_name, :age, :user_id, :last_name, :dob, :phone_number, :leave_message, :email, :occupation, :employer, :employer_address, :work_phone, :leave_message_work, :spouse_first_name, :spouse_last_name, :spouse_dob, :spouse_occupation, :spouse_phone, :emergency_name, :emergency_relation, :emergency_address, :emergency_phone, :health_insurance, :insurance_company, :physician, :physician_phone, :medication, :counselor_seen_before, :counselor_seen, :help_reason)
+      params.require(:client).permit(:first_name, :age, :counselor_id, :last_name, :dob, :phone_number, :leave_message, :email, :occupation, :employer, :employer_address, :work_phone, :leave_message_work, :spouse_first_name, :spouse_last_name, :spouse_dob, :spouse_occupation, :spouse_employer, :spouse_phone, :emergency_name, :emergency_relation, :emergency_address, :emergency_phone, :health_insurance, :insurance_company, :physician, :physician_phone, :medication, :counselor_seen_before, :counselor_seen, :help_reason)
     end
 end

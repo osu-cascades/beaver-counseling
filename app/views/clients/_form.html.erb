@@ -23,8 +23,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :user_id %><br />
-    <%= form.select :user_id, @users.collect { |user| [user.email, user.id] } %>
+    <%= form.label :counselor_id %><br />
+    <%= form.select :counselor_id, @Users.collect { |user| [user.email, user.id] } %>
     <!--id is being default set? -->
   </div>
 

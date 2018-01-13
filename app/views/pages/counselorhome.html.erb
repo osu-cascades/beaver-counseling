@@ -30,7 +30,7 @@
 	</tr>
 	<% @clients = Client.all %>
 	<% @clients.each do |client| %>
-		<% if current_user.id == client.user_id %>
+		<% if current_user.id == client.counselor_id %>
 			<tr>
 				<td><%= client.first_name %></td>
 				<td><%= client.age %></td>

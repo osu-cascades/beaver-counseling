@@ -20,7 +20,7 @@
 
         <% @users.each do |user| %>
 
-          <% if (user.id == client.user_id)  %>
+          <% if (user.id == client.counselor_id)  %>
             <td><%= user.email %></td>
             <td><%= user.id %></td>
           <% end %>
