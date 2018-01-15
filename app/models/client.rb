@@ -1,5 +1,5 @@
 class Client < ApplicationRecord
-  belongs_to :user # belongs_to :counselor, :class_name: 'User'
+  belongs_to :user, optional: true # belongs_to :counselor, :class_name: 'User'
   validates :first_name, format: { with: /\A[a-zA-Z]+\z/}
   after_initialize :assign_default_counselor
 
@@ -9,8 +9,8 @@ class Client < ApplicationRecord
 
   private
 
-    def assign_default_counselor
-      # counselor = User.default_counselor
-    end
+  def assign_default_counselor
+      counselor_id = User.find_by_role(1).id
+  end
 
 end

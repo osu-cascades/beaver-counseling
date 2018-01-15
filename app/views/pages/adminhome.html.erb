@@ -40,7 +40,11 @@
 			<td><%= client.id %></td>
 			<td><%= client.age %></td>
 			<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
-			<td><%= (User.find_by_id(client.counselor_id)).name %></td>
+			<% if (client.counselor_id.nil?) %>
+				<td>None</td>
+			<% else %>
+				<td><%= (User.find_by_id(client.counselor_id)).name %></td>
+			<% end %>
 		</tr>
 	<% end %>
 </table>
