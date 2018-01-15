@@ -23,7 +23,7 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @clients = Client.all
-    @users = User.all
+    @Users = User.all
   end
 
   # POST /clients
@@ -81,6 +81,6 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:first_name, :age, :last_name, :dob, :phone_number, :leave_message, :email, :occupation, :employer, :employer_address, :work_phone, :leave_message_work, :spouse_first_name, :spouse_last_name, :spouse_dob, :spouse_occupation, :spouse_employer, :spouse_phone, :emergency_name, :emergency_relation, :emergency_address, :emergency_phone, :health_insurance, :insurance_company, :physician, :physician_phone, :medication, :counselor_seen_before, :counselor_seen, :help_reason)
+      params.require(:client).permit(:first_name, :age, :last_name, :counselor_id, :dob, :phone_number, :leave_message, :email, :occupation, :employer, :employer_address, :work_phone, :leave_message_work, :spouse_first_name, :spouse_last_name, :spouse_dob, :spouse_occupation, :spouse_employer, :spouse_phone, :emergency_name, :emergency_relation, :emergency_address, :emergency_phone, :health_insurance, :insurance_company, :physician, :physician_phone, :medication, :counselor_seen_before, :counselor_seen, :help_reason)
     end
 end

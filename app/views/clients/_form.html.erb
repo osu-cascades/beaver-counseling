@@ -12,6 +12,15 @@
     </div>
   <% end %>
 
+  <% if user_signed_in? %>
+    <div class="field">
+      <%= form.label :counselor_id %><br />
+      <%= form.select :counselor_id, @Users.collect { |user| [user.email, user.id] } %>
+      <!--id is being default set? -->
+    </div>
+  <% end %>
+
+
   <div class="field">
     <%= form.label :first_name %>
     <%= form.text_field :first_name, id: :client_first_name %>
@@ -162,47 +171,47 @@
     <%= form.label :help_reason %>
     <%= form.text_field :help_reason, id: :client_help_reason%>
   </div>
-    <div onclick="Show()" style="border: 1px solid black">
 
-  <p id="titleCounseling">Informed Consent for Counseling</p>
-  </div>
-    <div onclick="Show()" style="border: 1px solid black">
+  <% if user_signed_in? %>
 
-  <p id="titleTreatment">Informed Consent for Treatment</p>
+  <% else %>
+  <div onclick="Show()" style="border: 1px solid black">
+    <p id="titleCounseling">Informed Consent for Counseling</p>
   </div>
   <div onclick="Show()" style="border: 1px solid black">
-  <p id="titleRecording">Informed Consent for Video/Audio Recording</p>
-    <p id="recording" style="display: none;">As a graduate student, I am required to be under the direct supervision of qualified clinical supervisors. My supervisors review all aspects of the services that I am providing to you. You have the right to know the name of my supervisor(s) and how to contact her or him. This information is listed above. In addition, as part of my program and clinical superivison requirements, I electronically record my counseling sessions. These recordings are reviewed during clinical supervision for the purposes of facilitating my learning and effectiveness as a developing counselor. Recordings are kept secure and confidential, and they are never shared with any person who is not part of hte OSU Counseling program. Recordings are erased after the clinical requiremnets have been met. 
-    Your signature (as the client/and parent or guardian) below confirms that this form has been explained to you, and that you understand the following:
-    I am not required and I am under no obligation to have counseling sessions recorded.
-    I may withdraw my permission at any time during or after the recording session. My care will not change by my decision not to be recorded.
-    I have the right to review my recording(s) with my student counselor during a counseling session. 
-    My student counselor receives superivison both at this location and by the faculty at Oregon State University Cascades.
-    The contents of this recording will remain confidential within the supervision at OSU Cascades. 
-    Recordings are erased after the clinical requirements have been met.
-    I may revoke this consent at any time by submitting to the student counselor a request to withdraw my (as a client, parent/guardian) permission.
-    The original copy of this consent form will be kpet in my records wit this agency.
-    This recording will only be used as a tool to help my student counselor in assissting me or my family.</p>
+    <p id="titleTreatment">Informed Consent for Treatment</p>
   </div>
+  <div onclick="Show()" style="border: 1px solid black">
+    <p id="titleRecording">Informed Consent for Video/Audio Recording</p>
+    <p id="recording" style="display: none;">As a graduate student, I am required to be under the direct supervision of qualified clinical supervisors. My supervisors review all aspects of the services that I am providing to you. You have the right to know the name of my supervisor(s) and how to contact her or him. This information is listed above. In addition, as part of my program and clinical superivison requirements, I electronically record my counseling sessions. These recordings are reviewed during clinical supervision for the purposes of facilitating my learning and effectiveness as a developing counselor. Recordings are kept secure and confidential, and they are never shared with any person who is not part of hte OSU Counseling program. Recordings are erased after the clinical requiremnets have been met. 
+      Your signature (as the client/and parent or guardian) below confirms that this form has been explained to you, and that you understand the following:
+      I am not required and I am under no obligation to have counseling sessions recorded.
+      I may withdraw my permission at any time during or after the recording session. My care will not change by my decision not to be recorded.
+      I have the right to review my recording(s) with my student counselor during a counseling session. 
+      My student counselor receives superivison both at this location and by the faculty at Oregon State University Cascades.
+      The contents of this recording will remain confidential within the supervision at OSU Cascades. 
+      Recordings are erased after the clinical requirements have been met.
+      I may revoke this consent at any time by submitting to the student counselor a request to withdraw my (as a client, parent/guardian) permission.
+      The original copy of this consent form will be kpet in my records wit this agency.
+      This recording will only be used as a tool to help my student counselor in assissting me or my family.</p>
+    </div>
 
-  <h3>By signing below you agree to the selected consent forms</h3>
-  <ul>
-  <ol><label>Audio/Video Consent</label><input id="checkBox" type="checkbox" checked></ol>
-    <ol><label>Counseling Consent</label><input id="checkBox" type="checkbox" checked></ol>
-  <ol><label>Treatment Consent</label><input id="checkBox" type="checkbox" checked></ol>
-
-  </ul>
-
+    <h3>By signing below you agree to the selected consent forms</h3>
+    <ul>
+      <ol><label>Audio/Video Consent</label><input id="checkBox" type="checkbox" checked></ol>
+      <ol><label>Counseling Consent</label><input id="checkBox" type="checkbox" checked></ol>
+      <ol><label>Treatment Consent</label><input id="checkBox" type="checkbox" checked></ol>
+    </ul>
 
     <canvas style="border: 1px solid black" id="signature-pad" class="signature-pad" width=800 height=300></canvas>
-
-
+  <% end %>
 
   <div class="actions">
     <%= form.submit "Submit" %>
   </div>
 <% end %>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
 <script>
   function Show() {
