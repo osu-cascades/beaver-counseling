@@ -194,7 +194,8 @@
   </ul>
 
 
-  <canvas style="border: 1px solid grey"></canvas>
+    <canvas style="border: 1px solid black" id="signature-pad" class="signature-pad" width=800 height=300></canvas>
+
 
 
   <div class="actions">
@@ -202,7 +203,7 @@
   </div>
 <% end %>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
 <script>
   function Show() {
       var x = document.getElementById("recording");
@@ -215,6 +216,12 @@
           y.style.display= "block";
       }
   } 
+
+
+  var signaturePad = new SignaturePad(document.getElementById('signature-pad'), {
+  backgroundColor: 'rgba(255, 255, 255, 0)',
+  penColor: 'rgb(0, 0, 0)'
+});
 </script>
 
 
