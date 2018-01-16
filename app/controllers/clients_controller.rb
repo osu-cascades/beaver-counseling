@@ -23,7 +23,7 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @clients = Client.all
-    @users = User.all
+    @Users = User.all
   end
 
   # POST /clients
