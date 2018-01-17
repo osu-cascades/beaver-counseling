@@ -87,7 +87,12 @@ class ClientsController < ApplicationController
     # only the admin can change the user the client is assigned to
 
     respond_to do |format|
+      previous = @client.counselor_id#stores counselor_id
       if @client.update(client_params)
+        if(@client.counselor_id != previous)#checks if counselor_id has changed
+          @client.previous_counselor.push(User.find(previous).name)#if so add counselor name
+          @client.save()#saves to db
+        end
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
         format.json { render :show, status: :ok, location: @client }
       else
