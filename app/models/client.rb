@@ -6,11 +6,4 @@ class Client < ApplicationRecord
   def to_s
     "#{first_name} #{last_name}"
   end
-
-  private
-
-  def assign_default_counselor
-      counselor_id = User.find_by_role(1).id
-  end
-
 end
