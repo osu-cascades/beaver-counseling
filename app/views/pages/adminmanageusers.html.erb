@@ -32,7 +32,7 @@
 	</tr>
 	<% @users = User.all %>
 	<% @users.each do |user| %>
-		<% if (user.role == 2) %>
+		<% if (user.counselor?) %>
 		<tr>
 			<td><%= user.name %></td>
 		  <td><%= user.email %></td>
@@ -73,7 +73,7 @@
 
 		<div class="field" style="display: none;">
 			<%= f.label :role %><br />
-			<%= f.text_field :role, autocomplete: "off", value: 2 %>
+			<%= f.text_field :role, autocomplete: "off", value: "counselor" %>
 		</div>
 
 		<div class="actions">

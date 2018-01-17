@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     # user create code (can't get here if not admin)
     #puts request.raw_post
     @user = User.new(user_params)
+    puts @user
 
     respond_to do |format|
       if @user.save
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
   # This should probably be abstracted to ApplicationController
   # as shown by diego.greyrobot
   def authorize_admin
-    return unless current_user.role != 1
+    return unless current_user.admin? == false
     redirect_to root_path, alert: 'Admins only!'
   end
 

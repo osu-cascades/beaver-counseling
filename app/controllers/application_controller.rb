@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    if current_user.role == 1
+    if current_user.admin?
       pages_adminhome_path
-    elsif current_user.role == 2
+    elsif current_user.counselor?
       pages_counselorhome_path
     else
       root_path
