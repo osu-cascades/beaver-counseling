@@ -87,12 +87,10 @@ class ClientsController < ApplicationController
     # only the admin can change the user the client is assigned to
 
     respond_to do |format|
-      previous = @client.counselor_id#stores counselor_id
+      if (@client.counselor_id != params[:client][:counselor_id] && !@client.counselor_id.nil?)
+        @client.previous_counselor.push(User.find(@client.counselor_id).name)#if so add counselor name
+      end
       if @client.update(client_params)
-        if(@client.counselor_id != previous)#checks if counselor_id has changed
-          @client.previous_counselor.push(User.find(previous).name)#if so add counselor name
-          @client.save()#saves to db
-        end
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
         format.json { render :show, status: :ok, location: @client }
       else
@@ -125,6 +123,6 @@ class ClientsController < ApplicationController
         :leave_message_work, :spouse_first_name, :spouse_last_name, :spouse_dob, :spouse_occupation,
         :spouse_employer, :spouse_phone, :emergency_name, :emergency_relation, :emergency_address,
         :emergency_phone, :health_insurance, :insurance_company, :physician, :physician_phone,
-        :medication, :counselor_seen_before, :counselor_seen, :help_reason)
+        :medication, :counselor_seen_before, :counselor_seen, :help_reason, :previous_counselor)
     end
 end
