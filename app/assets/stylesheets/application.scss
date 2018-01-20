@@ -7,16 +7,20 @@
 
 /* universal */
 
+.fieldStyle {
+  margin-bottom: 0.625em;
+}
+
 .buttonStyle {
-    background-color: white;
-    color: black;
-    border: 2px solid #555555;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .buttonStyle:hover {
-    background-color: #555555;
-    color: white;
+  background-color: #555555;
+  color: white;
 }
 
 section {
