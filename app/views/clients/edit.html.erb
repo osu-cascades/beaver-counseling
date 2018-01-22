@@ -6,7 +6,7 @@
   <% if (current_user.admin?) %>
     <div class="field">
       <%= form.label :counselor_id %>
-      <%= form.select :counselor_id, @Users.collect { |user| [user.email, user.id] } %>
+      <%= form.select :counselor_id, @users.collect { |user| [user.email, user.id] } %>
     </div>
   <% end %>
 

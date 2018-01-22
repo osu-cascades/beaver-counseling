@@ -25,9 +25,11 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
-    if current_user.id != @client.counselor_id
+    if current_user.id != @client.counselor_id && current_user.admin? == false
       redirect_to root_path, alert: 'Admins only!'
     end
+    @clients = Client.all
+    @users = User.all # used in client->edit @users.collect
   end
 
   # POST /clients
@@ -90,7 +92,7 @@ class ClientsController < ApplicationController
   def update
     # precautionary: post would need to be sent from postman?
     @client = Client.find(params[:id])
-    if current_user.id != @client.counselor_id
+    if current_user.id != @client.counselor_id && current_user.admin? == false
       redirect_to root_path, alert: 'Admins only!'
     end
 
