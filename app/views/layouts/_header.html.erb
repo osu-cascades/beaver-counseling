@@ -1,11 +1,9 @@
 <!-- Files with a _ infront of it means it is a partial facility -->
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <%= link_to "BeaverCounseling", root_path, id: "logo" %>
-    </div>
-    <ul class="nav navbar-nav">
+<nav>
+  <div class="nav-wrapper black">
+    <ul class="left hide-on-med-and-down">
+      <li><%= link_to "BeaverCounseling", root_path, id: "logo" %></li>
       <li><%= link_to "Home",   root_path %></li>
       <% if user_signed_in? %>
         <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>

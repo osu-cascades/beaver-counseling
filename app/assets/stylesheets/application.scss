@@ -1,9 +1,16 @@
 /*
  *= require_tree .
  *= require_self
- */
- @import "bootstrap";
+ @import "bootstrap";*/
 
+/*materialize.css. Going to try styling stuff with it*/
+@import "materialize";
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: static;
+    left: 0px; 
+    opacity: 1; 
+}
 
 /* universal */
 
@@ -73,7 +80,6 @@ p {
   font-size: 1.7em;
   color: #FFAE19;
   letter-spacing: -1px;
-  padding-top: 9px;
   font-weight: bold;
 }
 
