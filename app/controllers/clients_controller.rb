@@ -5,6 +5,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
+    authorize_admin
     @clients = Client.all
     @users = User.all
   end
@@ -12,6 +13,7 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    authorize_admin
   end
 
   # GET /clients/new
@@ -22,8 +24,12 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
+    @client = Client.find(params[:id])
+    if current_user.id != @client.counselor_id && current_user.admin? == false
+      redirect_to root_path, alert: 'Admins only!'
+    end
     @clients = Client.all
-    @Users = User.all
+    @users = User.all # used in client->edit @users.collect
   end
 
   # POST /clients
@@ -84,9 +90,17 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json
   def update
-    # only the admin can change the user the client is assigned to
+    # precautionary: post would need to be sent from postman?
+    @client = Client.find(params[:id])
+    if current_user.id != @client.counselor_id && current_user.admin? == false
+      redirect_to root_path, alert: 'Admins only!'
+    end
 
+    # only the admin can change the user the client is assigned to
     respond_to do |format|
+      if (@client.counselor_id != params[:client][:counselor_id] && !@client.counselor_id.nil?)
+        @client.previous_counselor.push(User.find(@client.counselor_id).name)#if so add counselor name
+      end
       if @client.update(client_params)
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
         format.json { render :show, status: :ok, location: @client }
@@ -113,13 +127,19 @@ class ClientsController < ApplicationController
       @client = Client.find(params[:id])
     end
 
+    def authorize_admin
+      if (current_user.admin? == false)
+        redirect_to root_path, alert: 'Admins only!'
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:first_name, :age, :last_name, :dob, :phone_number,
+      params.require(:client).permit(:first_name, :age, :last_name, :counselor_id, :dob, :phone_number,
         :leave_message, :email, :occupation, :employer, :employer_address, :work_phone,
         :leave_message_work, :spouse_first_name, :spouse_last_name, :spouse_dob, :spouse_occupation,
         :spouse_employer, :spouse_phone, :emergency_name, :emergency_relation, :emergency_address,
         :emergency_phone, :health_insurance, :insurance_company, :physician, :physician_phone,
-        :medication, :counselor_seen_before, :counselor_seen, :help_reason)
+        :medication, :counselor_seen_before, :counselor_seen, :help_reason, :previous_counselor)
     end
 end

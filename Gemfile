@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'chartkick'
 gem 'bootstrap'
+gem 'materialize-sass'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'devise'
 gem 'high_voltage', '~> 3.0.0'
