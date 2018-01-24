@@ -8,6 +8,15 @@ class ClientsController < ApplicationController
     authorize_admin
     @clients = Client.all
     @users = User.all
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        send_data generate_clients_report(@tasks), filename: 'clients.pdf',
+                                                 type: 'application/pdf',
+                                                 disposition: 'attachment'
+      end
+    end
   end
 
   # GET /clients/1
@@ -141,5 +150,22 @@ class ClientsController < ApplicationController
         :spouse_employer, :spouse_phone, :emergency_name, :emergency_relation, :emergency_address,
         :emergency_phone, :health_insurance, :insurance_company, :physician, :physician_phone,
         :medication, :counselor_seen_before, :counselor_seen, :help_reason, :previous_counselor)
+    end
+
+    def generate_clients_report(tasks)
+      report = Thinreports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'client', 'list.tlf')
+
+      clients = Client.all
+      clients.each do |client|
+        report.list.add_row do |row|
+          row.values no: client.id,
+                     name: client.first_name,
+                     due_date: "due_date",
+                     state: 'done'
+          #row.item(:name).style(:color, 'red') unless task.done?
+        end
+      end
+
+      report.generate
     end
 end
