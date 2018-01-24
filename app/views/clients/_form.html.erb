@@ -28,7 +28,7 @@
 
   <div class="field fieldStyle">
     <%= form.date_select :dob, id: :client_dob %>
-    <%= form.date_select :dob %>
+    <%= form.label :dob %>
   </div>
 
   <div class="field fieldStyle">
@@ -93,6 +93,41 @@
     <%= form.text_field :spouse_phone, id: :client_spouse_phone, placeholder: "Spouse Phone" %>
   </div>
 
+  <hr>
+
+  <h5>Other Members of Your Household (optional)</h5><br>
+      String Name
+      Int Age
+      Datetime DOB
+      String Relation
+    <h4>Family member 1</h4>
+    <div class="field fieldStyle">
+      <%= form.text_field :family_member1_name, id: :client_familiy_member1_name, placeholder: "Name" %>
+    </div>
+    <div class="field fieldStyle">
+      <%= form.text_field :family_member1_age, id: :client_familiy_member1_age, placeholder: "Age" %>
+    </div>
+    <div class="field fieldStyle">
+      <%= form.date_select :family_member1_dob, id: :client_familiy_member1_dob %>
+      <%= form.label :family_member1_dob %>
+    </div>
+    <div class="field fieldStyle">
+      <%= form.text_field :family_member1_relation, id: :client_familiy_member1_relation, placeholder: "Relation" %>
+    </div>
+    <h4>Family member 2</h4>
+    <div class="field fieldStyle">
+      <%= form.text_field :family_member2_name, id: :client_familiy_member2_name, placeholder: "Name" %>
+    </div>
+    <div class="field fieldStyle">
+      <%= form.text_field :family_member2_age, id: :client_familiy_member2_age, placeholder: "Age" %>
+    </div>
+    <div class="field fieldStyle">
+      <%= form.date_select :family_member2_dob, id: :client_familiy_member2_dob %>
+      <%= form.label :family_member2_dob %>
+    </div>
+    <div class="field fieldStyle">
+      <%= form.text_field :family_member2_relation, id: :client_familiy_member2_relation, placeholder: "Relation" %>
+    </div>
   <hr>
 
   <h5>Emergency Contact Information</h5><br>

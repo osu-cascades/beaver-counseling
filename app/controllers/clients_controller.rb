@@ -13,6 +13,10 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    # how do we know if the form was created?
+    if current_user.nil?
+      return
+    end
     authorize_admin
   end
 
@@ -73,6 +77,18 @@ class ClientsController < ApplicationController
       @client.counselor_seen = "counselor_seen"
       @client.help_reason = "help_reason"
     else
+      #@family_member1 = FamilyMember.new(family_member1_params)
+      @family_member1 = FamilyMember.new
+      @family_member1.name = params[:client][:family_member1_name]
+      @family_member1.age = params[:client][:family_member1_age]
+      @family_member1.dob = params[:client][:family_member1_dob]
+      @family_member1.relation = params[:client][:family_member1_relation]
+      if @family_member1.save
+        puts "saved"
+      else
+        puts "error"
+      end
+
       @client = Client.new(client_params)
     end
 
@@ -91,6 +107,7 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1.json
   def update
     # precautionary: post would need to be sent from postman?
+
     @client = Client.find(params[:id])
     if current_user.id != @client.counselor_id && current_user.admin? == false
       redirect_to root_path, alert: 'Admins only!'
@@ -141,5 +158,13 @@ class ClientsController < ApplicationController
         :spouse_employer, :spouse_phone, :emergency_name, :emergency_relation, :emergency_address,
         :emergency_phone, :health_insurance, :insurance_company, :physician, :physician_phone,
         :medication, :counselor_seen_before, :counselor_seen, :help_reason, :previous_counselor)
+    end
+
+    def family_member1_params
+      params.require(:client).permit(:family_member1_name, :family_member1_age, :family_member1_dob, :family_member1_relation)
+    end
+
+    def family_member2_params
+      params.require(:client).permit(:family_member2_name, :family_member2_age, :family_member2_dob, :family_member2_relation)
     end
 end
