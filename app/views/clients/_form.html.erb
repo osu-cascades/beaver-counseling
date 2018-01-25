@@ -1,6 +1,6 @@
 <div class="tooltip">Hover over me
   <span class="tooltiptext">Tooltip text</span>
-</div> 
+</div>
 <br><br>
 <div style="text-align: center;">
 
@@ -27,8 +27,8 @@
   </div>
 
   <div class="field fieldStyle">
-    <%= form.label :dob %>
     <%= form.date_select :dob, id: :client_dob %>
+    <%= form.date_select :dob %>
   </div>
 
   <div class="field fieldStyle">
@@ -36,8 +36,8 @@
   </div>
 
   <div class="field fieldStyle">
-    <%= form.label :leave_message %>
     <%= form.check_box :leave_message, id: :client_leave_message %>
+    <%= form.label :leave_message %>
   </div>
 
   <div class="field fieldStyle">
@@ -61,8 +61,8 @@
   </div>
 
   <div class="field fieldStyle">
-    <%= form.label :leave_message_work %>
     <%= form.check_box :leave_message_work, id: :client_leave_message_work %>
+    <%= form.label :leave_message_work %>
   </div>
 
   <hr>
@@ -77,8 +77,8 @@
   </div>
 
   <div class="field fieldStyle">
-    <%= form.label :spouse_dob %>
     <%= form.date_select :spouse_dob, id: :client_spouse_dob %>
+    <%= form.label :spouse_dob %>
   </div>
 
   <div class="field fieldStyle">
@@ -113,8 +113,8 @@
   </div>
 
   <div class="field fieldStyle">
-    <%= form.label :health_insurance %>
     <%= form.check_box :health_insurance, id: :client_health_insurance %>
+    <%= form.label :health_insurance %>
   </div>
 
   <div class="field fieldStyle">
@@ -137,8 +137,8 @@
   </div>
 
   <div class="field fieldStyle">
-    <%= form.label :counselor_seen_before %>
     <%= form.check_box :counselor_seen_before, id: :client_counselor_seen_before %>
+    <%= form.label :counselor_seen_before %>
   </div>
 
   <div class="field fieldStyle">

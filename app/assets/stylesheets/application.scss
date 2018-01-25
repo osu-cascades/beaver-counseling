@@ -4,15 +4,9 @@
  @import "bootstrap";*/
 
 /*materialize.css. Going to try styling stuff with it*/
-@import "materialize";
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+//@import "materialize";
+//@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
-
-[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-    position: static;
-    left: 0px; 
-    opacity: 1; 
-}
 
 input {
   border: 1px solid #000 !important;
@@ -36,12 +30,12 @@ input {
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
- 
+
     /* Position the tooltip text - see examples below! */
     position: absolute;
     z-index: 1;
     top: -5px;
-    left: 105%; 
+    left: 105%;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
