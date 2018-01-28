@@ -1,12 +1,13 @@
 /*
  *= require_tree .
  *= require_self
- @import "bootstrap";*/
+;*/
 
 /*materialize.css. Going to try styling stuff with it*/
 //@import "materialize";
 //@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
+@import "bootstrap";
 
 input {
   border: 1px solid #000 !important;
