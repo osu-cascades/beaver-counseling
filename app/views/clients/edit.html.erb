@@ -1,6 +1,19 @@
 <h1>Editing Client</h1>
 
-<div style="text-align: center;">
+<style>
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+
+    #pdf, #pdf * {
+      visibility: visible;
+    }
+
+  }
+</style>
+
+<div style="text-align: center;" id="pdf">
 
 <%= form_for(@client, local: true) do |form| %>
   <% if (current_user.admin?) %>
@@ -170,3 +183,10 @@
 
 <%= link_to 'Show', @client %> |
 <%= link_to 'Back', clients_path %>
+<button onclick="printin()">PDF</button>
+
+<script>
+  function printin(){
+    window.print();
+  }
+</script>
