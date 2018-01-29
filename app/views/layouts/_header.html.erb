@@ -1,13 +1,19 @@
 <!-- Files with a _ infront of it means it is a partial facility -->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
- <%= link_to "BeaverCounseling", root_path, id: "logo", class: "nav-link" %>
+ <% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <%= link_to "BeaverCounseling", '/pages/adminhome', id: "logo", class: "nav-link" %>
+  <% else %>
+    <%= link_to "BeaverCounseling", '/pages/counselorhome', id: "logo", class: "nav-link" %>
+  <% end %>
+ <% else %>
+  <%= link_to "BeaverCounseling", root_path, id: "logo", class: "nav-link" %>
+ <% end %>
   <ul class="navbar-nav">
-    <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link text-white" %></li>
     <% if user_signed_in? %>
       <li class="nav-item"><%= link_to 'Edit Profile', edit_user_registration_path, class: "nav-link text-white" %></li>
       <li class="nav-item"><%= link_to 'Log out', '/auth/logout', method: :delete, class: "nav-link text-white" %></li>
-      <li class="nav-item"><%= link_to "Log in", '/auth/login', class: "nav-link text-white"  %></li>
     <% else %>
       <li class="nav-item"><%= link_to "Log in", '/auth/login', class: "nav-link text-white" %></li>
     <% end %>
