@@ -34,6 +34,7 @@ class ClientsController < ApplicationController
     end
     @clients = Client.all
     @users = User.all # used in client->edit @users.collect
+    @family_member = FamilyMember.all
   end
 
   # POST /clients

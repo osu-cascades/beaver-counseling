@@ -178,6 +178,11 @@
     <%= form.submit "Submit" %>
   </div>
 
+  <% @family_member.each do | family_member| %>
+    client id: <%= @client.id %><br>
+    f member name: <%= family_member.name %><br>
+  <% end %>
+
 <% end %>
 </div>
 
