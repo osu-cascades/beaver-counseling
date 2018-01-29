@@ -2,101 +2,108 @@
 
 <p>
   <strong>First Name:</strong>
-  <%= @client.first_name %>
+  <%= @client.first_name %><br>
 
   <strong>Age:</strong>
-  <%= @client.age %>
+  <%= @client.age %><br>
 
   <strong>user id:</strong>
-  <%= @client.counselor_id %>
+  <%= @client.counselor_id %><br>
 
   <strong>Last Name:</strong>
-  <%= @client.last_name %>
+  <%= @client.last_name %><br>
 
   <strong>DOB:</strong>
-  <%= @client.dob %>
+  <%= @client.dob %><br>
 
   <strong>Phone Number:</strong>
-  <%= @client.phone_number %>
+  <%= @client.phone_number %><br>
 
   <strong>leave_message:</strong>
-  <%= @client.leave_message %>
+  <%= @client.leave_message %><br>
 
   <strong>occupation:</strong>
-  <%= @client.occupation %>
+  <%= @client.occupation %><br>
 
   <strong>employer:</strong>
-  <%= @client.employer %>
+  <%= @client.employer %><br>
 
   <strong>employer_address:</strong>
-  <%= @client.employer_address %>
+  <%= @client.employer_address %><br>
 
   <strong>work_phone:</strong>
-  <%= @client.work_phone %>
+  <%= @client.work_phone %><br>
 
   <strong>leave_message_work:</strong>
-  <%= @client.leave_message_work %>
+  <%= @client.leave_message_work %><br>
 
   <strong>spouse_first_name:</strong>
-  <%= @client.spouse_first_name %>
+  <%= @client.spouse_first_name %><br>
 
   <strong>spouse_last_name:</strong>
-  <%= @client.spouse_last_name %>
+  <%= @client.spouse_last_name %><br>
 
   <strong>spouse_dob:</strong>
-  <%= @client.spouse_dob %>
+  <%= @client.spouse_dob %><br>
 
   <strong>leave_message_work:</strong>
-  <%= @client.leave_message_work %>
+  <%= @client.leave_message_work %><br>
 
   <strong>spouse_occupation:</strong>
-  <%= @client.spouse_occupation %>
+  <%= @client.spouse_occupation %><br>
 
   <strong>spouse_employer:</strong>
-  <%= @client.spouse_employer %>
+  <%= @client.spouse_employer %><br>
 
   <strong>spouse_employer:</strong>
-  <%= @client.spouse_employer %>
+  <%= @client.spouse_employer %><br>
 
   <strong>spouse_phone:</strong>
-  <%= @client.spouse_phone %>
+  <%= @client.spouse_phone %><br><br>
+
+  <% for family_member in @client.family_members %>
+    <p>
+      <strong>Name:</strong>
+      <%= family_member.name %>
+    </p>
+  <% end %><br><br>
 
   <strong>emergency_name:</strong>
-  <%= @client.emergency_name %>
+  <%= @client.emergency_name %><br>
 
   <strong>emergency_relation:</strong>
-  <%= @client.emergency_relation %>
+  <%= @client.emergency_relation %><br>
 
   <strong>emergency_address:</strong>
-  <%= @client.emergency_address %>
+  <%= @client.emergency_address %><br>
 
   <strong>emergency_phone:</strong>
-  <%= @client.emergency_phone %>
+  <%= @client.emergency_phone %><br>
 
   <strong>health_insurance:</strong>
-  <%= @client.health_insurance %>
+  <%= @client.health_insurance %><br>
 
   <strong>insurance_company:</strong>
-  <%= @client.insurance_company %>
+  <%= @client.insurance_company %><br>
 
   <strong>physician:</strong>
-  <%= @client.physician %>
+  <%= @client.physician %><br>
 
   <strong>physician_phone:</strong>
-  <%= @client.physician_phone %>
+  <%= @client.physician_phone %><br>
 
   <strong>medication:</strong>
-  <%= @client.medication %>
+  <%= @client.medication %><br>
 
   <strong>counselor_seen_before:</strong>
-  <%= @client.counselor_seen_before %>
+  <%= @client.counselor_seen_before %><br>
 
   <strong>counselor_seen:</strong>
-  <%= @client.counselor_seen %>
+  <%= @client.counselor_seen %><br>
 
   <strong>help_reason:</strong>
-  <%= @client.help_reason %>
-  
+  <%= @client.help_reason %><br>
+
 </p>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
