@@ -105,6 +105,9 @@
     <%= form.fields_for :family_members, FamilyMember.new do |family_member_form| %>
       <p id="<%= i.to_s %>">
         <%= family_member_form.text_field :name, placeholder: "Name" %>
+        <%= family_member_form.text_field :age, placeholder: "Age" %>
+        dob: <%= family_member_form.date_select :dob %>
+        <%= family_member_form.text_field :relation, placeholder: "Relation" %>
       </p>
     <% end %>
   <% end %>

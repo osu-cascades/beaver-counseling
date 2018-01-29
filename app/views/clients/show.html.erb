@@ -63,8 +63,16 @@
 
   <% for family_member in @client.family_members %>
     <p>
-      <strong>Name:</strong>
-      <%= family_member.name %>
+      <% if family_member.name.to_s.empty? == false %>
+        <strong>Name:</strong>
+        <%= family_member.name %>
+        <strong>Age:</strong>
+        <%= family_member.age %>
+        <strong>Dob:</strong>
+        <%= family_member.dob %>
+        <strong>Relation:</strong>
+        <%= family_member.relation %>
+      <% end %>
     </p>
   <% end %><br><br>
 
