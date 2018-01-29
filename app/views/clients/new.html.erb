@@ -75,7 +75,7 @@
 
   <h5>Other Members of Your Household (optional)</h5>
 
-  <%= select_tag "quantity", options_for_select((1..4),1), :onchange => 'changed(this)' %><br>
+  <div class="field fieldStyle"><%= select_tag "quantity", options_for_select((1..4),1), :onchange => 'changed(this)' %></div>
   <% 4.times do |i| %>
     <%= form.fields_for :family_members, FamilyMember.new do |family_member_form| %>
       <p id="<%= i.to_s %>">
@@ -155,29 +155,20 @@
     <button type="button" class="btn btn-primary" onclick="show('VideoConsent')">Informed Consent for Video/Audio Recording</button><br>
   </div><br>
 
-  <h3>By signing below you agree to the selected consent forms</h3>
-  <ul>
-    <ol>
-      <a data-toggle="tooltip" title="Audio Video Description here">Audio/Video Consent&nbsp;</a>
-      <input id="checkBox" type="checkbox" checked>
-    </ol>
+  I agree to the following conscent forms:<br>
+  Audio/Video Consent&nbsp;<input id="checkBox" type="checkbox" checked><br>
+  Counseling Consent&nbsp<input id="checkBox" type="checkbox" checked><br>
+  Treatment Consent&nbsp;<input id="checkBox" type="checkbox" checked><br><br>
 
-    <ol>
-      <label>Counseling Consent&nbsp;</label><input id="checkBox" type="checkbox" checked>
-    </ol>
-    <ol>
-      <label>Treatment Consent&nbsp;</label><input id="checkBox" type="checkbox" checked>
-    </ol>
-  </ul>
-
+  <strong>Draw your signature into the box below</strong><br>
   <canvas style="border: 1px solid black" id="signature-pad" class="signature-pad" width=800 height=300></canvas><br>
   <button id="save-png">Save as PNG</button>
-  <button id="clear">Clear</button>
+  <button id="clear">Clear</button><br><br>
 
   <%= check_box_tag :autofill, true, (@auto_fill == 'true') %> autofill form
 
-  <div class="actions buttonStyle" style="margin-top: 2em;">
-    <%= form.submit "Sign Up" %>
+  <div style="margin-top: 1em;">
+    <%= form.submit "Sign Up", :class => 'btn btn-primary' %>
   </div><br>
 
 <% end %>
