@@ -1,6 +1,19 @@
 <h1>Editing Client</h1>
 
-<div style="text-align: center;">
+<style>
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+
+    #pdf, #pdf * {
+      visibility: visible;
+    }
+
+  }
+</style>
+
+<div style="text-align: center;" id="pdf">
 
 <%= form_for(@client, local: true) do |form| %>
   <% if (current_user.admin?) %>
@@ -17,148 +30,159 @@
 
   <div class="field">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :client_last_name%>
+    <%= form.text_field :last_name, id: :client_last_name %>
   </div>
 
   <div class="field">
     <%= form.label :dob %>
-    <%= form.datetime_select :dob, id: :client_dob%>
+    <%= form.datetime_select :dob, id: :client_dob %>
   </div>
 
   <div class="field" style="display: inline-block;">
     <%= form.label :phone_number %>
-    <%= form.text_field :phone_number, id: :client_phone_number%>
+    <%= form.text_field :phone_number, id: :client_phone_number %>
   </div>
 
   <div class="field" style="display: inline-block;">
     <%= form.label :leave_message %>
-    <%= form.check_box :leave_message, id: :client_leave_message%>
+    <%= form.check_box :leave_message, id: :client_leave_message %>
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email, id: :client_email%>
+    <%= form.text_field :email, id: :client_email %>
   </div>
 
   <div class="field">
     <%= form.label :occupation %>
-    <%= form.text_field :occupation, id: :client_occupation%>
+    <%= form.text_field :occupation, id: :client_occupation %>
   </div>
 
   <div class="field">
     <%= form.label :employer %>
-    <%= form.text_field :employer, id: :client_employer%>
+    <%= form.text_field :employer, id: :client_employer %>
   </div>
 
   <div class="field">
     <%= form.label :employer_address %>
-    <%= form.text_field :employer_address, id: :client_employer_address%>
+    <%= form.text_field :employer_address, id: :client_employer_address %>
   </div>
 
   <div class="field" style="display: inline-block;">
     <%= form.label :work_phone %>
-    <%= form.text_field :work_phone, id: :client_work_phone%>
+    <%= form.text_field :work_phone, id: :client_work_phone %>
   </div>
 
   <div class="field" style="display: inline-block;">
     <%= form.label :leave_message_work %>
-    <%= form.check_box :leave_message_work, id: :client_leave_message_work%>
+    <%= form.check_box :leave_message_work, id: :client_leave_message_work %>
   </div>
 
   <hr>
 
   <div class="field">
     <%= form.label :spouse_first_name %>
-    <%= form.text_field :spouse_first_name, id: :client_spouse_first_name%>
+    <%= form.text_field :spouse_first_name, id: :client_spouse_first_name %>
   </div>
 
   <div class="field">
     <%= form.label :spouse_last_name %>
-    <%= form.text_field :spouse_last_name, id: :client_spouse_last_name%>
+    <%= form.text_field :spouse_last_name, id: :client_spouse_last_name %>
   </div>
 
   <div class="field">
     <%= form.label :spouse_dob %>
-    <%= form.datetime_select :spouse_dob, id: :client_spouse_dob%>
+    <%= form.datetime_select :spouse_dob, id: :client_spouse_dob %>
   </div>
 
   <div class="field">
     <%= form.label :spouse_occupation %>
-    <%= form.text_field :spouse_occupation, id: :client_spouse_occupation%>
+    <%= form.text_field :spouse_occupation, id: :client_spouse_occupation %>
   </div>
 
   <div class="field">
     <%= form.label :spouse_employer %>
-    <%= form.text_field :spouse_employer, id: :client_spouse_employer%>
+    <%= form.text_field :spouse_employer, id: :client_spouse_employer %>
   </div>
 
   <div class="field">
     <%= form.label :spouse_phone %>
-    <%= form.text_field :spouse_phone, id: :client_spouse_phone%>
+    <%= form.text_field :spouse_phone, id: :client_spouse_phone %>
   </div>
+
+  <hr>
+
+  <% @client = Client.find(params[:id]) %>
+    <%= form.fields_for :family_members do |family_member_form| %>
+      <p>
+        Name: <%= family_member_form.text_field :name %>
+        <%= family_member_form.check_box :_destroy %>
+        <%= family_member_form.label :_destroy, "Remove Task" %>
+      </p>
+    <% end %>
 
   <hr>
 
   <div class="field">
     <%= form.label :emergency_name %>
-    <%= form.text_field :emergency_name, id: :client_emergency_name%>
+    <%= form.text_field :emergency_name, id: :client_emergency_name %>
   </div>
 
   <div class="field">
     <%= form.label :emergency_relation %>
-    <%= form.text_field :emergency_relation, id: :client_emergency_relation%>
+    <%= form.text_field :emergency_relation, id: :client_emergency_relation %>
   </div>
 
   <div class="field">
     <%= form.label :emergency_address %>
-    <%= form.text_field :emergency_address, id: :client_emergency_address%>
+    <%= form.text_field :emergency_address, id: :client_emergency_address %>
   </div>
 
   <div class="field">
     <%= form.label :emergency_phone %>
-    <%= form.text_field :emergency_phone, id: :client_emergency_phone%>
+    <%= form.text_field :emergency_phone, id: :client_emergency_phone %>
   </div>
 
   <div class="field">
     <%= form.label :health_insurance %>
-    <%= form.check_box :health_insurance, id: :client_health_insurance%>
+    <%= form.check_box :health_insurance, id: :client_health_insurance %>
   </div>
 
   <div class="field">
     <%= form.label :insurance_company %>
-    <%= form.text_field :insurance_company, id: :client_insurance_company%>
+    <%= form.text_field :insurance_company, id: :client_insurance_company %>
   </div>
 
   <hr>
 
   <div class="field">
     <%= form.label :physician %>
-    <%= form.text_field :physician, id: :client_physician%>
+    <%= form.text_field :physician, id: :client_physician %>
   </div>
 
   <div class="field">
     <%= form.label :physician_phone %>
-    <%= form.text_field :physician_phone, id: :client_physician_phone%>
+    <%= form.text_field :physician_phone, id: :client_physician_phone %>
   </div>
 
   <div class="field">
     <%= form.label :medication %>
-    <%= form.text_field :medication, id: :client_medication%>
+    <%= form.text_field :medication, id: :client_medication %>
   </div>
 
   <div class="field">
     <%= form.label :counselor_seen_before %>
-    <%= form.check_box :counselor_seen_before, id: :client_counselor_seen_before%>
+    <%= form.check_box :counselor_seen_before, id: :client_counselor_seen_before %>
   </div>
 
   <div class="field">
     <%= form.label :counselor_seen %>
-    <%= form.text_field :counselor_seen, id: :client_counselor_seen%>
+    <%= form.text_field :counselor_seen, id: :client_counselor_seen %>
   </div>
 
   <div class="field">
     <%= form.label :help_reason %>
-    <%= form.text_field :help_reason, id: :client_help_reason%>
+    <%= form.text_field :help_reason, id: :client_help_reason %>
   </div>
 
   <div class="actions">
@@ -170,3 +194,10 @@
 
 <%= link_to 'Show', @client %> |
 <%= link_to 'Back', clients_path %>
+<button onclick="printin()">PDF</button>
+
+<script>
+  function printin() {
+    window.print();
+  }
+</script>

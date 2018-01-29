@@ -13,13 +13,16 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    # how do we know if the form was created?
+    if current_user.nil?
+      return
+    end
     authorize_admin
   end
 
   # GET /clients/new
   def new
     @client = Client.new
-    #@users = User.all
   end
 
   # GET /clients/1/edit
@@ -30,6 +33,7 @@ class ClientsController < ApplicationController
     end
     @clients = Client.all
     @users = User.all # used in client->edit @users.collect
+    @family_member = FamilyMember.all
   end
 
   # POST /clients
@@ -73,6 +77,7 @@ class ClientsController < ApplicationController
       @client.counselor_seen = "counselor_seen"
       @client.help_reason = "help_reason"
     else
+
       @client = Client.new(client_params)
     end
 
@@ -90,7 +95,6 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json
   def update
-    # precautionary: post would need to be sent from postman?
     @client = Client.find(params[:id])
     if current_user.id != @client.counselor_id && current_user.admin? == false
       redirect_to root_path, alert: 'Admins only!'
@@ -140,6 +144,7 @@ class ClientsController < ApplicationController
         :leave_message_work, :spouse_first_name, :spouse_last_name, :spouse_dob, :spouse_occupation,
         :spouse_employer, :spouse_phone, :emergency_name, :emergency_relation, :emergency_address,
         :emergency_phone, :health_insurance, :insurance_company, :physician, :physician_phone,
-        :medication, :counselor_seen_before, :counselor_seen, :help_reason, :previous_counselor)
+        :medication, :counselor_seen_before, :counselor_seen, :help_reason, :previous_counselor,
+        family_members_attributes: [:id, :name, :age, :dob, :relation, :_destroy])
     end
 end
