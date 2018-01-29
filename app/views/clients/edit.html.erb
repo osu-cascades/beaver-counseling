@@ -116,8 +116,12 @@
     <%= form.fields_for :family_members do |family_member_form| %>
       <p>
         Name: <%= family_member_form.text_field :name %>
+        Age: <%= family_member_form.text_field :age %>
+        Dob: <%= family_member_form.text_field :dob %>
+        Relation: <%= family_member_form.text_field :relation %>
+
         <%= family_member_form.check_box :_destroy %>
-        <%= family_member_form.label :_destroy, "Remove Task" %>
+        <%= family_member_form.label :_destroy, "Remove Family Member" %>
       </p>
     <% end %>
 
