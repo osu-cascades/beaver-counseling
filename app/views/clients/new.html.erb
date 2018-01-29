@@ -1,9 +1,5 @@
-<h1>Sign Up</h1>
+<br><h1>Sign Up</h1>
 
-<div class="tooltip">Hover over me
-  <span class="tooltiptext">Tooltip text</span>
-</div>
-<br><br>
 <div style="text-align: center;">
 
 <% client = @client %>
@@ -23,47 +19,32 @@
 
   <div class="field fieldStyle">
     <%= form.text_field :first_name, id: :client_first_name, placeholder: "First Name" %>
-  </div>
-
-  <div class="field fieldStyle">
     <%= form.text_field :last_name, id: :client_last_name, placeholder: "Last Name" %>
   </div>
 
   <div class="field fieldStyle">
-    <%= form.date_select :dob, id: :client_dob %>
     <%= form.label :dob %>
+    <%= form.date_select :dob, id: :client_dob %>
   </div>
 
   <div class="field fieldStyle">
     <%= form.text_field :phone_number, id: :client_phone_number, placeholder: "Phone Number" %>
-  </div>
-
-  <div class="field fieldStyle">
     <%= form.check_box :leave_message, id: :client_leave_message %>
     <%= form.label :leave_message %>
   </div>
 
   <div class="field fieldStyle">
     <%= form.text_field :email, id: :client_email, placeholder: "Email" %>
-  </div>
-
-  <div class="field fieldStyle">
     <%= form.text_field :occupation, id: :client_occupation, placeholder: "Occupation" %>
   </div>
 
   <div class="field fieldStyle">
     <%= form.text_field :employer, id: :client_employer, placeholder: "Employer" %>
-  </div>
-
-  <div class="field fieldStyle">
     <%= form.text_field :employer_address, id: :client_employer_address, placeholder: "Employer Address" %>
   </div>
 
   <div class="field fieldStyle">
     <%= form.text_field :work_phone, id: :client_work_phone, placeholder: "Work Phone" %>
-  </div>
-
-  <div class="field fieldStyle">
     <%= form.check_box :leave_message_work, id: :client_leave_message_work %>
     <%= form.label :leave_message_work %>
   </div>
@@ -73,22 +54,16 @@
   <h5>Spouse Information</h5><br>
   <div class="field fieldStyle">
     <%= form.text_field :spouse_first_name, id: :client_spouse_first_name, placeholder: "Spouse First Name" %>
-  </div>
-
-  <div class="field fieldStyle">
     <%= form.text_field :spouse_last_name, id: :client_spouse_last_name, placeholder: "Spouse Last Name" %>
   </div>
 
   <div class="field fieldStyle">
-    <%= form.date_select :spouse_dob, id: :client_spouse_dob %>
     <%= form.label :spouse_dob %>
+    <%= form.date_select :spouse_dob, id: :client_spouse_dob %>
   </div>
 
   <div class="field fieldStyle">
     <%= form.text_field :spouse_occupation, id: :client_spouse_occupation, placeholder: "Spouse Occupation" %>
-  </div>
-
-  <div class="field fieldStyle">
     <%= form.text_field :spouse_employer, id: :client_spouse_employer, placeholder: "Spouse Employer" %>
   </div>
 
@@ -116,26 +91,17 @@
   <h5>Emergency Contact Information</h5><br>
   <div class="field fieldStyle">
     <%= form.text_field :emergency_name, id: :client_emergency_name, placeholder: "Name" %>
-  </div>
-
-  <div class="field fieldStyle">
     <%= form.text_field :emergency_relation, id: :client_emergency_relation, placeholder: "Emergency Relation" %>
   </div>
 
   <div class="field fieldStyle">
     <%= form.text_field :emergency_address, id: :client_emergency_address, placeholder: "Emergency Address" %>
-  </div>
-
-  <div class="field fieldStyle">
     <%= form.text_field :emergency_phone, id: :client_emergency_phone, placeholder: "Emergency Phone" %>
   </div>
 
   <div class="field fieldStyle">
     <%= form.check_box :health_insurance, id: :client_health_insurance %>
     <%= form.label :health_insurance %>
-  </div>
-
-  <div class="field fieldStyle">
     <%= form.text_field :insurance_company, id: :client_insurance_company, placeholder: "Insurance Company" %>
   </div>
 
@@ -144,55 +110,50 @@
   <h5>History</h5><br>
   <div class="field fieldStyle">
     <%= form.text_field :physician, id: :client_physician, placeholder: "Physician" %>
-  </div>
-
-  <div class="field fieldStyle">
     <%= form.text_field :physician_phone, id: :client_physician_phone, placeholder: "Physician Phone" %>
   </div>
 
   <div class="field fieldStyle">
     <%= form.text_field :medication, id: :client_medication, placeholder: "Medication" %>
+    <%= form.text_field :help_reason, id: :client_help_reason, placeholder: "Help Reason" %>
   </div>
 
   <div class="field fieldStyle">
     <%= form.check_box :counselor_seen_before, id: :client_counselor_seen_before %>
     <%= form.label :counselor_seen_before %>
-  </div>
-
-  <div class="field fieldStyle">
     <%= form.text_field :counselor_seen, id: :client_counselor_seen, placeholder: "Counselor Seen" %>
   </div>
 
-  <div class="field fieldStyle">
-    <%= form.text_field :help_reason, id: :client_help_reason, placeholder: "Help Reason" %>
+  <hr>
+
+  <button type="button" class="btn btn-primary" onclick="show('InformedConsent')">Informed Consent for Video/Audio Recording</button><br>
+  <div id="InformedConsent" style="display: none; padding-left: 20%; padding-right: 20%;">
+    <br>As a graduate student, I am required to be under the direct supervision of qualified clinical supervisors.
+    My supervisors review all aspects of the services that I am providing to you. You have the right to know the name of my supervisor(s) and how to contact her or him.
+    This information is listed above. In addition, as part of my program and clinical superivison requirements, I electronically record my counseling sessions.
+    These recordings are reviewed during clinical supervision for the purposes of facilitating my learning and effectiveness as a developing counselor.
+    Recordings are kept secure and confidential, and they are never shared with any person who is not part of hte OSU Counseling program. Recordings are erased after
+    the clinical requirements have been met.<br><br>
+
+    Your signature (as the client/and parent or guardian) below confirms that this form has been explained to you, and that you understand the following:
+    I am not required and I am under no obligation to have counseling sessions recorded.
+    I may withdraw my permission at any time during or after the recording session. My care will not change by my decision not to be recorded.
+    I have the right to review my recording(s) with my student counselor during a counseling session.
+    My student counselor receives superivison both at this location and by the faculty at Oregon State University Cascades.
+    The contents of this recording will remain confidential within the supervision at OSU Cascades.
+    Recordings are erased after the clinical requirements have been met.
+    I may revoke this consent at any time by submitting to the student counselor a request to withdraw my (as a client, parent/guardian) permission.
+    The original copy of this consent form will be kpet in my records wit this agency.
+    This recording will only be used as a tool to help my student counselor in assissting me or my family.
   </div>
 
-  <div onclick="Show()" style="border: 1px solid black">
-    <p id="titleCounseling">Informed Consent for Counseling</p>
+  <div style="padding-top: 1em;">
+    <button type="button" class="btn btn-primary" onclick="show('TreatmentConsent')">Informed Consent for Treatment</button><br>
   </div>
 
-  <div onclick="Show()" style="border: 1px solid black">
-    <p id="titleTreatment">Informed Consent for Treatment</p>
-  </div>
-
-  <div onclick="Show()" style="border: 1px solid black">
-    <p id="titleRecording">Informed Consent for Video/Audio Recording</p>
-    <p id="recording" style="display: none;">As a graduate student, I am required to be under the direct supervision of qualified clinical supervisors.
-      My supervisors review all aspects of the services that I am providing to you. You have the right to know the name of my supervisor(s) and how to contact her or him.
-      This information is listed above. In addition, as part of my program and clinical superivison requirements, I electronically record my counseling sessions.
-      These recordings are reviewed during clinical supervision for the purposes of facilitating my learning and effectiveness as a developing counselor.
-      Recordings are kept secure and confidential, and they are never shared with any person who is not part of hte OSU Counseling program. Recordings are erased after the clinical requiremnets have been met.
-      Your signature (as the client/and parent or guardian) below confirms that this form has been explained to you, and that you understand the following:
-      I am not required and I am under no obligation to have counseling sessions recorded.
-      I may withdraw my permission at any time during or after the recording session. My care will not change by my decision not to be recorded.
-      I have the right to review my recording(s) with my student counselor during a counseling session.
-      My student counselor receives superivison both at this location and by the faculty at Oregon State University Cascades.
-      The contents of this recording will remain confidential within the supervision at OSU Cascades.
-      Recordings are erased after the clinical requirements have been met.
-      I may revoke this consent at any time by submitting to the student counselor a request to withdraw my (as a client, parent/guardian) permission.
-      The original copy of this consent form will be kpet in my records wit this agency.
-      This recording will only be used as a tool to help my student counselor in assissting me or my family.</p>
-  </div>
+  <div style="padding-top: 1em;">
+    <button type="button" class="btn btn-primary" onclick="show('VideoConsent')">Informed Consent for Video/Audio Recording</button><br>
+  </div><br>
 
   <h3>By signing below you agree to the selected consent forms</h3>
   <ul>
@@ -213,17 +174,25 @@
   <button id="save-png">Save as PNG</button>
   <button id="clear">Clear</button>
 
-  <%= check_box_tag :autofill, true, (@auto_fill == 'true') %> autofill
+  <%= check_box_tag :autofill, true, (@auto_fill == 'true') %> autofill form
 
   <div class="actions buttonStyle" style="margin-top: 2em;">
     <%= form.submit "Sign Up" %>
-  </div>
+  </div><br>
 
 <% end %>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
 <script>
+
+  $(document).ready(function() {
+    for (var i = 0; i < 3; i++) {
+      document.getElementById(i.toString()).style.display = 'none';
+    }
+
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+  });
 
   function changed(sel) {
     var taskNum = sel.options[sel.selectedIndex].value;
@@ -236,24 +205,13 @@
     }
   }
 
-  $(document).ready(function() {
-    for (var i = 0; i < 3; i++) {
-      document.getElementById(i.toString()).style.display = 'none';
+  function show(id) {
+    var element = document.getElementById(id);
+    if (element.style.display === "none") {
+      element.style.display = "block";
+    } else {
+      element.style.display= "none";
     }
-
-    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-  });
-
-  function Show() {
-      var x = document.getElementById("recording");
-      var y = document.getElementById("titleRecording");
-      if (x.style.display === "none") {
-          x.style.display = "block";
-          y.style.display = "none";
-      } else {
-          x.style.display = "none";
-          y.style.display= "block";
-      }
   }
   var signaturePad = new SignaturePad(document.getElementById('signature-pad'), {
     backgroundColor: 'rgba(255, 255, 255, 0)',
@@ -275,6 +233,3 @@
   });
 
 </script>
-
-
-<%= link_to 'Back', clients_path %>
