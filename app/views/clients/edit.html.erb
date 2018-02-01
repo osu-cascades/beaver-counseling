@@ -189,12 +189,31 @@
     <%= form.text_field :help_reason, id: :client_help_reason %>
   </div>
 
+  <div class="field">
+  <table class="table">
+  <thead>
+      <tr>
+        <th>Previous Counselors</th>     
+     </tr>
+  </thead>
+  <tbody>
+     <% @client.previous_counselor.each do |item|%>
+     <tr>
+        <th><%= item %></th>  
+     </tr>
+     <% end %>
+  </tbody>
+  </table>
+  </div>
+
   <div class="actions">
     <%= form.submit "Submit" %>
   </div>
 
 <% end %>
 </div>
+
+
 
 <%= link_to 'Show', @client %> |
 <%= link_to 'Back', clients_path %>
