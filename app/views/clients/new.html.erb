@@ -24,7 +24,7 @@
 
   <div class="field fieldStyle">
     <%= form.label :dob %>
-    <%= form.date_select :dob, id: :client_dob %>
+    <%= form.date_select :dob, id: :client_dob, :start_year => 1901, :end_year => Time.current.year %>
   </div>
 
   <div class="field fieldStyle">
