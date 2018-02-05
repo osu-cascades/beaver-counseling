@@ -81,32 +81,32 @@
   <hr>
 
   <div class="field">
-    <%= form.label :spouse_first_name %>
+    <%= form.label :Partner_first_name %>
     <%= form.text_field :spouse_first_name, id: :client_spouse_first_name %>
   </div>
 
   <div class="field">
-    <%= form.label :spouse_last_name %>
+    <%= form.label :Partner_last_name %>
     <%= form.text_field :spouse_last_name, id: :client_spouse_last_name %>
   </div>
 
   <div class="field">
-    <%= form.label :spouse_dob %>
+    <%= form.label :Partner_dob %>
     <%= form.datetime_select :spouse_dob, id: :client_spouse_dob %>
   </div>
 
   <div class="field">
-    <%= form.label :spouse_occupation %>
+    <%= form.label :Partner_occupation %>
     <%= form.text_field :spouse_occupation, id: :client_spouse_occupation %>
   </div>
 
   <div class="field">
-    <%= form.label :spouse_employer %>
+    <%= form.label :Partner_employer %>
     <%= form.text_field :spouse_employer, id: :client_spouse_employer %>
   </div>
 
   <div class="field">
-    <%= form.label :spouse_phone %>
+    <%= form.label :Partner_phone %>
     <%= form.text_field :spouse_phone, id: :client_spouse_phone %>
   </div>
 
@@ -189,12 +189,31 @@
     <%= form.text_field :help_reason, id: :client_help_reason %>
   </div>
 
+  <div class="field">
+  <table class="table">
+  <thead>
+      <tr>
+        <th>Previous Counselors</th>     
+     </tr>
+  </thead>
+  <tbody>
+     <% @client.previous_counselor.each do |item|%>
+     <tr>
+        <th><%= item %></th>  
+     </tr>
+     <% end %>
+  </tbody>
+  </table>
+  </div>
+
   <div class="actions">
     <%= form.submit "Submit" %>
   </div>
 
 <% end %>
 </div>
+
+
 
 <%= link_to 'Show', @client %> |
 <%= link_to 'Back', clients_path %>

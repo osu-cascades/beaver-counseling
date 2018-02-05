@@ -108,7 +108,7 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #FFAE19;
+  color: white;
   letter-spacing: -1px;
   font-weight: bold;
 }
@@ -116,4 +116,8 @@ p {
 #logo:hover {
   color: #fff;
   text-decoration: none;
+}
+
+nav {
+  margin-bottom: 25px;
 }

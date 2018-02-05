@@ -8,7 +8,7 @@
 	}
 
 	table, td, th {
-	border: 1px solid black;
+		border: 1px solid black;
 	}
 
 	td {
@@ -21,33 +21,35 @@
 </div>
 
 
-<div style="float: left; margin: 2em;">
-<h3>Counselors</h3>
-<table width="100%">
-	<tr>
-		<th>Name</th>
-		<th>Username</th>
-		<th>Role</th>
-		<th>Archive</th>
-	</tr>
-	<% @users = User.all %>
-	<% @users.each do |user| %>
-		<% if (user.counselor?) %>
-		<tr>
-			<td><%= user.name %></td>
-		  <td><%= user.email %></td>
-			<td><%= user.role %></td>
-			<td><button>-</button></td>
-		</tr>
-		<% end %>
-	<% end %>
-</table>
-</div>
+<div class="row">
+	<div class="col-md-2">
+	</div>
+	<div class="col-md-5">
+		<h3>Counselors</h3>
+		<table width="100%">
+			<tr>
+				<th>Name</th>
+				<th>Username</th>
+				<th>Role</th>
+				<th>Archive</th>
+			</tr>
+			<% @users = User.all %>
+			<% @users.each do |user| %>
+			<% if (user.counselor?) %>
+			<tr>
+				<td><%= user.name %></td>
+				<td><%= user.email %></td>
+				<td><%= user.role %></td>
+				<td><button>-</button></td>
+			</tr>
+			<% end %>
+			<% end %>
+		</table>
+	</div>
 
-<div style="clear: both; margin: 2em;">
-
-	<h3>Create New Counselor</h3>
-	<%= form_for User.new do |f| %>
+	<div class="col-md-5">
+		<h3>Create New Counselor</h3>
+		<%= form_for User.new do |f| %>
 		<div class="field">
 			<%= f.label :name %><br />
 			<%= f.text_field :name %>
@@ -79,6 +81,6 @@
 		<div class="actions">
 			<%= f.submit "Sign up" %>
 		</div>
-	<% end %>
-
+		<% end %>
+	</div>
 </div>

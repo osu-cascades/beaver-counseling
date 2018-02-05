@@ -58,12 +58,12 @@ class ClientsController < ApplicationController
       @client.employer_address = "employer_address"
       @client.work_phone = "work_phone"
       @client.leave_message_work = false
-      @client.spouse_first_name = "spouse_first_name"
-      @client.spouse_last_name = "spouse_last_name"
+      @client.spouse_first_name = "Partner_first_name"
+      @client.spouse_last_name = "Partner_last_name"
       @client.spouse_dob = DateTime.now
-      @client.spouse_occupation = "spouse_occupation"
-      @client.spouse_employer = "spouse_employer"
-      @client.spouse_phone = "spouse_phone"
+      @client.spouse_occupation = "Partner_occupation"
+      @client.spouse_employer = "Partner_employer"
+      @client.spouse_phone = "Partner_phone"
       @client.emergency_name = "emergency_name"
       @client.emergency_relation = "emergency_relation"
       @client.emergency_address = "emergency_address"
@@ -77,8 +77,8 @@ class ClientsController < ApplicationController
       @client.counselor_seen = "counselor_seen"
       @client.help_reason = "help_reason"
     else
-
       @client = Client.new(client_params)
+      @client.age = @client.age() #Calculate clients age based off of dob
     end
 
     respond_to do |format|
