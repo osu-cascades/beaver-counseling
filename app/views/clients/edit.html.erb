@@ -1,20 +1,30 @@
-<h1>Editing Client</h1>
-
 <style>
+  h1, h2 {
+    margin-bottom: 0px !important;
+  }
+
+  p {
+    line-height: 80% !important;
+  }
+
   @media print {
-    body * {
-      visibility: hidden;
+    #hide1 {
+      display: none;
     }
 
-    #pdf, #pdf * {
-      visibility: visible;
+    nav {
+      display: none;
     }
 
+    #pdf {
+      display: block !important;
+      visibility: visible !important;
+    }
   }
 </style>
 
-<div style="text-align: center;" id="pdf">
-
+<div id="hide1" style="text-align: center;">
+<h1>Editing Client</h1>
 <%= form_for(@client, local: true) do |form| %>
   <% if (current_user.admin?) %>
     <div class="field">
@@ -211,16 +221,55 @@
   </div>
 
 <% end %>
-</div>
-
-
 
 <%= link_to 'Show', @client %> |
 <%= link_to 'Back', clients_path %>
 <button onclick="printin()">PDF</button>
+</div>
 
 <script>
   function printin() {
     window.print();
   }
 </script>
+
+<div id="pdf" style="display: none;">
+  <strong>
+    <h2 style="text-align: center"> OSU Cascades Counseling Practicum</h2>
+    <h2 style="text-align: center"> Client Information Sheet</h2>
+  </strong>
+  <div style="border: 1px solid black; padding: 10px;">
+    <p>Date: <u><%= @client.updated_at %></u></p>
+    <p>Client name: <u><%= @client.to_s %></u>   Age:<u><%= @client.age %></u>   Date of Birth: <u><%= @client.dob %></u></p>
+    <p>Local address: <u>Need an address here</u></p>
+    <p>Phone: <u><%= @client.phone_number %></u> Message: Yes No   Email: <u><%= @client.email %></u></p>
+    <p>Employer's address: <u><%= @client.employer_address %></u>  Work Phone: <u><%= @client.work_phone %></u>  Message Yes No</p>
+  </div>
+  <div>
+  <h2>Partner Information</h2>
+  </div>
+  <div style="border:1px solid black; padding: 10px;">
+    <p>Name: <u><%= @client.spouse_first_name %> <%= @client.spouse_last_name %></u> Age: <u><%= @client.spouse_dob %></u> </p>
+    <p>Occupation: <u><%= @client.spouse_occupation %></u>  Employer:<u><%= @client.spouse_employer %></u> Phone: <u><%= @client.spouse_phone %></u></p>
+  </div>
+  <h2>Other Members of Your Household</h2>
+  <div style="border:1px solid black; padding: 10px;">
+
+  </div>
+  <h2>Emergency Contact</h2>
+  <div style="border:1px solid black; padding: 10px;">
+    <p>Name: <u><%= @client.emergency_name %></u>  Relation: <u><%= @client.emergency_relation %></u></p>
+    <p>Address: <u><%= @client.employer_address %></u>  Phone: <u><%= @client.emergency_phone %></u></p>
+  </div>
+  <h2>Health Insurance</h2>
+  <div style="border:1px solid black; padding: 10px;">
+    <p>Do you have health insurance? yes No. If yes, what company? <u><%= @client.insurance_company %></u></p>
+  </div>
+  <h2>Medical Information</h2>
+  <div style="border:1px solid black; padding: 10px;">
+    <p>Primary Care Physician (PCP) <u><%= @client.physician %></u>  Phone: <u><%= @client.physician_phone %></u></p>
+    <p>Prescription Medications: <u><%= @client.medication %></u></p>
+    <p>Have you ever seen a counselor before? Yes No. If yes, where and when? <u><%= @client.counselor_seen %></u></p>
+    <p>Reason for seeking help now? <u><%= @client.help_reason %></u></p>
+  </div>
+</div>
