@@ -46,6 +46,7 @@
 			<% else %>
 				<td><%= (User.find_by_id(client.counselor_id)).name %></td>
 			<% end %>
+			<td><%= client.versions %></td>
 		</tr>
 	<% end %>
 </table>

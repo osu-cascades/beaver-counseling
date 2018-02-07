@@ -4,6 +4,7 @@ class Client < ApplicationRecord
 
   has_many :family_members
   accepts_nested_attributes_for :family_members, allow_destroy: true
+  has_paper_trail
 
   def to_s
     "#{first_name} #{last_name}"

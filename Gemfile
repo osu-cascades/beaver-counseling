@@ -23,6 +23,7 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'devise'
 gem 'high_voltage', '~> 3.0.0'
 gem 'ckeditor'
+gem 'paper_trail'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
