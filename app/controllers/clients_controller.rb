@@ -78,7 +78,7 @@ class ClientsController < ApplicationController
       @client.help_reason = "help_reason"
     else
       @client = Client.new(client_params)
-      @client.age = @client.age() #Calculate clients age based off of dob
+      #@client.age = @client.age() #Calculate clients age based off of dob
     end
 
     respond_to do |format|
