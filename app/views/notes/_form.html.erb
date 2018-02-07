@@ -1,0 +1,42 @@
+<%= form_with(model: note, local: true) do |form| %>
+  <% if note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
+
+      <ul>
+      <% note.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :counselorName %>
+    <%= form.text_field :counselorName, id: :note_counselorName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :clientName %>
+    <%= form.text_field :clientName, id: :note_clientName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :session %>
+    <%= form.number_field :session, id: :note_session %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.cktext_area :content, id: :note_content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+<script>
+CKEDITOR.replace( 'editor1' );
+</script>

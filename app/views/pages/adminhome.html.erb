@@ -16,14 +16,15 @@
 	<h1>Admin Home</h1>
 </div>
 
-<div style="position: fixed; left: 50%;"
-	<div style="float: left;">
-	<%= button_to "Client Reports", page_path('adminclientreports'), :method => :get %>
+<div style="text-align:center;">
+	<div style="display: inline-block;">
+		<%= button_to "Client Reports", page_path('adminclientreports'), :method => :get, :class => 'btn', :style => "background: #D3D3D3;" %>
+	</div>&nbsp;&nbsp;
+	<div style="display: inline-block;">
+		<%= button_to "Manage Users", page_path('adminmanageusers'), :method => :get, :class => 'btn', :style => "background: #D3D3D3;" %>
 	</div>
-	<div style="float: right; width: 60%;">
-	<%= button_to "Manage Users", page_path('adminmanageusers'), :method => :get %>
-	</div>
-</div><br>
+</div>
+<br>
 
 <table style="width:100%;">
 	<tr>
@@ -38,7 +39,7 @@
 		<tr>
 			<td><%= client.first_name %></td>
 			<td><%= client.id %></td>
-			<td><%= client.age() %></td>
+			<td><%= client.age %></td>
 			<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
 			<% if (client.counselor_id.nil?) %>
 				<td>None</td>
