@@ -254,7 +254,11 @@
   </div>
   <h2>Other Members of Your Household</h2>
   <div style="border:1px solid black; padding: 10px;">
-
+      <% @family_member.each do |family| %>
+        <% if family.id == @client.id %>
+          <p>Name: <u><% family.name %></u></p>
+        <% end %>
+      <% end %>
   </div>
   <h2>Emergency Contact</h2>
   <div style="border:1px solid black; padding: 10px;">
