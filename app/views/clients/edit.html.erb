@@ -259,6 +259,9 @@
           <p>Name: <u><% family.name %></u></p>
         <% end %>
       <% end %>
+      <% @client.family_members.each do |family| %>
+          <p>Name: <u><% family.name %></u></p>
+        <% end %>
   </div>
   <h2>Emergency Contact</h2>
   <div style="border:1px solid black; padding: 10px;">
