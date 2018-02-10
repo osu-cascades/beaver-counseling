@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  counselorName: MyString
+  clientName: MyString
+  session: 1
+  content: MyString
+
+two:
+  counselorName: MyString
+  clientName: MyString
+  session: 1
+  content: MyString
