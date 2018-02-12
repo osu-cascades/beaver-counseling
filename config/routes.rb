@@ -15,4 +15,13 @@ Rails.application.routes.draw do
 	get 'pages/adminmanageusers' => 'high_voltage/pages#show', id: 'adminmanageusers'
 
 	get 'pages/counselorhome' => 'high_voltage/pages#show', id: 'counselorhome'
+
+  resources :clients do
+    resources :versions, only: [:destroy] do
+      member do
+        get :diff, to: 'versions#diff'
+        patch :rollback, to: 'versions#rollback'
+      end
+    end
+  end
 end

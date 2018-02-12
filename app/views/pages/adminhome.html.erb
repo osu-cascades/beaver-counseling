@@ -71,8 +71,8 @@
 				<td><%= version.created_at %></td>
 				<td><%= find_version_counselor_name(version) %></td>
 				<td><%= version.event.humanize %></td>
-				<td><%= link_to 'Diff', '' %></td>
-				<td><%= link_to 'Rollback', '' %></td>
+				<td><%= link_to 'Diff', diff_client_version_path(client, version) %></td>
+				<td><%= link_to 'Rollback', rollback_client_version_path(client, version), method: 'PATCH' %></td>
 			</tr>
 		<% end %>
 <% end %>

@@ -6,6 +6,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   enum role: %w(admin counselor)
   def self.find_version_counselor(version)
-    find(version.terminator)
+    begin
+      find(version.terminator)
+    rescue
+      @error_message="client has no counselor"
+    end
   end
 end
