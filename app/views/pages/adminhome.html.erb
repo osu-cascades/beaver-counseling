@@ -46,7 +46,35 @@
 			<% else %>
 				<td><%= (User.find_by_id(client.counselor_id)).name %></td>
 			<% end %>
-			<td><%= client.versions %></td>
 		</tr>
 	<% end %>
+</table>
+
+<table class='table'>
+<thead>
+	 <tr>
+		 <th>f name</th>
+		 <th>id</th>
+		 <th>age</th>
+	 </tr>
+ </thead>
+
+ <tbody><br><br>
+
+
+<% @clients = Client.all %>
+<% @clients.each do |client| %>
+		<%  client.versions.reverse.each do |version| %>
+			<tr>
+				<td><%= version.index %></td>
+				<td><%= version.created_at %></td>
+				<td><%= find_version_counselor_name(version) %></td>
+				<td><%= version.event.humanize %></td>
+				<td><%= link_to 'Diff', '' %></td>
+				<td><%= link_to 'Rollback', '' %></td>
+			</tr>
+		<% end %>
+<% end %>
+
+</tbody>
 </table>

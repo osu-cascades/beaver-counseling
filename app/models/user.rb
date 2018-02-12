@@ -5,4 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   enum role: %w(admin counselor)
+  def self.find_version_counselor(version)
+    find(version.terminator)
+  end
 end
