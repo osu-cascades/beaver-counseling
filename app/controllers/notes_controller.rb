@@ -5,6 +5,7 @@ class NotesController < ApplicationController
   # GET /notes.json
   def index
     @notes = Note.all
+    #@client = Client.find(params[:id])
   end
 
   # GET /notes/1

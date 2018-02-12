@@ -5,25 +5,31 @@
 <table>
   <thead>
     <tr>
-      <th>Counselorname</th>
-      <th>Clientname</th>
-      <th>Session</th>
+      <th>Title</th>
+      <th>Counselor</th>
+      <th>Client</th>
+      <th>Session #</th>
       <th>Content</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @notes.each do |note| %>
-      <tr>
-        <td><%= note.counselorName %></td>
-        <td><%= note.clientName %></td>
-        <td><%= note.session %></td>
-        <td><%= note.content %></td>
-        <td><%= link_to 'Show', note %></td>
-        <td><%= link_to 'Edit', edit_note_path(note) %></td>
-        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if note.client_id == current_user.id || current_user.admin? %>
+        <tr>
+          <td><%= note.counselorName %></td>
+          <td><%= note.clientName %></td>
+          <td><%= note.session %></td>
+          <td><%= note.content %></td>
+          <td><%= link_to 'Show', note %></td>
+          <td><%= link_to 'Edit', edit_note_path(note) %></td>
+          <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% else %>
+        <h1>You don't have access</h1>
+      <% end %>
     <% end %>
   </tbody>
 </table>
