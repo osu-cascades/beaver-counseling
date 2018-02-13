@@ -31,8 +31,9 @@
 		<th>First Name</th>
 		<th>ID</th>
 		<th>Age</th>
-		<th>View More</th>
 		<th>Counselor</th>
+		<th>View More</th>
+		<th>Notes</th>
 	</tr>
 	<% @clients = Client.all %>
 	<% @clients.each do |client| %>
@@ -40,12 +41,43 @@
 			<td><%= client.first_name %></td>
 			<td><%= client.id %></td>
 			<td><%= client.age %></td>
-			<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
 			<% if (client.counselor_id.nil?) %>
 				<td>None</td>
 			<% else %>
 				<td><%= (User.find_by_id(client.counselor_id)).name %></td>
 			<% end %>
+			<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
+			<td><%= button_to 'Notes', notes_path(client.id), :method => :get %></td>
 		</tr>
 	<% end %>
+</table>
+
+<table class='table'>
+<thead>
+	 <tr>
+		 <th>index</th>
+		 <th>date</th>
+		 <th>counselor</th>
+		 <th>event</th>
+	 </tr>
+ </thead>
+
+ <tbody><br><br>
+
+
+<% @clients = Client.all %>
+<% @clients.each do |client| %>
+		<%  client.versions.reverse.each do |version| %>
+			<tr>
+				<td><%= version.index %></td>
+				<td><%= version.created_at %></td>
+				<td><%= find_version_counselor_name(version) %></td>
+				<td><%= version.event.humanize %></td>
+				<td><%= link_to 'Diff', diff_client_version_path(client, version) %></td>
+				<td><%= link_to 'Rollback', rollback_client_version_path(client, version), method: 'PATCH' %></td>
+			</tr>
+		<% end %>
+<% end %>
+
+</tbody>
 </table>

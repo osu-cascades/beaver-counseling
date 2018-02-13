@@ -1,33 +1,102 @@
-<p id="notice"><%= notice %></p>
+<style>
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+</style>
 
 <h1>Notes</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Counselorname</th>
-      <th>Clientname</th>
-      <th>Session</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @notes.each do |note| %>
+<div style="margin: 1em 1em 1em 1em;">
+  <table style="width: 100%; ">
+    <thead>
       <tr>
-        <td><%= note.counselorName %></td>
-        <td><%= note.clientName %></td>
-        <td><%= note.session %></td>
-        <td><%= note.content %></td>
-        <td><%= link_to 'Show', note %></td>
-        <td><%= link_to 'Edit', edit_note_path(note) %></td>
-        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Title</th>
+        <th>Counselor</th>
+        <th>Client</th>
+        <th>Session #</th>
+        <th>Status</th>
+        <th colspan="6"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @notes.each do |note| %>
+        <% if note.client_id == current_user.id || current_user.admin? %>
+          <tr>
+            <td>title</td>
+            <td><%= note.counselorName %></td>
+            <td><%= note.clientName %></td>
+            <td><%= note.session %></td>
+            <td>open</td>
+          </tr>
+          <tr>
+            <td colspan="6">
+              <button class="accordion">session #</button>
+              <div class="panel">
+                <br><textarea id="editor"><%= note.content %></textarea><br>
+                <button>Save</button>
+              </div>
+            </td>
+          </tr>
+        <% else %>
+          <h1>You don't have access</h1>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div><br>
 
-<%= link_to 'New Note', new_note_path %>
+<span style="padding: 1em;"><%= link_to 'New Note', new_note_path %></span>
+
+<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+<script>
+  CKEDITOR.replace( 'editor' );
+
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight){
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  }
+</script>
