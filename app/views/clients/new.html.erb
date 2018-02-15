@@ -1,6 +1,14 @@
 <br><h1>Sign Up</h1>
 
-<div style="text-align: center;">
+<style>
+  .goodBorder {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.10);
+    border: 1px solid grey;
+    padding: 15px;
+  }
+</style>
+
+<div class="goodBorder" style="margin:100px; text-align: center;">
 
 <% client = @client %>
 <%= form_for(@client, local: true) do |form| %>
@@ -49,7 +57,7 @@
     <%= form.label :leave_message_work %>
   </div>
 
-  <hr>
+  
 
   <h5>Partner Information</h5><br>
   <div class="field fieldStyle">
@@ -71,7 +79,7 @@
     <%= form.text_field :spouse_phone, id: :client_spouse_phone, placeholder: "Partner Phone" %>
   </div>
 
-  <hr>
+  
 
   <h5>Other Members of Your Household (optional)</h5>
 
@@ -86,7 +94,7 @@
       </p>
     <% end %>
   <% end %>
-  <hr>
+  
 
   <h5>Emergency Contact Information</h5><br>
   <div class="field fieldStyle">
@@ -105,7 +113,7 @@
     <%= form.text_field :insurance_company, id: :client_insurance_company, placeholder: "Insurance Company" %>
   </div>
 
-  <hr>
+  
 
   <h5>History</h5><br>
   <div class="field fieldStyle">
@@ -114,8 +122,8 @@
   </div>
 
   <div class="field fieldStyle">
-    <%= form.text_field :medication, id: :client_medication, placeholder: "Medication" %>
-    <%= form.text_field :help_reason, id: :client_help_reason, placeholder: "Help Reason" %>
+    <%= form.text_area :medication, id: :client_medication, placeholder: "Medication(s)" %>
+    <%= form.text_area :help_reason, id: :client_help_reason, placeholder: "Reason for seeking counseling" %>
   </div>
 
   <div class="field fieldStyle">
@@ -124,7 +132,7 @@
     <%= form.text_field :counselor_seen, id: :client_counselor_seen, placeholder: "Counselor Seen" %>
   </div>
 
-  <hr>
+  
 
   <button type="button" class="btn btn-primary" onclick="show('VideoConsent')">Informed Consent for Video/Audio Recording</button><br>
   <div id="VideoConsent" style="display: none; padding-left: 20%; padding-right: 20%;">
