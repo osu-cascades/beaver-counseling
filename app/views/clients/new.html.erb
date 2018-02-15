@@ -23,7 +23,7 @@
   </div>
 
   <div class="field fieldStyle">
-    <%= form.label :dob %>
+    <%= form.label :dob, "Date of Birth" %>
     <%= form.date_select :dob, id: :client_dob, :start_year => 1901, :end_year => Time.current.year %>
   </div>
 
@@ -58,7 +58,7 @@
   </div>
 
   <div class="field fieldStyle">
-    <%= form.label :Partner_dob %>
+    <%= form.label :Partner_dob, "Partner's Date of Birth" %>
     <%= form.date_select :spouse_dob, id: :client_spouse_dob, :start_year => 1901, :end_year => Time.current.year %>
   </div>
 
@@ -81,7 +81,7 @@
       <p id="<%= i.to_s %>">
         <%= family_member_form.text_field :name, placeholder: "Name" %>
         <%= family_member_form.text_field :age, placeholder: "Age" %>
-        dob: <%= family_member_form.date_select :dob, :start_year => 1901, :end_year => Time.current.year %>
+        Date of Birth: <%= family_member_form.date_select :dob, :start_year => 1901, :end_year => Time.current.year %>
         <%= family_member_form.text_field :relation, placeholder: "Relation" %>
       </p>
     <% end %>
