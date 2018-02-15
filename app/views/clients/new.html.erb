@@ -38,7 +38,7 @@
   <div class="field fieldStyle">
     <%= form.text_field :phone_number, id: :client_phone_number, placeholder: "Phone Number" %>
     <%= form.check_box :leave_message, id: :client_leave_message %>
-    <%= form.label :leave_message %>
+    <%= form.label :leave_message,  %>
   </div>
 
   <div class="field fieldStyle">
@@ -81,7 +81,7 @@
 
   
 
-  <h5>Other Members of Your Household (optional)</h5>
+  <h5>How many members are in your household (optional)</h5>
 
   <div class="field fieldStyle"><%= select_tag "quantity", options_for_select((1..4),1), :onchange => 'changed(this)' %></div>
   <% 4.times do |i| %>
