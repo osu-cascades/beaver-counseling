@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: beaver-counseling_production
-  username: beaver-counseling
-  password: <%= ENV['BEAVER-COUNSELING_DATABASE_PASSWORD'] %>
+  database: beaver-db
+  username: Beaver-db
+  password: Cascades1111
+  host: "/cloudsql/beavercounseling:us-central1:beaver-db"

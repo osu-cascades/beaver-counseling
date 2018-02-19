@@ -19,7 +19,7 @@ gem 'jquery-rails'
 gem 'chartkick'
 gem 'bootstrap'
 gem 'materialize-sass'
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+#gem 'wdm', '>= 0.1.0'# if Gem.win_platform?
 gem 'devise'
 gem 'high_voltage', '~> 3.0.0'
 gem 'ckeditor'
@@ -33,9 +33,10 @@ end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+gem 'listen', '>= 3.0.5', '< 3.2'
+gem "appengine", "~> 0.4.1"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
