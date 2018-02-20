@@ -23,6 +23,7 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'devise'
 gem 'high_voltage', '~> 3.0.0'
 gem 'ckeditor'
+gem "paperclip", "~> 5.2.1"
 gem 'paper_trail'
 gem 'diffy'
 
