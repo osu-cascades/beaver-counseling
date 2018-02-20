@@ -1,23 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Counselorname:</strong>
-  <%= @note.counselorName %>
+  <strong>Session number:</strong>
+  <%= @note.session_number %>
 </p>
 
 <p>
-  <strong>Clientname:</strong>
-  <%= @note.clientName %>
+  <strong>Client name:</strong>
+  <%= @note.client_name %>
 </p>
 
 <p>
-  <strong>Session:</strong>
-  <%= @note.session %>
+  <strong>Counselor name:</strong>
+  <%= @note.counselor_name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @note.status %>
 </p>
 
 <p>
   <strong>Content:</strong>
   <%= @note.content %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @note.client_id %>
 </p>
 
 <%= link_to 'Edit', edit_note_path(@note) %> |

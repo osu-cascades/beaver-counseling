@@ -1,0 +1,82 @@
+<% puts "i got here" %>
+<% puts params[:id] %>
+
+<% @client = Client.find(params[:id]) %>
+<% @notes = Note.where(client_id: @client) %>
+
+<h1>Notes for <%= @client.first_name %> <%= @client.last_name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Session number</th>
+      <th>Client name</th>
+      <th>Counselor name</th>
+      <th>Status</th>
+      <th>Content</th>
+      <th>Client</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notes.each do |note| %>
+      <tr>
+        <td><%= note.session_number %></td>
+        <td><%= note.client_name %></td>
+        <td><%= note.counselor_name %></td>
+        <td><%= note.status %></td>
+        <td><%= note.content %></td>
+        <td><%= note.client_id %></td>
+        <td><%= link_to 'Show', note %></td>
+        <td><%= link_to 'Edit', edit_note_path(note) %></td>
+        <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br><br>
+<h3>Create Note for Client</h3>
+<br>
+
+		<%= form_for Note.new do |f| %>
+		<div class="field">
+			<%= f.label :session_number %>
+			<%= f.text_field :session_number, :value => @notes.length+1 %>
+		</div>
+
+    <div class="field">
+			<%= f.label :client_name %>
+			<%= f.text_field :client_name, :value => @client.first_name %>
+		</div>
+
+		<div class="field">
+      <%= f.label :counselor_name %>
+      <% begin %> <!-- client may be unassigned -->
+        <% @counselor = User.find(@client.counselor_id) %>
+        <%= f.text_field :counselor_name, :value => @counselor.name %>
+      <% rescue => ex %>
+        <%= f.text_field :counselor_name %>
+      <% end %>
+		</div>
+
+    <div class="field">
+			<%= f.label :status %>
+			<%= f.text_field :status %>
+		</div>
+
+    <div class="field">
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'hidden:client:id' %>
+      <%= f.text_field :client_id, :value => @client.id %>
+    </div>
+
+		<div class="actions">
+			<%= f.submit "Sign up" %>
+		</div>
+		<% end %>
