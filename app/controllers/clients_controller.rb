@@ -4,7 +4,14 @@ class ClientsController < ApplicationController
   before_action :set_paper_trail_whodunnit
 
   def notes
-    authorize_admin
+    # authorize counselor
+
+    #puts "what is the id"
+    #puts @client.id
+    #puts params[:id]
+    if (current_user.admin? == false || @client.id != current_user.id )
+      redirect_to root_path, alert: 'Admins only!'
+    end
   end
 
   # GET /clients
