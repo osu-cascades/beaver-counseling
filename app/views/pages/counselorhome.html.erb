@@ -20,13 +20,14 @@
 <div style="text-align: center;">
 	<h1>Counselor View Clients</h1>
 </div>
-	
+
 <table style="width:100%;">
 	<tr>
 		<th>First Name</th>
 		<th>Age</th>
 		<th>ID</th>
 		<th>View More</th>
+		<th>Notes</th>
 	</tr>
 	<% @clients = Client.all %>
 	<% @clients.each do |client| %>
@@ -36,6 +37,7 @@
 				<td><%= client.age %></td>
 				<td><%= client.id %></td>
 				<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
+				<td><%= button_to 'Notes', client_notes_path_url(client.id), :method => :get %></td>
 			</tr>
 		<% end %>
 	<% end %>

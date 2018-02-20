@@ -48,8 +48,6 @@
 			<% end %>
 			<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
 			<td><%= button_to 'Notes', client_notes_path_url(client.id), :method => :get %></td>
-			<% puts "client" %>
-			<% puts client.id %>
 		</tr>
 	<% end %>
 </table>

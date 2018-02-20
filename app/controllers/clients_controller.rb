@@ -3,6 +3,10 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   before_action :set_paper_trail_whodunnit
 
+  def notes
+    authorize_admin
+  end
+
   # GET /clients
   # GET /clients.json
   def index
