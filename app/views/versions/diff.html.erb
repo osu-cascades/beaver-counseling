@@ -2,16 +2,18 @@
   <div class='col-sm-12'>
     <h2><%= "Diff between Version #{@version.id} and Current Version" %></h2>
     <style><%= Diffy::CSS %></style>
-    <div class='well diff'>
-      <p>
-        <strong>Name:</strong>
-        <%= diff(@version.reify.first_name, @client.first_name) %>
-      </p>
-      <p>
-        <strong>Age:</strong>
-        <%= diff(@version.reify.age, @client.age) %>
-      </p>
-    </div>
+    <% if @client.instance_variable_defined?(:@first_name) %>
+      <div class='well diff'>
+        <p>
+          <strong>Name:</strong>
+          <%= diff(@version.reify.first_name, @client.first_name) %>
+        </p>
+        <p>
+          <strong>Age:</strong>
+          <%= diff(@version.reify.age, @client.age) %>
+        </p>
+      </div>
+    <% end %>
     <p>
     <%= "Version authored by #{find_version_counselor_name(@version)} on #{@version.created_at} by '#{@version.event.humanize}'." %>
     </p>
