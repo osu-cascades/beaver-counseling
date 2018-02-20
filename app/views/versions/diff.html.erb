@@ -1,0 +1,27 @@
+<div class='row mt'>
+  <div class='col-sm-12'>
+    <h2><%= "Diff between Version #{@version.id} and Current Version" %></h2>
+    <style><%= Diffy::CSS %></style>
+    <% begin %>
+      <div class='well diff'>
+        <p>
+          <strong>Name:</strong>
+          <%= diff(@version.reify.first_name, @client.first_name) %>
+        </p>
+        <p>
+          <strong>Age:</strong>
+          <%= diff(@version.reify.age, @client.age) %>
+        </p>
+      </div>
+    <% rescue => ex %>
+      <% logger.error ex.message %>
+    <% end %>
+    <p>
+    <%= "Version authored by #{find_version_counselor_name(@version)} on #{@version.created_at} by '#{@version.event.humanize}'." %>
+    </p>
+  </div>
+</div>
+<div class='fr'>
+  <%= link_to 'Back', edit_client_path(@client), class: 'btn btn-danger' %>
+  <%= link_to 'Rollback', rollback_client_version_path(@client, @version), class: 'btn btn-primary', method: 'PATCH' %>
+</div>
