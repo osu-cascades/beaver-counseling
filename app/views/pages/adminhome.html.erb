@@ -26,9 +26,11 @@
 </div>
 <br>
 
-<table style="width:100%;">
+<input type="text" id="searchBar" onkeyup="search()" placeholder="Search" style="width: 100%">
+<br><br>
+<table style="width:100%;" id="table">
 	<tr>
-		<th>First Name</th>
+		<th id="name">Name</th>
 		<th>ID</th>
 		<th>Age</th>
 		<th>Counselor</th>
@@ -38,7 +40,7 @@
 	<% @clients = Client.all %>
 	<% @clients.each do |client| %>
 		<tr>
-			<td><%= client.first_name %></td>
+			<td><%= client.first_name %> <%= client.last_name %></td>
 			<td><%= client.id %></td>
 			<td><%= client.age %></td>
 			<% if (client.counselor_id.nil?) %>
@@ -80,3 +82,25 @@
 
 </tbody>
 </table>
+
+<script>
+	function search() {
+	  var input, filter, table, tr, name;
+	  input = document.getElementById("searchBar");
+	  filter = input.value.toUpperCase();
+		table = document.getElementById("table");
+		tr = table.getElementsByTagName("tr");
+  	for (var i = 0; i < tr.length; i++) {
+    	name = tr[i].getElementsByTagName("td")[0];
+			counselor = tr[i].getElementsByTagName("td")[3];
+    	if (name) {
+    		if (name.innerHTML.toUpperCase().indexOf(filter) > -1 ||
+						counselor.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      		tr[i].style.display = "";
+    		} else {
+      		tr[i].style.display = "none";
+    		}
+    	}
+  	}
+	}
+</script>

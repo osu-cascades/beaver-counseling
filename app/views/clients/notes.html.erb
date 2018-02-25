@@ -33,9 +33,6 @@
 }
 </style>
 
-<% puts "i got here" %>
-<% puts params[:id] %>
-
 <% @client = Client.find(params[:id]) %>
 <% @notes = Note.where(client_id: @client) %>
 
@@ -48,36 +45,41 @@
         <th>Client name</th>
         <th>Counselor name</th>
         <th>Status</th>
-        <th>Content</th>
-        <th colspan="4"></th>
+        <th>Save Status</th>
+        <th>Client Id</th>
+        <th colspan="5"></th>
       </tr>
     </thead>
 
   <tbody>
     <% @notes.each do |note| %>
-      <tr>
+      <tr id="<%= note.id.to_s %>">
         <td><%= note.client_name %></td>
         <td><%= note.counselor_name %></td>
         <td>
           <%= note.status %>
-<select>
-  <option>Open</option>
-  <option>Submitted</option>
-  <option>Accepted</option>
-  <option>Rejected</option>
-</select>
+          <!--<select>
+            <option>Open</option>
+            <option>Submitted</option>
+            <option>Accepted</option>
+            <option>Rejected</option>
+          </select>-->
         </td>
+
+        <td><button>Save</button></td>
         <td><%= note.client_id %></td>
       </tr>
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           <button class="accordion">session <%= note.session_number %></button>
           <div class="panel">
             <br><textarea id="editor"><%= note.content %></textarea><br>
-            <button>Save Note</button>
+            <!-- <%= button_to 'Save Note', update_notes_path(note.id, note: {content: 'value1', id: note.id}), method: :put %>-->
+            <button id="<%= note.id.to_s %>btn" onclick="updateNote(this)">Save</button>
           </div>
         </td>
       </tr>
+
     <% end %>
   </tbody>
 </table>
@@ -110,6 +112,12 @@
     <div class="field">
 			<%= f.label :status %>
 			<%= f.text_field :status %>
+      <select>
+        <option>Open</option>
+        <option>Submitted</option>
+        <option>Accepted</option>
+        <option>Rejected</option>
+      </select>
 		</div>
 
     <div class="field">
@@ -141,6 +149,44 @@
         panel.style.maxHeight = null;
       } else {
         panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  }
+
+  function updateNote(element) {
+    var rowId = element.id.substring(0, element.id.length - 3);
+    var row = document.getElementById(rowId);
+    var message = {};
+    message.sessionNumber = rowId;
+    message.clientName = row.cells[0].innerHTML;
+    message.counselorName = row.cells[1].innerHTML;
+    message.status = "ok"; //row.cells[2].innerHTML;
+    console.log(document.getElementById(element.id).parentElement);
+    console.log(document.getElementById(element.id).parentElement.getElementsByTagName("textarea")[0].innerHTML);
+    message.content = "i got here"; //element.parentElement.getElementsByTagName("textarea")[0].innerHTML;
+    message.clientId = row.cells[4].innerHTML;
+    console.log(message);
+    //params.require(:note).permit(:session_number, :client_name, :counselor_name, :status, :content, :client_id)
+
+    $.ajax({
+      type: "PUT",
+      url: "http://localhost:3000/notes/" + message.sessionNumber + ".json",
+      data: JSON.stringify({note:{"session_number":message.sessionNumber, "client_name":message.clientName,
+                            "counselor_name":message.counselorName, "status":message.status, "client_id":message.clientId,
+                            "content":message.content}}),
+      contentType:"application/json",
+      dataType: "json",
+      success: function (data) {
+        var formValid = (data.status === 'OK');
+        if (formValid) {
+          console.log("success");
+          location.reload();
+        } else {
+          console.log(data.status);
+        }
+      },
+      error: function (jqXHR, textStatus, errorThrown, data) {
+        console.log("error");
       }
     });
   }
