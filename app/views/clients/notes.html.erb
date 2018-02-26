@@ -73,7 +73,12 @@
         <td colspan="5">
           <button class="accordion">session <%= note.session_number %></button>
           <div class="panel">
-            <br><textarea id="editor"><%= note.content %></textarea><br>
+
+            <br><textarea id="editor<%= note.id.to_s %>" class="ckeditor<%= note.id.to_s %>"><%= note.content %></textarea><br>
+            <script>
+               CKEDITOR.replace( 'editor<%= note.id.to_s %>' );
+               CKEDITOR.add
+            </script>
             <!-- <%= button_to 'Save Note', update_notes_path(note.id, note: {content: 'value1', id: note.id}), method: :put %>-->
             <button id="<%= note.id.to_s %>btn" onclick="updateNote(this)">Save</button>
           </div>
@@ -135,10 +140,9 @@
 		</div>
 		<% end %>
 
-
 <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 <script>
-  CKEDITOR.replace( 'editor' );
+
   var acc = document.getElementsByClassName("accordion");
   var i;
   for (i = 0; i < acc.length; i++) {
@@ -161,16 +165,13 @@
     message.clientName = row.cells[0].innerHTML;
     message.counselorName = row.cells[1].innerHTML;
     message.status = "ok"; //row.cells[2].innerHTML;
-    console.log(document.getElementById(element.id).parentElement);
-    console.log(document.getElementById(element.id).parentElement.getElementsByTagName("textarea")[0].innerHTML);
-    message.content = "i got here"; //element.parentElement.getElementsByTagName("textarea")[0].innerHTML;
+    message.content = CKEDITOR.instances['editor' + rowId].getData()
     message.clientId = row.cells[4].innerHTML;
-    console.log(message);
     //params.require(:note).permit(:session_number, :client_name, :counselor_name, :status, :content, :client_id)
 
     $.ajax({
       type: "PUT",
-      url: "http://localhost:3000/notes/" + message.sessionNumber + ".json",
+      url: "/notes/" + message.sessionNumber + ".json",
       data: JSON.stringify({note:{"session_number":message.sessionNumber, "client_name":message.clientName,
                             "counselor_name":message.counselorName, "status":message.status, "client_id":message.clientId,
                             "content":message.content}}),
@@ -180,9 +181,10 @@
         var formValid = (data.status === 'OK');
         if (formValid) {
           console.log("success");
-          location.reload();
         } else {
-          console.log(data.status);
+          if (data.status == "ok") {
+            location.reload();
+          }
         }
       },
       error: function (jqXHR, textStatus, errorThrown, data) {
