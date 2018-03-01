@@ -5,9 +5,9 @@
   <ul class="navbar-nav">
     <% if user_signed_in? %>
       <% if current_user.admin? %>
-        <li class="nav-item"><%= link_to 'Home', '/pages/adminhome', class: "nav-link text-white" %></li>
+        <li class="nav-item"><%= link_to 'Home', '/admin/adminhome', class: "nav-link text-white" %></li>
       <% else %>
-        <li class="nav-item"><%= link_to 'Home', '/pages/counselorhome', class: "nav-link text-white" %></li>
+        <li class="nav-item"><%= link_to 'Home', '/admin/counselorhome', class: "nav-link text-white" %></li>
       <% end %>
       <li class="nav-item"><%= link_to 'Edit Profile', edit_user_registration_path, class: "nav-link text-white" %></li>
       <li class="nav-item"><%= link_to 'Log out', '/auth/logout', method: :delete, class: "nav-link text-white" %></li>
