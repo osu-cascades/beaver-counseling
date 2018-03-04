@@ -12,4 +12,9 @@ class User < ApplicationRecord
       @error_message="client has no counselor"
     end
   end
+
+  #this method is called by devise to check for "active" state of the model
+  def active_for_authentication?
+    super and !self.is_archived? #determine "active" state using our own "is_archived" column
+  end
 end
