@@ -85,7 +85,7 @@
 
 <script>
 	function search() {
-	  var input, filter, table, tr, name;
+	  var input, filter, table, tr, name, counselor, custom_id;
 	  input = document.getElementById("searchBar");
 	  filter = input.value.toUpperCase();
 		table = document.getElementById("table");
@@ -93,9 +93,11 @@
   	for (var i = 0; i < tr.length; i++) {
     	name = tr[i].getElementsByTagName("td")[0];
 			counselor = tr[i].getElementsByTagName("td")[3];
+			custom_id = tr[i].getElementsByTagName("td")[1];
     	if (name) {
     		if (name.innerHTML.toUpperCase().indexOf(filter) > -1 ||
-						counselor.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						counselor.innerHTML.toUpperCase().indexOf(filter) > -1 ||
+						custom_id.innerHTML.toUpperCase().indexOf(filter) > -1) {
       		tr[i].style.display = "";
     		} else {
       		tr[i].style.display = "none";

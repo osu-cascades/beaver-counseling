@@ -21,11 +21,13 @@
 	<h1>Counselor View Clients</h1>
 </div>
 
-<table style="width:100%;">
+<input type="text" id="searchBar" onkeyup="search()" placeholder="Search" style="width: 100%">
+<br><br>
+<table style="width:100%;" id="table">
 	<tr>
 		<th>First Name</th>
-		<th>Age</th>
 		<th>ID</th>
+		<th>Age</th>
 		<th>View More</th>
 		<th>Notes</th>
 	</tr>
@@ -33,12 +35,34 @@
 	<% @clients.each do |client| %>
 		<% if current_user.id == client.counselor_id %>
 			<tr>
-				<td><%= client.first_name %></td>
-				<td><%= client.age %></td>
+				<td><%= client.first_name %> <%= client.last_name %></td>
 				<td><%= client.custom_id %></td>
+				<td><%= client.age %></td>
 				<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
 				<td><%= button_to 'Notes', client_notes_path_url(client.id), :method => :get %></td>
 			</tr>
 		<% end %>
 	<% end %>
 </table>
+
+<script>
+	function search() {
+	  var input, filter, table, tr, name, custom_id;
+	  input = document.getElementById("searchBar");
+	  filter = input.value.toUpperCase();
+		table = document.getElementById("table");
+		tr = table.getElementsByTagName("tr");
+  	for (var i = 0; i < tr.length; i++) {
+    	name = tr[i].getElementsByTagName("td")[0];
+			custom_id = tr[i].getElementsByTagName("td")[1];
+    	if (name) {
+    		if (name.innerHTML.toUpperCase().indexOf(filter) > -1 ||
+						custom_id.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      		tr[i].style.display = "";
+    		} else {
+      		tr[i].style.display = "none";
+    		}
+    	}
+  	}
+	}
+</script>
