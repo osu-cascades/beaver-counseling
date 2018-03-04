@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180304223055) do
+ActiveRecord::Schema.define(version: 20180304225454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20180304223055) do
     t.string "counselor_seen"
     t.string "help_reason"
     t.string "previous_counselor", default: [], array: true
+    t.string "custom_id"
   end
 
   create_table "family_members", force: :cascade do |t|

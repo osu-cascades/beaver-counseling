@@ -41,7 +41,7 @@
 	<% @clients.each do |client| %>
 		<tr>
 			<td><%= client.first_name %> <%= client.last_name %></td>
-			<td><%= client.id %></td>
+			<td><%= client.custom_id %></td>
 			<td><%= client.age %></td>
 			<% if (client.counselor_id.nil?) %>
 				<td>None</td>

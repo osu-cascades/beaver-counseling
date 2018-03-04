@@ -88,6 +88,7 @@ class ClientsController < ApplicationController
       @client.counselor_seen_before = false
       @client.counselor_seen = "counselor_seen"
       @client.help_reason = "help_reason"
+      @client.custom_id = "0"
     else
       @client = Client.new(client_params)
       #@client.age = @client.age() #Calculate clients age based off of dob
@@ -156,7 +157,7 @@ class ClientsController < ApplicationController
         :leave_message_work, :spouse_first_name, :spouse_last_name, :spouse_dob, :spouse_occupation,
         :spouse_employer, :spouse_phone, :emergency_name, :emergency_relation, :emergency_address,
         :emergency_phone, :health_insurance, :insurance_company, :physician, :physician_phone,
-        :medication, :counselor_seen_before, :counselor_seen, :help_reason, :previous_counselor,
+        :medication, :counselor_seen_before, :counselor_seen, :help_reason, :previous_counselor, :custom_id,
         family_members_attributes: [:id, :name, :age, :dob, :relation, :_destroy])
     end
 end

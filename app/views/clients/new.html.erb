@@ -132,7 +132,9 @@
     <%= form.text_field :counselor_seen, id: :client_counselor_seen, placeholder: "Counselor Seen" %>
   </div>
 
-
+  <div class="field fieldStyle" style="display: none;">
+    <%= form.text_field :custom_id, id: :client_custom_id, value: "0" %>
+  </div>
 
   <button type="button" class="btn btn-primary" onclick="show('VideoConsent')">Informed Consent for Video/Audio Recording</button><br>
   <div id="VideoConsent" style="display: none; padding-left: 20%; padding-right: 20%;">

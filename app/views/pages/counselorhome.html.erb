@@ -35,7 +35,7 @@
 			<tr>
 				<td><%= client.first_name %></td>
 				<td><%= client.age %></td>
-				<td><%= client.id %></td>
+				<td><%= client.custom_id %></td>
 				<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
 				<td><%= button_to 'Notes', client_notes_path_url(client.id), :method => :get %></td>
 			</tr>
