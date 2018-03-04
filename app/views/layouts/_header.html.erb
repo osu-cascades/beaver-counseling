@@ -1,7 +1,12 @@
 <!-- Files with a _ infront of it means it is a partial facility -->
 
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #dc4405;">
-  <%= link_to "BeaverCounseling", root_path, id: "logo", class: "nav-link" %>
+  <ul class="navbar-nav">
+    <li style="font-size: 70%;">
+      <%= link_to "OSU Cascades<br />Counseling Clinic".html_safe, root_path, id: "logo", class: "nav-link" %>
+    </li>
+  </ul>
+  <!-- second ul tag centers links -->
   <ul class="navbar-nav">
     <% if user_signed_in? %>
       <% if current_user.admin? %>
