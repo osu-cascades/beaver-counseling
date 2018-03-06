@@ -45,7 +45,6 @@
         <th>Client name</th>
         <th>Counselor name</th>
         <th>Status</th>
-        <th>Save Status</th>
         <th>Client Id</th>
         <th colspan="5"></th>
       </tr>
@@ -57,16 +56,40 @@
         <td><%= note.client_name %></td>
         <td><%= note.counselor_name %></td>
         <td>
-          <%= note.status %>
-          <!--<select>
-            <option>Open</option>
-            <option>Submitted</option>
-            <option>Accepted</option>
-            <option>Rejected</option>
-          </select>-->
+          <% if note.status == "Open" %>
+            <select>
+              <option selected>Open</option>
+              <option>Submitted</option>
+              <option>Accepted</option>
+              <option>Rejected</option>
+            </select>
+          <% end %>
+          <% if note.status == "Submitted" %>
+            <select>
+              <option>Open</option>
+              <option selected>Submitted</option>
+              <option>Accepted</option>
+              <option>Rejected</option>
+            </select>
+          <% end %>
+          <% if note.status == "Accepted" %>
+            <select>
+              <option>Open</option>
+              <option>Submitted</option>
+              <option selected>Accepted</option>
+              <option>Rejected</option>
+            </select>
+          <% end %>
+          <% if note.status == "Rejected" %>
+            <select>
+              <option>Open</option>
+              <option>Submitted</option>
+              <option>Accepted</option>
+              <option selected>Rejected</option>
+            </select>
+          <% end %>
         </td>
 
-        <td><button>Save</button></td>
         <td><%= note.client_id %></td>
       </tr>
       <tr>
@@ -116,13 +139,7 @@
 
     <div class="field">
 			<%= f.label :status %>
-			<%= f.text_field :status %>
-      <select>
-        <option>Open</option>
-        <option>Submitted</option>
-        <option>Accepted</option>
-        <option>Rejected</option>
-      </select>
+      <%=  f.select :status, [['Open'], ['Submitted'], ['Accepted'], ['Rejected']] %>
 		</div>
 
     <div class="field">
@@ -164,9 +181,9 @@
     message.sessionNumber = rowId;
     message.clientName = row.cells[0].innerHTML;
     message.counselorName = row.cells[1].innerHTML;
-    message.status = "ok"; //row.cells[2].innerHTML;
+    message.status = row.cells[2].childNodes[1].options[row.cells[2].childNodes[1].selectedIndex].text;
     message.content = CKEDITOR.instances['editor' + rowId].getData()
-    message.clientId = row.cells[4].innerHTML;
+    message.clientId = row.cells[3].innerHTML;
     //params.require(:note).permit(:session_number, :client_name, :counselor_name, :status, :content, :client_id)
 
     $.ajax({
@@ -182,9 +199,7 @@
         if (formValid) {
           console.log("success");
         } else {
-          if (data.status == "ok") {
-            location.reload();
-          }
+          location.reload();
         }
       },
       error: function (jqXHR, textStatus, errorThrown, data) {
