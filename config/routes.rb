@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 	get 'admin/adminhome' => 'admin#adminhome', id: 'adminhome'
 	get 'admin/adminclientreports' => 'admin#adminclientreports', id: 'adminclientreports'
 	get 'admin/adminmanageusers' => 'admin#adminmanageusers', id: 'adminmanageusers'
+  get 'admin/submittednotes' => 'admin#submittednotes', id: 'submittednotes'
 
 	get 'pages/counselorhome' => 'high_voltage/pages#show', id: 'counselorhome'
 
