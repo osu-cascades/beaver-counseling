@@ -75,6 +75,8 @@
             <div class="panel">
               <br><textarea id="editor<%= note.id.to_s %>" class="ckeditor<%= note.id.to_s %>"><%= note.content %></textarea><br>
               <script>
+                CKEDITOR.config.disableNativeSpellChecker = false;
+                CKEDITOR.config.extraPlugins = 'scayt';
                 CKEDITOR.replace( 'editor<%= note.id.to_s %>' );
                 CKEDITOR.add
               </script>

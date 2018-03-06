@@ -99,8 +99,10 @@
 
             <br><textarea id="editor<%= note.id.to_s %>" class="ckeditor<%= note.id.to_s %>"><%= note.content %></textarea><br>
             <script>
-               CKEDITOR.replace( 'editor<%= note.id.to_s %>' );
-               CKEDITOR.add
+              CKEDITOR.config.disableNativeSpellChecker = false;
+              CKEDITOR.config.extraPlugins = 'scayt';
+              CKEDITOR.replace( 'editor<%= note.id.to_s %>' );
+              CKEDITOR.add
             </script>
             <!-- <%= button_to 'Save Note', update_notes_path(note.id, note: {content: 'value1', id: note.id}), method: :put %>-->
             <button id="<%= note.id.to_s %>btn" onclick="updateNote(this)">Save</button>
