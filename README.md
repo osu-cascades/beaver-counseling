@@ -126,7 +126,7 @@ $ bundle exec rake appengine:exec -- bundle exec rake db:migrate
 
 5. View website using 
 ```
-$ glcoud app deploy 
+$ glcoud app browse 
 ```
 
 Copyright © 2017 OSU Cascades. All rights reserved.
