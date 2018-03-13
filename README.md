@@ -97,7 +97,36 @@ Then open a web browser with the web address localhost:3000 to see the app runni
 
 ## Deployment
 
-We have chosen to deploy to Heroku located here: https://beavercounseling.herokuapp.com/
+We are using Google Cloud Platforms' App Engine to host the application.
+Hosted at: https://beavercounseling.appspot.com/
 
+To deploy to GCP a more comprehensive guide can be found at:
+https://cloud.google.com/ruby/rails/using-cloudsql-postgres
+
+Simplified steps:
+
+0. Get access to project
+
+1. Download Google Cloud SDK
+
+2. Run 
+```
+$ bundle exec bin/rails assets:precompile
+```
+
+3. Run 
+```
+$ gcloud app deploy --no-promote
+```
+
+4. Run any migrations with 
+```
+$ bundle exec rake appengine:exec -- bundle exec rake db:migrate
+```
+
+5. View website using 
+```
+$ glcoud app browse 
+```
 
 Copyright © 2017 OSU Cascades. All rights reserved.
