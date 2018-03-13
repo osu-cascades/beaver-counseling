@@ -1,0 +1,111 @@
+<style>
+	.top{
+		display:inline-block;
+	}
+
+	.center {
+		text-align: center;
+	}
+
+	table, th, td {
+		border: 1px solid black;
+	}
+</style>
+
+<div style="text-align: center;">
+	<h1>Admin Home</h1>
+</div>
+
+<div style="text-align:center;">
+	<div style="display: inline-block;">
+		<%= button_to "Client Reports", 'adminclientreports', :method => :get, :class => 'btn', :style => "background: #D3D3D3;" %>
+	</div>&nbsp;&nbsp;
+	<div style="display: inline-block;">
+		<%= button_to "Manage Users", 'adminmanageusers', :method => :get, :class => 'btn', :style => "background: #D3D3D3;" %>
+	</div>&nbsp;&nbsp;
+	<div style="display: inline-block;">
+		<%= button_to "Submitted Notes", 'submittednotes', :method => :get, :class => 'btn', :style => "background: #D3D3D3;" %>
+	</div>
+</div>
+<br>
+
+<input type="text" id="searchBar" onkeyup="search()" placeholder="Search" style="width: 100%">
+<br><br>
+<table style="width:100%;" id="table">
+	<tr>
+		<th id="name">Name</th>
+		<th>ID</th>
+		<th>Age</th>
+		<th>Counselor</th>
+		<th>View More</th>
+		<th>Notes</th>
+	</tr>
+	<% @clients = Client.all %>
+	<% @clients.each do |client| %>
+		<tr>
+			<td><%= client.first_name %> <%= client.last_name %></td>
+			<td><%= client.custom_id %></td>
+			<td><%= client.age %></td>
+			<% if (client.counselor_id.nil?) %>
+				<td>None</td>
+			<% else %>
+				<td><%= (User.find_by_id(client.counselor_id)).name %></td>
+			<% end %>
+			<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
+			<td><%= button_to 'Notes', client_notes_path_url(client.id), :method => :get %></td>
+		</tr>
+	<% end %>
+</table>
+
+<table class='table'>
+<thead>
+	 <tr>
+		 <th>index</th>
+		 <th>date</th>
+		 <th>counselor</th>
+		 <th>event</th>
+	 </tr>
+ </thead>
+
+<tbody><br><br>
+
+<% @clients = Client.all %>
+<% @clients.each do |client| %>
+		<%  client.versions.reverse.each do |version| %>
+			<tr>
+				<td><%= version.index %></td>
+				<td><%= version.created_at %></td>
+				<td><%= find_version_counselor_name(version) %></td>
+				<td><%= version.event.humanize %></td>
+				<td><%= link_to 'Diff', diff_client_version_path(client, version) %></td>
+				<td><%= link_to 'Rollback', rollback_client_version_path(client, version), method: 'PATCH' %></td>
+			</tr>
+		<% end %>
+<% end %>
+
+</tbody>
+</table>
+
+<script>
+	function search() {
+	  var input, filter, table, tr, name, counselor, custom_id;
+	  input = document.getElementById("searchBar");
+	  filter = input.value.toUpperCase();
+		table = document.getElementById("table");
+		tr = table.getElementsByTagName("tr");
+  	for (var i = 0; i < tr.length; i++) {
+    	name = tr[i].getElementsByTagName("td")[0];
+			counselor = tr[i].getElementsByTagName("td")[3];
+			custom_id = tr[i].getElementsByTagName("td")[1];
+    	if (name) {
+    		if (name.innerHTML.toUpperCase().indexOf(filter) > -1 ||
+						counselor.innerHTML.toUpperCase().indexOf(filter) > -1 ||
+						custom_id.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      		tr[i].style.display = "";
+    		} else {
+      		tr[i].style.display = "none";
+    		}
+    	}
+  	}
+	}
+</script>

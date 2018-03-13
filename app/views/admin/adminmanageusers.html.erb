@@ -32,6 +32,7 @@
 				<th>Username</th>
 				<th>Role</th>
 				<th>Archive</th>
+				<th>Set As Archived</th>
 			</tr>
 			<% @users = User.all %>
 			<% @users.each do |user| %>
@@ -40,6 +41,10 @@
 				<td><%= user.name %></td>
 				<td><%= user.email %></td>
 				<td><%= user.role %></td>
+				<% puts "aslkdfjlaskdf"%>
+				<% puts user.is_archived %>
+				<% puts "aslkdfjlaskdf"%>
+				<td><%= user.is_archived %></td>
 				<td><button>-</button></td>
 			</tr>
 			<% end %>
@@ -71,6 +76,11 @@
 		<div class="field">
 			<%= f.label :password_confirmation %><br />
 			<%= f.password_field :password_confirmation, autocomplete: "off" %>
+		</div>
+
+		<div class="field">
+			<%= f.label "Archived?" %><br />
+			<%= f.text_field :is_archived, autocomplete: "off", value: "false" %>
 		</div>
 
 		<div class="field" style="display: none;">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207214628) do
+ActiveRecord::Schema.define(version: 20180304225454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20180207214628) do
     t.string "counselor_seen"
     t.string "help_reason"
     t.string "previous_counselor", default: [], array: true
+    t.string "custom_id"
   end
 
   create_table "family_members", force: :cascade do |t|
@@ -76,12 +77,15 @@ ActiveRecord::Schema.define(version: 20180207214628) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.string "counselorName"
-    t.string "clientName"
-    t.integer "session"
-    t.string "content"
+    t.integer "session_number"
+    t.string "client_name"
+    t.string "counselor_name"
+    t.string "status"
+    t.text "content"
+    t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_notes_on_client_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,8 +103,19 @@ ActiveRecord::Schema.define(version: 20180207214628) do
     t.datetime "updated_at", null: false
     t.integer "role"
     t.string "name"
+    t.boolean "is_archived"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.integer "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object"
+    t.datetime "created_at"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
 end

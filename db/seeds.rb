@@ -10,6 +10,7 @@ user = User.new(
   password: 'password',
   password_confirmation: 'password',
   role: "admin",
-  name: 'admin name'
+  name: 'admin name',
+  is_archived: false
 )
 user.save!

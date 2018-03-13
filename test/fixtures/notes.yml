@@ -1,13 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  counselorName: MyString
-  clientName: MyString
-  session: 1
-  content: MyString
+  session_number: 1
+  client_name: MyString
+  counselor_name: MyString
+  status: MyString
+  content: MyText
+  client_id: 1
 
 two:
-  counselorName: MyString
-  clientName: MyString
-  session: 1
-  content: MyString
+  session_number: 1
+  client_name: MyString
+  counselor_name: MyString
+  status: MyString
+  content: MyText
+  client_id: 1

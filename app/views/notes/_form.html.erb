@@ -12,31 +12,36 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :counselorName %>
-    <%= form.text_field :counselorName, id: :note_counselorName %>
+    <%= form.label :session_number %>
+    <%= form.number_field :session_number, id: :note_session_number %>
   </div>
 
   <div class="field">
-    <%= form.label :clientName %>
-    <%= form.text_field :clientName, id: :note_clientName %>
+    <%= form.label :client_name %>
+    <%= form.text_field :client_name, id: :note_client_name %>
   </div>
 
   <div class="field">
-    <%= form.label :session %>
-    <%= form.number_field :session, id: :note_session %>
+    <%= form.label :counselor_name %>
+    <%= form.text_field :counselor_name, id: :note_counselor_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status, id: :note_status %>
   </div>
 
   <div class="field">
     <%= form.label :content %>
-    <%= form.cktext_area :content, id: :note_content %>
+    <%= form.text_area :content, id: :note_content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :client_id %>
+    <%= form.number_field :client_id, id: :note_client_id %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
-
-<script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
-<script>
-CKEDITOR.replace( 'editor1' );
-</script>

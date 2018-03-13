@@ -200,16 +200,21 @@
   </div>
 
   <div class="field">
+    <%= form.label "custom id" %>
+    <%= form.text_field :custom_id, id: :client_custom_id %>
+  </div>
+
+  <div class="field">
   <table class="table">
   <thead>
       <tr>
-        <th>Previous Counselors</th>     
+        <th>Previous Counselors</th>
      </tr>
   </thead>
   <tbody>
      <% @client.previous_counselor.each do |item|%>
      <tr>
-        <th><%= item %></th>  
+        <th><%= item %></th>
      </tr>
      <% end %>
   </tbody>

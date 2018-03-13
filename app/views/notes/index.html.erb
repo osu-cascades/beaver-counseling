@@ -2,13 +2,17 @@
 
 <h1>Notes</h1>
 
+<% puts @client %>
+
 <table>
   <thead>
     <tr>
-      <th>Counselorname</th>
-      <th>Clientname</th>
-      <th>Session</th>
+      <th>Session number</th>
+      <th>Client name</th>
+      <th>Counselor name</th>
+      <th>Status</th>
       <th>Content</th>
+      <th>Client</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +20,12 @@
   <tbody>
     <% @notes.each do |note| %>
       <tr>
-        <td><%= note.counselorName %></td>
-        <td><%= note.clientName %></td>
-        <td><%= note.session %></td>
+        <td><%= note.session_number %></td>
+        <td><%= note.client_name %></td>
+        <td><%= note.counselor_name %></td>
+        <td><%= note.status %></td>
         <td><%= note.content %></td>
+        <td><%= note.client_id %></td>
         <td><%= link_to 'Show', note %></td>
         <td><%= link_to 'Edit', edit_note_path(note) %></td>
         <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>

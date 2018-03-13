@@ -1,6 +1,18 @@
 class ClientsController < ApplicationController
   before_action :authenticate_user!, :except => [:new, :create, :show] #Adding acception to authentication. anybody can create client
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :set_paper_trail_whodunnit
+
+  def notes
+    # authorize counselor
+
+    #puts "what is the id"
+    #puts @client.id
+    #puts params[:id]
+    if (current_user.admin? == false) # || @client.id != current_user.id )
+      redirect_to root_path, alert: 'Admins only!'
+    end
+  end
 
   # GET /clients
   # GET /clients.json
@@ -76,6 +88,7 @@ class ClientsController < ApplicationController
       @client.counselor_seen_before = false
       @client.counselor_seen = "counselor_seen"
       @client.help_reason = "help_reason"
+      @client.custom_id = "0"
     else
       @client = Client.new(client_params)
       #@client.age = @client.age() #Calculate clients age based off of dob
@@ -144,7 +157,7 @@ class ClientsController < ApplicationController
         :leave_message_work, :spouse_first_name, :spouse_last_name, :spouse_dob, :spouse_occupation,
         :spouse_employer, :spouse_phone, :emergency_name, :emergency_relation, :emergency_address,
         :emergency_phone, :health_insurance, :insurance_company, :physician, :physician_phone,
-        :medication, :counselor_seen_before, :counselor_seen, :help_reason, :previous_counselor,
+        :medication, :counselor_seen_before, :counselor_seen, :help_reason, :previous_counselor, :custom_id,
         family_members_attributes: [:id, :name, :age, :dob, :relation, :_destroy])
     end
 end
