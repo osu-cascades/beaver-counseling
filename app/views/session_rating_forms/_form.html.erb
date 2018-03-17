@@ -1,0 +1,206 @@
+<style>
+  p { font-size: 1rem; }
+
+  .rb-box {
+    max-width: 840px;
+    margin: 50px auto;
+    border-radius: .75em;
+  }
+
+  .rb-tab {
+    display: inline-block;
+    position: relative;
+    width: 6%;
+  }
+
+  .rb-txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1em;
+    color: black;
+  }
+
+  .rb-spot {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    border: 1px solid rgba(0,0,0,.4);
+    border-radius: 100%;
+    cursor: pointer;
+    transition: ease .5s;
+  }
+
+  .rb-tab-active .rb-spot {
+    background: rgba(0,0,0,.3);
+    border: 1px solid rgba(0,0,0,.6);
+  }
+
+  .desc {
+    position: relative;
+    top: 5px;
+  }
+
+  .left {
+    float:left;
+    width: 33%;
+    overflow: hidden;
+  }
+
+  .center {
+    display: inline-block;
+    width: 33%;
+    overflow: hidden;
+  }
+
+  .right {
+    float:right;
+    width: 33%;
+    overflow: hidden;
+  }
+
+</style>
+
+<%= form_with(model: session_rating_form, local: true) do |form| %>
+  <% if session_rating_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(session_rating_form.errors.count, "error") %> prohibited this session_rating_form from being saved:</h2>
+      <ul>
+      <% session_rating_form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="rb-box">
+    <div class="field left">
+      <%= form.label "Clinic Client #" %>
+      <%= form.text_field :client_number, id: :session_rating_form_client_number %>
+    </div>
+
+    <div class="field center">
+      <%= form.label :date %>
+      <%= form.date_select :date, id: :session_rating_form_date %>
+    </div>
+
+    <div class="field right">
+      <%= form.label "Room #" %>
+      <%= form.number_field :room_num, id: :session_rating_form_room_num %>
+    </div>
+    <br><br>
+
+    <p>1. How effective was your session in meeting your needs today?</p>
+    <div id="rb-1">
+      <span class="desc">Ineffective</span>
+      <% 10.times do |i| %>
+        <div class="rb-tab" data-value="<%=i+1%>">
+          <div class="rb-spot">
+            <span class="rb-txt"><%=i+1%></span>
+          </div>
+        </div>
+      <% end %>
+      <span class="desc">Highly Effective</span>
+    </div>
+    <br><br>
+
+    <p>2. How well were you able to focus in your session today?</p>
+    <div id="rb-2">
+      <span class="desc">Unfocused</span>
+      <% 10.times do |i| %>
+        <div class="rb-tab" data-value="<%=i+1%>">
+          <div class="rb-spot">
+            <span class="rb-txt"><%=i+1%></span>
+          </div>
+        </div>
+      <% end %>
+      <span class="desc">Highly Focused</span>
+    </div>
+    <br><br>
+
+    <p>3. Based on today's session, how would you rate your relationship with your student counselor?</p>
+    <div id="rb-3">
+      <span class="desc">Weak Relationship</span>
+      <% 10.times do |i| %>
+        <div class="rb-tab" data-value="<%=i+1%>">
+          <div class="rb-spot">
+            <span class="rb-txt"><%=i+1%></span>
+          </div>
+        </div>
+      <% end %>
+      <span class="desc">Strong Relationship</span>
+    </div>
+    <br><br>
+
+    <p>4. Based on today's session, I believe my counselor cares about me.</p>
+    <div id="rb-3">
+      <span class="desc">Not at all.</span>
+      <% 10.times do |i| %>
+        <div class="rb-tab" data-value="<%=i+1%>">
+          <div class="rb-spot">
+            <span class="rb-txt"><%=i+1%></span>
+          </div>
+        </div>
+      <% end %>
+      <span class="desc">The most they could.</span>
+    </div>
+    <br><br>
+
+    <p>5. At the start of the session what was your stress level?</p>
+    <div id="rb-3">
+      <span class="desc">Not Stressed</span>
+      <% 10.times do |i| %>
+        <div class="rb-tab" data-value="<%=i+1%>">
+          <div class="rb-spot">
+            <span class="rb-txt"><%=i+1%></span>
+          </div>
+        </div>
+      <% end %>
+      <span class="desc">Highly Stressed</span>
+    </div>
+    <br><br>
+
+    <p>6. At the end of session today, what was your stress level?</p>
+    <div id="rb-3">
+      <span class="desc">Not Stressed</span>
+      <% 10.times do |i| %>
+        <div class="rb-tab" data-value="<%=i+1%>">
+          <div class="rb-spot">
+            <span class="rb-txt"><%=i+1%></span>
+          </div>
+        </div>
+      <% end %>
+      <span class="desc">Highly Stressed</span>
+    </div>
+    <br><br>
+
+    <p>7. Is there anything else you would like to share about your session today?
+      (<span style="font-weight: bolder;">OPTIONAL</span>)
+    </p>
+
+    <textarea rows="4" cols="100"></textarea>
+    <br><br>
+
+    <p style="text-align: center; width: 100%;">
+      <button class="btn" style="background: #D3D3D3;" onclick="send()">Send</button>
+    </p>
+  </div>
+<% end %>
+
+<script>
+
+$(".rb-tab").click(function(){
+  $(this).parent().find(".rb-tab").removeClass("rb-tab-active");
+  $(this).addClass("rb-tab-active");
+});
+
+function send() {
+  alert("call ajax here");
+}
+
+</script>

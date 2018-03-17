@@ -17,8 +17,10 @@
 	}*/
 </style>
 
-<div class="center"> 
+<div class="center">
 	<h1>Welcome to OSU Cascades Counseling Clinic</h1>
 
 	<%= button_to "New Clients Register Here", '/clients/new', :method => :get, :class => 'btn' %>
+	<br>
+	<%= button_to "Send Session Feedback", '/session_rating_forms/new', :method => :get, :class => 'btn' %>
 </div>

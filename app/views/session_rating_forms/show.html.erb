@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client number:</strong>
+  <%= @session_rating_form.client_number %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @session_rating_form.date %>
+</p>
+
+<p>
+  <strong>Room num:</strong>
+  <%= @session_rating_form.room_num %>
+</p>
+
+<p>
+  <strong>Effectiveness:</strong>
+  <%= @session_rating_form.effectiveness %>
+</p>
+
+<p>
+  <strong>Focus:</strong>
+  <%= @session_rating_form.focus %>
+</p>
+
+<p>
+  <strong>Relationship:</strong>
+  <%= @session_rating_form.relationship %>
+</p>
+
+<p>
+  <strong>Care:</strong>
+  <%= @session_rating_form.care %>
+</p>
+
+<p>
+  <strong>Start stress:</strong>
+  <%= @session_rating_form.start_stress %>
+</p>
+
+<p>
+  <strong>End stress:</strong>
+  <%= @session_rating_form.end_stress %>
+</p>
+
+<p>
+  <strong>Optional info:</strong>
+  <%= @session_rating_form.optional_info %>
+</p>
+
+<%= link_to 'Edit', edit_session_rating_form_path(@session_rating_form) %> |
+<%= link_to 'Back', session_rating_forms_path %>

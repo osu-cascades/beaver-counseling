@@ -1,0 +1,2 @@
+module SessionRatingFormsHelper
+end

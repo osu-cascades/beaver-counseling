@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180304225454) do
+ActiveRecord::Schema.define(version: 20180317055851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20180304225454) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
+  create_table "client_feedbacks", force: :cascade do |t|
+    t.integer "effectiveness"
+    t.integer "focus"
+    t.integer "relationship"
+    t.integer "care"
+    t.integer "start_stress"
+    t.integer "end_stress"
+    t.string "optional_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "clients", force: :cascade do |t|
@@ -86,6 +98,21 @@ ActiveRecord::Schema.define(version: 20180304225454) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_notes_on_client_id"
+  end
+
+  create_table "session_rating_forms", force: :cascade do |t|
+    t.string "client_number"
+    t.date "date"
+    t.integer "room_num"
+    t.integer "effectiveness"
+    t.integer "focus"
+    t.integer "relationship"
+    t.integer "care"
+    t.integer "start_stress"
+    t.integer "end_stress"
+    t.string "optional_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
