@@ -66,133 +66,124 @@
 
 </style>
 
-<%= form_with(model: session_rating_form, local: true) do |form| %>
-  <% if session_rating_form.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(session_rating_form.errors.count, "error") %> prohibited this session_rating_form from being saved:</h2>
-      <ul>
-      <% session_rating_form.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="rb-box">
-    <div class="field left">
-      <%= form.label "Clinic Client #" %>
-      <%= form.text_field :client_number, id: :session_rating_form_client_number %>
-    </div>
-
-    <div class="field center">
-      <%= form.label :date %>
-      <%= form.date_select :date, id: :session_rating_form_date %>
-    </div>
-
-    <div class="field right">
-      <%= form.label "Room #" %>
-      <%= form.number_field :room_num, id: :session_rating_form_room_num %>
-    </div>
-    <br><br>
-
-    <p>1. How effective was your session in meeting your needs today?</p>
-    <div id="rb-1">
-      <span class="desc">Ineffective</span>
-      <% 10.times do |i| %>
-        <div class="rb-tab" data-value="<%=i+1%>">
-          <div class="rb-spot">
-            <span class="rb-txt"><%=i+1%></span>
-          </div>
-        </div>
-      <% end %>
-      <span class="desc">Highly Effective</span>
-    </div>
-    <br><br>
-
-    <p>2. How well were you able to focus in your session today?</p>
-    <div id="rb-2">
-      <span class="desc">Unfocused</span>
-      <% 10.times do |i| %>
-        <div class="rb-tab" data-value="<%=i+1%>">
-          <div class="rb-spot">
-            <span class="rb-txt"><%=i+1%></span>
-          </div>
-        </div>
-      <% end %>
-      <span class="desc">Highly Focused</span>
-    </div>
-    <br><br>
-
-    <p>3. Based on today's session, how would you rate your relationship with your student counselor?</p>
-    <div id="rb-3">
-      <span class="desc">Weak Relationship</span>
-      <% 10.times do |i| %>
-        <div class="rb-tab" data-value="<%=i+1%>">
-          <div class="rb-spot">
-            <span class="rb-txt"><%=i+1%></span>
-          </div>
-        </div>
-      <% end %>
-      <span class="desc">Strong Relationship</span>
-    </div>
-    <br><br>
-
-    <p>4. Based on today's session, I believe my counselor cares about me.</p>
-    <div id="rb-3">
-      <span class="desc">Not at all.</span>
-      <% 10.times do |i| %>
-        <div class="rb-tab" data-value="<%=i+1%>">
-          <div class="rb-spot">
-            <span class="rb-txt"><%=i+1%></span>
-          </div>
-        </div>
-      <% end %>
-      <span class="desc">The most they could.</span>
-    </div>
-    <br><br>
-
-    <p>5. At the start of the session what was your stress level?</p>
-    <div id="rb-3">
-      <span class="desc">Not Stressed</span>
-      <% 10.times do |i| %>
-        <div class="rb-tab" data-value="<%=i+1%>">
-          <div class="rb-spot">
-            <span class="rb-txt"><%=i+1%></span>
-          </div>
-        </div>
-      <% end %>
-      <span class="desc">Highly Stressed</span>
-    </div>
-    <br><br>
-
-    <p>6. At the end of session today, what was your stress level?</p>
-    <div id="rb-3">
-      <span class="desc">Not Stressed</span>
-      <% 10.times do |i| %>
-        <div class="rb-tab" data-value="<%=i+1%>">
-          <div class="rb-spot">
-            <span class="rb-txt"><%=i+1%></span>
-          </div>
-        </div>
-      <% end %>
-      <span class="desc">Highly Stressed</span>
-    </div>
-    <br><br>
-
-    <p>7. Is there anything else you would like to share about your session today?
-      (<span style="font-weight: bolder;">OPTIONAL</span>)
-    </p>
-
-    <textarea rows="4" cols="100"></textarea>
-    <br><br>
-
-    <p style="text-align: center; width: 100%;">
-      <button class="btn" style="background: #D3D3D3;" onclick="send()">Send</button>
-    </p>
+<div class="rb-box">
+  <div class="field left">
+    Clinic Client #<input id="clientNum"></input>
   </div>
-<% end %>
+
+  <div class="field center">
+    Date: <span id="date"></span>
+  </div>
+
+  <div class="field right">
+    Room #<input id="roomNum"></input>
+  </div>
+  <br><br>
+
+  <p>1. How effective was your session in meeting your needs today?</p>
+  <div id="rb-1">
+    <span class="desc">Ineffective</span>
+    <% 10.times do |i| %>
+      <div class="rb-tab" data-value="<%=i+1%>">
+        <div class="rb-spot">
+          <span class="rb-txt"><%=i+1%></span>
+        </div>
+      </div>
+    <% end %>
+    <span class="desc">Highly Effective</span>
+  </div>
+  <br><br>
+
+  <p>2. How well were you able to focus in your session today?</p>
+  <div id="rb-2">
+    <span class="desc">Unfocused</span>
+    <% 10.times do |i| %>
+      <div class="rb-tab" data-value="<%=i+1%>">
+        <div class="rb-spot">
+          <span class="rb-txt"><%=i+1%></span>
+        </div>
+      </div>
+    <% end %>
+    <span class="desc">Highly Focused</span>
+  </div>
+  <br><br>
+
+  <p>3. Based on today's session, how would you rate your relationship with your student counselor?</p>
+  <div id="rb-3">
+    <span class="desc">Weak Relationship</span>
+    <% 10.times do |i| %>
+      <div class="rb-tab" data-value="<%=i+1%>">
+        <div class="rb-spot">
+          <span class="rb-txt"><%=i+1%></span>
+        </div>
+      </div>
+    <% end %>
+    <span class="desc">Strong Relationship</span>
+  </div>
+  <br><br>
+
+  <p>4. Based on today's session, I believe my counselor cares about me.</p>
+  <div id="rb-3">
+    <span class="desc">Not at all.</span>
+    <% 10.times do |i| %>
+      <div class="rb-tab" data-value="<%=i+1%>">
+        <div class="rb-spot">
+          <span class="rb-txt"><%=i+1%></span>
+        </div>
+      </div>
+    <% end %>
+    <span class="desc">The most they could.</span>
+  </div>
+  <br><br>
+
+  <p>5. At the start of the session what was your stress level?</p>
+  <div id="rb-3">
+    <span class="desc">Not Stressed</span>
+    <% 10.times do |i| %>
+      <div class="rb-tab" data-value="<%=i+1%>">
+        <div class="rb-spot">
+          <span class="rb-txt"><%=i+1%></span>
+        </div>
+      </div>
+    <% end %>
+    <span class="desc">Highly Stressed</span>
+  </div>
+  <br><br>
+
+  <p>6. At the end of session today, what was your stress level?</p>
+  <div id="rb-3">
+    <span class="desc">Not Stressed</span>
+    <% 10.times do |i| %>
+      <div class="rb-tab" data-value="<%=i+1%>">
+        <div class="rb-spot">
+          <span class="rb-txt"><%=i+1%></span>
+        </div>
+      </div>
+    <% end %>
+    <span class="desc">Highly Stressed</span>
+  </div>
+  <br><br>
+
+  <p>7. Is there anything else you would like to share about your session today?
+    (<span style="font-weight: bolder;">OPTIONAL</span>)
+  </p>
+
+  <textarea rows="4" cols="100" id="optionalInfo"></textarea>
+  <br><br>
+
+  <p style="text-align: center; width: 100%;">
+    <button class="btn" style="background: #D3D3D3;" onclick="send()">Send</button>
+  </p>
+</div>
+
 
 <script>
+
+$( document ).ready(function() {
+  var nowDate = new Date();
+  var date = (nowDate.getMonth()+1) + '/' + nowDate.getDate() + '/' + nowDate.getFullYear(); // january is 0
+  document.getElementById("date").innerHTML = date;
+});
 
 $(".rb-tab").click(function(){
   $(this).parent().find(".rb-tab").removeClass("rb-tab-active");
@@ -200,7 +191,46 @@ $(".rb-tab").click(function(){
 });
 
 function send() {
-  alert("call ajax here");
+  var message = {};
+
+  try {
+    // get data from page
+    message.client_number = document.getElementById('clientNum').value;
+    message.date = new Date();
+    message.room_num =  parseInt(document.getElementById('roomNum').value);
+    var active = document.getElementsByClassName('rb-tab-active');
+    message.effectiveness = parseInt(active[0].getAttribute('data-value'));
+    message.focus = parseInt(active[1].getAttribute('data-value'));
+    message.relationship = parseInt(active[2].getAttribute('data-value'));
+    message.care = parseInt(active[3].getAttribute('data-value'));
+    message.start_stress = parseInt(active[4].getAttribute('data-value'));
+    message.end_stress = parseInt(active[5].getAttribute('data-value'));
+    message.optional_info = document.getElementById('optionalInfo').value;
+
+    $.ajax({
+      type: "POST",
+      url: "/session_rating_forms",
+      data: JSON.stringify({session_rating_form:{"client_number":message.client_number, "date":message.date,
+                            "room_num":message.room_num, "effectiveness":message.effectiveness, "focus":message.focus,
+                            "relationship":message.relationship, "care":message.care, "start_stress":message.start_stress,
+                            "end_stress":message.end_stress, "optional_info":message.optional_info}}),
+      contentType:"application/json",
+      dataType: "json",
+      success: function (data) {
+        var formValid = (data.status === 'OK');
+        if (formValid) {
+          console.log("success");
+        } else {
+          alert("success, thank you for your feedback");
+        }
+      },
+      error: function (jqXHR, textStatus, errorThrown, data) {
+        console.log("error");
+      }
+    });
+  } catch (err) {
+    alert("error please verify all information is filled in correctly");
+  }
 }
 
 </script>

@@ -28,18 +28,6 @@ ActiveRecord::Schema.define(version: 20180317055851) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "client_feedbacks", force: :cascade do |t|
-    t.integer "effectiveness"
-    t.integer "focus"
-    t.integer "relationship"
-    t.integer "care"
-    t.integer "start_stress"
-    t.integer "end_stress"
-    t.string "optional_info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "clients", force: :cascade do |t|
     t.string "first_name"
     t.datetime "created_at", null: false
