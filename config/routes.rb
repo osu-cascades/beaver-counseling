@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 	resources :users
 	resources :clients
   resources :notes
+  resources :session_rating_forms
 
   match '/notes' => 'notes#update', via: :put, as: 'update_notes'
 

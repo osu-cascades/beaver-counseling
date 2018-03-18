@@ -1,3 +1,10 @@
+PATH
+  remote: lib/gems/devise_security_extension-0.9.2
+  specs:
+    devise_security_extension (0.9.2)
+      devise (>= 2.0.0)
+      rails (>= 3.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -319,6 +326,7 @@ DEPENDENCIES
   ckeditor
   coffee-rails (~> 4.2)
   devise
+  devise_security_extension!
   diffy
   high_voltage (~> 3.0.0)
   jbuilder (~> 2.5)

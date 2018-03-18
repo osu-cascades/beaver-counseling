@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180304225454) do
+ActiveRecord::Schema.define(version: 20180318045225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,21 @@ ActiveRecord::Schema.define(version: 20180304225454) do
     t.index ["client_id"], name: "index_notes_on_client_id"
   end
 
+  create_table "session_rating_forms", force: :cascade do |t|
+    t.string "client_number"
+    t.date "date"
+    t.integer "room_num"
+    t.integer "effectiveness"
+    t.integer "focus"
+    t.integer "relationship"
+    t.integer "care"
+    t.integer "start_stress"
+    t.integer "end_stress"
+    t.string "optional_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -104,6 +119,7 @@ ActiveRecord::Schema.define(version: 20180304225454) do
     t.integer "role"
     t.string "name"
     t.boolean "is_archived"
+    t.datetime "password_changed_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
