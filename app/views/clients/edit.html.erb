@@ -259,7 +259,20 @@
   </div>
   <h2>Other Members of Your Household</h2>
   <div style="border:1px solid black; padding: 10px;">
-
+  <% for family_member in @client.family_members %>
+      <% if family_member.name.to_s.empty? == false %>
+        <p>
+          Name:
+          <u><%= family_member.name %></u>
+          Age:
+          <u><%= family_member.age %></u>
+          Dob:
+          <u><%= family_member.dob %></u>
+          Relation:
+          <u><%= family_member.relation %></u>
+        </p>
+      <% end %>
+  <% end %>
   </div>
   <h2>Emergency Contact</h2>
   <div style="border:1px solid black; padding: 10px;">
