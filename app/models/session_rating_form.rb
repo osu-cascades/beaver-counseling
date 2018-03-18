@@ -1,0 +1,2 @@
+class SessionRatingForm < ApplicationRecord
+end

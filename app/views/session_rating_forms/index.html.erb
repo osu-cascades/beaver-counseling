@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Session Rating Forms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Client number</th>
+      <th>Date</th>
+      <th>Room num</th>
+      <th>Effectiveness</th>
+      <th>Focus</th>
+      <th>Relationship</th>
+      <th>Care</th>
+      <th>Start stress</th>
+      <th>End stress</th>
+      <th>Optional info</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @session_rating_forms.each do |session_rating_form| %>
+      <tr>
+        <td><%= session_rating_form.client_number %></td>
+        <td><%= session_rating_form.date %></td>
+        <td><%= session_rating_form.room_num %></td>
+        <td><%= session_rating_form.effectiveness %></td>
+        <td><%= session_rating_form.focus %></td>
+        <td><%= session_rating_form.relationship %></td>
+        <td><%= session_rating_form.care %></td>
+        <td><%= session_rating_form.start_stress %></td>
+        <td><%= session_rating_form.end_stress %></td>
+        <td><%= session_rating_form.optional_info %></td>
+        <td><%= link_to 'Show', session_rating_form %></td>
+        <td><%= link_to 'Edit', edit_session_rating_form_path(session_rating_form) %></td>
+        <td><%= link_to 'Destroy', session_rating_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Session Rating Form', new_session_rating_form_path %>

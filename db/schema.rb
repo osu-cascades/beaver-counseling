@@ -88,6 +88,21 @@ ActiveRecord::Schema.define(version: 20180318045225) do
     t.index ["client_id"], name: "index_notes_on_client_id"
   end
 
+  create_table "session_rating_forms", force: :cascade do |t|
+    t.string "client_number"
+    t.date "date"
+    t.integer "room_num"
+    t.integer "effectiveness"
+    t.integer "focus"
+    t.integer "relationship"
+    t.integer "care"
+    t.integer "start_stress"
+    t.integer "end_stress"
+    t.string "optional_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
