@@ -9,9 +9,11 @@ class ClientsController < ApplicationController
     #puts "what is the id"
     #puts @client.id
     #puts params[:id]
-    if (current_user.admin? == false) # || @client.id != current_user.id )
-      redirect_to root_path, alert: 'Admins only!'
-    end
+
+    # this isn't working
+    #if (current_user.admin? == false) # || @client.id != current_user.id )
+    #  redirect_to root_path, alert: 'Admins only!'
+    #end
   end
 
   # GET /clients
