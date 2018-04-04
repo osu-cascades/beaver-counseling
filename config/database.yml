@@ -82,5 +82,5 @@ production:
   <<: *default
   database: "postgres"
   username: "postgres"
-  password: "Cascades1111"
-  host: "/cloudsql/beavercounseling:us-central1:beaver-db"
+  password: "postgresclinic2018"
+  host: "/cloudsql/cascadesclinic-197917:us-central1:cascades-clinic"
