@@ -81,6 +81,6 @@ test:
 production:
   <<: *default
   database: "postgres"
-  username: "postgres"
-  password: "postgresclinic2018"
+  username: ENV['production_db_username']
+  password: ENV['production_db_password']
   host: "/cloudsql/cascadesclinic-197917:us-central1:cascades-clinic"
