@@ -20,12 +20,13 @@ gem 'chartkick'
 gem 'bootstrap'
 #gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'devise'
-gem 'devise_security_extension', :path => "lib/gems/devise_security_extension-0.9.2"
+gem 'devise_security_extension', git: 'https://github.com/phatworx/devise_security_extension.git'
 gem 'high_voltage', '~> 3.0.0'
 gem 'ckeditor'
 gem "paperclip", "~> 5.2.1"
 gem 'paper_trail'
 gem 'diffy'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -38,7 +39,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-  
+
 gem 'listen', '>= 3.0.5', '< 3.2'
 gem "appengine", "~> 0.4.1"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
