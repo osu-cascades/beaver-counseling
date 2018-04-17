@@ -1,4 +1,6 @@
-<br><h1>Sign Up</h1>
+<br><h1>Client Information Sheet</h1>
+
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.min.js" %>
 
 <style>
   .goodBorder {
@@ -6,7 +8,33 @@
     border: 1px solid grey;
     padding: 15px;
   }
+
+  label.error {
+    color: red;
+}
 </style>
+
+<script>
+function validatearticleFunction() {
+  $("#new_client").validate({
+    debug: false,
+    rules: {
+    },
+    messages:{
+
+    },
+    submitHandler: function(form){
+      form.submit();
+    }
+    });
+}
+
+$(document).ready(validatearticleFunction);
+
+$(document).ready(function() {
+    alert('hi');
+  });
+</script>
 
 <div class="goodBorder" style="margin:100px; text-align: center;">
 
@@ -26,8 +54,8 @@
   <% end %>-->
 
   <div class="field fieldStyle">
-    <%= form.text_field :first_name, id: :client_first_name, placeholder: "First Name" %>
-    <%= form.text_field :last_name, id: :client_last_name, placeholder: "Last Name" %>
+    <%= form.text_field :first_name, required: true, id: :client_first_name, placeholder: "First Name" %>
+    <%= form.text_field :last_name, required: true, id: :client_last_name, placeholder: "Last Name" %>
   </div>
 
   <div class="field fieldStyle">
@@ -226,7 +254,7 @@
   <%= check_box_tag :autofill, true, (@auto_fill == 'true') %> autofill form
 
   <div style="margin-top: 1em;">
-    <%= form.submit "Sign Up", :class => 'btn btn-primary' %>
+    <%= form.submit "Submit", :class => 'btn btn-primary' %>
   </div><br>
 
 <% end %>
