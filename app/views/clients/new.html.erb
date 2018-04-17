@@ -19,6 +19,16 @@ function validatearticleFunction() {
   $("#new_client").validate({
     debug: false,
     rules: {
+      "client[email]": {
+        required: function(e) {
+          return !$("#client_phone_number").is(':filled');
+        }
+      },
+      "client[phone_number]": {
+        required: function(e) {
+          return !$("#client_email").is(':filled');
+        }
+      },
     },
     messages:{
 
@@ -31,9 +41,7 @@ function validatearticleFunction() {
 
 $(document).ready(validatearticleFunction);
 
-$(document).ready(function() {
-    alert('hi');
-  });
+
 </script>
 
 <div class="goodBorder" style="margin:100px; text-align: center;">
