@@ -31,4 +31,9 @@ class ClientTest < ActiveSupport::TestCase
     assert(client_with_apostrophe.valid?)
   end
 
+  test "Client should have a last_name" do
+    client_name = "TestingSucks"
+    client = clients(:valid)
+    assert_equal(client_name, client.last_name)
+  end
 end
