@@ -2,6 +2,15 @@
 
 valid:
   first_name: Jack
+  last_name: TestingSucks
+  dob: 1800-02-11 1:24:00
+  emergency_name: aflac
+  emergency_relation: father in law twice removed
+  emergency_address: p sherman 42 wallaby way
+  emergency_phone: Call-Me-MaYbe
+  health_insurance: True
+  counselor_seen_before: True
+  help_reason: I cannot tell a lie
 
 invalid:
   first_name: 23.0
