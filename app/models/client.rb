@@ -3,6 +3,7 @@ class Client < ApplicationRecord
   # accept: d'Arras Jr. S-Hausen
   validates :first_name, format: { with: /\A[a-zA-Z\'.-]+\z/}
   validates :last_name, format: { with: /\A[a-zA-Z\'.-]+\z/}
+  #validate :validate_age
 
   has_many :family_members
   has_many :notes
@@ -15,6 +16,12 @@ class Client < ApplicationRecord
 
   def counselor_name
     user ? user.name : ''
+  end
+
+  def validate_age
+    if dob.present? && dob > 120.years.ago.to_i
+      errors.add(:dob, 'Older than 120, not likely')
+    end
   end
 
 end
