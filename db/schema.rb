@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419030341) do
+ActiveRecord::Schema.define(version: 20180419030942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20180419030341) do
   end
 
   create_table "clients", force: :cascade do |t|
-    t.string "first_name"
+    t.string "first_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "counselor_id"
-    t.string "last_name"
-    t.datetime "dob"
+    t.string "last_name", null: false
+    t.datetime "dob", null: false
     t.string "phone_number"
     t.boolean "leave_message"
     t.string "email"
@@ -49,18 +49,18 @@ ActiveRecord::Schema.define(version: 20180419030341) do
     t.string "spouse_occupation"
     t.string "spouse_employer"
     t.string "spouse_phone"
-    t.string "emergency_name"
-    t.string "emergency_relation"
-    t.string "emergency_address"
-    t.string "emergency_phone"
-    t.boolean "health_insurance"
+    t.string "emergency_name", null: false
+    t.string "emergency_relation", null: false
+    t.string "emergency_address", null: false
+    t.string "emergency_phone", null: false
+    t.boolean "health_insurance", null: false
     t.string "insurance_company"
     t.string "physician"
     t.string "physician_phone"
     t.string "medication"
-    t.boolean "counselor_seen_before"
+    t.boolean "counselor_seen_before", null: false
     t.string "counselor_seen"
-    t.string "help_reason"
+    t.string "help_reason", null: false
     t.string "previous_counselor", default: [], array: true
     t.string "custom_id"
   end
