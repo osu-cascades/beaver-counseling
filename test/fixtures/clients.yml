@@ -2,18 +2,36 @@
 
 valid:
   first_name: Jack
-  last_name: TestingSucks
-  dob: 1800-02-11 1:24:00
-  emergency_name: aflac
-  emergency_relation: father in law twice removed
-  emergency_address: p sherman 42 wallaby way
-  emergency_phone: Call-Me-MaYbe
-  health_insurance: True
-  counselor_seen_before: True
-  help_reason: I cannot tell a lie
+  last_name: B
+  dob: 2010-02-11 11:02:57
+  emergency_name: gg
+  emergency_relation: pp
+  emergency_address: pp
+  emergency_phone: ff
+  health_insurance: true
+  counselor_seen_before: true
+  help_reason: true
 
 invalid:
   first_name: 23.0
+  last_name: B
+  dob: 2010-02-11 11:02:57
+  emergency_name: gg
+  emergency_relation: pp
+  emergency_address: pp
+  emergency_phone: ff
+  health_insurance: true
+  counselor_seen_before: true
+  help_reason: true
 
 with_apostrophe_in_name:
   first_name: D'Angelo
+  last_name: B
+  dob: 2010-02-11 11:02:57
+  emergency_name: gg
+  emergency_relation: pp
+  emergency_address: pp
+  emergency_phone: ff
+  health_insurance: true
+  counselor_seen_before: true
+  help_reason: true

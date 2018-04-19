@@ -5,7 +5,7 @@ class ClientTest < ActiveSupport::TestCase
   test "should always pass" do
     assert true
   end
-=begin
+
   test "Client should exist" do
     assert_nothing_raised { Client.new }
   end
@@ -30,5 +30,5 @@ class ClientTest < ActiveSupport::TestCase
     client_with_apostrophe = clients(:with_apostrophe_in_name)
     assert(client_with_apostrophe.valid?)
   end
-=end
+
 end
