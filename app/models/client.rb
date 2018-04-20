@@ -9,8 +9,8 @@ class Client < ApplicationRecord
   #validates :emergency_address, format: { }
   validates :emergency_phone, format: { with: /\d{3}-\d{3}-\d{4}/ }
   validates :health_insurance, inclusion: { in: [ true, false ] }
+  validates :counselor_seen_before, inclusion: { in: [ true, false ] }
 =begin
-  validates :counselor_seen_before
   validates :help_reason
 =end
 

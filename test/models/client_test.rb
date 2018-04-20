@@ -64,4 +64,9 @@ class ClientTest < ActiveSupport::TestCase
     assert valid_client
   end
 
+  test "Client counselor_seen_before is valid" do
+    valid_client = clients(:valid)
+    assert valid_client
+  end
+
 end

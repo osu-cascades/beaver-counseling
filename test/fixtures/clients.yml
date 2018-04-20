@@ -10,7 +10,7 @@ valid:
   emergency_phone: 999-888-7777
   health_insurance: true
   counselor_seen_before: false
-  help_reason: true
+  help_reason: I Hate Life
 
 invalid:
   first_name: 23.0
