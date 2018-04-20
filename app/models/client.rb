@@ -12,6 +12,7 @@ class Client < ApplicationRecord
   validates :health_insurance, inclusion: { in: [ true, false ] }
   validates :counselor_seen_before, inclusion: { in: [ true, false ] }
   validates :help_reason, presence: true
+  validate :validate_leave_message
 
   has_many :family_members
   has_many :notes
@@ -29,6 +30,13 @@ class Client < ApplicationRecord
   def validate_age
     if dob.present? && dob > 120.years.ago.to_i
       errors.add(:dob, 'Older than 120, not likely')
+    end
+  end
+
+  def validate_leave_message
+    # this is not a possible state
+    if :phone_number.present? && :leave_message.present? == false
+      errors.add(:phone_number, 'phone number is required')
     end
   end
 
