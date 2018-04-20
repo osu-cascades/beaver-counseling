@@ -3,11 +3,11 @@
 valid:
   first_name: Jack
   last_name: TestingSucks
-  dob: 1990-02-11 11:02:57
-  emergency_name: gg
-  emergency_relation: pp
+  dob: 1990-02-11
+  emergency_name: aflac
+  emergency_relation: FatherInLaw
   emergency_address: pp
-  emergency_phone: ff
+  emergency_phone: 999-888-7777
   health_insurance: true
   counselor_seen_before: true
   help_reason: true
@@ -17,7 +17,7 @@ invalid:
   last_name: B
   dob: 1990-02-11 11:02:57
   emergency_name: gg
-  emergency_relation: pp
+  emergency_relation: sister-mother
   emergency_address: pp
   emergency_phone: ff
   health_insurance: true
@@ -29,6 +29,18 @@ with_apostrophe_in_name:
   last_name: B
   dob: 1990-02-11 11:02:57
   emergency_name: gg
+  emergency_relation: pp
+  emergency_address: pp
+  emergency_phone: 999-888-7777
+  health_insurance: true
+  counselor_seen_before: true
+  help_reason: true
+
+with_period_in_emergency_name:
+  first_name: D'Angelo
+  last_name: B
+  dob: 1990-02-11 11:02:57
+  emergency_name: Duke Phil Sr. the Third
   emergency_relation: pp
   emergency_address: pp
   emergency_phone: ff

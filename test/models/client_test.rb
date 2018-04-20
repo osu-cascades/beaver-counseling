@@ -2,10 +2,6 @@ require 'test_helper'
 
 class ClientTest < ActiveSupport::TestCase
 
-  test "should always pass" do
-    assert true
-  end
-
   test "Client should exist" do
     assert_nothing_raised { Client.new }
   end
@@ -36,4 +32,28 @@ class ClientTest < ActiveSupport::TestCase
     client = clients(:valid)
     assert_equal(client_name, client.last_name)
   end
+
+
+  test "Client with a dob is valid" do
+    valid_dob = clients(:valid)
+    assert(valid_dob)
+  end
+
+  test "Client shouldn't be older than 120" do
+
+  end
+
+  test "Client should have an emergency name" do
+    client_emergency_name = "aflac"
+    client = clients(:valid)
+    assert_equal(client_emergency_name, client.emergency_name)
+  end
+
+  test "Client emergency_relation with - is invalid" do
+    invalid_client = clients(:invalid)
+    assert_not(invalid_client.valid?)
+  end
+
+  
+
 end
