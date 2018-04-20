@@ -54,6 +54,14 @@ class ClientTest < ActiveSupport::TestCase
     assert_not(invalid_client.valid?)
   end
 
-  
+  test "Client valid phone number is not null" do
+    valid_client = clients(:valid)
+    assert_not_nil valid_client, "client is not returning nil."
+  end
+
+  test "Client health_insurance is valid" do
+    valid_client = clients(:valid)
+    assert valid_client
+  end
 
 end

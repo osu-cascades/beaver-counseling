@@ -9,7 +9,7 @@ valid:
   emergency_address: pp
   emergency_phone: 999-888-7777
   health_insurance: true
-  counselor_seen_before: true
+  counselor_seen_before: false
   help_reason: true
 
 invalid:
