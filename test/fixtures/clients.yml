@@ -15,7 +15,7 @@ valid:
 invalid:
   first_name: 23.0
   last_name: B
-  dob: 1990-02-11 11:02:57
+  dob: 1990-02-11
   emergency_name: gg
   emergency_relation: sister-mother
   emergency_address: pp
@@ -39,7 +39,7 @@ with_apostrophe_in_name:
 with_period_in_emergency_name:
   first_name: D'Angelo
   last_name: B
-  dob: 1990-02-11 11:02:57
+  dob: 1990-02-11
   emergency_name: Duke Phil Sr. the Third
   emergency_relation: pp
   emergency_address: pp

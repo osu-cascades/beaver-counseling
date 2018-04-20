@@ -3,6 +3,7 @@ class Client < ApplicationRecord
   # accept: d'Arras Jr. S-Hausen
   validates :first_name, format: { with: /\A[a-zA-Z\'.-]+\z/ }
   validates :last_name, format: { with: /\A[a-zA-Z\'.-]+\z/ }
+  validates :dob, :presence => true
   #validate :validate_age
   validates :emergency_name, format: { with: /\A[a-zA-Z\'.-]+\z/ }
   validates :emergency_relation, format: { with: /\A[a-zA-Z]+\z/ }
