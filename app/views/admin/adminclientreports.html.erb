@@ -22,12 +22,15 @@
 <canvas id="bar-chart-horizontal" width="200" height="60"></canvas>
 <script>
 
-//$('element').val(<%= @clients.to_json %>);
 var clients = <%= raw Client.all.to_json %>
 var ages = [];
 
 for (var i = 0; i < clients.length; i++) {
-	ages.push(parseInt(clients[i].age));
+	//Calculates age from date of birth
+	var bday = new Date(clients[i].dob)
+	var agedif = Date.now() - bday.getTime();
+	var agedate = new Date(agedif);
+	ages.push(parseInt(agedate.getUTCFullYear() - 1970));
 }
 
 var labels = [];
