@@ -53,15 +53,9 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    # created clients are assigned to the admin
-    #@user = User.find_by_role(1)
-    #@client.assign_default_counselor
-    #@client.counselor_id = @user.id
-
     if (params[:autofill])
       @client = Client.new
       @client.first_name = "Bob"
-      @client.age = 27
       @client.last_name = "Smith"
       @client.dob = DateTime.now
       @client.phone_number = "541-000-0000"
@@ -93,7 +87,6 @@ class ClientsController < ApplicationController
       @client.custom_id = "0"
     else
       @client = Client.new(client_params)
-      #@client.age = @client.age() #Calculate clients age based off of dob
     end
 
     respond_to do |format|
@@ -124,6 +117,7 @@ class ClientsController < ApplicationController
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
         format.json { render :show, status: :ok, location: @client }
       else
+        @users = User.all # used in client->edit @users.collect
         format.html { render :edit }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end

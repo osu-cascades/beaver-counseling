@@ -354,9 +354,10 @@
 
 <div id="infosheet" style="display: none;">
   <strong>
-    <h2 style="text-align: center"> OSU Cascades Counseling Practicum</h2>
-    <h2 style="text-align: center"> Client Information Sheet</h2>
+    <h2 style="text-align: center"> OSU Counseling Clinic</h2>
+    <h2 style="text-align: center"> Client Information Form</h2>
   </strong>
+  <p style="float: right">Date:<u><%= @client.created_at =%></u></p>
   <div style="border: 1px solid black; padding: 10px;">
     <p>Date: <u><%= @client.updated_at %></u></p>
     <p>Client name: <u><%= @client.to_s %></u>   Age:<u><%= @client.age %></u>   Date of Birth: <u><%= @client.dob %></u></p>
