@@ -63,7 +63,7 @@
 
         <div>
           <%= form.label :dob %>
-          <%= form.datetime_select :dob, id: :client_dob %>
+          <%= form.datetime_select :dob, id: :client_dob, :start_year => 1901, :end_year => Time.current.year %>
         </div>
 
         <div class="field" style="display: inline-block;">
@@ -120,7 +120,7 @@
 
         <div class="field">
           <%= form.label :Partner_dob %>
-          <%= form.datetime_select :spouse_dob, id: :client_spouse_dob %>
+          <%= form.datetime_select :spouse_dob, id: :client_spouse_dob, :start_year => 1901, :end_year => Time.current.year %>
         </div>
 
         <div class="field">
@@ -284,7 +284,7 @@
 
   <b>Student Information</b>
   <div style="border: black 1px solid; padding: 5px">
-    <p><b>Student Name: </b> <%= @users.find(@client.counselor_id).name %></p>
+    <p><b>Student Name: </b> <%= @client.counselor_id ? @users.find(@client.counselor_id).name : "None" %></p>
     <p><b>Practicum/Internship Site: </b></p>
     <p><b>Academic Degree: MS</b> | <b>Program: Clinical Mental Health</b> | <b>Course: </b></p>
   </div>
