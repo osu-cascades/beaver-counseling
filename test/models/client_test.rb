@@ -33,14 +33,9 @@ class ClientTest < ActiveSupport::TestCase
     assert_equal(client_name, client.last_name)
   end
 
-
   test "Client with a dob is valid" do
     valid_dob = clients(:valid)
     assert(valid_dob)
-  end
-
-  test "Client shouldn't be older than 120" do
-
   end
 
   test "Client should have an emergency name" do
@@ -52,6 +47,11 @@ class ClientTest < ActiveSupport::TestCase
   test "Client emergency_relation with - is invalid" do
     invalid_client = clients(:invalid)
     assert_not(invalid_client.valid?)
+  end
+
+  test "Client emergency_address is valid" do
+    valid_client = clients(:valid)
+    assert valid_client
   end
 
   test "Client valid phone number is not null" do
