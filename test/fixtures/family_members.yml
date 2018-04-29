@@ -2,12 +2,10 @@
 
 one:
   name: MyString
-  age: MyString
   dob: MyString
   relation: MyString
 
 two:
   name: MyString
-  age: MyString
   dob: MyString
   relation: MyString

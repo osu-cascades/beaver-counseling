@@ -74,9 +74,7 @@ class ClientsController < ApplicationController
       @client.spouse_phone = "Partner_phone"
       @client.emergency_name = "emergency_name"
       @client.emergency_relation = "emergency_relation"
-      @client.emergency_address = "emergency_address"
       @client.emergency_phone = "emergency_phone"
-      @client.health_insurance = true
       @client.insurance_company = "insurance_company"
       @client.physician = "physician"
       @client.physician_phone = "physician_phone"
@@ -151,8 +149,8 @@ class ClientsController < ApplicationController
       params.require(:client).permit(:first_name, :age, :last_name, :counselor_id, :dob, :phone_number,
         :leave_message, :email, :occupation, :employer, :employer_address, :work_phone,
         :leave_message_work, :spouse_first_name, :spouse_last_name, :spouse_dob, :spouse_occupation,
-        :spouse_employer, :spouse_phone, :emergency_name, :emergency_relation, :emergency_address,
-        :emergency_phone, :health_insurance, :insurance_company, :physician, :physician_phone,
+        :spouse_employer, :spouse_phone, :emergency_name, :emergency_relation,
+        :emergency_phone, :insurance_company, :physician, :physician_phone,
         :medication, :counselor_seen_before, :counselor_seen, :help_reason, :previous_counselor, :custom_id,
         family_members_attributes: [:id, :name, :age, :dob, :relation, :_destroy])
     end

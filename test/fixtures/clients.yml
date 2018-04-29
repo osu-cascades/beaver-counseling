@@ -6,11 +6,10 @@ valid:
   dob: 1990-02-11
   emergency_name: aflac
   emergency_relation: FatherInLaw
-  emergency_address: p sherman 42 wallaby way sydney
   emergency_phone: 999-888-7777
-  health_insurance: true
+  insurance_company: Nationwide
   counselor_seen_before: false
-  help_reason: I Hate Life.- Anything goes
+  how_referred: Close friend
 
 invalid:
   first_name: 23.0
@@ -18,11 +17,10 @@ invalid:
   dob: 1990-02-11
   emergency_name: gg
   emergency_relation: sister-mother
-  emergency_address: pp
   emergency_phone: ff
-  health_insurance: true
+  insurance_company: Nationwide
   counselor_seen_before: true
-  help_reason: true
+  how_referred: Close friend
 
 with_apostrophe_in_name:
   first_name: D'Angelo
@@ -30,11 +28,10 @@ with_apostrophe_in_name:
   dob: 1990-02-11 11:02:57
   emergency_name: gg
   emergency_relation: pp
-  emergency_address: pp
   emergency_phone: 999-888-7777
-  health_insurance: true
+  insurance_company: Nationwide
   counselor_seen_before: true
-  help_reason: true
+  how_referred: Close friend
 
 with_period_in_emergency_name:
   first_name: D'Angelo
@@ -42,8 +39,7 @@ with_period_in_emergency_name:
   dob: 1990-02-11
   emergency_name: Duke Phil Sr. the Third
   emergency_relation: pp
-  emergency_address: pp
   emergency_phone: ff
-  health_insurance: true
+  insurance_company: Nationwide
   counselor_seen_before: true
-  help_reason: true
+  how_referred: Close friend
