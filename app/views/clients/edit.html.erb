@@ -47,7 +47,7 @@
         <% if (current_user.admin?) %>
           <div>
             <%= form.label :counselor_id %>
-            <%= form.select :counselor_id, @users.collect { |user| [user.email, user.id] } %>
+            <%= form.select :counselor_id, @users.collect { |user| [user.email, user.id] }, { include_blank: true } %>
           </div>
         <% end %>
 
@@ -67,8 +67,18 @@
         </div>
 
         <div class="field" style="display: inline-block;">
+          <%= form.label :local_address %>
+          <%= form.text_field :local_address, id: :client_local_address %>
+        </div>
+
+        <div class="field" style="display: inline-block;">
           <%= form.label :phone_number %>
           <%= form.text_field :phone_number, id: :client_phone_number %>
+        </div>
+
+        <div class="field" style="display: inline-block;">
+          <%= form.label :phone_type %>
+          <%= f.select :phone_type, id: :client_phone_type, ['Cell', 'Work', 'Home']%>
         </div>
 
         <div class="field" style="display: inline-block;">
@@ -82,6 +92,12 @@
         </div>
 
         <div class="field">
+          <%= form.label :email_leave_message %>
+          <%= form.text_field :email_leave_message, id:
+          :client_email_leave_message %>
+        </div>
+
+        <div class="field">
           <%= form.label :occupation %>
           <%= form.text_field :occupation, id: :client_occupation %>
         </div>
@@ -90,59 +106,13 @@
           <%= form.label :employer %>
           <%= form.text_field :employer, id: :client_employer %>
         </div>
-
-        <div class="field">
-          <%= form.label :employer_address %>
-          <%= form.text_field :employer_address, id: :client_employer_address %>
-        </div>
-
-        <div class="field" style="display: inline-block;">
-          <%= form.label :work_phone %>
-          <%= form.text_field :work_phone, id: :client_work_phone %>
-        </div>
-
-        <div class="field" style="display: inline-block;">
-          <%= form.label :leave_message_work %>
-          <%= form.check_box :leave_message_work, id: :client_leave_message_work %>
-        </div>
       </div>
       <div class="col-sm">
-
-        <div class="field">
-          <%= form.label :Partner_first_name %>
-          <%= form.text_field :spouse_first_name, id: :client_spouse_first_name %>
-        </div>
-
-        <div class="field">
-          <%= form.label :Partner_last_name %>
-          <%= form.text_field :spouse_last_name, id: :client_spouse_last_name %>
-        </div>
-
-        <div class="field">
-          <%= form.label :Partner_dob %>
-          <%= form.datetime_select :spouse_dob, id: :client_spouse_dob, :start_year => 1901, :end_year => Time.current.year %>
-        </div>
-
-        <div class="field">
-          <%= form.label :Partner_occupation %>
-          <%= form.text_field :spouse_occupation, id: :client_spouse_occupation %>
-        </div>
-
-        <div class="field">
-          <%= form.label :Partner_employer %>
-          <%= form.text_field :spouse_employer, id: :client_spouse_employer %>
-        </div>
-
-        <div class="field">
-          <%= form.label :Partner_phone %>
-          <%= form.text_field :spouse_phone, id: :client_spouse_phone %>
-        </div>
 
         <% @client = Client.find(params[:id]) %>
           <%= form.fields_for :family_members do |family_member_form| %>
             <p>
               Name: <%= family_member_form.text_field :name %>
-              Age: <%= family_member_form.text_field :age %>
               Dob: <%= family_member_form.text_field :dob %>
               Relation: <%= family_member_form.text_field :relation %>
 
@@ -161,21 +131,37 @@
         </div>
 
         <div class="field">
-          <%= form.label :emergency_address %>
-          <%= form.text_field :emergency_address, id: :client_emergency_address %>
+          <%= form.label :emergency_phone %>
+          <%= form.text_field :emergency_phone, id: :client_emergency_phone %>
         </div>
 
         <div class="field">
-          <%= form.label :emergency_phone %>
-          <%= form.text_field :emergency_phone, id: :client_emergency_phone %>
+          <%= form.label :highest_edu %>
+          <%= form.text_field :highest_edu, id: :client_highest_edu %>
+        </div>
+
+        <div class="field">
+          <%= form.label :identified_gender %>
+          <%= form.text_field :identified_gender, id: :client_identified_gender %>
+        </div>
+
+        <div class="field">
+          <%= form.label :culture_background %>
+          <%= form.text_field :culture_background, id: :client_culture_background %>
+        </div>
+
+        <div class="field">
+          <%= form.label :sexual_orientation %>
+          <%= form.text_field :sexual_orientation, id: :client_sexual_orientation %>
+        </div>
+
+        <div class="field">
+          <%= form.label :relationship %>
+          <%= form.text_field :relationship, id: :client_relationship %>
         </div>
       </div>
 
       <div class="col-sm">
-        <div class="field">
-          <%= form.label :health_insurance %>
-          <%= form.check_box :health_insurance, id: :client_health_insurance %>
-        </div>
 
         <div class="field">
           <%= form.label :insurance_company %>
@@ -208,13 +194,13 @@
         </div>
 
         <div class="field">
-          <%= form.label :help_reason %>
-          <%= form.text_field :help_reason, id: :client_help_reason %>
+          <%= form.label "custom id" %>
+          <%= form.text_field :custom_id, id: :client_custom_id %>
         </div>
 
         <div class="field">
-          <%= form.label "custom id" %>
-          <%= form.text_field :custom_id, id: :client_custom_id %>
+          <%= form.label :how_referred %>
+          <%= form.text_field :how_referred, id: :client_how_referred %>
         </div>
 
         <div class="field">

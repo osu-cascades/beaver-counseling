@@ -75,6 +75,9 @@ $(document).ready(validatearticleFunction);
     <%= form.text_field :phone_number, id: :client_phone_number, placeholder: "Phone Number" %>
     <%= form.check_box :leave_message, id: :client_leave_message %>
     <%= form.label :leave_message  %>
+
+    <%= form.label :phone_type  %>
+    <%= f.select :phone_type, id: :client_phone_type, ['Cell', 'Work', 'Home']%>
   </div>
 
   <div class="field fieldStyle">
@@ -94,26 +97,31 @@ $(document).ready(validatearticleFunction);
   </div>
 
 
+  <h5>Demographic Information</h5>
+  <div class="field">
+          <%= form.label :highest_edu %>
+          <%= form.text_field :highest_edu, id: :client_highest_edu %>
+        </div>
 
-  <h5>Partner Information</h5><br>
-  <div class="field fieldStyle">
-    <%= form.text_field :spouse_first_name, id: :client_spouse_first_name, placeholder: "Partner First Name" %>
-    <%= form.text_field :spouse_last_name, id: :client_spouse_last_name, placeholder: "Partner Last Name" %>
-  </div>
+        <div class="field">
+          <%= form.label :identified_gender %>
+          <%= form.text_field :identified_gender, id: :client_identified_gender %>
+        </div>
 
-  <div class="field fieldStyle">
-    <%= form.label :Partner_dob, "Partner's Date of Birth" %>
-    <%= form.date_select :spouse_dob, id: :client_spouse_dob, :start_year => 1901, :end_year => Time.current.year %>
-  </div>
+        <div class="field">
+          <%= form.label :culture_background %>
+          <%= form.text_field :culture_background, id: :client_culture_background %>
+        </div>
 
-  <div class="field fieldStyle">
-    <%= form.text_field :spouse_occupation, id: :client_spouse_occupation, placeholder: "Partner Occupation" %>
-    <%= form.text_field :spouse_employer, id: :client_spouse_employer, placeholder: "Partner Employer" %>
-  </div>
+        <div class="field">
+          <%= form.label :sexual_orientation %>
+          <%= form.text_field :sexual_orientation, id: :client_sexual_orientation %>
+        </div>
 
-  <div class="field fieldStyle">
-    <%= form.text_field :spouse_phone, id: :client_spouse_phone, placeholder: "Partner Phone" %>
-  </div>
+        <div class="field">
+          <%= form.label :relationship %>
+          <%= form.text_field :relationship, id: :client_relationship %>
+        </div>
 
 
 
