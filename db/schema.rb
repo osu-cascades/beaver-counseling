@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419030942) do
+ActiveRecord::Schema.define(version: 20180428001539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,34 +40,32 @@ ActiveRecord::Schema.define(version: 20180419030942) do
     t.string "email"
     t.string "occupation"
     t.string "employer"
-    t.string "employer_address"
-    t.string "work_phone"
-    t.boolean "leave_message_work"
-    t.string "spouse_first_name"
-    t.string "spouse_last_name"
-    t.datetime "spouse_dob"
-    t.string "spouse_occupation"
-    t.string "spouse_employer"
-    t.string "spouse_phone"
     t.string "emergency_name", null: false
     t.string "emergency_relation", null: false
-    t.string "emergency_address", null: false
     t.string "emergency_phone", null: false
-    t.boolean "health_insurance", null: false
     t.string "insurance_company"
     t.string "physician"
     t.string "physician_phone"
     t.string "medication"
     t.boolean "counselor_seen_before", null: false
     t.string "counselor_seen"
-    t.string "help_reason", null: false
     t.string "previous_counselor", default: [], array: true
     t.string "custom_id"
+    t.string "local_address"
+    t.integer "phone_type"
+    t.boolean "email_leave_message"
+    t.string "highest_edu"
+    t.string "identified_gender"
+    t.string "culture_background"
+    t.string "sexual_orientation"
+    t.string "relationship"
+    t.string "how_referred"
+    t.boolean "accepted"
+    t.string "referral_to"
   end
 
   create_table "family_members", force: :cascade do |t|
     t.string "name"
-    t.string "age"
     t.string "dob"
     t.string "relation"
     t.datetime "created_at", null: false
