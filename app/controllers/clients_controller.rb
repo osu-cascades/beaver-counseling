@@ -61,28 +61,27 @@ class ClientsController < ApplicationController
       @client.phone_number = "541-000-0000"
       @client.leave_message = true
       @client.email = "bob@gmail.com"
-      @client.occupation = "occupation"
-      @client.employer = "employer"
-      @client.employer_address = "employer_address"
-      @client.work_phone = "work_phone"
-      @client.leave_message_work = false
-      @client.spouse_first_name = "Partner_first_name"
-      @client.spouse_last_name = "Partner_last_name"
-      @client.spouse_dob = DateTime.now
-      @client.spouse_occupation = "Partner_occupation"
-      @client.spouse_employer = "Partner_employer"
-      @client.spouse_phone = "Partner_phone"
-      @client.emergency_name = "emergency_name"
-      @client.emergency_relation = "emergency_relation"
-      @client.emergency_phone = "emergency_phone"
-      @client.insurance_company = "insurance_company"
+      @client.occupation = "Construction"
+      @client.employer = "Disney"
+      @client.emergency_name = "Mom"
+      @client.emergency_relation = "Mother"
+      @client.emergency_phone = "543-000-000"
+      @client.insurance_company = "Nationwide"
       @client.physician = "physician"
       @client.physician_phone = "physician_phone"
       @client.medication = "medication"
       @client.counselor_seen_before = false
       @client.counselor_seen = "counselor_seen"
-      @client.help_reason = "help_reason"
-      @client.custom_id = "0"
+      @client.local_address = "0"
+      @client.phone_type = 0
+      @client.email_leave_message = false
+      @client.highest_edu = "Masters"
+      @client.identified_gender = "Male/he"
+      @client.culture_background = "White"
+      @client.sexual_orientation = "Other"
+      @client.relationship = "Single"
+      @client.how_referred = "By a close friend"
+
     else
       @client = Client.new(client_params)
     end
@@ -146,12 +145,13 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:first_name, :age, :last_name, :counselor_id, :dob, :phone_number,
-        :leave_message, :email, :occupation, :employer, :employer_address, :work_phone,
-        :leave_message_work, :spouse_first_name, :spouse_last_name, :spouse_dob, :spouse_occupation,
-        :spouse_employer, :spouse_phone, :emergency_name, :emergency_relation,
+      params.require(:client).permit(:first_name, :last_name, :counselor_id, :dob, :phone_number,
+        :leave_message, :email, :occupation, :employer,
+        :emergency_name, :emergency_relation,
         :emergency_phone, :insurance_company, :physician, :physician_phone,
-        :medication, :counselor_seen_before, :counselor_seen, :help_reason, :previous_counselor, :custom_id,
+        :medication, :counselor_seen_before, :counselor_seen, :previous_counselor, :custom_id,
+        :local_address, :phone_type, :email_leave_message, :highest_edu, :identified_gender,
+        :culture_background, :sexual_orientation, :relationship, :how_referred, :accepted, :referral_to
         family_members_attributes: [:id, :name, :age, :dob, :relation, :_destroy])
     end
 end
