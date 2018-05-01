@@ -25,39 +25,6 @@
   <strong>employer:</strong>
   <%= @client.employer %><br>
 
-  <strong>employer_address:</strong>
-  <%= @client.employer_address %><br>
-
-  <strong>work_phone:</strong>
-  <%= @client.work_phone %><br>
-
-  <strong>leave_message_work:</strong>
-  <%= @client.leave_message_work %><br>
-
-  <strong>spouse_first_name:</strong>
-  <%= @client.spouse_first_name %><br>
-
-  <strong>spouse_last_name:</strong>
-  <%= @client.spouse_last_name %><br>
-
-  <strong>spouse_dob:</strong>
-  <%= @client.spouse_dob %><br>
-
-  <strong>leave_message_work:</strong>
-  <%= @client.leave_message_work %><br>
-
-  <strong>spouse_occupation:</strong>
-  <%= @client.spouse_occupation %><br>
-
-  <strong>spouse_employer:</strong>
-  <%= @client.spouse_employer %><br>
-
-  <strong>spouse_employer:</strong>
-  <%= @client.spouse_employer %><br>
-
-  <strong>spouse_phone:</strong>
-  <%= @client.spouse_phone %><br><br>
-
   <% for family_member in @client.family_members %>
     <p>
       <% if family_member.name.to_s.empty? == false %>
@@ -79,14 +46,9 @@
   <strong>emergency_relation:</strong>
   <%= @client.emergency_relation %><br>
 
-  <strong>emergency_address:</strong>
-  <%= @client.emergency_address %><br>
-
   <strong>emergency_phone:</strong>
   <%= @client.emergency_phone %><br>
 
-  <strong>health_insurance:</strong>
-  <%= @client.health_insurance %><br>
 
   <strong>insurance_company:</strong>
   <%= @client.insurance_company %><br>
@@ -106,10 +68,6 @@
   <strong>counselor_seen:</strong>
   <%= @client.counselor_seen %><br>
 
-  <strong>help_reason:</strong>
-  <%= @client.help_reason %><br>
-
   <strong>custom_id:</strong>
   <%= @client.custom_id %><br>
 </p>
-
