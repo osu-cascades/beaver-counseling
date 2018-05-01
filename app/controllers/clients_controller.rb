@@ -66,7 +66,6 @@ class ClientsController < ApplicationController
       @client.emergency_phone = '999-888-7777'
       @client.insurance_company = "asdfa"
       @client.counselor_seen_before = false
-      @client.save
     else
       @client = Client.new(client_params)
     end

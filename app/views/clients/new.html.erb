@@ -74,11 +74,9 @@ $(document).ready(validatearticleFunction);
   <div class="field fieldStyle">
     <%= form.text_field :phone_number, id: :client_phone_number, placeholder: "Phone Number" %>
     <%= form.check_box :leave_message, id: :client_leave_message %>
-    <%= form.label :leave_message  %>
-
+    <%= form.label :leave_message  %><br>
     <%= form.label :phone_type  %>
-
-  <%= form.check_box :phone_type, id: :client_phone_type %>
+    <%= form.select :phone_type, options_for_select([["Select One", ""], "Cell", "Work", "Home"]) %>
   </div>
 
   <div class="field fieldStyle">
@@ -86,60 +84,57 @@ $(document).ready(validatearticleFunction);
     <%= form.text_field :occupation, id: :client_occupation, placeholder: "Occupation" %>
   </div>
 
-<%= form.text_field :local_address, id: :client_local_address, placeholder: "Address" %>
-<%= form.text_field :email_leave_message, id: :client_email_leave_message, placeholder: "leave email" %>
+  <div class="field fieldStyle">
+    <%= form.text_field :local_address, id: :client_local_address, placeholder: "Address" %>
+    <%= form.text_field :email_leave_message, id: :client_email_leave_message, placeholder: "leave email" %>
+  </div>
 
   <div class="field fieldStyle">
     <%= form.text_field :employer, id: :client_employer, placeholder: "Employer" %>
   </div>
 
-
-
   <h5>Demographic Information</h5>
   <div class="field">
-          <%= form.label :highest_edu %>
-          <%= form.text_field :highest_edu, id: :client_highest_edu %>
-        </div>
+    <%= form.label "Highest Education" %>
+    <%= form.text_field :highest_edu, id: :client_highest_edu %>
+  </div>
 
-        <div class="field">
-          <%= form.label :identified_gender %>
-          <%= form.text_field :identified_gender, id: :client_identified_gender %>
-        </div>
+  <div class="field">
+    <%= form.label :identified_gender %>
+    <%= form.text_field :identified_gender, id: :client_identified_gender %>
+  </div>
 
-        <div class="field">
-          <%= form.label :culture_background %>
-          <%= form.text_field :culture_background, id: :client_culture_background %>
-        </div>
+  <div class="field">
+    <%= form.label :culture_background %>
+    <%= form.text_field :culture_background, id: :client_culture_background %>
+  </div>
 
-        <div class="field">
-          <%= form.label :sexual_orientation %>
-          <%= form.text_field :sexual_orientation, id: :client_sexual_orientation %>
-        </div>
+  <div class="field">
+    <%= form.label :sexual_orientation %>
+    <%= form.text_field :sexual_orientation, id: :client_sexual_orientation %>
+  </div>
 
-        <div class="field">
-          <%= form.label :relationship %>
-          <%= form.text_field :relationship, id: :client_relationship %>
-        </div>
+  <div class="field">
+    <%= form.label :relationship %>
+    <%= form.text_field :relationship, id: :client_relationship %>
+  </div>
 
-        <div class="field">
-          <%= form.label :how_referred %>
-          <%= form.text_field :how_referred, id: :client_how_referred %>
-        </div>
+  <div class="field">
+    <%= form.label :how_referred %>
+    <%= form.text_field :how_referred, id: :client_how_referred %>
+  </div>
 
-        <div class="field">
-          <%= form.label :how_referred %>
-          <%= form.text_field :how_referred, id: :client_how_referred %>
-        </div>
+  <div class="field">
+    <%= form.label :how_referred %>
+    <%= form.text_field :how_referred, id: :client_how_referred %>
+  </div>
 
-        <div class="field">
-          <%= form.label :accepted %>
-          <%= form.check_box :accepted, id: :client_accepted %>
-        </div>
-
-        <div class="field">
-          <%= form.label :referral_to %>
-          <%= form.text_field :referral_to, id: :client_referral_to %>
-        </div>
+  <div class="field">
+    <%= form.label :accepted %>
+    <%= form.check_box :accepted, id: :client_accepted %>
+    <%= form.label :referral_to %>
+    <%= form.text_field :referral_to, id: :client_referral_to %>
+  </div>
 
   <h5>How many members are in your household (optional)</h5>
 
@@ -155,22 +150,16 @@ $(document).ready(validatearticleFunction);
     <% end %>
   <% end %>
 
-
   <h5>Emergency Contact Information</h5><br>
   <div class="field fieldStyle">
-    <%= form.text_field :emergency_name, id: :client_emergency_name, placeholder: "Name" %>
+    <%= form.text_field :emergency_name, id: :client_emergency_name, placeholder: "Emergency Name" %>
     <%= form.text_field :emergency_relation, id: :client_emergency_relation, placeholder: "Emergency Relation" %>
   </div>
 
   <div class="field fieldStyle">
     <%= form.text_field :emergency_phone, id: :client_emergency_phone, placeholder: "Emergency Phone" %>
-  </div>
-
-  <div class="field fieldStyle">
     <%= form.text_field :insurance_company, id: :client_insurance_company, placeholder: "Insurance Company" %>
   </div>
-
-
 
   <h5>History</h5><br>
   <div class="field fieldStyle">

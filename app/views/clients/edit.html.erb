@@ -67,18 +67,8 @@
         </div>
 
         <div class="field" style="display: inline-block;">
-          <%= form.label :local_address %>
-          <%= form.text_field :local_address, id: :client_local_address %>
-        </div>
-
-        <div class="field" style="display: inline-block;">
           <%= form.label :phone_number %>
           <%= form.text_field :phone_number, id: :client_phone_number %>
-        </div>
-
-        <div class="field" style="display: inline-block;">
-          <%= form.label :phone_type %>
-          <%= f.select :phone_type, id: :client_phone_type, ['Cell', 'Work', 'Home']%>
         </div>
 
         <div class="field" style="display: inline-block;">
@@ -89,12 +79,6 @@
         <div class="field">
           <%= form.label :email %>
           <%= form.text_field :email, id: :client_email %>
-        </div>
-
-        <div class="field">
-          <%= form.label :email_leave_message %>
-          <%= form.text_field :email_leave_message, id:
-          :client_email_leave_message %>
         </div>
 
         <div class="field">
@@ -120,6 +104,7 @@
               <%= family_member_form.label :_destroy, "Remove Family Member" %>
             </p>
           <% end %>
+
         <div class="field">
           <%= form.label :emergency_name %>
           <%= form.text_field :emergency_name, id: :client_emergency_name %>
@@ -135,30 +120,6 @@
           <%= form.text_field :emergency_phone, id: :client_emergency_phone %>
         </div>
 
-        <div class="field">
-          <%= form.label :highest_edu %>
-          <%= form.text_field :highest_edu, id: :client_highest_edu %>
-        </div>
-
-        <div class="field">
-          <%= form.label :identified_gender %>
-          <%= form.text_field :identified_gender, id: :client_identified_gender %>
-        </div>
-
-        <div class="field">
-          <%= form.label :culture_background %>
-          <%= form.text_field :culture_background, id: :client_culture_background %>
-        </div>
-
-        <div class="field">
-          <%= form.label :sexual_orientation %>
-          <%= form.text_field :sexual_orientation, id: :client_sexual_orientation %>
-        </div>
-
-        <div class="field">
-          <%= form.label :relationship %>
-          <%= form.text_field :relationship, id: :client_relationship %>
-        </div>
       </div>
 
       <div class="col-sm">
@@ -199,8 +160,58 @@
         </div>
 
         <div class="field">
+          <%= form.label :local_address %>
+          <%= form.text_field :local_address, id: :client_local_address %>
+        </div>
+
+        <div class="field">
+          <%= form.label :phone_type %>
+          <%= form.text_field :phone_type, id: :client_phone_type %>
+        </div>
+
+        <div class="field">
+          <%= form.label :email_leave_message %>
+          <%= form.text_field :email_leave_message, id: :client_email_leave_message %>
+        </div>
+
+        <div class="field">
+          <%= form.label :highest_edu %>
+          <%= form.text_field :highest_edu, id: :client_highest_edu %>
+        </div>
+
+        <div class="field">
+          <%= form.label :identified_gender %>
+          <%= form.text_field :identified_gender, id: :client_identified_gender %>
+        </div>
+
+        <div class="field">
+          <%= form.label :culture_background %>
+          <%= form.text_field :culture_background, id: :client_culture_background %>
+        </div>
+
+        <div class="field">
+          <%= form.label :sexual_orientation %>
+          <%= form.text_field :sexual_orientation, id: :client_sexual_orientation %>
+        </div>
+
+        <div class="field">
+          <%= form.label :relationship %>
+          <%= form.text_field :relationship, id: :client_relationship %>
+        </div>
+
+        <div class="field">
           <%= form.label :how_referred %>
           <%= form.text_field :how_referred, id: :client_how_referred %>
+        </div>
+
+        <div class="field">
+          <%= form.label :accepted %>
+          <%= form.text_field :accepted, id: :client_accepted %>
+        </div>
+
+        <div class="field">
+          <%= form.label :referral_to %>
+          <%= form.text_field :referral_to, id: :client_referral_to %>
         </div>
 
         <div class="field">
@@ -240,14 +251,14 @@
     $("#counseling").attr('id', 'pdf');
     printin();
     $("#pdf").attr('id', 'counseling');
-  }  
+  }
 
   function print3(){
     $("#recording").attr('id', 'pdf');
     printin();
     $("#pdf").attr('id', 'recording');
   }
-    
+
   function print4(){
     $("#treatment").attr('id', 'pdf');
     printin();
@@ -266,7 +277,7 @@
     <h4><b>MS IN COUNSELING - Clinic Mental Health Counseling</b></h4>
     <p><u>Informed Consent for Video/Audio Recording</u></p>
   </div>
-  
+
 
   <b>Student Information</b>
   <div style="border: black 1px solid; padding: 5px">
@@ -322,7 +333,7 @@
         <p>Site Supervisor's Signature</p>
       </div>
       <div class="col-sm">
-        <p>Printed Name</p>        
+        <p>Printed Name</p>
         <p>Printed Name</p>
         <p>Printed Name</p>
         <p>Printed Name</p>
