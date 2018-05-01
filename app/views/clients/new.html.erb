@@ -272,14 +272,16 @@ $(document).ready(validatearticleFunction);
 
   <strong>Draw your signature into the box below</strong><br>
   <canvas style="border: 1px solid black" id="signature-pad" class="signature-pad" width=800 height=300></canvas><br>
-  <button id="save-png">Save as PNG</button>
+  <button id="save-png" onclick="SaveSig()">Save as PNG</button>
   <button id="clear">Clear</button><br><br>
 
   <%= check_box_tag :autofill, true, (@auto_fill == 'true') %> autofill form
 
   <div style="margin-top: 1em;">
-    <%= form.submit "Submit", :class => 'btn btn-primary' %>
+    <%= form.submit "Submit", :class => 'btn btn-primary', %>
   </div><br>
+
+  <input type="hidden" id="sig" name="sig">
 
 <% end %>
 </div>
@@ -318,6 +320,11 @@ $(document).ready(validatearticleFunction);
     backgroundColor: 'rgba(255, 255, 255, 0)',
     penColor: 'rgb(0, 0, 0)'
   });
+
+  function SaveSig(){
+    console.log(signaturePad.getDataURL())
+    $("#sig").val(signaturePad.getDataURL());
+  }
 
   document.getElementById('save-png').addEventListener('click', function () {
     if (signaturePad.isEmpty()) {
