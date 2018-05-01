@@ -1,7 +1,7 @@
 default: &default
-  project_id: cascadesclinic-197917
-  gcs_bucket: cascadesclinic-197917
- 
+  project_id: [cascadesclinic-197917]
+  gcs_bucket: [cascadesclinic-197917]
+
 development:
   <<: *default
 

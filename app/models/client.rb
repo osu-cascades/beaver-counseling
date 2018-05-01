@@ -20,9 +20,10 @@ class Client < ApplicationRecord
 
   def self.storage_bucket
     @storage_bucket ||= begin
-      config = Rails.application.config.x.settings
+      #config = Rails.application.config.x.settings
+      config = YAML.load_file(Rails.root.join('config/settings.yml'))[Rails.env]
       storage = Google::Cloud::Storage.new project_id: config["project_id"],
-                                           credentials: config["keyfile"]
+                                     keyfile: Google::Auth::GCECredentials.new
       storage.bucket config["gcs_bucket"]
     end
   end
