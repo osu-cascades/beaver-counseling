@@ -69,7 +69,6 @@ class ClientsController < ApplicationController
       @client.insurance_company = "Nationwide"
       @client.physician = "physician"
       @client.physician_phone = "physician_phone"
-      @client.medication = "medication"
       @client.counselor_seen_before = false
       @client.counselor_seen = "counselor_seen"
       @client.local_address = "0"
@@ -151,7 +150,7 @@ class ClientsController < ApplicationController
         :emergency_phone, :insurance_company, :physician, :physician_phone,
         :medication, :counselor_seen_before, :counselor_seen, :previous_counselor, :custom_id,
         :local_address, :phone_type, :email_leave_message, :highest_edu, :identified_gender,
-        :culture_background, :sexual_orientation, :relationship, :how_referred, :accepted, :referral_to
+        :culture_background, :sexual_orientation, :relationship, :how_referred, :accepted, :referral_to,
         family_members_attributes: [:id, :name, :age, :dob, :relation, :_destroy])
     end
 end

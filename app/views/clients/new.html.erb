@@ -77,7 +77,8 @@ $(document).ready(validatearticleFunction);
     <%= form.label :leave_message  %>
 
     <%= form.label :phone_type  %>
-    <%= f.select :phone_type, id: :client_phone_type, ['Cell', 'Work', 'Home']%>
+
+  <%= form.check_box :phone_type, id: :client_phone_type %>
   </div>
 
   <div class="field fieldStyle">
@@ -85,16 +86,13 @@ $(document).ready(validatearticleFunction);
     <%= form.text_field :occupation, id: :client_occupation, placeholder: "Occupation" %>
   </div>
 
-  <div class="field fieldStyle">
-    <%= form.text_field :employer, id: :client_employer, placeholder: "Employer" %>
-    <%= form.text_field :employer_address, id: :client_employer_address, placeholder: "Employer Address" %>
-  </div>
+<%= form.text_field :local_address, id: :client_local_address, placeholder: "Address" %>
+<%= form.text_field :email_leave_message, id: :client_email_leave_message, placeholder: "leave email" %>
 
   <div class="field fieldStyle">
-    <%= form.text_field :work_phone, id: :client_work_phone, placeholder: "Work Phone" %>
-    <%= form.check_box :leave_message_work, id: :client_leave_message_work %>
-    <%= form.label :leave_message_work %>
+    <%= form.text_field :employer, id: :client_employer, placeholder: "Employer" %>
   </div>
+
 
 
   <h5>Demographic Information</h5>
@@ -123,7 +121,25 @@ $(document).ready(validatearticleFunction);
           <%= form.text_field :relationship, id: :client_relationship %>
         </div>
 
+        <div class="field">
+          <%= form.label :how_referred %>
+          <%= form.text_field :how_referred, id: :client_how_referred %>
+        </div>
 
+        <div class="field">
+          <%= form.label :how_referred %>
+          <%= form.text_field :how_referred, id: :client_how_referred %>
+        </div>
+
+        <div class="field">
+          <%= form.label :accepted %>
+          <%= form.check_box :accepted, id: :client_accepted %>
+        </div>
+
+        <div class="field">
+          <%= form.label :referral_to %>
+          <%= form.text_field :referral_to, id: :client_referral_to %>
+        </div>
 
   <h5>How many members are in your household (optional)</h5>
 
@@ -132,7 +148,7 @@ $(document).ready(validatearticleFunction);
     <%= form.fields_for :family_members, FamilyMember.new do |family_member_form| %>
       <p id="<%= i.to_s %>">
         <%= family_member_form.text_field :name, placeholder: "Name" %>
-        <%= family_member_form.text_field :age, placeholder: "Age" %>
+      
         Date of Birth: <%= family_member_form.date_select :dob, :start_year => 1901, :end_year => Time.current.year %>
         <%= family_member_form.text_field :relation, placeholder: "Relation" %>
       </p>
@@ -147,13 +163,10 @@ $(document).ready(validatearticleFunction);
   </div>
 
   <div class="field fieldStyle">
-    <%= form.text_field :emergency_address, id: :client_emergency_address, placeholder: "Emergency Address" %>
     <%= form.text_field :emergency_phone, id: :client_emergency_phone, placeholder: "Emergency Phone" %>
   </div>
 
   <div class="field fieldStyle">
-    <%= form.check_box :health_insurance, id: :client_health_insurance %>
-    <%= form.label :health_insurance %>
     <%= form.text_field :insurance_company, id: :client_insurance_company, placeholder: "Insurance Company" %>
   </div>
 
@@ -163,11 +176,6 @@ $(document).ready(validatearticleFunction);
   <div class="field fieldStyle">
     <%= form.text_field :physician, id: :client_physician, placeholder: "Physician" %>
     <%= form.text_field :physician_phone, id: :client_physician_phone, placeholder: "Physician Phone" %>
-  </div>
-
-  <div class="field fieldStyle">
-    <%= form.text_area :medication, id: :client_medication, placeholder: "Medication(s)" %>
-    <%= form.text_area :help_reason, id: :client_help_reason, placeholder: "Reason for seeking counseling" %>
   </div>
 
   <div class="field fieldStyle">
