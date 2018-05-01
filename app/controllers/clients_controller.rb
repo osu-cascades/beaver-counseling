@@ -53,34 +53,20 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
+    puts request.raw_post
+
     if (params[:autofill])
       @client = Client.new
       @client.first_name = "Bob"
       @client.last_name = "Smith"
       @client.dob = DateTime.now
       @client.phone_number = "541-000-0000"
-      @client.leave_message = true
-      @client.email = "bob@gmail.com"
-      @client.occupation = "Construction"
-      @client.employer = "Disney"
       @client.emergency_name = "Mom"
       @client.emergency_relation = "Mother"
-      @client.emergency_phone = "543-000-000"
-      @client.insurance_company = "Nationwide"
-      @client.physician = "physician"
-      @client.physician_phone = "physician_phone"
+      @client.emergency_phone = '999-888-7777'
+      @client.insurance_company = "asdfa"
       @client.counselor_seen_before = false
-      @client.counselor_seen = "counselor_seen"
-      @client.local_address = "0"
-      @client.phone_type = 0
-      @client.email_leave_message = false
-      @client.highest_edu = "Masters"
-      @client.identified_gender = "Male/he"
-      @client.culture_background = "White"
-      @client.sexual_orientation = "Other"
-      @client.relationship = "Single"
-      @client.how_referred = "By a close friend"
-
+      @client.save
     else
       @client = Client.new(client_params)
     end

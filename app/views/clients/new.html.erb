@@ -15,7 +15,7 @@
 </style>
 
 <script>
-function validatearticleFunction() {
+/*function validatearticleFunction() {
   $("#new_client").validate({
     debug: false,
     rules: {
@@ -40,7 +40,7 @@ function validatearticleFunction() {
 }
 
 $(document).ready(validatearticleFunction);
-
+*/
 
 </script>
 
@@ -62,8 +62,8 @@ $(document).ready(validatearticleFunction);
   <% end %>-->
 
   <div class="field fieldStyle">
-    <%= form.text_field :first_name, required: true, id: :client_first_name, placeholder: "First Name" %>
-    <%= form.text_field :last_name, required: true, id: :client_last_name, placeholder: "Last Name" %>
+    <%= form.text_field :first_name, id: :client_first_name, placeholder: "First Name" %>
+    <%= form.text_field :last_name,  id: :client_last_name, placeholder: "Last Name" %>
   </div>
 
   <div class="field fieldStyle">
@@ -148,7 +148,7 @@ $(document).ready(validatearticleFunction);
     <%= form.fields_for :family_members, FamilyMember.new do |family_member_form| %>
       <p id="<%= i.to_s %>">
         <%= family_member_form.text_field :name, placeholder: "Name" %>
-      
+
         Date of Birth: <%= family_member_form.date_select :dob, :start_year => 1901, :end_year => Time.current.year %>
         <%= family_member_form.text_field :relation, placeholder: "Relation" %>
       </p>
