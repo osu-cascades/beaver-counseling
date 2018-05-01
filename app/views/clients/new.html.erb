@@ -278,7 +278,7 @@ $(document).ready(validatearticleFunction);
   <%= check_box_tag :autofill, true, (@auto_fill == 'true') %> autofill form
 
   <div style="margin-top: 1em;">
-    <%= form.submit "Submit", :class => 'btn btn-primary', %>
+    <%= form.submit "Submit", :class => 'btn btn-primary' %>
   </div><br>
 
   <input type="hidden" id="sig" name="sig">
@@ -322,19 +322,20 @@ $(document).ready(validatearticleFunction);
   });
 
   function SaveSig(){
-    console.log(signaturePad.getDataURL())
-    $("#sig").val(signaturePad.getDataURL());
+    //console.log(signaturePad.getDataURL())
+    $("#sig").val(signaturePad.toDataURL());
+    console.log($("#sig").val());
   }
 
-  document.getElementById('save-png').addEventListener('click', function () {
-    if (signaturePad.isEmpty()) {
-      return alert("Please provide a signature first.");
-    }
+  // document.getElementById('save-png').addEventListener('click', function () {
+  //   if (signaturePad.isEmpty()) {
+  //     return alert("Please provide a signature first.");
+  //   }
 
-    var data = signaturePad.toDataURL('image/png');
-    console.log(data);
-    window.open(data);
-  });
+  //   var data = signaturePad.toDataURL('image/png');
+  //   console.log(data);
+  //   window.open(data);
+  // });
 
   document.getElementById('clear').addEventListener('click', function () {
     signaturePad.clear();
