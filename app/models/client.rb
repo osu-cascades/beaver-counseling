@@ -1,3 +1,5 @@
+require "google/cloud/storage"
+
 class Client < ApplicationRecord
   belongs_to :user, optional: true # belongs_to :counselor, :class_name: 'User'
   # accept: d'Arras Jr. S-Hausen
@@ -15,6 +17,26 @@ class Client < ApplicationRecord
   has_many :notes
   accepts_nested_attributes_for :family_members, allow_destroy: true
   has_paper_trail
+
+  def self.storage_bucket
+    @storage_bucket ||= begin
+      config = Rails.application.config.x.settings
+      storage = Google::Cloud::Storage.new project_id: config["project_id"],
+                                           credentials: config["keyfile"]
+      storage.bucket config["gcs_bucket"]
+    end
+  end
+
+  def upload_image(sig)
+    file = Client.storage_bucket.create_file \
+     sig.tempfile,
+     "sig/#{id}",
+     content_type: sig.content_type,
+     acl: "public"
+
+    update_columns signature_url: file.public_url
+  end
+
 
   def to_s
     "#{first_name} #{last_name}"

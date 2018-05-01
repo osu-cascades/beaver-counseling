@@ -55,7 +55,7 @@ class ClientsController < ApplicationController
   def create
     puts request.raw_post
 
-    puts params[:sig]
+    #puts params[:sig]
 
     if (params[:autofill])
       @client = Client.new
@@ -72,6 +72,8 @@ class ClientsController < ApplicationController
     else
       @client = Client.new(client_params)
     end
+
+    @client.upload_image(params[:sig])
 
     respond_to do |format|
       if @client.save
