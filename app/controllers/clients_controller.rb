@@ -55,6 +55,8 @@ class ClientsController < ApplicationController
   def create
     puts request.raw_post
 
+    puts params[:sig]
+
     if (params[:autofill])
       @client = Client.new
       @client.first_name = "Bob"
@@ -131,7 +133,7 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client).permit(:first_name, :last_name, :counselor_id, :dob, :phone_number,
         :leave_message, :email, :occupation, :employer,
-        :emergency_name, :emergency_relation,
+        :emergency_name, :emergency_relation, :sig,
         :emergency_phone, :insurance_company, :physician, :physician_phone,
         :medication, :counselor_seen_before, :counselor_seen, :previous_counselor, :custom_id,
         :local_address, :phone_type, :email_leave_message, :highest_edu, :identified_gender,
