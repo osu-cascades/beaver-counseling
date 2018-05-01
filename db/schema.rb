@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20180501020004) do
   end
 
   create_table "clients", force: :cascade do |t|
-    t.string "first_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "counselor_id"
+    t.string "first_name", null: false
     t.string "last_name", null: false
     t.datetime "dob", null: false
+    t.integer "counselor_id"
     t.string "phone_number"
     t.boolean "leave_message"
     t.string "email"
