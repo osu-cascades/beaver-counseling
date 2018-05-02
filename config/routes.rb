@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   match '/notes' => 'notes#update', via: :put, as: 'update_notes'
 
   get '/clients/:id/notes' => 'clients#notes', as: 'client_notes_path'
+  get '/clients/:id/archive' => 'clients#confirm_archive', as: 'client_archive_path'
 
 	get 'pages/welcome' => 'high_voltage/pages#show', id: 'welcome'
 

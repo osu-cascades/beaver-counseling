@@ -35,10 +35,11 @@
 	<tr>
 		<th id="name">Name</th>
 		<th>ID</th>
-		<th>Age</th>
+		<th>DOB</th>
 		<th>Counselor</th>
 		<th>View More</th>
 		<th>Notes</th>
+		<th>Archive</th>
 	</tr>
 	<% @clients = Client.all %>
 	<% @clients.each do |client| %>
@@ -53,6 +54,7 @@
 			<% end %>
 			<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
 			<td><%= button_to 'Notes', client_notes_path_url(client.id), :method => :get %></td>
+			<td><%= button_to 'Archive', client_archive_path_path(client.id), :method => :get %></td>
 		</tr>
 	<% end %>
 </table>

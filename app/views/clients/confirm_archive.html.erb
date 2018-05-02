@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<h4>Are you sure you want to archive this client?</h4>
+
+  <%= form_for(@client, local: true) do |form| %>
+    <%= form.submit "Submit", :class => "btn btn-success btn-lg" %>
+  <% end %>
 
 <p>
   <strong>First Name:</strong>
