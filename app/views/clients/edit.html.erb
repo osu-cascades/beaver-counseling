@@ -357,16 +357,14 @@
   <p style="float: right">Date: <u><%= @client.updated_at =%></u></p>
   <div style="border: 1px solid black; padding: 10px;">
     <p>Client name: <u><%= @client.to_s %></u>   Age:<u></u>   Date of Birth: <u><%= @client.dob %></u></p>
-    <p>Local address: <u>Need an address here</u></p>
+    <p>Local address: <u><%=@client.local_address%></u></p>
     <p>Phone #<u><%= @client.phone_number %></u> Message: Yes No   Email: <u><%= @client.email %></u></p>
-    <p>Employer's address: <u><%= @client.employer_address %></u>  Work Phone: <u><%= @client.work_phone %></u>  Message Yes No</p>
+    <p>Employer's address: <u></u>  Work Phone: <u></u>  Message Yes No</p>
   </div>
   <div>
   <h2>Partner Information</h2>
   </div>
   <div style="border:1px solid black; padding: 10px;">
-    <p>Name: <u><%= @client.spouse_first_name %> <%= @client.spouse_last_name %></u> Age: <u><%= @client.spouse_dob %></u> </p>
-    <p>Occupation: <u><%= @client.spouse_occupation %></u>  Employer:<u><%= @client.spouse_employer %></u> Phone: <u><%= @client.spouse_phone %></u></p>
   </div>
   <h2>Other Members of Your Household</h2>
   <div style="border:1px solid black; padding: 10px;">
@@ -375,8 +373,6 @@
         <p>
           Name:
           <u><%= family_member.name %></u>
-          Age:
-          <u><%= family_member.age %></u>
           Dob:
           <u><%= family_member.dob %></u>
           Relation:
@@ -388,7 +384,7 @@
   <h2>Emergency Contact</h2>
   <div style="border:1px solid black; padding: 10px;">
     <p>Name: <u><%= @client.emergency_name %></u>  Relation: <u><%= @client.emergency_relation %></u></p>
-    <p>Address: <u><%= @client.employer_address %></u>  Phone: <u><%= @client.emergency_phone %></u></p>
+    <p>Address: <u></u>  Phone: <u><%= @client.emergency_phone %></u></p>
   </div>
   <h2>Health Insurance</h2>
   <div style="border:1px solid black; padding: 10px;">
@@ -399,6 +395,5 @@
     <p>Primary Care Physician (PCP) <u><%= @client.physician %></u>  Phone: <u><%= @client.physician_phone %></u></p>
     <p>Prescription Medications: <u><%= @client.medication %></u></p>
     <p>Have you ever seen a counselor before? Yes No. If yes, where and when? <u><%= @client.counselor_seen %></u></p>
-    <p>Reason for seeking help now? <u><%= @client.help_reason %></u></p>
   </div>
 </div>
