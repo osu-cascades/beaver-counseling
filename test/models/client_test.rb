@@ -2,70 +2,39 @@ require 'test_helper'
 
 class ClientTest < ActiveSupport::TestCase
 
-  test "Client should exist" do
-    assert_nothing_raised { Client.new }
-  end
+  # tests would be useful if client.rb had any interesting methods but it doesn't
 
-  test "has a first name" do
+  test "without a first name is invalid" do
     client = clients(:valid)
-    assert_respond_to(client, :first_name)
+    assert(client.valid?)
+    client.first_name = nil
+    refute client.valid?
   end
 
-  test "Client with a first name is valid" do
-    valid_client = clients(:valid)
+  test "should not save client without name" do
+    client = Client.new
+    assert_not client.save, "saved the client without a name"
+    valid_client = Client.new( first_name: "Bob",last_name: "Smith", dob: DateTime.now,
+        phone_number: "541-000-0000", emergency_name: "Mom", emergency_relation: "Mother",
+        emergency_phone: '999-888-7777', insurance_company: "aflac", counselor_seen_before: false)
     assert(valid_client.valid?)
   end
 
-  test "Client first name must be a string" do
-    invalid_client = clients(:invalid)
-    assert_not(invalid_client.valid?)
-  end
-
-  test "Client first name with apostrophe is valid" do
+  test "first name with apostrophe is valid" do
     client_with_apostrophe = clients(:with_apostrophe_in_name)
     assert(client_with_apostrophe.valid?)
   end
 
-  test "Client should have a last_name" do
-    client_name = "Bauer"
+  test "dob must be a date" do
     client = clients(:valid)
-    assert_equal(client_name, client.last_name)
+    client.dob = "string"
+    refute client.valid?
   end
 
-  test "Client with a dob is valid" do
-    valid_dob = clients(:valid)
-    assert(valid_dob)
+  test "ascii charaters are invalid in insurance_company" do
+    client = clients(:with_ascii_in_insurance_name)
+    assert_not_nil client, "client is not returning nil."
+    assert_not(client.valid?)
   end
-
-  test "Client should have an emergency name" do
-    client_emergency_name = "aflac"
-    client = clients(:valid)
-    assert_equal(client_emergency_name, client.emergency_name)
-  end
-
-  test "Client emergency_relation with - is invalid" do
-    invalid_client = clients(:invalid)
-    assert_not(invalid_client.valid?)
-  end
-
-  # test "Client emergency_address is valid" do
-  #   valid_client = clients(:valid)
-  #   assert valid_client
-  # end
-
-  test "Client valid phone number is not null" do
-    valid_client = clients(:valid)
-    assert_not_nil valid_client, "client is not returning nil."
-  end
-
-  # test "Client health_insurance is valid" do
-  #   valid_client = clients(:valid)
-  #   assert valid_client
-  # end
-
-  # test "Client counselor_seen_before is valid" do
-  #   valid_client = clients(:valid)
-  #   assert valid_client
-  # end
 
 end

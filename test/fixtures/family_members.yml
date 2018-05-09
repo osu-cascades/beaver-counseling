@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  dob: MyString
-  relation: MyString
+valid:
+  name: Ben
+  dob: {1=>2018,2=>5,3=>9}
+  relation: Brother
+  client_id: 0
 
-two:
-  name: MyString
-  dob: MyString
-  relation: MyString
+invalid:
+  name: Ben
+  dob: {1=>2018,2=>5,3=>9}
+  relation: Brother
+  client_id: 0

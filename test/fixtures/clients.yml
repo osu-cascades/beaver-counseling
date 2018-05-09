@@ -43,3 +43,14 @@ with_period_in_emergency_name:
   insurance_company: Nationwide
   counselor_seen_before: true
   how_referred: Close friend
+
+with_ascii_in_insurance_name:
+  first_name: D'Angelo
+  last_name: B
+  dob: 1990-02-11
+  emergency_name: Duke Phil Sr. the Third
+  emergency_relation: Mum
+  emergency_phone: 1-800-555-6423
+  insurance_company: f%$$@]{}
+  counselor_seen_before: true
+  how_referred: Close friend
