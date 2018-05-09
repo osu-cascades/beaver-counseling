@@ -30,6 +30,7 @@
   <%= @client.employer %><br>
 
   <% for family_member in @client.family_members %>
+    <%= family_member.name %>
     <p>
       <% if family_member.name.to_s.empty? == false %>
         <strong>Name:</strong>

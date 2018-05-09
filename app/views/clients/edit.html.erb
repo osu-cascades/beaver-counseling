@@ -1,8 +1,5 @@
 <style>
 
-  input {
-    color: lightgrey;
-  }
 
   label {
     font-weight: bold !important;
@@ -93,17 +90,16 @@
       </div>
       <div class="col-sm">
 
+        <div class="field">
         <% @client = Client.find(params[:id]) %>
           <%= form.fields_for :family_members do |family_member_form| %>
             <p>
-              Name: <%= family_member_form.text_field :name %>
-              Dob: <%= family_member_form.text_field :dob %>
-              Relation: <%= family_member_form.text_field :relation %>
-
-              <%= family_member_form.check_box :_destroy %>
-              <%= family_member_form.label :_destroy, "Remove Family Member" %>
+              Name: <%= family_member_form.text_field :name %><br>
+              Dob: <%= family_member_form.text_field :dob %><br>
+              Relation: <%= family_member_form.text_field :relation %><br>
             </p>
           <% end %>
+        </div>
 
         <div class="field">
           <%= form.label :emergency_name %>

@@ -53,8 +53,7 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    puts request.raw_post
-
+    #puts request.raw_post
     #puts params[:sig]
 
     if (params[:autofill])
@@ -70,6 +69,7 @@ class ClientsController < ApplicationController
       @client.counselor_seen_before = false
     else
       @client = Client.new(client_params)
+      puts client_params
     end
 
     #@client.upload_image(params[:sig])
@@ -124,7 +124,7 @@ class ClientsController < ApplicationController
     respond_to do |format|
     if @client.save
         format.html { redirect_to admin_adminhome_path, notice: 'Client was successfully archived.' }
-      else 
+      else
         format.html { redirect_to admin_adminhome_path, notice: 'Client was not archived.' }
       end
     end
@@ -161,6 +161,6 @@ class ClientsController < ApplicationController
         :medication, :counselor_seen_before, :counselor_seen, :previous_counselor, :custom_id,
         :local_address, :phone_type, :email_leave_message, :highest_edu, :identified_gender,
         :culture_background, :sexual_orientation, :relationship, :how_referred, :accepted, :referral_to,
-        family_members_attributes: [:id, :name, :age, :dob, :relation, :_destroy])
+        family_members_attributes: [:id, :name, :dob, :relation, :_destroy])
     end
 end
