@@ -6,10 +6,9 @@ class ClientTest < ActiveSupport::TestCase
     assert_nothing_raised { Client.new }
   end
 
-  test "Client should have a first_name" do
-    client_name = "Jack"
+  test "has a first name" do
     client = clients(:valid)
-    assert_equal(client_name, client.first_name)
+    assert_respond_to(client, :first_name)
   end
 
   test "Client with a first name is valid" do
