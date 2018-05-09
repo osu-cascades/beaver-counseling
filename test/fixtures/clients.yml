@@ -2,7 +2,7 @@
 
 valid:
   first_name: Jack
-  last_name: TestingSucks
+  last_name: Bauer
   dob: 1990-02-11
   emergency_name: aflac
   emergency_relation: FatherInLaw
@@ -13,21 +13,21 @@ valid:
 
 invalid:
   first_name: 23.0
-  last_name: B
+  last_name: Bauer
   dob: 1990-02-11
-  emergency_name: gg
+  emergency_name: Samson
   emergency_relation: sister-mother
-  emergency_phone: ff
+  emergency_phone: 555-222-111
   insurance_company: Nationwide
   counselor_seen_before: true
-  how_referred: Close friend
+  how_referred: Psychiatrist
 
 with_apostrophe_in_name:
   first_name: D'Angelo
-  last_name: B
+  last_name: Bauer
   dob: 1990-02-11 11:02:57
-  emergency_name: gg
-  emergency_relation: pp
+  emergency_name: aflac
+  emergency_relation: FatherInLaw
   emergency_phone: 999-888-7777
   insurance_company: Nationwide
   counselor_seen_before: true
@@ -38,8 +38,8 @@ with_period_in_emergency_name:
   last_name: B
   dob: 1990-02-11
   emergency_name: Duke Phil Sr. the Third
-  emergency_relation: pp
-  emergency_phone: ff
+  emergency_relation: Mum
+  emergency_phone: 1-800-555-6423
   insurance_company: Nationwide
   counselor_seen_before: true
   how_referred: Close friend

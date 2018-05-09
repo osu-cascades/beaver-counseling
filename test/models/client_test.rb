@@ -28,7 +28,7 @@ class ClientTest < ActiveSupport::TestCase
   end
 
   test "Client should have a last_name" do
-    client_name = "TestingSucks"
+    client_name = "Bauer"
     client = clients(:valid)
     assert_equal(client_name, client.last_name)
   end
