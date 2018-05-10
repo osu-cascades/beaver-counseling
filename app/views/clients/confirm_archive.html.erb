@@ -2,110 +2,197 @@
 
   <%= form_for(@client, local: true) do |form| %>
     <%= form.submit "Submit", :class => "btn btn-success btn-lg" %>
+    <% @client.is_archived=false %>
   <% end %>
+<%= form_for(@client, local: true) do |form| %>
+    <div class="row" style="border: 1px solid black; margin: 10px; padding: 5px;">
+      <div class="col-sm">
 
-<p>
-  <strong>First Name:</strong>
-  <%= @client.first_name %><br>
+        <div>
+          <%= form.label :first_name %>
+          <%= form.text_field :first_name, id: :client_first_name %>
+        </div>
 
-  <strong>Last Name:</strong>
-  <%= @client.last_name %><br>
+        <div>
+          <%= form.label :last_name %>
+          <%= form.text_field :last_name, id: :client_last_name %>
+        </div>
 
-  <strong>DOB:</strong>
-  <%= @client.dob %><br>
 
-  <!-- counselor id -->
-  <strong>user id:</strong>
-  <%= @client.counselor_id %><br>
+        <div class="field" style="display: inline-block;">
+          <%= form.label :phone_number %>
+          <%= form.text_field :phone_number, id: :client_phone_number %>
+        </div>
 
-  <strong>Phone Number:</strong>
-  <%= @client.phone_number %><br>
+        <div class="field" style="display: inline-block;">
+          <%= form.label :leave_message %>
+          <%= form.check_box :leave_message, id: :client_leave_message %>
+        </div>
 
-  <strong>leave_message:</strong>
-  <%= @client.leave_message %><br>
+        <div class="field">
+          <%= form.label :email %>
+          <%= form.text_field :email, id: :client_email %>
+        </div>
 
-  <strong>email:</strong>
-  <%= @client.email %><br>
+        <div class="field">
+          <%= form.label :occupation %>
+          <%= form.text_field :occupation, id: :client_occupation %>
+        </div>
 
-  <strong>occupation:</strong>
-  <%= @client.occupation %><br>
+        <div class="field">
+          <%= form.label :employer %>
+          <%= form.text_field :employer, id: :client_employer %>
+        </div>
+      </div>
+      <div class="col-sm">
 
-  <strong>employer:</strong>
-  <%= @client.employer %><br>
+        <div class="field">
+        <% @client = Client.find(params[:id]) %>
+          <%= form.fields_for :family_members do |family_member_form| %>
+            <p>
+              Name: <%= family_member_form.text_field :name %><br>
+              Dob: <%= family_member_form.text_field :dob %><br>
+              Relation: <%= family_member_form.text_field :relation %><br>
+            </p>
+          <% end %>
+        </div>
 
-  <% for family_member in @client.family_members %>
-    <p>
-      <% if family_member.name.to_s.empty? == false %>
-        <strong>Name:</strong>
-        <%= family_member.name %>
-        <strong>Dob:</strong>
-        <%= family_member.dob %>
-        <strong>Relation:</strong>
-        <%= family_member.relation %>
-      <% end %>
-    </p>
-  <% end %><br><br>
+        <div class="field">
+          <%= form.label :emergency_name %>
+          <%= form.text_field :emergency_name, id: :client_emergency_name %>
+        </div>
 
-  <strong>emergency_name:</strong>
-  <%= @client.emergency_name %><br>
+        <div class="field">
+          <%= form.label :emergency_relation %>
+          <%= form.text_field :emergency_relation, id: :client_emergency_relation %>
+        </div>
 
-  <strong>emergency_relation:</strong>
-  <%= @client.emergency_relation %><br>
+        <div class="field">
+          <%= form.label :emergency_phone %>
+          <%= form.text_field :emergency_phone, id: :client_emergency_phone %>
+        </div>
 
-  <strong>emergency_phone:</strong>
-  <%= @client.emergency_phone %><br>
+      </div>
 
-  <strong>insurance_company:</strong>
-  <%= @client.insurance_company %><br>
+      <div class="col-sm">
 
-  <strong>physician:</strong>
-  <%= @client.physician %><br>
+        <div class="field">
+          <%= form.label :insurance_company %>
+          <%= form.text_field :insurance_company, id: :client_insurance_company %>
+        </div>
 
-  <strong>physician_phone:</strong>
-  <%= @client.physician_phone %><br>
+        <div class="field">
+          <%= form.label :physician %>
+          <%= form.text_field :physician, id: :client_physician %>
+        </div>
 
-  <strong>medication:</strong>
-  <%= @client.medication %><br>
+        <div class="field">
+          <%= form.label :physician_phone %>
+          <%= form.text_field :physician_phone, id: :client_physician_phone %>
+        </div>
 
-  <strong>counselor_seen_before:</strong>
-  <%= @client.counselor_seen_before %><br>
+        <div class="field">
+          <%= form.label :medication %>
+          <%= form.text_field :medication, id: :client_medication %>
+        </div>
 
-  <strong>counselor_seen:</strong>
-  <%= @client.counselor_seen %><br>
+        <div class="field">
+          <%= form.label :counselor_seen_before %>
+          <%= form.check_box :counselor_seen_before, id: :client_counselor_seen_before %>
+        </div>
 
-  <strong>custom_id:</strong>
-  <%= @client.custom_id %><br>
+        <div class="field">
+          <%= form.label :counselor_seen %>
+          <%= form.text_field :counselor_seen, id: :client_counselor_seen %>
+        </div>
 
-  <strong>local_address:</strong>
-  <%= @client.local_address %><br>
+        <div class="field">
+          <%= form.label "custom id" %>
+          <%= form.text_field :custom_id, id: :client_custom_id %>
+        </div>
 
-  <strong>phone_type:</strong>
-  <%= @client.phone_type %><br>
+        <div class="field">
+          <%= form.label :local_address %>
+          <%= form.text_field :local_address, id: :client_local_address %>
+        </div>
 
-  <strong>email_leave_message:</strong>
-  <%= @client.email_leave_message %><br>
+        <div class="field">
+          <%= form.label :phone_type %>
+          <%= form.text_field :phone_type, id: :client_phone_type %>
+        </div>
 
-  <strong>highest_edu:</strong>
-  <%= @client.highest_edu %><br>
+        <div class="field">
+          <%= form.label :email_leave_message %>
+          <%= form.text_field :email_leave_message, id: :client_email_leave_message %>
+        </div>
 
-  <strong>identified_gender:</strong>
-  <%= @client.identified_gender %><br>
+        <div class="field">
+          <%= form.label :highest_edu %>
+          <%= form.text_field :highest_edu, id: :client_highest_edu %>
+        </div>
 
-  <strong>culture_background:</strong>
-  <%= @client.culture_background %><br>
+        <div class="field">
+          <%= form.label :identified_gender %>
+          <%= form.text_field :identified_gender, id: :client_identified_gender %>
+        </div>
 
-  <strong>sexual_orientation:</strong>
-  <%= @client.sexual_orientation %><br>
+        <div class="field">
+          <%= form.label :culture_background %>
+          <%= form.text_field :culture_background, id: :client_culture_background %>
+        </div>
 
-  <strong>relationship:</strong>
-  <%= @client.relationship %><br>
+        <div class="field">
+          <%= form.label :sexual_orientation %>
+          <%= form.text_field :sexual_orientation, id: :client_sexual_orientation %>
+        </div>
 
-  <strong>how_referred:</strong>
-  <%= @client.how_referred %><br>
+        <div class="field">
+          <%= form.label :relationship %>
+          <%= form.text_field :relationship, id: :client_relationship %>
+        </div>
 
-  <strong>accepted:</strong>
-  <%= @client.accepted %><br>
+        <div class="field">
+          <%= form.label :how_referred %>
+          <%= form.text_field :how_referred, id: :client_how_referred %>
+        </div>
 
-  <strong>referral_to:</strong>
-  <%= @client.referral_to %><br>
-</p>
+        <div class="field">
+          <%= form.label :accepted %>
+          <%= form.text_field :accepted, id: :client_accepted %>
+        </div>
+
+        <div class="field">
+          <%= form.label :referral_to %>
+          <%= form.text_field :referral_to, id: :client_referral_to %>
+        </div>
+
+        <div class="field">
+          <%= form.label :is_archived %>
+          <%= form.check_box :is_archived, id: :doesnotmatter %>
+        </div>
+
+
+        <div class="field">
+        <table class="table">
+        <thead>
+            <tr>
+              <th>Previous Counselors</th>
+           </tr>
+        </thead>
+        <tbody>
+           <% @client.previous_counselor.each do |item|%>
+           <tr>
+              <th><%= item %></th>
+           </tr>
+           <% end %>
+        </tbody>
+        </table>
+        </div>
+        <div class="actions">
+          <%= form.submit "Submit", :class => "btn btn-success btn-lg" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+
