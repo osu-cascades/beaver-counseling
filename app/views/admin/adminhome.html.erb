@@ -47,7 +47,7 @@
 			<tr>
 				<td><%= client.first_name %> <%= client.last_name %></td>
 				<td><%= client.custom_id %></td>
-				<td><%= client.dob %></td>
+				<td><%= client.dob.strftime("%m-%d-%Y") %></td>
 				<% if (client.counselor_id.nil?) %>
 					<td>None</td>
 				<% else %>
