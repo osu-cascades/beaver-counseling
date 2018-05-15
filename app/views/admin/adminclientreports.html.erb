@@ -20,73 +20,215 @@
 <div style="text-align: center;">
 	<%= button_to "Client Feedback", '/session_rating_forms', :method => :get, :class => 'btn', :style => "background: #D3D3D3;" %>
 	<br>
+	<button onclick="AgeChart()">Age Graph</button>
+	<button onclick="Education()">Education</button>
+	<button onclick="Gender()">Gender</button>
 </div>
 
+
 <canvas id="bar-chart-horizontal" width="200" height="60"></canvas>
+
 <script>
 
+var graph; //Global getting assinged chart objects. Used to call destroy
 var clients = <%= raw Client.all.to_json %>
-var ages = [];
 
-for (var i = 0; i < clients.length; i++) {
-	//Calculates age from date of birth
-	var bday = new Date(clients[i].dob)
-	var agedif = Date.now() - bday.getTime();
-	var agedate = new Date(agedif);
-	ages.push(parseInt(agedate.getUTCFullYear() - 1970));
-}
+function AgeChart(){
+	if(graph != null){
+		graph.destroy();
+	}
+	var ages = [];
 
-var labels = [];
-
-function getNumClientsAtAge(ages) {
-	var unique = {}; // key:age value:numOfOcurrences
-	var currentAge;
-	for (var i = 0; i < ages.length; i++) { // for unique in list
-		currentAge = ages[i];
-		if (!(currentAge in unique)) {
-			unique[currentAge] = 1;
-		} else {
-			var num = parseInt(unique[currentAge])
-			num += 1
-			unique[currentAge] = num;
-		}
+	for (var i = 0; i < clients.length; i++) {
+		//Calculates age from date of birth
+		var bday = new Date(clients[i].dob)
+		var agedif = Date.now() - bday.getTime();
+		var agedate = new Date(agedif);
+		ages.push(parseInt(agedate.getUTCFullYear() - 1970));
 	}
 
-	var ocurrences = [];
-	for (var key in unique) {
-			labels.push(key);
-			ocurrences.push(unique[key]);
+	var labels = [];
+
+	function getNumClientsAtAge(ages) {
+		var unique = {}; // key:age value:numOfOcurrences
+		var currentAge;
+		for (var i = 0; i < ages.length; i++) { // for unique in list
+			currentAge = ages[i];
+			if (!(currentAge in unique)) {
+				unique[currentAge] = 1;
+			} else {
+				var num = parseInt(unique[currentAge])
+				num += 1
+				unique[currentAge] = num;
+			}
+		}
+
+		var ocurrences = [];
+		for (var key in unique) {
+				labels.push(key);
+				ocurrences.push(unique[key]);
+		}
+		return ocurrences;
 	}
-	return ocurrences;
+
+	graph = new Chart(document.getElementById("bar-chart-horizontal"), {
+	    type: 'horizontalBar',
+	    data: {
+	      labels: labels,
+	      datasets: [
+	        {
+	          label: "Age (years)",
+	          backgroundColor: ["#8e5ea2", "#3e95cd","#3cba9f","#e8c3b9","#c45850"],
+	          data: getNumClientsAtAge(ages)
+	        }
+	      ]
+	    },
+	    options: {
+				scales: {
+					xAxes: [{
+						ticks: {
+							beginAtZero: true,
+							min: 0,
+							stepSize: 1
+						}
+					}],
+		      legend: { display: false },
+		      title: {
+		        display: true,
+		        text: 'Clients Age',
+		      }
+		    }
+			}
+	});
 }
 
-new Chart(document.getElementById("bar-chart-horizontal"), {
-    type: 'horizontalBar',
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: "Age (years)",
-          backgroundColor: ["#8e5ea2", "#3e95cd","#3cba9f","#e8c3b9","#c45850"],
-          data: getNumClientsAtAge(ages)
-        }
-      ]
-    },
-    options: {
-			scales: {
-				xAxes: [{
-					ticks: {
-						beginAtZero: true,
-						min: 0,
-						stepSize: 1
-					}
-				}],
-	      legend: { display: false },
-	      title: {
-	        display: true,
-	        text: 'Clients Age',
-	      }
-	    }
+function Education(){
+	if(graph != null){
+		graph.destroy();
+	}
+	var edu = []
+	var labels = [];
+
+	for (var i = 0; i < clients.length; i++) {
+		edu.push((clients[i].highest_edu));
+	}
+
+	function getHighestEduClient(edu) {
+		var unique = {};
+		var save;
+		for (var i = 0; i < edu.length; i++) { // for unique in list
+			save = edu[i];
+			if (!(save in unique)) {
+				unique[save] = 1;
+			} else {
+				var num = parseInt(unique[save])
+				num += 1
+				unique[save] = num;
+			}
 		}
-});
+
+		var ocurrences = [];
+		for (var key in unique) {
+				labels.push(key);
+				ocurrences.push(unique[key]);
+		}
+		return ocurrences;
+	}
+
+
+	graph = new Chart(document.getElementById("bar-chart-horizontal"), {
+		    type: 'horizontalBar',
+		    data: {
+		      labels: labels,
+		      datasets: [
+		        {
+		          label: "Count #",
+		          backgroundColor: ["#8e5ea2", "#3e95cd","#3cba9f","#e8c3b9","#c45850"],
+		          data: getHighestEduClient(edu)
+		        }
+		      ]
+		    },
+		    options: {
+					scales: {
+						xAxes: [{
+							ticks: {
+								beginAtZero: true,
+								min: 0,
+								stepSize: 1
+							}
+						}],
+			      legend: { display: false },
+			      title: {
+			        display: true,
+			        text: 'Highest Education',
+			      }
+			    }
+			}
+	});
+}
+
+function Gender(){
+	if(graph != null){
+		graph.destroy();
+	}
+	var gender = []
+	var labels = [];
+
+	for (var i = 0; i < clients.length; i++) {
+		gender.push((clients[i].identified_gender));
+	}
+
+	function getGenderClient(gender) {
+		var unique = {};
+		var save;
+		for (var i = 0; i < gender.length; i++) { // for unique in list
+			save = gender[i];
+			if (!(save in unique)) {
+				unique[save] = 1;
+			} else {
+				var num = parseInt(unique[save])
+				num += 1
+				unique[save] = num;
+			}
+		}
+
+		var ocurrences = [];
+		for (var key in unique) {
+				labels.push(key);
+				ocurrences.push(unique[key]);
+		}
+		return ocurrences;
+	}
+
+
+	graph = new Chart(document.getElementById("bar-chart-horizontal"), {
+		    type: 'horizontalBar',
+		    data: {
+		      labels: labels,
+		      datasets: [
+		        {
+		          label: "Count #",
+		          backgroundColor: ["#8e5ea2", "#3e95cd","#3cba9f","#e8c3b9","#c45850"],
+		          data: getGenderClient(gender)
+		        }
+		      ]
+		    },
+		    options: {
+					scales: {
+						xAxes: [{
+							ticks: {
+								beginAtZero: true,
+								min: 0,
+								stepSize: 1
+							}
+						}],
+			      legend: { display: false },
+			      title: {
+			        display: true,
+			        text: 'Identified Gender',
+			      }
+			    }
+			}
+	});
+}
 </script>
