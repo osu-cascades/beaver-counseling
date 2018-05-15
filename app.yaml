@@ -12,6 +12,9 @@ resources:
 
 env_variables:
   SECRET_KEY_BASE: ENV['app_secret_key']
+  DB_USERNAME: ENV['production_db_username']
+  DB_PASSWORD: ENV['production_db_password']
+  DEVISE_KEY: ENV['device_secret_key']
 
 beta_settings:
         cloud_sql_instances: cascadesclinic-197917:us-central1:cascades-clinic  
