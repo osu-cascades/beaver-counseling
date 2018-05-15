@@ -109,25 +109,13 @@ class ClientsController < ApplicationController
     end
   end
 
+  # Shows page to confirm archiving a specific client
   def confirm_archive
     @client = Client.find(params[:id])
     if current_user.nil?
       return
     end
     authorize_admin
-  end
-
-  def archive
-    puts request.raw_post
-    @client = Client.find(params[:id])
-    @client.is_archived = true
-    respond_to do |format|
-    if @client.save
-        format.html { redirect_to admin_adminhome_path, notice: 'Client was successfully archived.' }
-      else
-        format.html { redirect_to admin_adminhome_path, notice: 'Client was not archived.' }
-      end
-    end
   end
 
   # DELETE /clients/1

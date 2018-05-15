@@ -43,19 +43,21 @@
 	</tr>
 	<% @clients = Client.all %>
 	<% @clients.each do |client| %>
-		<tr>
-			<td><%= client.first_name %> <%= client.last_name %></td>
-			<td><%= client.custom_id %></td>
-			<td><%= client.dob %></td>
-			<% if (client.counselor_id.nil?) %>
-				<td>None</td>
-			<% else %>
-				<td><%= (User.find_by_id(client.counselor_id)).name %></td>
-			<% end %>
-			<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
-			<td><%= button_to 'Notes', client_notes_path_url(client.id), :method => :get %></td>
-			<td><%= button_to 'Archive', client_archive_path_url(client.id), :method => :get %></td>
-		</tr>
+		<% if !client.is_archived %>
+			<tr>
+				<td><%= client.first_name %> <%= client.last_name %></td>
+				<td><%= client.custom_id %></td>
+				<td><%= client.dob %></td>
+				<% if (client.counselor_id.nil?) %>
+					<td>None</td>
+				<% else %>
+					<td><%= (User.find_by_id(client.counselor_id)).name %></td>
+				<% end %>
+				<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
+				<td><%= button_to 'Notes', client_notes_path_url(client.id), :method => :get %></td>
+				<td><%= button_to 'Archive', client_archive_path_url(client.id), :method => :get %></td>
+			</tr>
+		<% end %>
 	<% end %>
 </table>
 
