@@ -239,6 +239,7 @@
 <script>
   function print1(){
     $("#infosheet").attr('id', 'pdf');
+    setAge()
     printin();
     $("#pdf").attr('id', 'infosheet');
   }
@@ -346,8 +347,8 @@
 
 
 <script>
-  function h(dob){
-    var bday = new Date(@client.dob)
+  function setAge(){
+    var bday = new Date("<%= @client.dob.to_s %>");
     var agedif = Date.now() - bday.getTime();
     var agedate = new Date(agedif);
     $("#clientage").text(parseInt(agedate.getUTCFullYear() - 1970));
@@ -358,17 +359,11 @@
     <h2 style="text-align: center">OSU Counseling Clinic</h2>
     <h2 style="text-align: center">Client Information Form</h2>
   <p style="float: right">Date: <u><%= @client.updated_at.strftime("%m-%d-%Y") =%></u></p>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <p>Client name: <u><%= @client.to_s %></u></p>
-      </div>
-      <div class="col-sm">
-        <p>Age:<u><span id="clientage"></span></u></p>
-      </div>
-      <div class="col-sm">
-        <p>Date of Birth: <u><%= @client.dob.strftime("%m-%d-%Y") %></u></p>
-      </div>
+  <div class="row" style="padding-top: 20px">
+    <div class="col">
+      <p><b>Client name:</b> <u><%= @client.to_s %></u>
+      <b>Age:</b><u><span id="clientage"></span></u>
+      <b>Date of Birth:</b> <u><%= @client.dob.strftime("%m-%d-%Y") %></u></p>
     </div>
   </div>
   <p>Local address: <u><%=@client.local_address%></u></p>
