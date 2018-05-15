@@ -9,6 +9,8 @@
     line-height: 80% !important;
   }
 
+
+
   @media print {
     #hide1 {
       display: none;
@@ -19,6 +21,10 @@
     nav {
       display: none;
     }
+    
+    .printheader {
+      border:1px solid lightblue; margin-top: 5px; padding: 10px; margin-bottom: 5px;
+    }
 
     #pdf {
       display: block !important;
@@ -27,15 +33,14 @@
   }
 </style>
 
-
 <div id="hide1">
   <h1>Editing Client</h1>
 
   <div style="text-align: center">
-    <button onclick="print1()">Print Client Information Sheet</button> |
-    <button onclick="print2()">Print Informed Consent for Counseling</button> |
+    <button onclick="print1()">Print Client Information Sheet</button>
+<!--     <button onclick="print2()">Print Informed Consent for Counseling</button> |
     <button onclick="print3()">Print Informed Consent for Video/Audio Recording</button> |
-    <button onclick="print4()">Print Informed Consent for Treatment</button>
+    <button onclick="print4()">Print Informed Consent for Treatment</button> -->
   </div>
 
   <%= form_for(@client, local: true) do |form| %>
@@ -239,7 +244,8 @@
 <script>
   function print1(){
     $("#infosheet").attr('id', 'pdf');
-    setAge()
+    setAge();
+    setPhoneType();
     printin();
     $("#pdf").attr('id', 'infosheet');
   }
@@ -353,6 +359,12 @@
     var agedate = new Date(agedif);
     $("#clientage").text(parseInt(agedate.getUTCFullYear() - 1970));
   }
+
+  function setPhoneType(){
+    var x = <%= @client.phone_type.to_s %>
+    var y = ["Home", "Cell", "Work"];
+    $("#typephone").text(y[x])
+  }
 </script>
 
 <div id="infosheet" style="display: none;">
@@ -366,37 +378,48 @@
       <b>Date of Birth:</b> <u><%= @client.dob.strftime("%m-%d-%Y") %></u></p>
     </div>
   </div>
-  <p>Local address: <u><%=@client.local_address%></u></p>
-  <p>Phone #<u><%= @client.phone_number %></u> Message: Yes No   Email: <u><%= @client.email %></u></p>
-    <p>Employer's address: <u></u>  Work Phone: <u></u>  Message Yes No</p>
+  <p><b>Local address:</b> <u><%=@client.local_address%></u></p>
+  <p><b>Phone #</b><u><%= @client.phone_number %></u> <b>Type: </b><u><span id="typephone"></span></u>  <b>Message:</b> <%= @client.leave_message ? 'Yes' : 'No' %></p>
+  <p><b>Email:</b> <u><%= @client.email %></u> <b>Message:</b> <%= @client.email_leave_message ? 'Yes' : 'No' %></p>
+  <p><b>Occupation:</b> <u><%= @client.occupation %></u>  <b>Employer:</b> <u><%= @client.employer %></u></p>
   <div>
-  <h2>Other Members of Your Household</h2>
+  <div class="printheader">
+    <h2>Members of Your Household</h2>
+  </div>
   <% for family_member in @client.family_members %>
       <% if family_member.name.to_s.empty? == false %>
         <p>
           Name:
           <u><%= family_member.name %></u>
           Dob:
-          <u><%= family_member.dob %></u>
+          <u><%= family_member.dob.strftime("%m-%d-%Y") %></u>
           Relation:
           <u><%= family_member.relation %></u>
         </p>
       <% end %>
   <% end %>
   </div>
-  <h2>Emergency Contact</h2>
-  <div style="border:1px solid black; padding: 10px;">
-    <p>Name: <u><%= @client.emergency_name %></u>  Relation: <u><%= @client.emergency_relation %></u></p>
-    <p>Address: <u></u>  Phone: <u><%= @client.emergency_phone %></u></p>
+  <div class="printheader">
+    <h2>Emergency Contact</h2>
   </div>
-  <h2>Health Insurance</h2>
-  <div style="border:1px solid black; padding: 10px;">
-    <p>Do you have health insurance? yes No. If yes, what company? <u><%= @client.insurance_company %></u></p>
-  </div>
-  <h2>Medical Information</h2>
-  <div style="border:1px solid black; padding: 10px;">
-    <p>Primary Care Physician (PCP) <u><%= @client.physician %></u>  Phone: <u><%= @client.physician_phone %></u></p>
+    <p>Name: <u><%= @client.emergency_name %></u> Phone: <u><%= @client.emergency_phone %></u> Relation: <u><%= @client.emergency_relation %></u></p>
+    <p>Primary Care Physician: <u><%= @client.physician %></u> Phone: <u><%= @client.physician_phone %></u><p>
     <p>Prescription Medications: <u><%= @client.medication %></u></p>
-    <p>Have you ever seen a counselor before? Yes No. If yes, where and when? <u><%= @client.counselor_seen %></u></p>
+    <p>Health Insurance <u><%= @client.insurance_company %></u></p>
+  <div class="printheader">
+    <h2>Demographic Information</h2>
   </div>
+  <p><b>Highest level of education completed?</b> <u><%= @client.highest_edu %></u><p>
+  <p><b>What is your identified gender/pronoun?</b> <u><%= @client.identified_gender %></u><p>
+  <p><b>With which primary cultural backgound do you identify?</b> <u><%= @client.culture_background %></u><p>
+  <p><b>What is your sexual/affectional orientation?</b> <u><%= @client.sexual_orientation %></u><p>
+  <p><b>What is your current relationship status?</b> <u><%= @client.relationship %></u><p>
+
+
+  <div class="printheader">
+    <h2>Other</h2>
+  </div>
+    <p>Have you ever seen a counselor before? <%= @client.counselor_seen_before ? 'Yes' : 'No' %></p> 
+    <p>If yes, where and when? <u><%= @client.counselor_seen %></u></p>
+    <p>How were you referred to the clinic? <u><%= @client.how_referred %><p>
 </div>
