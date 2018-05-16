@@ -25,3 +25,5 @@
 .env.example
 .env.local
 .env.staging
+
+.service-account.json
