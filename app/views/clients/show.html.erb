@@ -1,6 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+
+<script>
+  $.ajax({
+        type: "GET",
+        url: "<%= @client.signature_url %>",
+        success: function (data) {
+          alert(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown, data) {
+          console.log("error");
+        }
+      });
+
+</script>
+
 <p>
+
+  asdf
+  <%= @client.signature_url %><br>
   <strong>First Name:</strong>
   <%= @client.first_name %><br>
 
