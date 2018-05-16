@@ -18,24 +18,23 @@ class Client < ApplicationRecord
   accepts_nested_attributes_for :family_members, allow_destroy: true
   has_paper_trail
 
-  def self.storage_bucket
-    @storage_bucket ||= begin
-      #config = Rails.application.config.x.settings
-      config = YAML.load_file(Rails.root.join('config/settings.yml'))[Rails.env]
-      storage = Google::Cloud::Storage.new project_id: config["project_id"],
-                                     keyfile: Google::Auth::GCECredentials.new
-      storage.bucket config["gcs_bucket"]
-    end
-  end
-
   def upload_image(sig)
-    file = Client.storage_bucket.create_file \
-     sig.tempfile,
-     "sig/#{id}",
-     content_type: sig.content_type,
-     acl: "public"
+    puts sig
 
-    update_columns signature_url: file.public_url
+    storage = Google::Cloud::Storage.new(
+      project: "cascadesclinic-197917",
+      keyfile: "#{Rails.root}/service-account.json"
+    )
+    bucket = storage.bucket "cascadesclinic-197917.appspot.com"
+    #file = bucket.file "2.png"
+    puts "in controller testing"
+    bucket.create_file StringIO.new(sig), "zzz.txt"
+
+    file = bucket.file "zzz.txt"
+
+    puts file.public_url
+
+    self.signature_url = file.public_url
   end
 
 
