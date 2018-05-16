@@ -1,4 +1,4 @@
-class AddingUselessConstraints < ActiveRecord::Migration[5.1]
+class AddingFamilyMemberConstraints < ActiveRecord::Migration[5.1]
   def change
     change_column_null :family_members, :name, false
     change_column_null :family_members, :dob, false
