@@ -98,7 +98,7 @@ Then open a web browser with the web address localhost:3000 to see the app runni
 ## Deployment
 
 We are using Google Cloud Platforms' App Engine to host the application.
-Hosted at: https://beavercounseling.appspot.com/
+Hosted at: http://cascadesclinic-197917.appspot.com/
 
 To deploy to GCP a more comprehensive guide can be found at:
 https://cloud.google.com/ruby/rails/using-cloudsql-postgres
@@ -111,12 +111,7 @@ Simplified steps:
 
 2. Run 
 ```
-$ bundle exec bin/rails assets:precompile
-```
-
-3. Run 
-```
-$ gcloud app deploy --no-promote
+$ gcloud app deploy --version dev
 ```
 
 4. Run any migrations with 
