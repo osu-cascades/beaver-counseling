@@ -158,7 +158,7 @@ $(document).ready(validatearticleFunction);
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 </head>
 
-<div style="margin:100px; text-align: center;">
+<div style="margin: 30px 100px 100px 100px; text-align: center;">
 
 <% client = @client %>
 <%= form_for(@client, local: true) do |form| %>
@@ -175,7 +175,6 @@ $(document).ready(validatearticleFunction);
     </div>
   <% end %>-->
 
-
   <div class="inner contact">
     <div class="contact-form">
       <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
@@ -191,8 +190,7 @@ $(document).ready(validatearticleFunction);
         <div style="margin-top:-0.75em">&nbsp;</div>
           <%= form.text_field :email, id: :client_email, placeholder: "Email", class: "form" %>
           <%= form.text_field :local_address, id: :client_local_address, placeholder: "Address", class: "form" %>
-          <%= form.text_field :email_leave_message, id: :client_email_leave_message, placeholder: "leave email", class: "form" %>
-
+          <%= form.text_field :email_leave_message, id: :client_email_leave_message, placeholder: "Leave Email", class: "form" %>
       </div>
       <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
         <%= form.text_field :last_name,  id: :client_last_name, placeholder: "Last Name", class: "form" %>
@@ -200,54 +198,29 @@ $(document).ready(validatearticleFunction);
         <%= form.text_field :occupation, id: :client_occupation, placeholder: "Occupation", class: "form" %>
         <%= form.text_field :employer, id: :client_employer, placeholder: "Employer", class: "form" %>
       </div>
-      <div class="clear"></div>
+      <div class="clearfix"></div>
+      <h2 style="">Demographic Information</h2><br>
+      <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
+        <%= form.text_field :highest_edu, id: :client_highest_edu, placeholder: "Highest Education", class: "form" %>
+        <%= form.text_field :culture_background, id: :client_culture_background, placeholder: "Culture Background", class: "form" %>
+        <%= form.text_field :relationship, id: :client_relationship, placeholder: "Relationship", class: "form" %>
+      </div>
+      <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
+        <%= form.text_field :identified_gender, id: :client_identified_gender, placeholder: "Identified Gender", class: "form" %>
+        <%= form.text_field :sexual_orientation, id: :client_sexual_orientation, placeholder: "Sexual Orientation", class: "form" %>
+        <%= form.text_field :how_referred, id: :client_how_referred, placeholder: "How referred", class: "form" %>
+      </div>
+      <div class="clearfix"></div>
      </div>
   </div>
 
-  <h5>Demographic Information</h5>
-  <div class="field">
-    <%= form.label "Highest Education" %>
-    <%= form.text_field :highest_edu, id: :client_highest_edu %>
-  </div>
+  <%= form.check_box :accepted, id: :client_accepted %>
+  <%= form.label :accepted %>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <%= form.label :referral_to %>
+  <%= form.text_field :referral_to, id: :client_referral_to %>
 
-  <div class="field">
-    <%= form.label :identified_gender %>
-    <%= form.text_field :identified_gender, id: :client_identified_gender %>
-  </div>
-
-  <div class="field">
-    <%= form.label :culture_background %>
-    <%= form.text_field :culture_background, id: :client_culture_background %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sexual_orientation %>
-    <%= form.text_field :sexual_orientation, id: :client_sexual_orientation %>
-  </div>
-
-  <div class="field">
-    <%= form.label :relationship %>
-    <%= form.text_field :relationship, id: :client_relationship %>
-  </div>
-
-  <div class="field">
-    <%= form.label :how_referred %>
-    <%= form.text_field :how_referred, id: :client_how_referred %>
-  </div>
-
-  <div class="field">
-    <%= form.label :how_referred %>
-    <%= form.text_field :how_referred, id: :client_how_referred %>
-  </div>
-
-  <div class="field">
-    <%= form.label :accepted %>
-    <%= form.check_box :accepted, id: :client_accepted %>
-    <%= form.label :referral_to %>
-    <%= form.text_field :referral_to, id: :client_referral_to %>
-  </div>
-
-  <h5>How many members are in your household (optional)</h5>
+  <h3>How many members are in your household (optional)</h3>
 
   <div class="field fieldStyle"><%= select_tag "quantity", options_for_select((1..4),1), :onchange => 'changed(this)' %></div>
   <% 4.times do |i| %>
@@ -259,28 +232,39 @@ $(document).ready(validatearticleFunction);
       </p>
     <% end %>
   <% end %>
+  <br>
 
-  <h5>Emergency Contact Information</h5><br>
-  <div class="field fieldStyle">
-    <%= form.text_field :emergency_name, id: :client_emergency_name, placeholder: "Emergency Name" %>
-    <%= form.text_field :emergency_relation, id: :client_emergency_relation, placeholder: "Emergency Relation" %>
+  <h3>Emergency Contact Information</h3><br>
+  <div class="inner contact">
+    <div class="contact-form">
+      <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
+        <%= form.text_field :emergency_name, id: :client_emergency_name, placeholder: "Emergency Name", class: "form" %>
+        <%= form.text_field :emergency_phone, id: :client_emergency_phone, placeholder: "Emergency Phone", class: "form" %>
+      </div>
+      <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
+        <%= form.text_field :emergency_relation, id: :client_emergency_relation, placeholder: "Emergency Relation", class: "form" %>
+        <%= form.text_field :insurance_company, id: :client_insurance_company, placeholder: "Insurance Company", class: "form" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field fieldStyle">
-    <%= form.text_field :emergency_phone, id: :client_emergency_phone, placeholder: "Emergency Phone" %>
-    <%= form.text_field :insurance_company, id: :client_insurance_company, placeholder: "Insurance Company" %>
-  </div>
-
-  <h5>History</h5><br>
-  <div class="field fieldStyle">
-    <%= form.text_field :physician, id: :client_physician, placeholder: "Physician" %>
-    <%= form.text_field :physician_phone, id: :client_physician_phone, placeholder: "Physician Phone" %>
-  </div>
-
-  <div class="field fieldStyle">
-    <%= form.check_box :counselor_seen_before, id: :client_counselor_seen_before %>
-    <%= form.label :counselor_seen_before %>
-    <%= form.text_field :counselor_seen, id: :client_counselor_seen, placeholder: "Counselor Seen" %>
+  <h3>History</h3><br>
+  <div class="inner contact">
+    <div class="contact-form">
+      <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
+        <%= form.text_field :emergency_name, id: :client_emergency_name, placeholder: "Emergency Name", class: "form" %>
+        <%= form.text_field :emergency_phone, id: :client_emergency_phone, placeholder: "Emergency Phone", class: "form" %>
+        <%= form.text_field :physician, id: :client_physician, placeholder: "Physician", class: "form" %>
+        <%= form.check_box :counselor_seen_before, id: :client_counselor_seen_before %>
+        <%= form.label :counselor_seen_before %>
+      </div>
+      <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
+        <%= form.text_field :emergency_relation, id: :client_emergency_relation, placeholder: "Emergency Relation", class: "form" %>
+        <%= form.text_field :insurance_company, id: :client_insurance_company, placeholder: "Insurance Company", class: "form" %>
+        <%= form.text_field :physician_phone, id: :client_physician_phone, placeholder: "Physician Phone", class: "form" %>
+        <%= form.text_field :counselor_seen, id: :client_counselor_seen, placeholder: "Counselor Seen", class: "form" %>
+      </div>
+    </div>
   </div>
 
   <div class="field fieldStyle" style="display: none;">
