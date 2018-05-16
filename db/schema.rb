@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20180516031453) do
     t.integer "counselor_id"
     t.string "last_name", null: false
     t.datetime "dob", null: false
-    t.string "phone_number", null: false
-    t.boolean "leave_message", null: false
+    t.string "phone_number"
+    t.boolean "leave_message"
     t.string "email"
     t.string "occupation"
     t.string "employer"
