@@ -187,24 +187,21 @@ $(document).ready(validatearticleFunction);
           <%= form.check_box :leave_message, id: :client_leave_message %>&nbsp;&nbsp;&nbsp;&nbsp;
           <%= form.label :phone_type %>
           <%= form.select :phone_type, options_for_select([["Select One", ""], "Cell", "Work", "Home"]), class: "form" %>
-        </div><span style="margin-top:8.2em"></span>
+        </div>
+        <div style="margin-top:-0.75em">&nbsp;</div>
           <%= form.text_field :email, id: :client_email, placeholder: "Email", class: "form" %>
           <%= form.text_field :local_address, id: :client_local_address, placeholder: "Address", class: "form" %>
-          <%= form.text_field :email_leave_message, id: :client_email_leave_message, placeholder: "leave email" %>
+          <%= form.text_field :email_leave_message, id: :client_email_leave_message, placeholder: "leave email", class: "form" %>
 
       </div>
       <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
         <%= form.text_field :last_name,  id: :client_last_name, placeholder: "Last Name", class: "form" %>
         <%= form.text_field :phone_number, id: :client_phone_number, placeholder: "Phone Number", class: "form" %>
         <%= form.text_field :occupation, id: :client_occupation, placeholder: "Occupation", class: "form" %>
+        <%= form.text_field :employer, id: :client_employer, placeholder: "Employer", class: "form" %>
       </div>
       <div class="clear"></div>
      </div>
-  </div>
-
-
-  <div class="field fieldStyle">
-    <%= form.text_field :employer, id: :client_employer, placeholder: "Employer" %>
   </div>
 
   <h5>Demographic Information</h5>
