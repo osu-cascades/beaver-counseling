@@ -11,7 +11,117 @@
 
   label.error {
     color: red;
-}
+  }
+
+  #contact{
+    padding:10px 0 10px;
+  }
+  .contact-text{
+    margin:45px auto;
+  }
+  .mail-message-area{
+    width:100%;
+    padding:0 15px;
+  }
+  .mail-message{
+    width: 100%;
+    background:rgba(255,255,255, 0.8) !important;
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    transition: all 0.7s;
+    margin:0 auto;
+    border-radius: 0;
+  }
+  .not-visible-message{
+    height:0px;
+    opacity: 0;
+  }
+  .visible-message{
+    height:auto;
+    opacity: 1;
+    margin:25px auto 0;
+  }
+  /* Input Styles */
+  .form{
+    width: 100%;
+    padding: 15px;
+    background:#f8f8f8;
+    border:1px solid rgba(0, 0, 0, 0.075);
+    margin-bottom:25px;
+    color:#727272 !important;
+    font-size:13px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  .form:hover{
+    border:1px solid #8BC3A3;
+  }
+  .form:focus{
+    color: white;
+    outline: none;
+    border:1px solid #8BC3A3;
+  }
+  .textarea{
+    height: 200px;
+    max-height: 200px;
+    max-width: 100%;
+  }
+  /* Generic Button Styles */
+  .button{
+    padding:8px 12px;
+    background:#0A5175;
+    display: block;
+    width:120px;
+    margin:10px 0 0px 0;
+    border-radius:3px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align:center;
+    font-size:0.8em;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  }
+  .button:hover{
+    background:#8BC3A3;
+    color:white;
+  }
+  /* Send Button Styles */
+  .form-btn{
+    width:180px;
+    display: block;
+    height: auto;
+    padding:15px;
+    color:#fff;
+    background:#8BC3A3;
+    border:none;
+    border-radius:3px;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin:auto;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  }
+  .form-btn:hover{
+    background:#111;
+    color: white;
+    border:none;
+  }
+  .form-btn:active{
+    opacity: 0.9;
+  }
+  center{
+    margin-top:330px;
+  }
+  input {
+    position: relative;
+    z-index: 9999;
+  }
 </style>
 
 <script>
@@ -44,7 +154,11 @@ $(document).ready(validatearticleFunction);
 
 </script>
 
-<div class="goodBorder" style="margin:100px; text-align: center;">
+<head>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+
+<div style="margin:100px; text-align: center;">
 
 <% client = @client %>
 <%= form_for(@client, local: true) do |form| %>
@@ -61,36 +175,33 @@ $(document).ready(validatearticleFunction);
     </div>
   <% end %>-->
 
-  <div class="field fieldStyle">
-    <%= form.text_field :first_name, id: :client_first_name, placeholder: "First Name" %>
-    <%= form.text_field :last_name,  id: :client_last_name, placeholder: "Last Name" %>
-  </div>
 
-  <div class="field fieldStyle">
-    <%= form.label :dob, "Date of Birth" %>
-    <%= form.date_select :dob, id: :client_dob, :start_year => 1901, :end_year => Time.current.year %>
-  </div>
+  <div class="inner contact">
+    <div class="contact-form">
+      <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
+        <%= form.text_field :first_name, id: :client_first_name, placeholder: "First Name", class: "form" %>
+        <%= form.label :dob, "Date of Birth" %>
+        <%= form.date_select :dob, id: :client_dob, :start_year => 1901, :end_year => Time.current.year, class: "form" %><br>
+        <div class="form-group">
+          <%= form.label "can we leave a message"  %>
+          <%= form.check_box :leave_message, id: :client_leave_message %>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= form.label :phone_type %>
+          <%= form.select :phone_type, options_for_select([["Select One", ""], "Cell", "Work", "Home"]), class: "form" %>
+        </div>
+        <div style="margin-top:-0.75em">&nbsp;</div>
+          <%= form.text_field :email, id: :client_email, placeholder: "Email", class: "form" %>
+          <%= form.text_field :local_address, id: :client_local_address, placeholder: "Address", class: "form" %>
+          <%= form.text_field :email_leave_message, id: :client_email_leave_message, placeholder: "leave email", class: "form" %>
 
-  <div class="field fieldStyle">
-    <%= form.text_field :phone_number, id: :client_phone_number, placeholder: "Phone Number" %>
-    <%= form.check_box :leave_message, id: :client_leave_message %>
-    <%= form.label :leave_message  %><br>
-    <%= form.label :phone_type  %>
-    <%= form.select :phone_type, options_for_select([["Select One", ""], "Cell", "Work", "Home"]) %>
-  </div>
-
-  <div class="field fieldStyle">
-    <%= form.text_field :email, id: :client_email, placeholder: "Email" %>
-    <%= form.text_field :occupation, id: :client_occupation, placeholder: "Occupation" %>
-  </div>
-
-  <div class="field fieldStyle">
-    <%= form.text_field :local_address, id: :client_local_address, placeholder: "Address" %>
-    <%= form.text_field :email_leave_message, id: :client_email_leave_message, placeholder: "leave email" %>
-  </div>
-
-  <div class="field fieldStyle">
-    <%= form.text_field :employer, id: :client_employer, placeholder: "Employer" %>
+      </div>
+      <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
+        <%= form.text_field :last_name,  id: :client_last_name, placeholder: "Last Name", class: "form" %>
+        <%= form.text_field :phone_number, id: :client_phone_number, placeholder: "Phone Number", class: "form" %>
+        <%= form.text_field :occupation, id: :client_occupation, placeholder: "Occupation", class: "form" %>
+        <%= form.text_field :employer, id: :client_employer, placeholder: "Employer", class: "form" %>
+      </div>
+      <div class="clear"></div>
+     </div>
   </div>
 
   <h5>Demographic Information</h5>
