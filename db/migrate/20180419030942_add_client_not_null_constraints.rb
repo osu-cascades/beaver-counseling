@@ -6,9 +6,11 @@ class AddClientNotNullConstraints < ActiveRecord::Migration[5.1]
     change_column_null :clients, :emergency_name, false
     change_column_null :clients, :emergency_relation, false
     change_column_null :clients, :emergency_address, false
-    change_column_null :clients, :emergency_phone, false    
+    change_column_null :clients, :emergency_phone, false
     change_column_null :clients, :health_insurance, false
     change_column_null :clients, :counselor_seen_before, false
     change_column_null :clients, :help_reason, false
+    change_column_null :clients, :phone_number, false
+    change_column_null :clients, :leave_message, false
   end
 end
