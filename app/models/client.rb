@@ -42,7 +42,7 @@ class Client < ApplicationRecord
       keyfile: "#{Rails.root}/service-account.json"
     )
     bucket = storage.bucket "cascadesclinic-197917.appspot.com"
-    file = bucket.file "_#{self.first_name}.txt"
+    file = bucket.file "#{self.first_name}_#{self.last_name}.txt"
 
     download = file.download
     download.rewind
