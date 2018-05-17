@@ -5,4 +5,5 @@ class FamilyMemberTest < ActiveSupport::TestCase
     family_member = family_members(:valid)
     assert_respond_to(family_member, :name)
   end
+
 end

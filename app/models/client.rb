@@ -6,6 +6,7 @@ class Client < ApplicationRecord
   validates :first_name, format: { with: /\A[a-zA-Z\'.-]+\z/ }
   validates :last_name, format: { with: /\A[a-zA-Z\'.-]+\z/ }
   validates :dob, :presence => true
+  validates :phone_number, format: { with: /\d{3}-\d{3}-\d{4}/ }
   validates :emergency_name, format: { with: /\A[a-zA-Z\'.-]+\z/ }
   validates :emergency_relation, format: { with: /\A[a-zA-Z]+\z/ }
   validates :emergency_phone, format: { with: /\d{3}-\d{3}-\d{4}/ }
@@ -19,22 +20,29 @@ class Client < ApplicationRecord
   has_paper_trail
 
   def upload_image(sig)
-    puts sig
-
     storage = Google::Cloud::Storage.new(
       project: "cascadesclinic-197917",
       keyfile: "#{Rails.root}/service-account.json"
     )
     bucket = storage.bucket "cascadesclinic-197917.appspot.com"
-    #file = bucket.file "2.png"
     puts "in controller testing"
-    bucket.create_file StringIO.new(sig), "zzz.txt"
+    bucket.create_file StringIO.new(sig), "#{self.id}#{self.first_name}.txt"
 
-    file = bucket.file "zzz.txt"
+    file = bucket.file "#{self.id}#{self.first_name}.txt"
 
+    puts "\n\n\n"
     puts file.public_url
 
     self.signature_url = file.public_url
+  end
+
+  def get_image()
+    storage = Google::Cloud::Storage.new(
+      project: "cascadesclinic-197917",
+      keyfile: "#{Rails.root}/service-account.json"
+    )
+    bucket = storage.bucket "cascadesclinic-197917.appspot.com"
+
   end
 
 

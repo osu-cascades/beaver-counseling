@@ -4,6 +4,8 @@ valid:
   first_name: Jack
   last_name: Bauer
   dob: 1990-02-11
+  phone_number: 111-222-3333
+  leave_message: true
   emergency_name: aflac
   emergency_relation: FatherInLaw
   emergency_phone: 999-888-7777
@@ -15,9 +17,11 @@ invalid:
   first_name: 23.0
   last_name: Bauer
   dob: 1990-02-11
+  phone_number: 111-222-3333
+  leave_message: true
   emergency_name: Samson
   emergency_relation: sister-mother
-  emergency_phone: 555-222-111
+  emergency_phone: 555-222-1111
   insurance_company: Nationwide
   counselor_seen_before: true
   how_referred: Psychiatrist
@@ -26,6 +30,8 @@ with_apostrophe_in_name:
   first_name: D'Angelo
   last_name: Bauer
   dob: 1990-02-11 11:02:57
+  phone_number: 111-222-3333
+  leave_message: true 
   emergency_name: aflac
   emergency_relation: FatherInLaw
   emergency_phone: 999-888-7777
@@ -37,20 +43,24 @@ with_period_in_emergency_name:
   first_name: D'Angelo
   last_name: B
   dob: 1990-02-11
+  phone_number: 111-222-3333
+  leave_message: true
   emergency_name: Duke Phil Sr. the Third
   emergency_relation: Mum
-  emergency_phone: 1-800-555-6423
+  emergency_phone: 800-555-6423
   insurance_company: Nationwide
   counselor_seen_before: true
   how_referred: Close friend
 
-with_ascii_in_insurance_name:
+non_alphanumeric_in_insurance_company:
   first_name: D'Angelo
   last_name: B
   dob: 1990-02-11
+  phone_number: 111-222-3333
+  leave_message: true
   emergency_name: Duke Phil Sr. the Third
   emergency_relation: Mum
-  emergency_phone: 1-800-555-6423
+  emergency_phone: 800-555-6423
   insurance_company: f%$$@]{}
   counselor_seen_before: true
   how_referred: Close friend
