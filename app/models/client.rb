@@ -26,9 +26,9 @@ class Client < ApplicationRecord
     )
     bucket = storage.bucket "cascadesclinic-197917.appspot.com"
     puts "in controller testing"
-    bucket.create_file StringIO.new(sig), "#{self.id}#{self.first_name}.txt"
+    bucket.create_file StringIO.new(sig), "#{self.first_name}_#{self.last_name}.txt"
 
-    file = bucket.file "#{self.id}#{self.first_name}.txt"
+    file = bucket.file "#{self.first_name}_#{self.last_name}.txt"
 
     puts "\n\n\n"
     puts file.public_url
@@ -42,7 +42,11 @@ class Client < ApplicationRecord
       keyfile: "#{Rails.root}/service-account.json"
     )
     bucket = storage.bucket "cascadesclinic-197917.appspot.com"
+    file = bucket.file "_#{self.first_name}.txt"
 
+    download = file.download
+    download.rewind
+    return download.read
   end
 
 

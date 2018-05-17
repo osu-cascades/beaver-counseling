@@ -42,10 +42,10 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
+    @signature = @client.get_image()
     if current_user.id != @client.counselor_id && current_user.admin? == false
       redirect_to root_path, alert: 'Admins only!'
     end
-    @clients = Client.all
     @users = User.all # used in client->edit @users.collect
     @family_member = FamilyMember.all
   end

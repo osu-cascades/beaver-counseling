@@ -33,6 +33,7 @@
   }
 </style>
 
+<img src="<%= @signature %>" width="400" height="200">
 <div id="hide1">
   <h1>Editing Client</h1>
 
@@ -361,9 +362,9 @@
   }
 
   function setPhoneType(){
-    var x = <%= @client.phone_type.to_s %>
+    var x = "<%= @client.phone_type.to_s %>"
     var y = ["Home", "Cell", "Work"];
-    $("#typephone").text(y[x])
+    $("#typephone").text(y[x]);
   }
 </script>
 
