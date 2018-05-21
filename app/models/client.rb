@@ -26,14 +26,15 @@ class Client < ApplicationRecord
     )
     bucket = storage.bucket "cascadesclinic-197917.appspot.com"
     puts "in controller testing"
-    bucket.create_file StringIO.new(sig), "#{self.first_name}_#{self.last_name}.txt"
+    bucket.create_file StringIO.new(sig), "#{self.id}_#{self.last_name}.txt"
 
-    file = bucket.file "#{self.first_name}_#{self.last_name}.txt"
+    file = bucket.file "#{self.id}_#{self.last_name}.txt"
 
     puts "\n\n\n"
     puts file.public_url
 
     self.signature_url = file.public_url
+    self.save
   end
 
   def get_image()
@@ -42,11 +43,15 @@ class Client < ApplicationRecord
       keyfile: "#{Rails.root}/service-account.json"
     )
     bucket = storage.bucket "cascadesclinic-197917.appspot.com"
-    file = bucket.file "#{self.first_name}_#{self.last_name}.txt"
+    file = bucket.file "#{self.id}_#{self.last_name}.txt"
 
-    download = file.download
-    download.rewind
-    return download.read
+    begin
+      download = file.download
+      download.rewind
+      return download.read
+    rescue => ex
+      return ""
+    end
   end
 
 

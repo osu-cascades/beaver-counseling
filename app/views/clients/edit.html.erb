@@ -33,14 +33,14 @@
   }
 </style>
 
-<img src="<%= @signature %>" width="400" height="200">
+
 <div id="hide1">
   <h1>Editing Client</h1>
 
   <div style="text-align: center">
     <button onclick="print1()">Print Client Information Sheet</button>
-<!--     <button onclick="print2()">Print Informed Consent for Counseling</button> |
-    <button onclick="print3()">Print Informed Consent for Video/Audio Recording</button> |
+    <button onclick="print2()">Signature</button> |
+    <!--<button onclick="print3()">Print Informed Consent for Video/Audio Recording</button> |
     <button onclick="print4()">Print Informed Consent for Treatment</button> -->
   </div>
 
@@ -252,29 +252,68 @@
   }
 
   function print2(){
-    $("#counseling").attr('id', 'pdf');
+    $("#signature").attr('id', 'pdf');
     printin();
-    $("#pdf").attr('id', 'counseling');
+    $("#pdf").attr('id', 'signature');
   }
 
-  function print3(){
-    $("#recording").attr('id', 'pdf');
-    printin();
-    $("#pdf").attr('id', 'recording');
-  }
+  // function print3(){
+  //   $("#recording").attr('id', 'pdf');
+  //   printin();
+  //   $("#pdf").attr('id', 'recording');
+  // }
 
-  function print4(){
-    $("#treatment").attr('id', 'pdf');
-    printin();
-    $("#pdf").attr('id', 'treatment');
-  }
+  // function print4(){
+  //   $("#treatment").attr('id', 'pdf');
+  //   printin();
+  //   $("#pdf").attr('id', 'treatment');
+  // }
 
   function printin() {
     window.print();
   }
 </script>
 
-<div id="recording" style="display: none;">
+<style>
+  tr.spaceUnder>td {
+    padding-bottom: 3em;
+  }
+</style>
+
+<div id="signature" style="display: none;">
+  <div style="text-align: center">
+    <h3><strong>Signatures</strong></h4>
+  </div>
+  <img src="<%= @signature %>" width="400" height="100">
+  <table>
+    <tr>
+      <td>_______________________________________________________</td><td> _________________</td><td> _______</td>
+    </tr>
+    <tr class="spaceUnder">
+      <td>Client's Signature</td><td>Printed Name</td><td>Date</td>
+    </tr>
+    <tr>
+      <td>_______________________________________________________</td><td> _________________</td><td> _______</td>
+    </tr>
+    <tr class="spaceUnder">
+      <td>Signature of Parent/Gaurdian (if client is under 18)</td><td>Printed Name</td><td>Date</td>
+    </tr>    
+    <tr>
+      <td>_______________________________________________________</td><td> _________________</td><td> _______</td>
+    </tr>    
+    <tr class="spaceUnder">
+      <td>Student Counselor's Signature</td><td>Printed Name</td><td>Date</td>
+    </tr>
+    <tr>
+      <td>_______________________________________________________</td><td> _________________</td><td> _______</td>
+    </tr>    
+    <tr>
+      <td>Site Supervisor's Signature</td><td>Printed Name</td><td>Date</td>
+    </tr>
+  </table>
+</div>
+
+<!-- <div>
   <div style="text-align: center">
     <p>Form 6</p>
     <h4>OREGON STATE UNIVERSITY - CASCADES CAMPUS</h4>
@@ -350,7 +389,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 <script>

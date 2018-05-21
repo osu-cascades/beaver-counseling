@@ -53,9 +53,6 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    #puts request.raw_post
-    puts params[:sig]
-
     if (params[:autofill])
       @client = Client.new
       @client.first_name = "Bob"
@@ -72,10 +69,10 @@ class ClientsController < ApplicationController
       puts client_params
     end
 
-    @client.upload_image(params[:sig])
 
     respond_to do |format|
       if @client.save
+        @client.upload_image(params[:sig])
         format.html { redirect_to @client, notice: 'Client was successfully created.' }
         format.json { render :show, status: :created, location: @client }
       else
