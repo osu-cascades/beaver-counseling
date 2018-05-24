@@ -6,12 +6,12 @@ class Client < ApplicationRecord
   validates :first_name, format: { with: /\A[a-zA-Z\'.-]+\z/ }
   validates :last_name, format: { with: /\A[a-zA-Z\'.-]+\z/ }
   validates :dob, :presence => true
-  validates :phone_number, format: { with: /\d{3}-\d{3}-\d{4}/ }
+  #validates :phone_number, format: { with: /\d{3}-\d{3}-\d{4}/ }
   validates :emergency_name, format: { with: /\A[a-zA-Z\'.-]+\z/ }
   validates :emergency_relation, format: { with: /\A[a-zA-Z]+\z/ }
-  validates :emergency_phone, format: { with: /\d{3}-\d{3}-\d{4}/ }
+  #validates :emergency_phone, format: { with: /\d{3}-\d{3}-\d{4}/ }
   validates :counselor_seen_before, inclusion: { in: [ true, false ] }
-  validates :insurance_company, presence: true
+  #validates :insurance_company, presence: true
   validate :validate_leave_message
 
   has_many :family_members
@@ -30,10 +30,8 @@ class Client < ApplicationRecord
 
     file = bucket.file "#{self.id}_#{self.last_name}.txt"
 
-    puts "\n\n\n"
-    puts file.public_url
 
-    self.signature_url = file.public_url
+    self.signature_url = "#{self.id}_#{self.last_name}.txt"
     self.save
   end
 
@@ -43,7 +41,7 @@ class Client < ApplicationRecord
       keyfile: "#{Rails.root}/service-account.json"
     )
     bucket = storage.bucket "cascadesclinic-197917.appspot.com"
-    file = bucket.file "#{self.id}_#{self.last_name}.txt"
+    file = bucket.file "#{self.signature_url}"
 
     begin
       download = file.download
