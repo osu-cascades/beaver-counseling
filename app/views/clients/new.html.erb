@@ -1,7 +1,5 @@
 <br><h1>Client Information Sheet</h1>
 
-<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.min.js" %>
-
 <style>
   .goodBorder {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.10);
@@ -124,101 +122,66 @@
   }
 </style>
 
-<script>
-/*function validatearticleFunction() {
-  $("#new_client").validate({
-    debug: false,
-    rules: {
-      "client[email]": {
-        required: function(e) {
-          return !$("#client_phone_number").is(':filled');
-        }
-      },
-      "client[phone_number]": {
-        required: function(e) {
-          return !$("#client_email").is(':filled');
-        }
-      },
-    },
-    messages:{
-
-    },
-    submitHandler: function(form){
-      form.submit();
-    }
-    });
-}
-
-$(document).ready(validatearticleFunction);
-*/
-
-</script>
-
 <head>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 </head>
-
+&nbsp;&nbsp;&nbsp;&nbsp;
 <div style="margin: 30px 100px 100px 100px; text-align: center;">
 
 <% client = @client %>
 <%= form_for(@client, local: true) do |form| %>
 
-  <!-- error checking doesnt work with auto_fill -->
-  <!--<% if client.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
-      <ul>
-        <% client.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>-->
-
   <div class="inner contact">
     <div class="contact-form">
       <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
         <%= form.text_field :first_name, id: :client_first_name, placeholder: "First Name", class: "form" %>
+
+        <%= form.text_field :phone_number, id: :client_phone_number, placeholder: "Phone Number", class: "form" %>
+
+        <%= form.text_field :email, id: :client_email, placeholder: "Email", class: "form" %>
+
         <%= form.label :dob, "Date of Birth" %>
-        <%= form.date_select :dob, id: :client_dob, :start_year => 1901, :end_year => Time.current.year, class: "form" %><br>
-        <div class="form-group">
-          <%= form.label "can we leave a message"  %>
-          <%= form.check_box :leave_message, id: :client_leave_message %>&nbsp;&nbsp;&nbsp;&nbsp;
-          <%= form.label :phone_type %>
-          <%= form.select :phone_type, options_for_select([["Select One", ""], "Cell", "Work", "Home"]), class: "form" %>
-        </div>
+        <%= form.date_select :dob, id: :client_dob, :start_year => 1901, :end_year => Time.current.year, class: "form" %>
+
+        <br>
+
         <div style="margin-top:-0.75em">&nbsp;</div>
-          <%= form.text_field :email, id: :client_email, placeholder: "Email", class: "form" %>
           <%= form.text_field :local_address, id: :client_local_address, placeholder: "Address", class: "form" %>
-          <%= form.text_field :email_leave_message, id: :client_email_leave_message, placeholder: "Leave Email", class: "form" %>
       </div>
       <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
         <%= form.text_field :last_name,  id: :client_last_name, placeholder: "Last Name", class: "form" %>
-        <%= form.text_field :phone_number, id: :client_phone_number, placeholder: "Phone Number", class: "form" %>
+          <%= form.label "Can we leave a message?"  %>
+          <%= form.check_box :leave_message, id: :client_leave_message %>
+          <%= form.label :phone_type %>
+          <%= form.select :phone_type, options_for_select([["Select One", ""], "Cell", "Work", "Home"]), class: "form" %>          
+          <%= form.label "Can we send you messages?"  %>
+          <%= form.check_box :email_leave_message, id: :client_email_leave_message %>
+
         <%= form.text_field :occupation, id: :client_occupation, placeholder: "Occupation", class: "form" %>
+
         <%= form.text_field :employer, id: :client_employer, placeholder: "Employer", class: "form" %>
       </div>
+
       <div class="clearfix"></div>
-      <h2 style="">Demographic Information</h2><br>
-      <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
-        <%= form.text_field :highest_edu, id: :client_highest_edu, placeholder: "Highest Education", class: "form" %>
-        <%= form.text_field :culture_background, id: :client_culture_background, placeholder: "Culture Background", class: "form" %>
-        <%= form.text_field :relationship, id: :client_relationship, placeholder: "Relationship", class: "form" %>
-      </div>
-      <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
-        <%= form.text_field :identified_gender, id: :client_identified_gender, placeholder: "Identified Gender", class: "form" %>
-        <%= form.text_field :sexual_orientation, id: :client_sexual_orientation, placeholder: "Sexual Orientation", class: "form" %>
-        <%= form.text_field :how_referred, id: :client_how_referred, placeholder: "How referred", class: "form" %>
-      </div>
-      <div class="clearfix"></div>
+        <h2 style="">Demographic Information</h2><br>
+        <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
+          <%= form.text_field :highest_edu, id: :client_highest_edu, placeholder: "Highest Education", class: "form" %>
+          <%= form.text_field :culture_background, id: :client_culture_background, placeholder: "Culture Background", class: "form" %>
+          <%= form.text_field :relationship, id: :client_relationship, placeholder: "Relationship", class: "form" %>
+        </div>
+        <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
+          <%= form.text_field :identified_gender, id: :client_identified_gender, placeholder: "Identified Gender", class: "form" %>
+          <%= form.text_field :sexual_orientation, id: :client_sexual_orientation, placeholder: "Sexual Orientation", class: "form" %>
+        </div>
+        <div class="clearfix"></div>
      </div>
   </div>
 
-  <%= form.check_box :accepted, id: :client_accepted %>
+<!--   <%= form.check_box :accepted, id: :client_accepted %>
   <%= form.label :accepted %>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <%= form.label :referral_to %>
-  <%= form.text_field :referral_to, id: :client_referral_to %>
+  <%= form.text_field :referral_to, id: :client_referral_to %> -->
 
   <h3>How many members are in your household (optional)</h3>
 
@@ -227,8 +190,9 @@ $(document).ready(validatearticleFunction);
     <%= form.fields_for :family_members, FamilyMember.new do |family_member_form| %>
       <p id="<%= i.to_s %>">
         <%= family_member_form.text_field :name, placeholder: "Name" %>
-        Date of Birth: <%= family_member_form.date_select :dob, :start_year => 1901, :end_year => Time.current.year %>
         <%= family_member_form.text_field :relation, placeholder: "Relation" %>
+        <br>
+        Date of Birth: <%= family_member_form.date_select :dob, :start_year => 1901, :end_year => Time.current.year %>
       </p>
     <% end %>
   <% end %>
@@ -252,18 +216,13 @@ $(document).ready(validatearticleFunction);
   <div class="inner contact">
     <div class="contact-form">
       <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
-        <%= form.text_field :emergency_name, id: :client_emergency_name, placeholder: "Emergency Name", class: "form" %>
-        <%= form.text_field :emergency_phone, id: :client_emergency_phone, placeholder: "Emergency Phone", class: "form" %>
-        <%= form.text_field :physician, id: :client_physician, placeholder: "Physician", class: "form" %>
         <%= form.check_box :counselor_seen_before, id: :client_counselor_seen_before %>
         <%= form.label :counselor_seen_before %>
       </div>
       <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
-        <%= form.text_field :emergency_relation, id: :client_emergency_relation, placeholder: "Emergency Relation", class: "form" %>
-        <%= form.text_field :insurance_company, id: :client_insurance_company, placeholder: "Insurance Company", class: "form" %>
-        <%= form.text_field :physician_phone, id: :client_physician_phone, placeholder: "Physician Phone", class: "form" %>
         <%= form.text_field :counselor_seen, id: :client_counselor_seen, placeholder: "Counselor Seen", class: "form" %>
       </div>
+      <%= form.text_field :how_referred, id: :client_how_referred, placeholder: "How were you referred to the clinic", class: "form" %>
     </div>
   </div>
 
@@ -355,13 +314,12 @@ $(document).ready(validatearticleFunction);
 
   <strong>Draw your signature into the box below</strong><br>
   <canvas style="border: 1px solid black" id="signature-pad" class="signature-pad" width=800 height=300></canvas><br>
-  <button id="save-png" onclick="SaveSig()">Save as PNG</button>
   <button id="clear">Clear</button><br><br>
 
   <%= check_box_tag :autofill, true, (@auto_fill == 'true') %> autofill form
 
   <div style="margin-top: 1em;">
-    <%= form.submit "Submit", :class => 'btn btn-primary' %>
+    <%= form.submit "Submit", :class => 'btn btn-primary', :onclick => "SaveSig()" %>
   </div><br>
 
   <input type="hidden" id="sig" name="sig">
