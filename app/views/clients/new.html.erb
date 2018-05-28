@@ -1,4 +1,5 @@
-<br><h1>Client Information Sheet</h1>
+<h1>Client Information Sheet</h1>
+<div style="text-align: center;">Please do not fill out this form until you have contacted to do so.</div>
 
 <style>
   .goodBorder {
@@ -153,7 +154,7 @@
           <%= form.label "Can we leave a message?"  %>
           <%= form.check_box :leave_message, id: :client_leave_message %>
           <%= form.label :phone_type %>
-          <%= form.select :phone_type, options_for_select([["Select One", ""], "Cell", "Work", "Home"]), class: "form" %>          
+          <%= form.select :phone_type, options_for_select([["Select One", ""], "Cell", "Work", "Home"]), class: "form" %>
           <%= form.label "Can we send you messages?"  %>
           <%= form.check_box :email_leave_message, id: :client_email_leave_message %>
 
