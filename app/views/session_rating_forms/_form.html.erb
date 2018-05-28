@@ -64,11 +64,18 @@
     overflow: hidden;
   }
 
+  .options-bg {
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+    border: 1px solid rgba(0, 0, 0, .2);
+  }
+
 </style>
 
 <div class="rb-box">
   <div class="field left">
-    <p>Clinic Client #</p><input id="clientNum"></input>
+    <input id="clientNum" placeholder="Clinic Client #"></input>
   </div>
 
   <div class="field center">
@@ -76,9 +83,14 @@
   </div>
 
   <div class="field right">
-    <p>Room #</p><input id="roomNum"></input>
+    <select id="roomNum" onchange="changeColor()">
+      <option value="133">room 133</option>
+      <option value="131">room 131</option>
+      <option value="129">room 129</option>
+    </select>
+    <span id="color" style="visibility: visible; background: #800080;" class="options-bg">&nbsp;&nbsp;&nbsp;&nbsp;</span>
   </div>
-  <br><br><br><br><br>
+  <br><br><br>
 
   <p>1. How effective was your session in meeting your needs today?</p>
   <div id="rb-1">
@@ -178,6 +190,19 @@
 
 
 <script>
+
+function changeColor() {
+  var roomNum = document.getElementById("roomNum").value;
+  var color = document.getElementById("color");
+
+  if (roomNum == "room 133") {
+  	color.style.background = "#800080";
+  } else if (roomNum == "room 131") {
+  	color.style.background = "#FFFF00";
+  } else {
+  	color.style.background = "#228B22";
+  }
+}
 
 $( document ).ready(function() {
   var nowDate = new Date();
