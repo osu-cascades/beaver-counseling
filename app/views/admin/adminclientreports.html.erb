@@ -23,11 +23,11 @@
 			<%= button_to "Client Feedback", '/session_rating_forms', :method => :get, :class => 'btn', :style => "background: #D3D3D3;" %>
 		</div>&nbsp;&nbsp;
 		<div style="display: inline-block;">
-			<button class="btn" style="background: #D3D3D3;">Save Data</button>
+			<button onclick="saveData()" class="btn" style="background: #D3D3D3;">Save Data</button>
 		</div>
 	</div>
 	<br>
-	<select onchange="makeGraph(this)">
+	<select onchange="makeGraph(this)" id="graphSelect">
 		<option>Age</option>
 		<option>City</option>
 		<option>Insurance</option>
@@ -41,53 +41,82 @@
 	</select>
 </div>
 
-
 <canvas id="bar-chart-horizontal" width="200" height="60"></canvas>
 
 <script>
 
-var graph; //Global getting assinged chart objects. Used to call destroy
 var clients = <%= raw Client.all.to_json %>
+var graph; // used to call destroy
+var objList = [], labels = []; // ease of saving
 
 $(document).ready(function() {
-	var objList = [], labels = [];
+	objList = [], labels = [];
 	var currentYear = new Date().getFullYear();
 	for (var i = 0; i < clients.length; i++) {
 		objList.push(currentYear - (parseInt(clients[i].dob)));
 	}
-	createChart(labels, "Age (years)", getNumClientsAtListItem, objList, 'Clients Age')
+	createChart(labels, "Age (years)", getNumClientsAtListItem, objList, "Clients Age")
 });
 
 function makeGraph(obj) {
 	var selectedOption = obj.options[obj.selectedIndex].value;
-	var objList = [], labels = [];
+	objList = [], labels = [];
 	switch(selectedOption) {
-		case ("Age"): {
-			var objList = [], labels = [];
+		case ("Age"):
 			var currentYear = new Date().getFullYear();
 			for (var i = 0; i < clients.length; i++) {
 				objList.push(currentYear - (parseInt(clients[i].dob)));
 			}
-			createChart(labels, "Age (years)", getNumClientsAtListItem, objList, 'Clients Age')
+			createChart(labels, "Age (years)", getNumClientsAtListItem, objList, "Clients Age")
 			break;
-		}
-		case ("City"): {
-			var objList = [], labels = [];
-			var currentYear = new Date().getFullYear();
+		case ("City"):
 			for (var i = 0; i < clients.length; i++) {
 				objList.push(clients[i].local_address);
 			}
-			createChart(labels, "City (address)", getNumClientsAtListItem, objList, 'Clients City')
+			createChart(labels, "City (address)", getNumClientsAtListItem, objList, "Clients City")
 			break;
-		}
 		case ("Insurance"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].insurance_company);
+			}
+			createChart(labels, "Insurance Company (address)", getNumClientsAtListItem, objList, "Clients Insurance")
+			break;
 		case ("Seen Counselor Before"):
-		case ("Insurance"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].counselor_seen_before);
+			}
+			createChart(labels, "Insurance Company (address)", getNumClientsAtListItem, objList, "Clients Insurance")
+			break;
 		case ("Education"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].highest_edu);
+			}
+			createChart(labels, "Education", getNumClientsAtListItem, objList, "Clients Education")
+			break;
 		case ("Gender"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].identified_gender);
+			}
+			createChart(labels, "Gender", getNumClientsAtListItem, objList, "Clients Gender")
+			break;
 		case ("Culture Background"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].culture_background);
+			}
+			createChart(labels, "Culure Background", getNumClientsAtListItem, objList, "Clients Culure")
+			break;
 		case ("Sexual Orientation"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].sexual_orientation);
+			}
+			createChart(labels, "Sexual Orientation", getNumClientsAtListItem, objList, "Clients Sexual Orientation")
+			break;
 		case ("Relationship Status"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].relationship);
+			}
+			createChart(labels, "Relationship Status", getNumClientsAtListItem, objList, "Clients Relationship Status")
+			break;
 	}
 }
 
@@ -114,7 +143,11 @@ function getNumClientsAtListItem(list, labels) {
 }
 
 function createChart(_labels, _label, helperFunction, listedParam, _text) {
-	new Chart(document.getElementById("bar-chart-horizontal"), {
+	// destroy the graph currently showing
+	if(graph != null){
+		graph.destroy();
+	}
+	graph = new Chart(document.getElementById("bar-chart-horizontal"), {
 	    type: "horizontalBar",
 	    data: {
 	      labels: _labels,
@@ -143,6 +176,26 @@ function createChart(_labels, _label, helperFunction, listedParam, _text) {
 		    }
 			}
 	});
+}
+
+function saveData() {
+	var select = document.getElementById("graphSelect");
+	var selectedOption = select.options[select.selectedIndex].value;
+	var rows = [[selectedOption], ["labels", labels], ["occurences", objList]];
+
+	let csvContent = "data:text/csv;charset=utf-8,";
+	rows.forEach(function(rowArray){
+	   let row = rowArray.join(",");
+	   csvContent += row + "\r\n";
+	});
+	var encodedUri = encodeURI(csvContent);
+	var link = document.createElement("a");
+	link.style.visibility = "hidden";
+	link.setAttribute("href", encodedUri);
+	link.setAttribute("download", "client_data.csv");
+	link.innerHTML= "Click Here to download";
+	document.body.appendChild(link); // Required for FF
+	link.click(); // This will download the data file named "my_data.csv"*/
 }
 
 </script>
