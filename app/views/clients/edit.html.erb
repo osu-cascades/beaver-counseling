@@ -21,7 +21,7 @@
     nav {
       display: none;
     }
-    
+
     .printheader {
       border:1px solid lightblue; margin-top: 5px; padding: 10px; margin-bottom: 5px;
     }
@@ -297,16 +297,16 @@
     </tr>
     <tr class="spaceUnder">
       <td>Signature of Parent/Gaurdian (if client is under 18)</td><td>Printed Name</td><td>Date</td>
-    </tr>    
+    </tr>
     <tr>
       <td>_______________________________________________________</td><td> _________________</td><td> _______</td>
-    </tr>    
+    </tr>
     <tr class="spaceUnder">
       <td>Student Counselor's Signature</td><td>Printed Name</td><td>Date</td>
     </tr>
     <tr>
       <td>_______________________________________________________</td><td> _________________</td><td> _______</td>
-    </tr>    
+    </tr>
     <tr>
       <td>Site Supervisor's Signature</td><td>Printed Name</td><td>Date</td>
     </tr>
@@ -410,12 +410,12 @@
 <div id="infosheet" style="display: none;">
     <h2 style="text-align: center">OSU Counseling Clinic</h2>
     <h2 style="text-align: center">Client Information Form</h2>
-  <p style="float: right">Date: <u><%= @client.updated_at.strftime("%m-%d-%Y") =%></u></p>
+  <p style="float: right">Date: <u><%= @client.updated_at %></u></p>
   <div class="row" style="padding-top: 20px">
     <div class="col">
       <p><b>Client name:</b> <u><%= @client.to_s %></u>
       <b>Age:</b><u><span id="clientage"></span></u>
-      <b>Date of Birth:</b> <u><%= @client.dob.strftime("%m-%d-%Y") %></u></p>
+      <b>Date of Birth:</b> <u><%= @client.dob %></u></p>
     </div>
   </div>
   <p><b>Local address:</b> <u><%=@client.local_address%></u></p>
@@ -432,7 +432,7 @@
           Name:
           <u><%= family_member.name %></u>
           Dob:
-          <u><%= family_member.dob.strftime("%m-%d-%Y") %></u>
+          <u><%= family_member.dob %></u>
           Relation:
           <u><%= family_member.relation %></u>
         </p>
@@ -459,7 +459,7 @@
   <div class="printheader">
     <h2>Other</h2>
   </div>
-    <p>Have you ever seen a counselor before? <%= @client.counselor_seen_before ? 'Yes' : 'No' %></p> 
+    <p>Have you ever seen a counselor before? <%= @client.counselor_seen_before ? 'Yes' : 'No' %></p>
     <p>If yes, where and when? <u><%= @client.counselor_seen %></u></p>
     <p>How were you referred to the clinic? <u><%= @client.how_referred %><p>
 </div>
