@@ -1,18 +1,15 @@
 <style>
   p { font-size: 1rem; }
-
   .rb-box {
     max-width: 840px;
     margin: 50px auto;
     border-radius: .75em;
   }
-
   .rb-tab {
     display: inline-block;
     position: relative;
     width: 6%;
   }
-
   .rb-txt {
     position: absolute;
     top: 50%;
@@ -21,7 +18,6 @@
     font-size: 1em;
     color: black;
   }
-
   .rb-spot {
     position: absolute;
     width: 18px;
@@ -35,49 +31,41 @@
     cursor: pointer;
     transition: ease .5s;
   }
-
   .rb-tab-active .rb-spot {
     background: rgba(0,0,0,.3);
     border: 1px solid rgba(0,0,0,.6);
   }
-
   .desc {
     position: relative;
     top: 5px;
   }
-
   .left {
     float:left;
     width: 33%;
     overflow: hidden;
   }
-
   .center {
     display: inline-block;
     width: 33%;
     overflow: hidden;
     text-align: center;
   }
-
   .right {
     float:right;
     width: 33%;
     overflow: hidden;
     text-align: right;
   }
-
   .options-bg {
     width: 15px;
     height: 15px;
     margin: 5px;
     border: 1px solid rgba(0, 0, 0, .2);
   }
-
   .labelLeft {
     float: left;
     width: 100px;
   }
-
   .labelRight {
     float: right;
     width: 150px;
@@ -201,34 +189,28 @@
 
 
 <script>
-
 function changeColor() {
   var roomNum = document.getElementById("roomNum").value;
   var color = document.getElementById("color");
-
-  if (roomNum == "room 133") {
+  if (roomNum == "133") {
   	color.style.background = "#800080";
-  } else if (roomNum == "room 131") {
+  } else if (roomNum == "131") {
   	color.style.background = "#FFFF00";
   } else {
   	color.style.background = "#228B22";
   }
 }
-
 $( document ).ready(function() {
   var nowDate = new Date();
   var date = (nowDate.getMonth()+1) + '/' + nowDate.getDate() + '/' + nowDate.getFullYear(); // january is 0
   document.getElementById("date").innerHTML = date;
 });
-
 $(".rb-tab").click(function(){
   $(this).parent().find(".rb-tab").removeClass("rb-tab-active");
   $(this).addClass("rb-tab-active");
 });
-
 function send() {
   var message = {};
-
   try {
     // get data from page
     message.client_number = document.getElementById('clientNum').value;
@@ -242,11 +224,10 @@ function send() {
     message.start_stress = parseInt(active[4].getAttribute('data-value'));
     message.end_stress = parseInt(active[5].getAttribute('data-value'));
     message.optional_info = document.getElementById('optionalInfo').value;
-
     $.ajax({
       type: "POST",
-      url: "/session_rating_forms",
-      data: JSON.stringify({session_rating_form:{"client_number":message.client_number, "date":message.date,
+      url: "/session_ratings",
+      data: JSON.stringify({session_rating:{"client_number":message.client_number, "date":message.date,
                             "room_num":message.room_num, "effectiveness":message.effectiveness, "focus":message.focus,
                             "relationship":message.relationship, "care":message.care, "start_stress":message.start_stress,
                             "end_stress":message.end_stress, "optional_info":message.optional_info}}),
@@ -268,5 +249,4 @@ function send() {
     alert("error please verify all information is filled in correctly");
   }
 }
-
 </script>

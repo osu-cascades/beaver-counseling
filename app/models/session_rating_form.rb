@@ -1,2 +1,0 @@
-class SessionRatingForm < ApplicationRecord
-end

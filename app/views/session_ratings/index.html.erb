@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Session Ratings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Client number</th>
+      <th>Date</th>
+      <th>Room num</th>
+      <th>Effectiveness</th>
+      <th>Focus</th>
+      <th>Relationship</th>
+      <th>Care</th>
+      <th>Start stress</th>
+      <th>End stress</th>
+      <th>Optional info</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @session_ratings.each do |session_rating| %>
+      <tr>
+        <td><%= session_rating.client_number %></td>
+        <td><%= session_rating.date %></td>
+        <td><%= session_rating.room_num %></td>
+        <td><%= session_rating.effectiveness %></td>
+        <td><%= session_rating.focus %></td>
+        <td><%= session_rating.relationship %></td>
+        <td><%= session_rating.care %></td>
+        <td><%= session_rating.start_stress %></td>
+        <td><%= session_rating.end_stress %></td>
+        <td><%= session_rating.optional_info %></td>
+        <td><%= link_to 'Show', session_rating %></td>
+        <td><%= link_to 'Edit', edit_session_rating_path(session_rating) %></td>
+        <td><%= link_to 'Destroy', session_rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Session Rating', new_session_rating_path %>

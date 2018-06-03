@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516142705) do
+ActiveRecord::Schema.define(version: 20180603020753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20180516142705) do
     t.index ["client_id"], name: "index_notes_on_client_id"
   end
 
-  create_table "session_rating_forms", force: :cascade do |t|
+  create_table "session_ratings", force: :cascade do |t|
     t.string "client_number"
     t.date "date"
     t.integer "room_num"
