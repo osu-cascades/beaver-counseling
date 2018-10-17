@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.4.2'
+ruby '2.5.1'
 
 gem 'google-cloud-storage'
 gem 'rails', '~> 5.1.4'
