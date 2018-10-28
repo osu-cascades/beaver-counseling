@@ -6,10 +6,10 @@ class Client < ApplicationRecord
   validates :first_name, format: { with: /\A[a-zA-Z\'.-]+\z/ }
   validates :last_name, format: { with: /\A[a-zA-Z\'.-]+\z/ }
   validates :dob, :presence => true
-  #validates :phone_number, format: { with: /\d{3}-\d{3}-\d{4}/ }
+  validates :phone_number, format: { with: /\d{3}-\d{3}-\d{4}/ }
   validates :emergency_name, format: { with: /\A[a-zA-Z\'.-]+\z/ }
   validates :emergency_relation, format: { with: /\A[a-zA-Z]+\z/ }
-  #validates :emergency_phone, format: { with: /\d{3}-\d{3}-\d{4}/ }
+  validates :emergency_phone, format: { with: /\d{3}-\d{3}-\d{4}/ }
   validates :counselor_seen_before, inclusion: { in: [ true, false ] }
   #validates :insurance_company, presence: true
   validate :validate_leave_message
