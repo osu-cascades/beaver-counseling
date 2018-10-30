@@ -6,7 +6,6 @@ class ClientTest < ActiveSupport::TestCase
   end
 
   test "without a first name is invalid" do
-    assert(@client.valid?)
     @client.first_name = nil
     refute @client.valid?
   end
