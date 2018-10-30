@@ -11,7 +11,7 @@ class Client < ApplicationRecord
   validates :emergency_relation, format: { with: /\A[a-zA-Z]+\z/ }
   validates :emergency_phone, format: { with: /\d{3}-\d{3}-\d{4}/ }
   validates :counselor_seen_before, inclusion: { in: [ true, false ] }
-  #validates :insurance_company, presence: true
+  validates :insurance_company, presence: true
   validate :validate_leave_message
 
   has_many :family_members
