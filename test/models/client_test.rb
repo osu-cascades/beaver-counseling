@@ -15,6 +15,16 @@ class ClientTest < ActiveSupport::TestCase
     refute @client.valid?
   end
 
+  test "first name cannot be a number" do
+    @client.first_name = "123"
+    refute @client.valid?
+  end
+
+  test "last name cannot be a number" do 
+    @client.last_name = "123"
+    refute @client.valid?
+  end
+
   test "without a date of birth is invalid" do
     @client.dob = nil
     refute @client.valid?
@@ -35,8 +45,18 @@ class ClientTest < ActiveSupport::TestCase
     refute @client.valid?
   end
 
+  test "emergency_name cannot be a number" do 
+    @client.emergency_name = "123"
+    refute @client.valid?
+  end
+
   test "without emergency_phone is invalid" do
     @client.emergency_phone = nil
+    refute @client.valid?
+  end
+
+  test "emergency_phone string is invalid" do 
+    @client.emergency_phone = "ralph"
     refute @client.valid?
   end
 
