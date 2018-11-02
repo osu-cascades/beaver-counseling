@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount Ckeditor::Engine => '/ckeditor'
 	root 'high_voltage/pages#show', id: 'welcome'
 
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
 	resources :users
 	resources :clients
   resources :notes
-  resources :session_rating_forms
+  resources :session_ratings
 
   match '/notes' => 'notes#update', via: :put, as: 'update_notes'
 

@@ -1,6 +1,6 @@
-class CreateSessionRatingForms < ActiveRecord::Migration[5.1]
+class CreateSessionRatings < ActiveRecord::Migration[5.1]
   def change
-    create_table :session_rating_forms do |t|
+    create_table :session_ratings do |t|
       t.string :client_number
       t.date :date
       t.integer :room_num

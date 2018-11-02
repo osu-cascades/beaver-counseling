@@ -1,25 +1,36 @@
-<style>
-	.center{
-		text-align: center
-	}
-	body {
-			background: url(images/bg.jpg) no-repeat center center fixed;
-		  -webkit-background-size: cover;
-		  -moz-background-size: cover;
-		  -o-background-size: cover;
-		  background-size: cover;
-  		background-image: url("homebackground.jpg");
-	}
-	h1 {
-	    color: orange;
-	    text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
-	}
-</style>
+<h1>OSU Cascades Counseling Clinic</h1>
 
-<div class="center">
-	<h1>Welcome to OSU Cascades Counseling Clinic</h1>
+<div class="album py-5">
+	<div class="container">
 
-	<%= button_to "New Clients Register Here", '/clients/new', :method => :get, :class => 'btn' %>
-	<br>
-	<%= button_to "Rate Your Session", '/session_rating_forms/new', :method => :get, :class => 'btn' %>
+		<div class="row">
+			<div class="col-sm-5">
+				<div class="card sm-5 shadow-sm">
+					<%= image_tag 'newClient.png', :class => 'card-img-top', :alt => 'Card image cap' %>
+					<div class="card-body">
+						<p class="card-text">New clients can register their information here.</p>
+						<div class="d-flex justify-content-between align-items-center">
+							<div class="btn-group">
+								<%= button_to "Register Here", '/clients/new', :method => :get, :class => 'btn btn-sm btn-outline-secondary' %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-5">
+				<div class="card sm-5 shadow-sm">
+					<%= image_tag 'rateSession.png', :class => 'card-img-top', :alt => 'Card image cap' %>
+					<div class="card-body">
+						<p class="card-text">We appreciate your feedback. Please take the time to rate your session, and tell us how it went.</p>
+						<div class="d-flex justify-content-between align-items-center">
+							<div class="btn-group">
+								<%= button_to "Rate Your Session", '/session_ratings/new', :method => :get, :class => 'btn btn-sm btn-outline-secondary' %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SessionRatingFormTest < ActiveSupport::TestCase
+class SessionRatingTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

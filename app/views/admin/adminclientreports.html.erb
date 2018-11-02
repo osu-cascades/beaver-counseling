@@ -13,73 +13,149 @@
 
 </style>
 
-<%= button_to "Back", 'adminhome', :method => :get, :class => 'btn glyphicon glyphicon-circle-arrow-left', :style => "background: #D3D3D3;" %>
-
-
 <h1>Admin Client Reports</h1>
 <div style="text-align: center;">
-	<%= button_to "Client Feedback", '/session_rating_forms', :method => :get, :class => 'btn', :style => "background: #D3D3D3;" %>
+	<div style="text-align:center;">
+		<div style="display: inline-block;">
+			<%= button_to "Back", 'adminhome', :method => :get, :class => 'btn glyphicon glyphicon-circle-arrow-left', :style => "background: #D3D3D3;" %>
+		</div>&nbsp;&nbsp;
+		<div style="display: inline-block;">
+			<%= button_to "Client Feedback", '/session_ratings', :method => :get, :class => 'btn', :style => "background: #D3D3D3;" %>
+		</div>&nbsp;&nbsp;
+		<div style="display: inline-block;">
+			<button onclick="saveData()" class="btn" style="background: #D3D3D3;">Save Data</button>
+		</div>
+	</div>
 	<br>
-	<button onclick="AgeChart()">Age Graph</button>
-	<button onclick="Education()">Education</button>
-	<button onclick="Gender()">Gender</button>
+	<select onchange="makeGraph(this)" id="graphSelect">
+		<option>Age</option>
+		<option>City</option>
+		<option>Insurance</option>
+		<option>Seen Counselor Before</option>
+		<option>Insurance</option>
+		<option>Education</option>
+		<option>Gender</option>
+		<option>Culture Background</option>
+		<option>Sexual Orientation</option>
+		<option>Relationship Status</option>
+	</select>
 </div>
-
 
 <canvas id="bar-chart-horizontal" width="200" height="60"></canvas>
 
 <script>
 
-var graph; //Global getting assinged chart objects. Used to call destroy
 var clients = <%= raw Client.all.to_json %>
+var graph; // used to call destroy
+var objList = [], labels = []; // ease of saving
 
-function AgeChart(){
+$(document).ready(function() {
+	objList = [], labels = [];
+	var currentYear = new Date().getFullYear();
+	for (var i = 0; i < clients.length; i++) {
+		objList.push(currentYear - (parseInt(clients[i].dob)));
+	}
+	createChart(labels, "Age (years)", getNumClientsAtListItem, objList, "Clients Age")
+});
+
+function makeGraph(obj) {
+	var selectedOption = obj.options[obj.selectedIndex].value;
+	objList = [], labels = [];
+	switch(selectedOption) {
+		case ("Age"):
+			var currentYear = new Date().getFullYear();
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(currentYear - (parseInt(clients[i].dob)));
+			}
+			createChart(labels, "Age (years)", getNumClientsAtListItem, objList, "Clients Age")
+			break;
+		case ("City"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].local_address);
+			}
+			createChart(labels, "City (address)", getNumClientsAtListItem, objList, "Clients City")
+			break;
+		case ("Insurance"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].insurance_company);
+			}
+			createChart(labels, "Insurance Company (address)", getNumClientsAtListItem, objList, "Clients Insurance")
+			break;
+		case ("Seen Counselor Before"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].counselor_seen_before);
+			}
+			createChart(labels, "Insurance Company (address)", getNumClientsAtListItem, objList, "Clients Insurance")
+			break;
+		case ("Education"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].highest_edu);
+			}
+			createChart(labels, "Education", getNumClientsAtListItem, objList, "Clients Education")
+			break;
+		case ("Gender"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].identified_gender);
+			}
+			createChart(labels, "Gender", getNumClientsAtListItem, objList, "Clients Gender")
+			break;
+		case ("Culture Background"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].culture_background);
+			}
+			createChart(labels, "Culure Background", getNumClientsAtListItem, objList, "Clients Culure")
+			break;
+		case ("Sexual Orientation"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].sexual_orientation);
+			}
+			createChart(labels, "Sexual Orientation", getNumClientsAtListItem, objList, "Clients Sexual Orientation")
+			break;
+		case ("Relationship Status"):
+			for (var i = 0; i < clients.length; i++) {
+				objList.push(clients[i].relationship);
+			}
+			createChart(labels, "Relationship Status", getNumClientsAtListItem, objList, "Clients Relationship Status")
+			break;
+	}
+}
+
+// helper function
+function getNumClientsAtListItem(list, labels) {
+	var unique = {}; // key:age value:numOfOcurrences
+	var currentItem;
+	for (var i = 0; i < list.length; i++) { // for unique in list
+		currentItem = list[i];
+		if (!(currentItem in unique)) {
+			unique[currentItem] = 1;
+		} else {
+			var num = parseInt(unique[currentItem])
+			num += 1
+			unique[currentItem] = num;
+		}
+	}
+	var ocurrences = [];
+	for (var key in unique) {
+			labels.push(key);
+			ocurrences.push(unique[key]);
+	}
+	return ocurrences;
+}
+
+function createChart(_labels, _label, helperFunction, listedParam, _text) {
+	// destroy the graph currently showing
 	if(graph != null){
 		graph.destroy();
 	}
-	var ages = [];
-
-	for (var i = 0; i < clients.length; i++) {
-		//Calculates age from date of birth
-		var bday = new Date(clients[i].dob)
-		var agedif = Date.now() - bday.getTime();
-		var agedate = new Date(agedif);
-		ages.push(parseInt(agedate.getUTCFullYear() - 1970));
-	}
-
-	var labels = [];
-
-	function getNumClientsAtAge(ages) {
-		var unique = {}; // key:age value:numOfOcurrences
-		var currentAge;
-		for (var i = 0; i < ages.length; i++) { // for unique in list
-			currentAge = ages[i];
-			if (!(currentAge in unique)) {
-				unique[currentAge] = 1;
-			} else {
-				var num = parseInt(unique[currentAge])
-				num += 1
-				unique[currentAge] = num;
-			}
-		}
-
-		var ocurrences = [];
-		for (var key in unique) {
-				labels.push(key);
-				ocurrences.push(unique[key]);
-		}
-		return ocurrences;
-	}
-
 	graph = new Chart(document.getElementById("bar-chart-horizontal"), {
-	    type: 'horizontalBar',
+	    type: "horizontalBar",
 	    data: {
-	      labels: labels,
+	      labels: _labels,
 	      datasets: [
 	        {
-	          label: "Age (years)",
+	          label: _label,
 	          backgroundColor: ["#8e5ea2", "#3e95cd","#3cba9f","#e8c3b9","#c45850"],
-	          data: getNumClientsAtAge(ages)
+	          data: helperFunction(listedParam, _labels)
 	        }
 	      ]
 	    },
@@ -95,140 +171,31 @@ function AgeChart(){
 		      legend: { display: false },
 		      title: {
 		        display: true,
-		        text: 'Clients Age',
+		        text: _text,
 		      }
 		    }
 			}
 	});
 }
 
-function Education(){
-	if(graph != null){
-		graph.destroy();
-	}
-	var edu = []
-	var labels = [];
+function saveData() {
+	var select = document.getElementById("graphSelect");
+	var selectedOption = select.options[select.selectedIndex].value;
+	var rows = [[selectedOption], ["labels", labels], ["occurences", objList]];
 
-	for (var i = 0; i < clients.length; i++) {
-		edu.push((clients[i].highest_edu));
-	}
-
-	function getHighestEduClient(edu) {
-		var unique = {};
-		var save;
-		for (var i = 0; i < edu.length; i++) { // for unique in list
-			save = edu[i];
-			if (!(save in unique)) {
-				unique[save] = 1;
-			} else {
-				var num = parseInt(unique[save])
-				num += 1
-				unique[save] = num;
-			}
-		}
-
-		var ocurrences = [];
-		for (var key in unique) {
-				labels.push(key);
-				ocurrences.push(unique[key]);
-		}
-		return ocurrences;
-	}
-
-
-	graph = new Chart(document.getElementById("bar-chart-horizontal"), {
-		    type: 'horizontalBar',
-		    data: {
-		      labels: labels,
-		      datasets: [
-		        {
-		          label: "Count #",
-		          backgroundColor: ["#8e5ea2", "#3e95cd","#3cba9f","#e8c3b9","#c45850"],
-		          data: getHighestEduClient(edu)
-		        }
-		      ]
-		    },
-		    options: {
-					scales: {
-						xAxes: [{
-							ticks: {
-								beginAtZero: true,
-								min: 0,
-								stepSize: 1
-							}
-						}],
-			      legend: { display: false },
-			      title: {
-			        display: true,
-			        text: 'Highest Education',
-			      }
-			    }
-			}
+	let csvContent = "data:text/csv;charset=utf-8,";
+	rows.forEach(function(rowArray){
+	   let row = rowArray.join(",");
+	   csvContent += row + "\r\n";
 	});
+	var encodedUri = encodeURI(csvContent);
+	var link = document.createElement("a");
+	link.style.visibility = "hidden";
+	link.setAttribute("href", encodedUri);
+	link.setAttribute("download", "client_data.csv");
+	link.innerHTML= "Click Here to download";
+	document.body.appendChild(link); // Required for FF
+	link.click(); // This will download the data file named "my_data.csv"*/
 }
 
-function Gender(){
-	if(graph != null){
-		graph.destroy();
-	}
-	var gender = []
-	var labels = [];
-
-	for (var i = 0; i < clients.length; i++) {
-		gender.push((clients[i].identified_gender));
-	}
-
-	function getGenderClient(gender) {
-		var unique = {};
-		var save;
-		for (var i = 0; i < gender.length; i++) { // for unique in list
-			save = gender[i];
-			if (!(save in unique)) {
-				unique[save] = 1;
-			} else {
-				var num = parseInt(unique[save])
-				num += 1
-				unique[save] = num;
-			}
-		}
-
-		var ocurrences = [];
-		for (var key in unique) {
-				labels.push(key);
-				ocurrences.push(unique[key]);
-		}
-		return ocurrences;
-	}
-
-
-	graph = new Chart(document.getElementById("bar-chart-horizontal"), {
-		    type: 'horizontalBar',
-		    data: {
-		      labels: labels,
-		      datasets: [
-		        {
-		          label: "Count #",
-		          backgroundColor: ["#8e5ea2", "#3e95cd","#3cba9f","#e8c3b9","#c45850"],
-		          data: getGenderClient(gender)
-		        }
-		      ]
-		    },
-		    options: {
-					scales: {
-						xAxes: [{
-							ticks: {
-								beginAtZero: true,
-								min: 0,
-								stepSize: 1
-							}
-						}],
-			      legend: { display: false },
-			      title: {
-			        display: true,
-			        text: 'Identified Gender',
-			      }
-			    }
-			}
-	});
-}
 </script>

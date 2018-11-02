@@ -1,0 +1,2 @@
+class SessionRating < ApplicationRecord
+end

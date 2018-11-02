@@ -1,54 +1,73 @@
 require 'test_helper'
 
 class ClientTest < ActiveSupport::TestCase
-  
+  def setup
+    @client = clients(:valid)
+  end
+
   test "without a first name is invalid" do
-    client = clients(:valid)
-    assert(client.valid?)
-    client.first_name = nil
-    refute client.valid?
+    @client.first_name = nil
+    refute @client.valid?
   end
 
   test "without a last name is invalid" do
-    client = clients(:valid)
-    client.last_name = nil
-    refute client.valid?
+    @client.last_name = nil
+    refute @client.valid?
+  end
+
+  test "first name cannot be a number" do
+    @client.first_name = "123"
+    refute @client.valid?
+  end
+
+  test "last name cannot be a number" do 
+    @client.last_name = "123"
+    refute @client.valid?
   end
 
   test "without a date of birth is invalid" do
-    client = clients(:valid)
-    client.dob = nil
-    refute client.valid?
+    @client.dob = nil
+    refute @client.valid?
   end
 
   test "a phone number string is invalid" do
-    client = clients(:valid)
-    client.phone_number = "ralph"
-    refute client.valid?
+    @client.phone_number = "ralph"
+    refute @client.valid?
   end
 
   test "emergency_relation cannot be number" do
-    client = clients(:valid)
-    client.emergency_relation = "547"
-    refute client.valid?
+    @client.emergency_relation = "547"
+    refute @client.valid?
   end
 
   test "without emergency_name is invalid" do
-    client = clients(:valid)
-    client.emergency_name = nil
-    refute client.valid?
+    @client.emergency_name = nil
+    refute @client.valid?
+  end
+
+  test "emergency_name cannot be a number" do 
+    @client.emergency_name = "123"
+    refute @client.valid?
   end
 
   test "without emergency_phone is invalid" do
-    client = clients(:valid)
-    client.emergency_phone = nil
-    refute client.valid?
+    @client.emergency_phone = nil
+    refute @client.valid?
+  end
+
+  test "emergency_phone string is invalid" do 
+    @client.emergency_phone = "ralph"
+    refute @client.valid?
   end
 
   test "without counselor_seen_before is invalid" do
-    client = clients(:valid)
-    client.counselor_seen_before = nil
-    refute client.valid?
+    @client.counselor_seen_before = nil
+    refute @client.valid?
+  end
+
+  test "without insurance_company is invalid" do
+    @client.insurance_company = nil
+    refute @client.valid?
   end
 
   test "first name with apostrophe is valid" do
@@ -61,6 +80,7 @@ class ClientTest < ActiveSupport::TestCase
     assert_not(client.valid?)
   end
 
+  test "to_s returns client's full name as a string" do
+    assert_equal("Jack Bauer", @client.to_s)
+  end
 end
-
-
