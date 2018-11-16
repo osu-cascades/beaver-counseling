@@ -145,7 +145,7 @@
 
   <!-- Side form pane -->
   <div class="row">
-    <div class="col-md-4 order-md-2 mb-4">
+    <div class="col-md-5 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text">Your Contact Information</span>
       </h4>
@@ -256,12 +256,12 @@
     </div>
 
     <!-- Main form pane -->
-    <div class="col-md-8 order-md-1">
+    <div class="col-md-6 order-md-1">
       <h4 class="mb-3">Your Information</h4>
       <form class="needs-validation" novalidate>
         <div class="row">
-
-          <div class="col-md-6 mb-3">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
             <label for="firstName">First name</label>
             <%= form.text_field :first_name, id: :client_first_name, placeholder: "", value:"", required: true, class: "form-control" %>
             <div class="invalid-feedback">
@@ -269,33 +269,45 @@
             </div>
           </div>
 
-          <div class="col-md-6 mb-3">
+          <div class="col-md-5 mb-3">
             <label for="lastName">Last name</label>
             <%= form.text_field :last_name,  id: :client_last_name, placeholder: "", class: "form-control" %>
             <div class="invalid-feedback">
               Valid last name is required.
             </div>
           </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
 
-          <div class="col-md-12 mb-3">
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-10 mb-3">
             <label for="address">Address</label>
             <%= form.text_field :local_address, id: :client_local_address, placeholder: "", class: "form-control" %>
             <div class="invalid-feedback">
               Valid address is required.
             </div>
           </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
 
-          <div class="col-md-6 mb-3">
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
             <label for="occupation">Occupation</label>
             <%= form.text_field :occupation, id: :client_occupation, placeholder: "", class: "form-control" %>
           </div>
 
-          <div class="col-md-6 mb-3">
+          <div class="col-md-5 mb-3">
             <label for="employer">Employer</label>
             <%= form.text_field :employer, id: :client_employer, placeholder: "", class: "form-control" %>
           </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
 
-          <div class="col-md-6 mb-3">
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-10 mb-3">
             <label for="dateOfBirth">Date of Birth</label>
             <div class="card p-2">
               <div class="input-group">
@@ -306,40 +318,52 @@
               Valid date of birth is required.
             </div>
           </div>
+          <div class="col-md-1 mb-3"></div>
         </div>
 
         <h4 class="mb-3">Your Demographic Information</h4>
         <div class="row">
-          <div class="col-md-6 mb-3">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
             <label for="education">Highest Education</label>
             <%= form.text_field :highest_edu, id: :client_highest_edu, placeholder: "", class: "form-control" %>
           </div>
 
-          <div class="col-md-6 mb-3">
+          <div class="col-md-5 mb-3">
             <label for="gender">Identified Gender</label>
-            <%= form.text_field :identified_gender, id: :client_identified_gender, placeholder: "Male/Female", class: "form-control" %>
+            <%= form.text_field :identified_gender, id: :client_identified_gender, placeholder: "", class: "form-control" %>
           </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
 
-          <div class="col-md-6 mb-3">
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
             <label for="culturalBackground">Cultural Background</label>
             <%= form.text_field :culture_background, id: :client_culture_background, placeholder: "", class: "form-control" %>
           </div>
 
-          <div class="col-md-6 mb-3">
+          <div class="col-md-5 mb-3">
             <label for="sexualOrientation">Sexual Orientation</label>
             <%= form.text_field :sexual_orientation, id: :client_sexual_orientation, placeholder: "", class: "form-control" %>
           </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
 
-          <div class="col-md-6 mb-3">
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
             <label for="relationshipStatus">Relationship Status</label>
             <%= form.text_field :relationship, id: :client_relationship, placeholder: "", class: "form-control" %>
           </div>
+          <div class="col-md-6 mb-3"></div>
         </div>
 
         <h4 class="mb-3">History</h4>
         <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="counselorSeenBefore">Have You Seen One Of Our Counselors Before?</label>
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
+            <label for="counselorSeenBefore">Past Client?</label>
             <div class="card p-2">
               <div class="input-group">
                 <div class="checkboxes">
@@ -354,15 +378,20 @@
             </div>
           </div>
 
-          <div class="col-md-6 mb-3">
+          <div class="col-md-5 mb-3">
             <label for="counselorSeen">Counselor Seen</label>
             <%= form.text_field :counselor_seen, id: :client_counselor_seen, placeholder: "Counselor Name", class: "form-control" %>
           </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
 
-          <div class="col-md-12 mb-3">
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-10 mb-3">
             <label for="howReferred">How Were You Referred To The Clinic?</label>
             <%= form.text_field :how_referred, id: :client_how_referred, placeholder: "", class: "form-control" %>
           </div>
+          <div class="col-md-1 mb-3"></div>
         </div>
       </form>
     </div>
