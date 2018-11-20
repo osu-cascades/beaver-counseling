@@ -53,23 +53,9 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    if (params[:autofill])
-      @client = Client.new
-      @client.first_name = "Bob"
-      @client.last_name = "Smith"
-      @client.dob = DateTime.now
-      @client.phone_number = "541-000-0000"
-      @client.emergency_name = "Mom"
-      @client.emergency_relation = "Mother"
-      @client.emergency_phone = '999-888-7777'
-      @client.insurance_company = "aflac"
-      @client.counselor_seen_before = false
-    else
-      @client = Client.new(client_params)
-      puts client_params
-    end
-
-
+    @client = Client.new(client_params)
+    puts client_params
+      
     respond_to do |format|
       if @client.save
         @client.upload_image(params[:sig])

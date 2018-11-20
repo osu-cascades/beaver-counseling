@@ -439,8 +439,6 @@
   <canvas style="border: 1px solid black" id="signature-pad" class="signature-pad" width=800 height=300></canvas><br>
   <a class="btn btn-primary" id="clear" style="color: white">Clear</a><br><br>
 
-  <%= check_box_tag :autofill, true, (@auto_fill == 'true') %> autofill form
-
   <div style="margin-top: 1em;">
     <%= form.submit "Submit", :class => 'btn btn-primary', :onclick => "SaveSig()"%>
   </div><br>
