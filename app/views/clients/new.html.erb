@@ -258,7 +258,6 @@
     <!-- Main form pane -->
     <div class="col-md-6 order-md-1">
       <h4 class="mb-3">Your Information</h4>
-      <form class="needs-validation" novalidate>
         <div class="row">
           <div class="col-md-1 mb-3"></div>
           <div class="col-md-5 mb-3">
@@ -393,7 +392,6 @@
           </div>
           <div class="col-md-1 mb-3"></div>
         </div>
-      </form>
     </div>
   </div>
 
@@ -444,11 +442,10 @@
   <%= check_box_tag :autofill, true, (@auto_fill == 'true') %> autofill form
 
   <div style="margin-top: 1em;">
-    <%= form.submit "Submit", :class => 'btn btn-primary', :onclick => "SaveSig()" %>
+    <%= form.submit "Submit", :class => 'btn btn-primary', :onclick => "SaveSig()"%>
   </div><br>
 
   <input type="hidden" id="sig" name="sig">
-
 <% end %>
 </div>
 
