@@ -81,7 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: "postgres"
+  database: "dac4qgdh0kccnj"
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
   host: "/cloudsql/cascadesclinic-197917:us-central1:cascades-clinic"
