@@ -1,5 +1,5 @@
 <h1>Client Information Sheet</h1>
-<div style="text-align: center;">Please do not fill out this form until you have been told to do so.</div>
+
 
 <style>
   .goodBorder {
@@ -398,7 +398,7 @@
 <!-- Family members -->
   <h4 class="mb-3">How Many Members Are In Your Household? (Optional)</h4>
   <div class="field fieldStyle">
-    <%= select_tag "quantity", options_for_select((0..4),1), :onchange => 'changed(this)' %>
+    <%= select_tag "quantity", options_for_select((0..10),1), :onchange => 'changed(this)' %>
   </div>
   <% 4.times do |i| %>
     <%= form.fields_for :family_members, FamilyMember.new do |family_member_form| %>
