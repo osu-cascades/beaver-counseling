@@ -1,5 +1,5 @@
 <h1>Client Information Sheet</h1>
-<div style="text-align: center;">Please do not fill out this form until you have contacted to do so.</div>
+
 
 <style>
   .goodBorder {
@@ -114,6 +114,17 @@
   .form-btn:active{
     opacity: 0.9;
   }
+  .checkboxes{
+    text-align:center;
+   }
+
+  .checkboxes input{
+    margin: 0px 0px 0px 0px;
+   }
+
+   .checkboxes label{
+     margin: 0px 3px 0px 20px;
+   }
   center{
     margin-top:330px;
   }
@@ -132,143 +143,307 @@
 <% client = @client %>
 <%= form_for(@client, local: true) do |form| %>
 
-  <div class="inner contact">
-    <div class="contact-form">
-      <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
-        <%= form.text_field :first_name, id: :client_first_name, placeholder: "First Name", class: "form" %>
+  <!-- Side form pane -->
+  <div class="row">
+    <div class="col-md-5 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text">Your Contact Information</span>
+      </h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Phone Number</h6>
+          </div>
+          <%= form.text_field :phone_number, id: :client_phone_number, placeholder: "(xxx-xxx-xxxx)", class: "form-control" %>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Phone Type</h6>
+          </div>
+          <%= form.select :phone_type, options_for_select([["Select One", ""], "Cell", "Work", "Home"]), id: :client_phone_type, class: "custom-select d-block w-100" %>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">May we leave a message?</h6>
+          </div>
+          <div class="checkboxes">
+            <span>
+              <label style="font-weight: normal">Yes</label>
+              <%= form.check_box :leave_message, id: :client_leave_message %>
+              <label style="font-weight: normal">No</label>
+              <input type="checkbox" class="form-check-input">
+            </span>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Email Address</h6>
+          </div>
+          <%= form.text_field :email, id: :client_email, placeholder: "example@mail.com", class: "form-control" %>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">May we send you emails?</h6>
+          </div>
+          <div class="checkboxes">
+            <span>
+              <label style="font-weight: normal">Yes</label>
+              <%= form.check_box :email_leave_message, id: :client_email_leave_message %>
+              <label style="font-weight: normal">No</label>
+              <input type="checkbox" class="form-check-input">
+            </span>
+          </div>
+        </li>
+      </ul>
 
-        <%= form.text_field :phone_number, id: :client_phone_number, placeholder: "Phone Number (xxx-xxx-xxxx)", class: "form" %>
+      <!-- Emergency Contact Information -->
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text">Emergency Contact Information</span>
+      </h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Contact's Name</h6>
+          </div>
+          <%= form.text_field :emergency_name, id: :client_emergency_name, placeholder: "", class: "form-control" %>
+        </li>
 
-        <%= form.text_field :email, id: :client_email, placeholder: "Email", class: "form" %>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Contact's Phone Number</h6>
+          </div>
+          <%= form.text_field :emergency_phone, id: :client_emergency_phone, placeholder: "(xxx-xxx-xxxx)", class: "form-control" %>
+        </li>
 
-        <%= form.label :dob, "Date of Birth" %>
-        <%= form.date_select :dob, id: :client_dob, :start_year => 1901, :end_year => Time.current.year, class: "form" %>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Contact's Relation to you</h6>
+          </div>
+          <%= form.text_field :emergency_relation, id: :client_emergency_relation, placeholder: "", class: "form-control" %>
+        </li>
 
-        <br>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Your Insurance Company</h6>
+          </div>
+          <%= form.text_field :insurance_company, id: :client_insurance_company, placeholder: "", class: "form-control" %>
+        </li>
+      </ul>
 
-        <div style="margin-top:-0.75em">&nbsp;</div>
-          <%= form.text_field :local_address, id: :client_local_address, placeholder: "Address", class: "form" %>
-      </div>
-      <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
-        <%= form.text_field :last_name,  id: :client_last_name, placeholder: "Last Name", class: "form" %>
-          <%= form.label "Can we leave a message?"  %>
-          <%= form.check_box :leave_message, id: :client_leave_message %>
-          <%= form.label :phone_type %>
-          <%= form.select :phone_type, options_for_select([["Select One", ""], "Cell", "Work", "Home"]), class: "form" %>
-          <%= form.label "Can we send you messages?"  %>
-          <%= form.check_box :email_leave_message, id: :client_email_leave_message %>
+      <!-- Concent Forms -->
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text">Concent Forms</span>
+      </h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">I agree to the following conscent forms:</h6>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <a href="/Clinic_Informed_Consent_and_PDS.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Counseling</a>
+          <input id="checkBox" type="checkbox" checked>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <a href="/IntakeTemplateForWrite-Up.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Treatment</a>
+          <input id="checkBox" type="checkbox" checked>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <a href="/Informed_Consent_to_Record.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Video/Audio Recording</a>
+          <input id="checkBox" type="checkbox" checked>
+        </li>
+      </ul>
+    </div>
 
-        <%= form.text_field :occupation, id: :client_occupation, placeholder: "Occupation", class: "form" %>
+    <!-- Main form pane -->
+    <div class="col-md-6 order-md-1">
+      <h4 class="mb-3">Your Information</h4>
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
+            <label for="firstName">First name</label>
+            <%= form.text_field :first_name, id: :client_first_name, placeholder: "", value:"", required: true, class: "form-control" %>
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </div>
 
-        <%= form.text_field :employer, id: :client_employer, placeholder: "Employer", class: "form" %>
-      </div>
-
-      <div class="clearfix"></div>
-        <h2 style="">Demographic Information</h2><br>
-        <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
-          <%= form.text_field :highest_edu, id: :client_highest_edu, placeholder: "Highest Education", class: "form" %>
-          <%= form.text_field :culture_background, id: :client_culture_background, placeholder: "Culture Background", class: "form" %>
-          <%= form.text_field :relationship, id: :client_relationship, placeholder: "Relationship", class: "form" %>
+          <div class="col-md-5 mb-3">
+            <label for="lastName">Last name</label>
+            <%= form.text_field :last_name,  id: :client_last_name, placeholder: "", class: "form-control" %>
+            <div class="invalid-feedback">
+              Valid last name is required.
+            </div>
+          </div>
+          <div class="col-md-1 mb-3"></div>
         </div>
-        <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
-          <%= form.text_field :identified_gender, id: :client_identified_gender, placeholder: "Identified Gender", class: "form" %>
-          <%= form.text_field :sexual_orientation, id: :client_sexual_orientation, placeholder: "Sexual Orientation", class: "form" %>
+
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-10 mb-3">
+            <label for="address">Address</label>
+            <%= form.text_field :local_address, id: :client_local_address, placeholder: "", class: "form-control" %>
+            <div class="invalid-feedback">
+              Valid address is required.
+            </div>
+          </div>
+          <div class="col-md-1 mb-3"></div>
         </div>
-        <div class="clearfix"></div>
-     </div>
+
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
+            <label for="occupation">Occupation</label>
+            <%= form.text_field :occupation, id: :client_occupation, placeholder: "", class: "form-control" %>
+          </div>
+
+          <div class="col-md-5 mb-3">
+            <label for="employer">Employer</label>
+            <%= form.text_field :employer, id: :client_employer, placeholder: "", class: "form-control" %>
+          </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-10 mb-3">
+            <label for="dateOfBirth">Date of Birth</label>
+            <div class="card p-2">
+              <div class="input-group">
+                <%= form.date_select :dob, id: :client_dob, :start_year => 1901, :end_year => Time.current.year, class: "form-control" %>
+              </div>
+            </div>
+            <div class="invalid-feedback">
+              Valid date of birth is required.
+            </div>
+          </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
+
+        <h4 class="mb-3">Your Demographic Information</h4>
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
+            <label for="education">Highest Education</label>
+            <%= form.text_field :highest_edu, id: :client_highest_edu, placeholder: "", class: "form-control" %>
+          </div>
+
+          <div class="col-md-5 mb-3">
+            <label for="gender">Identified Gender</label>
+            <%= form.text_field :identified_gender, id: :client_identified_gender, placeholder: "", class: "form-control" %>
+          </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
+            <label for="culturalBackground">Cultural Background</label>
+            <%= form.text_field :culture_background, id: :client_culture_background, placeholder: "", class: "form-control" %>
+          </div>
+
+          <div class="col-md-5 mb-3">
+            <label for="sexualOrientation">Sexual Orientation</label>
+            <%= form.text_field :sexual_orientation, id: :client_sexual_orientation, placeholder: "", class: "form-control" %>
+          </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
+            <label for="relationshipStatus">Relationship Status</label>
+            <%= form.text_field :relationship, id: :client_relationship, placeholder: "", class: "form-control" %>
+          </div>
+          <div class="col-md-6 mb-3"></div>
+        </div>
+
+        <h4 class="mb-3">History</h4>
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
+            <label for="counselorSeenBefore">Past Client?</label>
+            <div class="card p-2">
+              <div class="input-group">
+                <div class="checkboxes">
+                  <span>
+                    <label style="font-weight: normal">Yes</label>
+                    <%= form.check_box :counselor_seen_before, id: :client_counselor_seen_before %>
+                    <label style="font-weight: normal">No</label>
+                    <input type="checkbox" class="form-check-input">
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5 mb-3">
+            <label for="counselorSeen">Counselor Seen</label>
+            <%= form.text_field :counselor_seen, id: :client_counselor_seen, placeholder: "Counselor Name", class: "form-control" %>
+          </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-10 mb-3">
+            <label for="howReferred">How Were You Referred To The Clinic?</label>
+            <%= form.text_field :how_referred, id: :client_how_referred, placeholder: "", class: "form-control" %>
+          </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
+    </div>
   </div>
 
-<!--   <%= form.check_box :accepted, id: :client_accepted %>
-  <%= form.label :accepted %>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <%= form.label :referral_to %>
-  <%= form.text_field :referral_to, id: :client_referral_to %> -->
-
-  <h3>How many members are in your household (optional)</h3>
-
-  <div class="field fieldStyle"><%= select_tag "quantity", options_for_select((1..4),1), :onchange => 'changed(this)' %></div>
+<!-- Family members -->
+  <h4 class="mb-3">How Many Members Are In Your Household? (Optional)</h4>
+  <div class="field fieldStyle">
+    <%= select_tag "quantity", options_for_select((0..10),1), :onchange => 'changed(this)' %>
+  </div>
   <% 4.times do |i| %>
     <%= form.fields_for :family_members, FamilyMember.new do |family_member_form| %>
-      <p id="<%= i.to_s %>">
-        <%= family_member_form.text_field :name, placeholder: "Name" %>
-        <%= family_member_form.text_field :relation, placeholder: "Relation" %>
-        <br>
-        Date of Birth: <%= family_member_form.date_select :dob, :start_year => 1901, :end_year => Time.current.year %>
-      </p>
+      <div id="<%= i.to_s %>">
+        <div class="row">
+          <div class="col-md-3 mb-3"></div>
+          <div class="col-md-3 mb-3">
+            <label for="familyMembersName">Name</label>
+            <%= family_member_form.text_field :name, placeholder: "", class: "form-control" %>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="familyMembersRelation">Relation</label>
+            <%= family_member_form.text_field :relation, placeholder: "", class: "form-control" %>
+          </div>
+          <div class="col-md-3 mb-3"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 mb-3"></div>
+          <div class="col-md-6 mb-3">
+            <label for="familyMembersDOB">Date of Birth</label>
+            <div class="card p-2">
+              <div class="input-group">
+                <%= family_member_form.date_select :dob, :start_year => 1901, :end_year => Time.current.year, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3"></div>
+        </div>
+      </div>
     <% end %>
   <% end %>
-  <br>
-
-  <h3>Emergency Contact Information</h3><br>
-  <div class="inner contact">
-    <div class="contact-form">
-      <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
-        <%= form.text_field :emergency_name, id: :client_emergency_name, placeholder: "Emergency Name", class: "form" %>
-        <%= form.text_field :emergency_phone, id: :client_emergency_phone, placeholder: "Emergency Phone (xxx-xxx-xxxx)", class: "form" %>
-      </div>
-      <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
-        <%= form.text_field :emergency_relation, id: :client_emergency_relation, placeholder: "Emergency Relation", class: "form" %>
-        <%= form.text_field :insurance_company, id: :client_insurance_company, placeholder: "Insurance Company", class: "form" %>
-      </div>
-    </div>
-  </div>
-
-  <h3>History</h3><br>
-  <div class="inner contact">
-    <div class="contact-form">
-      <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
-        <%= form.check_box :counselor_seen_before, id: :client_counselor_seen_before %>
-        <%= form.label :counselor_seen_before %>
-      </div>
-      <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
-        <%= form.text_field :counselor_seen, id: :client_counselor_seen, placeholder: "Counselor Seen", class: "form" %>
-      </div>
-      <%= form.text_field :how_referred, id: :client_how_referred, placeholder: "How were you referred to the clinic", class: "form" %>
-    </div>
-  </div>
 
   <div class="field fieldStyle" style="display: none;">
     <%= form.text_field :custom_id, id: :client_custom_id, value: "0" %>
   </div>
 
-  <button type="button" class="btn btn-primary" onclick="show('VideoConsent')">Informed Consent for Video/Audio Recording</button><br>
-  <div id="VideoConsent" style="display: none; padding-left: 20%; padding-right: 20%;">
-    <br>
-    <%= link_to "Informed_Consent_to_Record.pdf", "/Informed_Consent_to_Record.pdf" %>
-  </div>
-
-  <div style="padding-top: 1em;">
-    <button type="button" class="btn btn-primary" onclick="show('CounselingConsent')">Informed Consent for Counseling</button><br>
-  </div>
-  <div id="CounselingConsent" style="display: none; padding-left: 20%; padding-right: 20%;">
-    <br>
-    <%= link_to "Clinic_Informed_Consent_and_PDS.pdf", "/Clinic_Informed_Consent_and_PDS.pdf" %>
-  </div>
-
-  <div style="padding-top: 1em;">
-    <button type="button" class="btn btn-primary" onclick="show('TreatmentConsent')">Informed Consent for Treatment</button><br>
-  </div><br>
-  <div id="TreatmentConsent" style="display: none; padding-left: 20%; padding-right: 20%;">
-    <%= link_to "IntakeTemplateForWrite-Up.pdf", "/IntakeTemplateForWrite-Up.pdf" %>
-  </div><br>
-
-  I agree to the following conscent forms:<br>
-  Audio/Video Consent&nbsp;<input id="checkBox" type="checkbox" checked><br>
-  Counseling Consent&nbsp<input id="checkBox" type="checkbox" checked><br>
-  Treatment Consent&nbsp;<input id="checkBox" type="checkbox" checked><br><br>
-
   <strong>Draw your signature into the box below</strong><br>
   <canvas style="border: 1px solid black" id="signature-pad" class="signature-pad" width=800 height=300></canvas><br>
   <a class="btn btn-primary" id="clear" style="color: white">Clear</a><br><br>
 
-  <%= check_box_tag :autofill, true, (@auto_fill == 'true') %> autofill form
-
   <div style="margin-top: 1em;">
-    <%= form.submit "Submit", :class => 'btn btn-primary', :onclick => "SaveSig()" %>
+    <%= form.submit "Submit", :class => 'btn btn-primary', :onclick => "SaveSig()"%>
   </div><br>
 
   <input type="hidden" id="sig" name="sig">
-
 <% end %>
 </div>
 
@@ -308,7 +483,6 @@
   });
 
   function SaveSig(){
-    //console.log(signaturePad.getDataURL())
     $("#sig").val(signaturePad.toDataURL());
   }
 
@@ -325,5 +499,4 @@
   document.getElementById('clear').addEventListener('click', function () {
     signaturePad.clear();
   });
-
 </script>
