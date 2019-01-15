@@ -124,4 +124,31 @@ $ bundle exec rake appengine:exec -- bundle exec rake db:migrate
 $ glcoud app browse 
 ```
 
+## Heroku Deployment
+
+Make sure you have a "staging" and "production" remote for Heroku
+```
+git remote -v
+```
+
+What gets pushed to git can also get pushed to Heroku.
+```
+git push -f [staging/production] [master/development]
+```
+
+View Heroku env vars
+```
+heroku config --remote [production/staging]
+```
+
+Add or remove Heroku env vars
+```
+heroku config:[set/unset] [var to set/unset]=[value to set] --remote [production/staging]
+```
+
+Run rake commands on the Heroku db
+```
+heroku run rake db:migrate --remote [production/staging]
+```
+
 Copyright © 2017 OSU Cascades. All rights reserved.
