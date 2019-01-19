@@ -242,15 +242,15 @@
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <a href="/Clinic_Informed_Consent_and_PDS.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Counseling</a>
-          <input id="checkBox" type="checkbox" checked>
+          <input id="checkBox" type="checkbox" unchecked>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <a href="/IntakeTemplateForWrite-Up.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Treatment</a>
-          <input id="checkBox" type="checkbox" checked>
+          <input id="checkBox" type="checkbox" unchecked>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <a href="/Informed_Consent_to_Record.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Video/Audio Recording</a>
-          <input id="checkBox" type="checkbox" checked>
+          <input id="checkBox" type="checkbox" unchecked>
         </li>
       </ul>
     </div>
@@ -280,8 +280,36 @@
 
         <div class="row">
           <div class="col-md-1 mb-3"></div>
-          <div class="col-md-10 mb-3">
-            <label for="address">Address</label>
+          <div class="col-md-5 mb-3">
+            <label for="address">Street</label>
+            <%= form.text_field :local_address, id: :client_local_address, placeholder: "", class: "form-control" %>
+            <div class="invalid-feedback">
+              Valid address is required.
+            </div>
+          </div>
+
+          <div class="col-md-5 mb-3"
+            <label for="address">City</label>
+            <%= form.text_field :local_address, id: :client_local_address, placeholder: "", class: "form-control" %>
+            <div class="invalid-feedback">
+              Valid address is required.
+            </div>
+          </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
+            <label for="address">State</label>
+            <%= form.text_field :local_address, id: :client_local_address, placeholder: "", class: "form-control" %>
+            <div class="invalid-feedback">
+              Valid address is required.
+            </div>
+          </div>
+
+          <div class="col-md-5 mb-3"
+            <label for="address">Zip Code</label>
             <%= form.text_field :local_address, id: :client_local_address, placeholder: "", class: "form-control" %>
             <div class="invalid-feedback">
               Valid address is required.
