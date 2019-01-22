@@ -226,7 +226,7 @@
           <div>
             <h6 class="my-0">Your Insurance Company</h6>
           </div>
-          <%= form.text_field :insurance_company, id: :client_insurance_company, placeholder: "", class: "form-control" %>
+          <%= form.select :insurance_company, options_for_select([["Select One", ""], "OHP", "Medicare", "Private Insurance", "Uninsured", "Other"]),id: :client_insurance_company,  class: "custom-select d-block w-100" %>
         </li>
       </ul>
 
