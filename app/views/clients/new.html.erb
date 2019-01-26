@@ -442,17 +442,9 @@
             <label for="familyMembersRelation">Relation</label>
             <%= family_member_form.text_field :relation, placeholder: "", class: "form-control" %>
           </div>
-          <div class="col-md-3 mb-3"></div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 mb-3"></div>
-          <div class="col-md-6 mb-3">
-            <label for="familyMembersDOB">Date of Birth</label>
-            <div class="card p-2">
-              <div class="input-group">
-                <%= family_member_form.date_select :dob, :start_year => 1901, :end_year => Time.current.year, class: "form-control" %>
-              </div>
-            </div>
+          <div class="col-md-1 mb-3">
+            <label for="familyMembersDOB">Age</label>
+              <%= family_member_form.text_field :dob, placeholder: "", class: "form-control" %>
           </div>
           <div class="col-md-3 mb-3"></div>
         </div>
