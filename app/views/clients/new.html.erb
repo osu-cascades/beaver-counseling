@@ -101,7 +101,7 @@
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <a href="/Clinic_Informed_Consent_and_PDS.pdf" class="btn btn-primary" style="color: white; width: 300px">Informed Consent for Counseling</a>
           <label>I consent</label>
-          <%= form.check_box :accepted, id: :counselingConsent, checked: false %>
+          <%= form.check_box :accepted, id: :counselingConsent, checked: false, required: true %>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <a href="/IntakeTemplateForWrite-Up.pdf" class="btn btn-primary" style="color: white; width: 300px">Informed Consent for Treatment</a>
