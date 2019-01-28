@@ -8,6 +8,10 @@ label.error {
   color: red;
 }
 
+label{
+  font-weight: normal;
+}
+
 #contact{
   padding:10px 0 10px;
 }
