@@ -162,10 +162,24 @@
         </div>
         <
         <div class="field">
-          <%= form.label :local_address %>
-          <%= form.text_field :local_address, id: :client_local_address %>
+          <%= form.label :local_street %>
+          <%= form.text_field :local_street, id: :client_local_street %>
         </div>
 
+        <div class="field">
+          <%= form.label :local_city %>
+          <%= form.text_field :local_city, id: :client_local_city %>
+        </div>
+
+        <div class="field">
+          <%= form.label :local_state %>
+          <%= form.text_field :local_state, id: :client_local_state %>
+        </div>
+
+        <div class="field">
+          <%= form.label :local_zipcode %>
+          <%= form.text_field :local_zipcode, id: :client_local_zipcode %>
+        </div>
 
 
         <div class="field">
