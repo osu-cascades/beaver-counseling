@@ -115,6 +115,24 @@ p {
   text-decoration: none;
 }
 
-nav {
-  margin-bottom: 25px;
+.nav {
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-nav {
+  display: inline-block;
+  font-size: 20px;
+  padding-right: 500px;
+}
+
+.nav-item {
+  padding: 5px;
+  font-size: 12pt;
+}
+
+.nav-link {
+  font-size: 12pt;
 }
