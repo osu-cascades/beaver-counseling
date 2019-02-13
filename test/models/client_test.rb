@@ -25,6 +25,16 @@ class ClientTest < ActiveSupport::TestCase
     refute @client.valid?
   end
 
+  test "a zipcode string is invalid" do 
+    @client.local_zipcode = "xyz" 
+    refute @client.valid?
+  end
+
+  test "a city cannot be numbers" do 
+    @client.local_city = "123"
+    refute @client.valid?
+  end
+
   test "without a date of birth is invalid" do
     @client.dob = nil
     refute @client.valid?
