@@ -30,9 +30,14 @@ class ClientTest < ActiveSupport::TestCase
     refute @client.valid?
   end
 
-  test "a city cannot be numbers" do 
+  test "a city cannot be a number" do 
     @client.local_city = "123"
     refute @client.valid?
+  end
+
+  test "a state cannot be a number" do 
+    @client.local_state = "123"
+   refute @client.valid?
   end
 
   test "without a date of birth is invalid" do

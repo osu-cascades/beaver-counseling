@@ -13,6 +13,7 @@ valid:
   counselor_seen_before: false
   how_referred: Close friend
   local_city: Bend
+  local_state: OR
   local_zipcode: 97701
 
 invalid:
@@ -28,6 +29,7 @@ invalid:
   counselor_seen_before: true
   how_referred: Psychiatrist
   local_city: Bend
+  local_state: OR
   local_zipcode: 97701
 
 with_apostrophe_in_name:
@@ -43,6 +45,7 @@ with_apostrophe_in_name:
   counselor_seen_before: true
   how_referred: Close friend
   local_city: Bend
+  local_state: OR
   local_zipcode: 97701
 
 with_period_in_emergency_name:
@@ -58,6 +61,7 @@ with_period_in_emergency_name:
   counselor_seen_before: true
   how_referred: Close friend
   local_city: Bend
+  local_state: OR
   local_zipcode: 97701
 
 non_alphanumeric_in_insurance_company:
@@ -73,4 +77,5 @@ non_alphanumeric_in_insurance_company:
   counselor_seen_before: true
   how_referred: Close friend
   local_city: Bend
+  local_state: OR
   local_zipcode: 97701
