@@ -30,6 +30,16 @@ class ClientTest < ActiveSupport::TestCase
     refute @client.valid?
   end
 
+  test "a zipcode length of less than 5 is invalid" do 
+    @client.local_zipcode = "9770" 
+    refute @client.valid?
+  end
+
+  test "a zipcode length of greater than 5 is invalid" do 
+    @client.local_zipcode = "97701234" 
+    refute @client.valid?
+  end
+
   test "a city cannot be a number" do 
     @client.local_city = "123"
     refute @client.valid?

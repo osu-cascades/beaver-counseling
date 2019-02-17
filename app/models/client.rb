@@ -14,8 +14,8 @@ class Client < ApplicationRecord
   validates :insurance_company, presence: true
   validate :validate_leave_message
   validates :local_city, format: { with: /\A[a-zA-Z\'.-]+\z/ } 
-  validates :local_zipcode, format: { with: /\d{5}/ }
   validates :local_state, format: { with: /\A[a-zA-Z]+\z/ }
+  validates :local_zipcode, :numericality=> true, :length => {:is => 5}
 
   has_many :family_members
   has_many :notes
