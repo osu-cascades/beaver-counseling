@@ -99,37 +99,19 @@
       </h4>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
-<<<<<<< HEAD
-          <div>
-            <h6 class="my-0">I agree to the following conscent forms:</h6>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
           <a href="/Clinic_Informed_Consent_and_PDS.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Counseling</a>
-          <input id="checkBox" type="checkbox" unchecked>
+          <label>I consent</label>
+          <%= form.check_box :accepted, id: :counselingConsent, checked: false, required: true  %>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <a href="/IntakeTemplateForWrite-Up.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Treatment</a>
-          <input id="checkBox" type="checkbox" unchecked>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <a href="/Informed_Consent_to_Record.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Video/Audio Recording</a>
-          <input id="checkBox" type="checkbox" unchecked>
-=======
-          <a href="/Clinic_Informed_Consent_and_PDS.pdf" class="btn btn-primary" style="color: white; width: 300px">Informed Consent for Counseling</a>
-          <label>I consent</label>
-          <%= form.check_box :accepted, id: :counselingConsent, checked: false, required: true %>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <a href="/IntakeTemplateForWrite-Up.pdf" class="btn btn-primary" style="color: white; width: 300px">Informed Consent for Treatment</a>
           <label>I consent</label>
           <%= form.check_box :treatment, id: :treatmentConsent, checked: false %>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <a href="/Informed_Consent_to_Record.pdf" class="btn btn-primary" id="av_consent">Informed Consent for Video/Audio Recording</a>
+          <a href="/Informed_Consent_to_Record.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Video/Audio Recording</a>
           <label>I consent</label>
           <%= form.check_box :av, id: :avConsent, checked: false %>
->>>>>>> development
         </li>
       </ul>
     </div>
