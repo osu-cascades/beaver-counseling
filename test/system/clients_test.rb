@@ -28,6 +28,9 @@ class ClientsTest < ApplicationSystemTestCase
     fill_in 'client_sexual_orientation', with: 'Straight'
     fill_in 'client_relationship', with: 'single'
     uncheck 'client_counselor_seen_before'
+    check 'counselingConsent'
+    check 'treatmentConsent'
+    check 'avConsent'
     find('input[type="submit"]').click
 
     assert(has_text?('Client was successfully created.'))

@@ -1,146 +1,9 @@
 <h1>Client Information Sheet</h1>
 
+<%= stylesheet_link_tag "client" %>
 
-<style>
-  .goodBorder {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.10);
-    border: 1px solid grey;
-    padding: 15px;
-  }
-
-  label.error {
-    color: red;
-  }
-
-  #contact{
-    padding:10px 0 10px;
-  }
-  .contact-text{
-    margin:45px auto;
-  }
-  .mail-message-area{
-    width:100%;
-    padding:0 15px;
-  }
-  .mail-message{
-    width: 100%;
-    background:rgba(255,255,255, 0.8) !important;
-    -webkit-transition: all 0.7s;
-    -moz-transition: all 0.7s;
-    transition: all 0.7s;
-    margin:0 auto;
-    border-radius: 0;
-  }
-  .not-visible-message{
-    height:0px;
-    opacity: 0;
-  }
-  .visible-message{
-    height:auto;
-    opacity: 1;
-    margin:25px auto 0;
-  }
-  /* Input Styles */
-  .form{
-    width: 100%;
-    padding: 15px;
-    background:#f8f8f8;
-    border:1px solid rgba(0, 0, 0, 0.075);
-    margin-bottom:25px;
-    color:#727272 !important;
-    font-size:13px;
-    -webkit-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-  }
-  .form:hover{
-    border:1px solid #8BC3A3;
-  }
-  .form:focus{
-    color: white;
-    outline: none;
-    border:1px solid #8BC3A3;
-  }
-  .textarea{
-    height: 200px;
-    max-height: 200px;
-    max-width: 100%;
-  }
-  /* Generic Button Styles */
-  .button{
-    padding:8px 12px;
-    background:#0A5175;
-    display: block;
-    width:120px;
-    margin:10px 0 0px 0;
-    border-radius:3px;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    text-align:center;
-    font-size:0.8em;
-    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
-    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
-    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
-  }
-  .button:hover{
-    background:#8BC3A3;
-    color:white;
-  }
-  /* Send Button Styles */
-  .form-btn{
-    width:180px;
-    display: block;
-    height: auto;
-    padding:15px;
-    color:#fff;
-    background:#8BC3A3;
-    border:none;
-    border-radius:3px;
-    outline: none;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    margin:auto;
-    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
-    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
-    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
-  }
-  .form-btn:hover{
-    background:#111;
-    color: white;
-    border:none;
-  }
-  .form-btn:active{
-    opacity: 0.9;
-  }
-  .checkboxes{
-    text-align:center;
-   }
-
-  .checkboxes input{
-    margin: 0px 0px 0px 0px;
-   }
-
-   .checkboxes label{
-     margin: 0px 3px 0px 20px;
-   }
-  center{
-    margin-top:330px;
-  }
-  input {
-    position: relative;
-    z-index: 9999;
-  }
-</style>
-
-<head>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-</head>
-&nbsp;&nbsp;&nbsp;&nbsp;
 <div style="margin: 30px 100px 100px 100px; text-align: center;">
 
-<% client = @client %>
 <%= form_for(@client, local: true) do |form| %>
 
   <!-- Side form pane -->
@@ -168,9 +31,9 @@
           </div>
           <div class="checkboxes">
             <span>
-              <label style="font-weight: normal">Yes</label>
+              <label>Yes</label>
               <%= form.check_box :leave_message, id: :client_leave_message %>
-              <label style="font-weight: normal">No</label>
+              <label>No</label>
               <input type="checkbox" class="form-check-input">
             </span>
           </div>
@@ -187,9 +50,9 @@
           </div>
           <div class="checkboxes">
             <span>
-              <label style="font-weight: normal">Yes</label>
+              <label>Yes</label>
               <%= form.check_box :email_leave_message, id: :client_email_leave_message %>
-              <label style="font-weight: normal">No</label>
+              <label>No</label>
               <input type="checkbox" class="form-check-input">
             </span>
           </div>
@@ -236,6 +99,7 @@
       </h4>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
+<<<<<<< HEAD
           <div>
             <h6 class="my-0">I agree to the following conscent forms:</h6>
           </div>
@@ -251,6 +115,21 @@
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <a href="/Informed_Consent_to_Record.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Video/Audio Recording</a>
           <input id="checkBox" type="checkbox" unchecked>
+=======
+          <a href="/Clinic_Informed_Consent_and_PDS.pdf" class="btn btn-primary" style="color: white; width: 300px">Informed Consent for Counseling</a>
+          <label>I consent</label>
+          <%= form.check_box :accepted, id: :counselingConsent, checked: false, required: true %>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <a href="/IntakeTemplateForWrite-Up.pdf" class="btn btn-primary" style="color: white; width: 300px">Informed Consent for Treatment</a>
+          <label>I consent</label>
+          <%= form.check_box :treatment, id: :treatmentConsent, checked: false %>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <a href="/Informed_Consent_to_Record.pdf" class="btn btn-primary" id="av_consent">Informed Consent for Video/Audio Recording</a>
+          <label>I consent</label>
+          <%= form.check_box :av, id: :avConsent, checked: false %>
+>>>>>>> development
         </li>
       </ul>
     </div>
@@ -396,9 +275,9 @@
               <div class="input-group">
                 <div class="checkboxes">
                   <span>
-                    <label style="font-weight: normal">Yes</label>
+                    <label>Yes</label>
                     <%= form.check_box :counselor_seen_before, id: :client_counselor_seen_before %>
-                    <label style="font-weight: normal">No</label>
+                    <label>No</label>
                     <input type="checkbox" class="form-check-input">
                   </span>
                 </div>
