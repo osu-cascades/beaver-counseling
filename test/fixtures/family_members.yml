@@ -2,12 +2,12 @@
 
 valid:
   name: Ben
-  dob: {1=>2018,2=>5,3=>9}
+  age: 7
   relation: Brother
   client_id: 0
 
 invalid:
   name: Ben
-  dob: {1=>2018,2=>5,3=>9}
+  age: 7
   relation: Brother
   client_id: 0

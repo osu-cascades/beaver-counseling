@@ -89,7 +89,7 @@
           <div>
             <h6 class="my-0">Your Insurance Company</h6>
           </div>
-          <%= form.text_field :insurance_company, id: :client_insurance_company, placeholder: "", class: "form-control" %>
+          <%= form.select :insurance_company, options_for_select([["Select One", ""], "OHP", "Medicare", "Private Insurance", "Uninsured", "Other"]),id: :client_insurance_company,  class: "custom-select d-block w-100" %>
         </li>
       </ul>
 
@@ -99,6 +99,23 @@
       </h4>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
+<<<<<<< HEAD
+          <div>
+            <h6 class="my-0">I agree to the following conscent forms:</h6>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <a href="/Clinic_Informed_Consent_and_PDS.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Counseling</a>
+          <input id="checkBox" type="checkbox" unchecked>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <a href="/IntakeTemplateForWrite-Up.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Treatment</a>
+          <input id="checkBox" type="checkbox" unchecked>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <a href="/Informed_Consent_to_Record.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Video/Audio Recording</a>
+          <input id="checkBox" type="checkbox" unchecked>
+=======
           <a href="/Clinic_Informed_Consent_and_PDS.pdf" class="btn btn-primary" style="color: white; width: 300px">Informed Consent for Counseling</a>
           <label>I consent</label>
           <%= form.check_box :accepted, id: :counselingConsent, checked: false, required: true %>
@@ -112,6 +129,7 @@
           <a href="/Informed_Consent_to_Record.pdf" class="btn btn-primary" id="av_consent">Informed Consent for Video/Audio Recording</a>
           <label>I consent</label>
           <%= form.check_box :av, id: :avConsent, checked: false %>
+>>>>>>> development
         </li>
       </ul>
     </div>
@@ -141,9 +159,18 @@
 
         <div class="row">
           <div class="col-md-1 mb-3"></div>
-          <div class="col-md-10 mb-3">
-            <label for="address">Address</label>
-            <%= form.text_field :local_address, id: :client_local_address, placeholder: "", class: "form-control" %>
+          <div class="col-md-5 mb-3">
+            <label for="street">Street</label>
+            <%= form.text_field :local_street, id: :client_local_street, placeholder: "", class: "form-control" %>
+            <div class="invalid-feedback">
+              Valid address is required.
+            </div>
+          </div>
+          
+          
+          <div class="col-md-5 mb-3">
+            <label for="city">City</label>
+            <%= form.text_field :local_city, id: :client_local_city, placeholder: "", class: "form-control" %>
             <div class="invalid-feedback">
               Valid address is required.
             </div>
@@ -151,6 +178,26 @@
           <div class="col-md-1 mb-3"></div>
         </div>
 
+        <div class="row">
+          <div class="col-md-1 mb-3"></div>
+          <div class="col-md-5 mb-3">
+            <label for="state">State</label>
+            <%= form.text_field :local_state, id: :client_local_state, placeholder: "", class: "form-control" %>
+            <div class="invalid-feedback">
+              Valid address is required.
+            </div>
+          </div>
+
+          <div class="col-md-5 mb-3">
+            <label for="zipcode">Zip Code</label>
+            <%= form.text_field :local_zipcode, id: :client_local_zipcode, placeholder: "", class: "form-control" %>
+            <div class="invalid-feedback">
+              Valid address is required.
+            </div>
+          </div>
+          <div class="col-md-1 mb-3"></div>
+        </div>
+ 
         <div class="row">
           <div class="col-md-1 mb-3"></div>
           <div class="col-md-5 mb-3">
@@ -274,17 +321,9 @@
             <label for="familyMembersRelation">Relation</label>
             <%= family_member_form.text_field :relation, placeholder: "", class: "form-control" %>
           </div>
-          <div class="col-md-3 mb-3"></div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 mb-3"></div>
-          <div class="col-md-6 mb-3">
-            <label for="familyMembersDOB">Date of Birth</label>
-            <div class="card p-2">
-              <div class="input-group">
-                <%= family_member_form.date_select :dob, :start_year => 1901, :end_year => Time.current.year, class: "form-control" %>
-              </div>
-            </div>
+          <div class="col-md-1 mb-3">
+            <label for="age">Age</label>
+              <%= family_member_form.text_field :age, placeholder: "", class: "form-control" %>
           </div>
           <div class="col-md-3 mb-3"></div>
         </div>

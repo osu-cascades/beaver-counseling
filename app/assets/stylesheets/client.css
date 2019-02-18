@@ -8,10 +8,13 @@ label.error {
   color: red;
 }
 
+<<<<<<< HEAD
+=======
 label{
   font-weight: normal;
 }
 
+>>>>>>> development
 #contact{
   padding:10px 0 10px;
 }
