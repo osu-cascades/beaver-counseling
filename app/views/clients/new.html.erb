@@ -245,7 +245,15 @@
             <label for="relationshipStatus">Relationship Status</label>
             <%= form.text_field :relationship, id: :client_relationship, placeholder: "", class: "form-control" %>
           </div>
-          <div class="col-md-6 mb-3"></div>
+          <div class="col-md-5 mb-3">
+            <label for="is_veteran">Veteran Status</label>
+            <div class="card p-1">
+              <div class="input-group">
+                <label>Active/Retired Military</label>
+                <%= form.check_box :is_veteran, id: :is_veteran %>
+              </div>
+            </div>
+          </div>
         </div>
 
         <h4 class="mb-3">History</h4>
