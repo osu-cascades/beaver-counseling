@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_03_020753) do
+ActiveRecord::Schema.define(version: 2019_03_04_041037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 2018_06_03_020753) do
     t.string "counselor_seen"
     t.string "previous_counselor", default: [], array: true
     t.string "custom_id"
-    t.string "local_address"
     t.integer "phone_type"
     t.boolean "email_leave_message"
     t.string "highest_edu"
@@ -64,15 +63,20 @@ ActiveRecord::Schema.define(version: 2018_06_03_020753) do
     t.string "referral_to"
     t.string "signature_url"
     t.boolean "is_archived"
+    t.string "local_street"
+    t.string "local_city"
+    t.string "local_state"
+    t.bigint "local_zipcode"
+    t.boolean "is_veteran", default: false
   end
 
   create_table "family_members", force: :cascade do |t|
     t.string "name", null: false
-    t.string "dob", null: false
     t.string "relation", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "client_id", null: false
+    t.bigint "age"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -85,21 +89,6 @@ ActiveRecord::Schema.define(version: 2018_06_03_020753) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_notes_on_client_id"
-  end
-
-  create_table "session_rating_forms", force: :cascade do |t|
-    t.string "client_number"
-    t.date "date"
-    t.integer "room_num"
-    t.integer "effectiveness"
-    t.integer "focus"
-    t.integer "relationship"
-    t.integer "care"
-    t.integer "start_stress"
-    t.integer "end_stress"
-    t.string "optional_info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "session_ratings", force: :cascade do |t|
