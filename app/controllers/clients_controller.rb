@@ -127,7 +127,7 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client).permit(:first_name, :last_name, :counselor_id, :dob, :phone_number,
         :leave_message, :email, :occupation, :employer,:is_archived,
-        :emergency_name, :emergency_relation, :sig,
+        :emergency_name, :emergency_relation, :sig, :local_city, :local_state, :local_zipcode,
         :emergency_phone, :insurance_company, :physician, :physician_phone,
         :medication, :counselor_seen_before, :counselor_seen, :previous_counselor, :custom_id,
         :local_address, :phone_type, :email_leave_message, :highest_edu, :identified_gender,

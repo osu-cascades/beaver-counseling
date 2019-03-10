@@ -2,8 +2,6 @@
 
 
 <p>
-
-  asdf
   <%= @client.signature_url %><br>
   <strong>First Name:</strong>
   <%= @client.first_name %><br>
@@ -77,8 +75,17 @@
   <strong>custom_id:</strong>
   <%= @client.custom_id %><br>
 
-  <strong>local_address:</strong>
-  <%= @client.local_address %><br>
+  <strong>local_street:</strong>
+  <%= @client.local_street %><br>
+
+  <strong>local_city:</strong>
+  <%= @client.local_city %><br>
+
+  <strong>local_state:</strong>
+  <%= @client.local_state %><br>
+
+  <strong>local_zipcode:</strong>
+  <%= @client.local_zipcode %><br>
 
   <strong>phone_type:</strong>
   <%= @client.phone_type %><br>
@@ -109,4 +116,7 @@
 
   <strong>referral_to:</strong>
   <%= @client.referral_to %><br>
+
+  <strong>is_veteran:</strong>
+  <%= @client.is_veteran %><br>
 </p>

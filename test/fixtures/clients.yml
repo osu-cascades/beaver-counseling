@@ -12,6 +12,9 @@ valid:
   insurance_company: Nationwide
   counselor_seen_before: false
   how_referred: Close friend
+  local_city: Bend
+  local_state: OR
+  local_zipcode: 97701
 
 invalid:
   first_name: 23.0
@@ -25,6 +28,9 @@ invalid:
   insurance_company: Nationwide
   counselor_seen_before: true
   how_referred: Psychiatrist
+  local_city: Bend
+  local_state: OR
+  local_zipcode: 97701
 
 with_apostrophe_in_name:
   first_name: D'Angelo
@@ -38,6 +44,9 @@ with_apostrophe_in_name:
   insurance_company: Nationwide
   counselor_seen_before: true
   how_referred: Close friend
+  local_city: Bend
+  local_state: OR
+  local_zipcode: 97701
 
 with_period_in_emergency_name:
   first_name: D'Angelo
@@ -51,6 +60,9 @@ with_period_in_emergency_name:
   insurance_company: Nationwide
   counselor_seen_before: true
   how_referred: Close friend
+  local_city: Bend
+  local_state: OR
+  local_zipcode: 97701
 
 non_alphanumeric_in_insurance_company:
   first_name: D'Angelo
@@ -64,3 +76,6 @@ non_alphanumeric_in_insurance_company:
   insurance_company: f%$$@]{}
   counselor_seen_before: true
   how_referred: Close friend
+  local_city: Bend
+  local_state: OR
+  local_zipcode: 97701

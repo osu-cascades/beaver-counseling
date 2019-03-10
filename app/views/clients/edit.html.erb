@@ -101,7 +101,7 @@
           <%= form.fields_for :family_members do |family_member_form| %>
             <p>
               Name: <%= family_member_form.text_field :name %><br>
-              Dob: <%= family_member_form.text_field :dob %><br>
+              Dob: <%= family_member_form.text_field :age %><br>
               Relation: <%= family_member_form.text_field :relation %><br>
             </p>
           <% end %>
@@ -160,11 +160,27 @@
           <%= form.label "custom id" %>
           <%= form.text_field :custom_id, id: :client_custom_id %>
         </div>
+        <
+        <div class="field">
+          <%= form.label :local_street %>
+          <%= form.text_field :local_street, id: :client_local_street %>
+        </div>
 
         <div class="field">
-          <%= form.label :local_address %>
-          <%= form.text_field :local_address, id: :client_local_address %>
+          <%= form.label :local_city %>
+          <%= form.text_field :local_city, id: :client_local_city %>
         </div>
+
+        <div class="field">
+          <%= form.label :local_state %>
+          <%= form.text_field :local_state, id: :client_local_state %>
+        </div>
+
+        <div class="field">
+          <%= form.label :local_zipcode %>
+          <%= form.text_field :local_zipcode, id: :client_local_zipcode %>
+        </div>
+
 
         <div class="field">
           <%= form.label :phone_type %>
@@ -418,7 +434,10 @@
       <b>Date of Birth:</b> <u><%= @client.dob %></u></p>
     </div>
   </div>
-  <p><b>Local address:</b> <u><%=@client.local_address%></u></p>
+  <p><b>Local Street:</b> <u><%=@client.local_street%></u></p>
+  <p><b>Local City:</b> <u><%=@client.local_city%></u></p>
+  <p><b>Local State:</b> <u><%=@client.local_state%></u></p>
+  <p><b>Local Zip Code:</b> <u><%=@client.local_zipcode%></u></p>
   <p><b>Phone #</b><u><%= @client.phone_number %></u> <b>Type: </b><u><span id="typephone"></span></u>  <b>Message:</b> <%= @client.leave_message ? 'Yes' : 'No' %></p>
   <p><b>Email:</b> <u><%= @client.email %></u> <b>Message:</b> <%= @client.email_leave_message ? 'Yes' : 'No' %></p>
   <p><b>Occupation:</b> <u><%= @client.occupation %></u>  <b>Employer:</b> <u><%= @client.employer %></u></p>
