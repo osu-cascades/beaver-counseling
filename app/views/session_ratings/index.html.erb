@@ -1,3 +1,10 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+</style>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Session Ratings</h1>
@@ -15,13 +22,13 @@
       <th>Start stress</th>
       <th>End stress</th>
       <th>Optional info</th>
-      <th colspan="3"></th>
+      <th colspan="3">Session Edit</th>
     </tr>
   </thead>
 
   <tbody>
     <% @session_ratings.each do |session_rating| %>
-      <tr>
+      <tr align="middle">
         <td><%= session_rating.client_number %></td>
         <td><%= session_rating.date %></td>
         <td><%= session_rating.room_num %></td>
