@@ -33,8 +33,6 @@
             <span>
               <label>Yes</label>
               <%= form.check_box :leave_message, id: :client_leave_message %>
-              <label>No</label>
-              <input type="checkbox" class="form-check-input">
             </span>
           </div>
         </li>
@@ -52,8 +50,6 @@
             <span>
               <label>Yes</label>
               <%= form.check_box :email_leave_message, id: :client_email_leave_message %>
-              <label>No</label>
-              <input type="checkbox" class="form-check-input">
             </span>
           </div>
         </li>
@@ -263,10 +259,8 @@
               <div class="input-group">
                 <div class="checkboxes">
                   <span>
-                    <label>Yes</label>
+                    <label>I'm a returning client</label>
                     <%= form.check_box :counselor_seen_before, id: :client_counselor_seen_before %>
-                    <label>No</label>
-                    <input type="checkbox" class="form-check-input">
                   </span>
                 </div>
               </div>
