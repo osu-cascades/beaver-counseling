@@ -3,20 +3,20 @@
     <h1>Admin Home</h1>
     <div style="text-align:center;">
       <div style="display: inline-block;">
-        <%= button_to "Client Reports", 'adminclientreports', :method => :get, :class => 'btn btn-dark' %>
+        <%= button_to "Client Reports", 'adminclientreports', :method => :get, :class => 'btn btn-dark', :style => 'color: white' %>
       </div>&nbsp;&nbsp;
       <div style="display: inline-block;">
-        <%= button_to "Manage Users", 'adminmanageusers', :method => :get, :class => 'btn btn-dark' %>
+        <%= button_to "Manage Users", 'adminmanageusers', :method => :get, :class => 'btn btn-dark', :style => 'color: white' %>
       </div>&nbsp;&nbsp;
       <div style="display: inline-block;">
-        <%= button_to "Submitted Notes", 'submittednotes', :method => :get, :class => 'btn btn-dark' %>
+        <%= button_to "Submitted Notes", 'submittednotes', :method => :get, :class => 'btn btn-dark', :style => 'color: white' %>
       </div>
     </div>
     <br></br>
     <div class="input-group mb-3">
       <input type="text" class="form-control" id="searchBar" onkeyup="search()" placeholder="Search">
       <div class="input-group-append">
-        <button class="btn btn-dark" onclick="search()" type="button">Search</button>
+        <button class="btn btn-dark" style='color: white' onclick="search()" type="button">Search</button>
       </div>
     </div>
   </div>
@@ -46,9 +46,9 @@
 				<% else %>
 					<td><%= (User.find_by_id(client.counselor_id)).name %></td>
 				<% end %>
-        <td><%= button_to 'Notes', client_notes_path_url(client.id), :class => 'btn btn-dark', :method => :get %></td>
-				<td><%= button_to 'Edit', edit_client_path(client.id), :class => 'btn btn-dark', :method => :get %></td>        
-				<td><%= button_to 'Archive', client_archive_path_url(client.id), :class => 'btn btn-dark', :method => :get %></td>
+        <td><%= button_to 'Notes', client_notes_path_url(client.id), :class => 'btn btn-dark', :method => :get, :style => 'color: white' %></td>
+				<td><%= button_to 'Edit', edit_client_path(client.id), :class => 'btn btn-dark', :method => :get, :style => 'color: white' %></td>
+				<td><%= button_to 'Archive', client_archive_path_url(client.id), :class => 'btn btn-dark', :method => :get, :style => 'color: white' %></td>
 			</tr>
 		<% end %>
 	<% end %>
@@ -74,8 +74,8 @@
             <td><%= version.created_at %></td>
             <td><%= find_version_counselor_name(version) %></td>
             <td><%= version.event.humanize %></td>
-            <td><%= link_to 'Diff', diff_client_version_path(client, version), :class => 'btn btn-dark' %></td>
-            <td><%= link_to 'Rollback', rollback_client_version_path(client, version), :class => 'btn btn-dark', method: 'PATCH' %></td>
+            <td><%= link_to 'Diff', diff_client_version_path(client, version), :class => 'btn btn-dark', :style => 'color: white' %></td>
+            <td><%= link_to 'Rollback', rollback_client_version_path(client, version), :class => 'btn btn-dark', method: 'PATCH', :style => 'color: white' %></td>
           </tr>
         <% end %>
     <% end %>
