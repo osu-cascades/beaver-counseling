@@ -1,29 +1,17 @@
-<!-- move to include in application or header-->
-<style>
-	.top{
-		display:inline-block;
-	}
-
-	.center {
-		text-align: center;
-	}
-
-	.search-terms {
-	  display: inline-block;
-	}
-
-	table, th, td {
-    border: 1px solid black;
-	}
-</style>
-
-<div style="text-align: center;">
-	<h1>Counselor View Clients</h1>
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1>Counselor View Clients</h1>
+		<div class="input-group mb-3">
+			<input type="text" class="form-control" id="searchBar" onkeyup="search()" placeholder="Search">
+			<div class="input-group-append">
+		    	<button class="btn btn-dark" onclick="search()" type="button">Search</button>
+			</div>
+		</div>
+	</div>
 </div>
 
-<input type="text" id="searchBar" onkeyup="search()" placeholder="Search" style="width: 100%">
-<br><br>
-<table style="width:100%;" id="table">
+<table class="table" id="table">
+	<thead class="thead-dark">
 	<tr>
 		<th>First Name</th>
 		<th>ID</th>
@@ -31,6 +19,7 @@
 		<th>View More</th>
 		<th>Notes</th>
 	</tr>
+	</thead>
 	<% @clients = Client.all %>
 	<% @clients.each do |client| %>
 		<% if current_user.id == client.counselor_id %>

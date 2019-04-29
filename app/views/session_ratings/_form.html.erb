@@ -254,5 +254,9 @@ function send() {
   } catch (err) {
     alert("error please verify all information is filled in correctly");
   }
+
+  document.getElementById('roomNum').value = "";
+  document.getElementById('clientNum').value = "";
+  document.getElementById('optionalInfo').value = "";
 }
 </script>
