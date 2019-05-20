@@ -1,122 +1,147 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-success" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
 
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card sm-6 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-text" style="text-align: center;">Client Information</h4>
+          <strong>First Name:</strong>
+          <%= @client.first_name %><br>
 
-<p>
-  <%= @client.signature_url %><br>
-  <strong>First Name:</strong>
-  <%= @client.first_name %><br>
+          <strong>Last Name:</strong>
+          <%= @client.last_name %><br>
 
-  <strong>Last Name:</strong>
-  <%= @client.last_name %><br>
+          <strong>Address:</strong>
+          <%=
+            @client.local_street.to_s + ' ' +
+            @client.local_city.to_s + ', ' +
+            @client.local_state.to_s + ' ' +
+            @client.local_zipcode.to_s
+          %><br>
 
-  <strong>DOB:</strong>
-  <%= @client.dob %><br>
+          <strong>Date of Birth:</strong>
+          <%= @client.dob.to_date %><br>
 
-  <!-- counselor id -->
-  <strong>user id:</strong>
-  <%= @client.counselor_id %><br>
+          <strong>Occupation:</strong>
+          <%= @client.occupation %><br>
 
-  <strong>Phone Number:</strong>
-  <%= @client.phone_number %><br>
+          <strong>Employer:</strong>
+          <%= @client.employer %><br>
+        </div>
+      </div>
+    </div>
 
-  <strong>leave_message:</strong>
-  <%= @client.leave_message %><br>
+    <div class="col-sm-6">
+      <div class="card sm-6 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-text" style="text-align: center;">Client Contact Information</h4>
+          <strong>Phone Number:</strong>
+          <%= @client.phone_number %><br>
 
-  <strong>email:</strong>
-  <%= @client.email %><br>
+          <strong>Phone Type:</strong>
+          <%= @client.phone_type %><br>
 
-  <strong>occupation:</strong>
-  <%= @client.occupation %><br>
+          <strong>Can we leave messages:</strong>
+          <%= @client.leave_message %><br>
 
-  <strong>employer:</strong>
-  <%= @client.employer %><br>
+          <strong>Email:</strong>
+          <%= @client.email %><br>
 
-  <% for family_member in @client.family_members %>
-    <%= family_member.name %>
-    <p>
-      <% if family_member.name.to_s.empty? == false %>
-        <strong>Name:</strong>
-        <%= family_member.name %>
-        <strong>Dob:</strong>
-        <%= family_member.dob %>
-        <strong>Relation:</strong>
-        <%= family_member.relation %>
-      <% end %>
-    </p>
-  <% end %><br><br>
+          <strong>Can we send you emails:</strong>
+          <%= @client.email_leave_message %><br>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <strong>emergency_name:</strong>
-  <%= @client.emergency_name %><br>
+  <br>
 
-  <strong>emergency_relation:</strong>
-  <%= @client.emergency_relation %><br>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card sm-6 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-text" style="text-align: center;">Client Demographic Information</h4>
+          <strong>Highest Education:</strong>
+          <%= @client.highest_edu %><br>
 
-  <strong>emergency_phone:</strong>
-  <%= @client.emergency_phone %><br>
+          <strong>Identified Gender:</strong>
+          <%= @client.identified_gender %><br>
 
-  <strong>insurance_company:</strong>
-  <%= @client.insurance_company %><br>
+          <strong>Cultural Background:</strong>
+          <%= @client.culture_background %><br>
 
-  <strong>physician:</strong>
-  <%= @client.physician %><br>
+          <strong>Sexual Orientation:</strong>
+          <%= @client.sexual_orientation %><br>
 
-  <strong>physician_phone:</strong>
-  <%= @client.physician_phone %><br>
+          <strong>Relationship Status:</strong>
+          <%= @client.relationship %><br>
 
-  <strong>medication:</strong>
-  <%= @client.medication %><br>
+          <strong>Active or Retired Military:</strong>
+          <%= @client.is_veteran %><br>
+        </div>
+      </div>
+    </div>
 
-  <strong>counselor_seen_before:</strong>
-  <%= @client.counselor_seen_before %><br>
+    <div class="col-sm-6">
+      <div class="card sm-6 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-text" style="text-align: center;">Emergency Contact Information</h4>
+            <strong>Emergency Contact Name:</strong>
+            <%= @client.emergency_name %><br>
 
-  <strong>counselor_seen:</strong>
-  <%= @client.counselor_seen %><br>
+            <strong>Emergency Contact Relation:</strong>
+            <%= @client.emergency_relation %><br>
 
-  <strong>custom_id:</strong>
-  <%= @client.custom_id %><br>
+            <strong>Emergency Contact Phone Number:</strong>
+            <%= @client.emergency_phone %><br>
 
-  <strong>local_street:</strong>
-  <%= @client.local_street %><br>
+            <strong>Insurance Company:</strong>
+            <%= @client.insurance_company %><br>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <strong>local_city:</strong>
-  <%= @client.local_city %><br>
+  <br>
 
-  <strong>local_state:</strong>
-  <%= @client.local_state %><br>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card sm-6 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-text" style="text-align: center;">Client History</h4>
+            <strong>Counselor Seen Before:</strong>
+            <%= @client.counselor_seen_before %><br>
 
-  <strong>local_zipcode:</strong>
-  <%= @client.local_zipcode %><br>
+            <strong>Counselor Seen:</strong>
+            <%= @client.counselor_seen %><br>
 
-  <strong>phone_type:</strong>
-  <%= @client.phone_type %><br>
+            <strong>How were you Referred:</strong>
+            <%= @client.how_referred %><br>
+        </div>
+      </div>
+    </div>
 
-  <strong>email_leave_message:</strong>
-  <%= @client.email_leave_message %><br>
-
-  <strong>highest_edu:</strong>
-  <%= @client.highest_edu %><br>
-
-  <strong>identified_gender:</strong>
-  <%= @client.identified_gender %><br>
-
-  <strong>culture_background:</strong>
-  <%= @client.culture_background %><br>
-
-  <strong>sexual_orientation:</strong>
-  <%= @client.sexual_orientation %><br>
-
-  <strong>relationship:</strong>
-  <%= @client.relationship %><br>
-
-  <strong>how_referred:</strong>
-  <%= @client.how_referred %><br>
-
-  <strong>accepted:</strong>
-  <%= @client.accepted %><br>
-
-  <strong>referral_to:</strong>
-  <%= @client.referral_to %><br>
-
-  <strong>is_veteran:</strong>
-  <%= @client.is_veteran %><br>
-</p>
+    <div class="col-sm-6">
+      <div class="card sm-6 shadow-sm">
+        <div class="card-body">
+          <h4 class="card-text" style="text-align: center;">Client Household Information</h4>
+          <% for family_member in @client.family_members %>
+            <% if family_member.name.to_s.empty? == false %>
+              <strong>Family Member Name:</strong>
+              <%= family_member.name %><br>
+              <strong>Date of Birth:</strong>
+              <%= family_member.age %><br>
+              <strong>Relation:</strong>
+              <%= family_member.relation %><br>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
