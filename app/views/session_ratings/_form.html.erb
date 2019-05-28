@@ -43,6 +43,7 @@
     float:left;
     width: 33%;
     overflow: hidden;
+    text-indent: 2em;
   }
   .center {
     display: inline-block;
@@ -69,6 +70,9 @@
   .labelRight {
     float: right;
     width: 150px;
+  }
+  .textbox {
+    text-indent: 1em;
   }
 </style>
 
@@ -179,7 +183,9 @@
     (<span style="font-weight: bolder;">OPTIONAL</span>)
   </p>
 
-  <textarea rows="4" cols="100" id="optionalInfo"></textarea>
+  <div class="textbox">
+    <textarea rows="4" cols="100" id="optionalInfo"></textarea>
+   </div> 
   <br><br>
 
   <p style="text-align: center; width: 100%;">
@@ -248,5 +254,9 @@ function send() {
   } catch (err) {
     alert("error please verify all information is filled in correctly");
   }
+
+  document.getElementById('roomNum').value = "";
+  document.getElementById('clientNum').value = "";
+  document.getElementById('optionalInfo').value = "";
 }
 </script>

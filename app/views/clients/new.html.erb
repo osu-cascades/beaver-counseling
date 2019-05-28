@@ -33,8 +33,6 @@
             <span>
               <label>Yes</label>
               <%= form.check_box :leave_message, id: :client_leave_message %>
-              <label>No</label>
-              <input type="checkbox" class="form-check-input">
             </span>
           </div>
         </li>
@@ -52,8 +50,6 @@
             <span>
               <label>Yes</label>
               <%= form.check_box :email_leave_message, id: :client_email_leave_message %>
-              <label>No</label>
-              <input type="checkbox" class="form-check-input">
             </span>
           </div>
         </li>
@@ -99,17 +95,17 @@
       </h4>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <a href="/Clinic_Informed_Consent_and_PDS.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Counseling</a>
+          <a href="/Clinic_Informed_Consent_and_PDS.pdf" class='btn btn-dark' style="color: white; width: 340px">Informed Consent for Counseling</a>
           <label>I consent</label>
           <%= form.check_box :accepted, id: :counselingConsent, checked: false, required: true  %>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <a href="/IntakeTemplateForWrite-Up.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Treatment</a>
+          <a href="/IntakeTemplateForWrite-Up.pdf" class='btn btn-dark' style="color: white; width: 340px">Informed Consent for Treatment</a>
           <label>I consent</label>
           <%= form.check_box :treatment, id: :treatmentConsent, checked: false %>
         </li>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <a href="/Informed_Consent_to_Record.pdf" class="button btn-primary" style="color: white; width: 300px">Informed Consent for Video/Audio Recording</a>
+          <a href="/Informed_Consent_to_Record.pdf" class='btn btn-dark' style="color: white">Informed Consent for Video/Audio Recording</a>
           <label>I consent</label>
           <%= form.check_box :av, id: :avConsent, checked: false %>
         </li>
@@ -263,10 +259,8 @@
               <div class="input-group">
                 <div class="checkboxes">
                   <span>
-                    <label>Yes</label>
+                    <label>I'm a returning client</label>
                     <%= form.check_box :counselor_seen_before, id: :client_counselor_seen_before %>
-                    <label>No</label>
-                    <input type="checkbox" class="form-check-input">
                   </span>
                 </div>
               </div>
@@ -325,10 +319,10 @@
 
   <strong>Draw your signature into the box below</strong><br>
   <canvas style="border: 1px solid black" id="signature-pad" class="signature-pad" width=800 height=300></canvas><br>
-  <a class="btn btn-primary" id="clear" style="color: white">Clear</a><br><br>
+  <a class='btn btn-dark' id="clear" style="color: white">Clear</a><br><br>
 
-  <div style="margin-top: 1em;">
-    <%= form.submit "Submit", :class => 'btn btn-primary', :onclick => "SaveSig()"%>
+  <div style="margin-top: 1em">
+    <%= form.submit "Submit", id: 'new_client_submit', :class => 'btn btn-dark', :onclick => "SaveSig()"%>
   </div><br>
 
   <input type="hidden" id="sig" name="sig">

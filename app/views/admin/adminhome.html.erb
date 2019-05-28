@@ -1,46 +1,39 @@
-<style>
-	.top{
-		display:inline-block;
-	}
-
-	.center {
-		text-align: center;
-	}
-
-	table, th, td {
-		border: 1px solid black;
-	}
-</style>
-
-<div style="text-align: center;">
-	<h1>Admin Home</h1>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Admin Home</h1>
+    <div style="text-align:center;">
+      <div style="display: inline-block;">
+        <%= button_to "Client Reports", 'adminclientreports', :method => :get, :class => 'btn btn-dark', :style => 'color: white' %>
+      </div>&nbsp;&nbsp;
+      <div style="display: inline-block;">
+        <%= button_to "Manage Users", 'adminmanageusers', :method => :get, :class => 'btn btn-dark', :style => 'color: white' %>
+      </div>&nbsp;&nbsp;
+      <div style="display: inline-block;">
+        <%= button_to "Submitted Notes", 'submittednotes', :method => :get, :class => 'btn btn-dark', :style => 'color: white' %>
+      </div>
+    </div>
+    <br></br>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" id="searchBar" onkeyup="search()" placeholder="Search">
+      <div class="input-group-append">
+        <button class="btn btn-dark" style='color: white' onclick="search()" type="button">Search</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div style="text-align:center;">
-	<div style="display: inline-block;">
-		<%= button_to "Client Reports", 'adminclientreports', :method => :get, :class => 'btn', :style => "background: #D3D3D3;" %>
-	</div>&nbsp;&nbsp;
-	<div style="display: inline-block;">
-		<%= button_to "Manage Users", 'adminmanageusers', :method => :get, :class => 'btn', :style => "background: #D3D3D3;" %>
-	</div>&nbsp;&nbsp;
-	<div style="display: inline-block;">
-		<%= button_to "Submitted Notes", 'submittednotes', :method => :get, :class => 'btn', :style => "background: #D3D3D3;" %>
-	</div>
-</div>
-<br>
-
-<input type="text" id="searchBar" onkeyup="search()" placeholder="Search" style="width: 100%">
-<br><br>
-<table style="width:100%;" id="table">
-	<tr>
-		<th id="name">Name</th>
-		<th>ID</th>
-		<th>DOB</th>
-		<th>Counselor</th>
-		<th>View More</th>
-		<th>Notes</th>
-		<th>Archive</th>
-	</tr>
+<table class="table" id="table">
+  <thead class="thead-dark">
+    <tr>
+      <th id="name">Client Name</th>
+      <th>Client ID</th>
+      <th>Date Of Birth</th>
+      <th>Assigned Counselor</th>
+      <th>Counselor Notes</th>
+      <th>Edit Client</th>
+      <th>Archive Client</th>
+    </tr>
+	</thead>
 	<% @clients = Client.all %>
 	<% @clients.each do |client| %>
 		<% if !client.is_archived %>
@@ -53,41 +46,40 @@
 				<% else %>
 					<td><%= (User.find_by_id(client.counselor_id)).name %></td>
 				<% end %>
-				<td><%= button_to 'View More', edit_client_path(client.id), :method => :get %></td>
-				<td><%= button_to 'Notes', client_notes_path_url(client.id), :method => :get %></td>
-				<td><%= button_to 'Archive', client_archive_path_url(client.id), :method => :get %></td>
+        <td><%= button_to 'Notes', client_notes_path_url(client.id), :class => 'btn btn-dark', :method => :get, :style => 'color: white' %></td>
+				<td><%= button_to 'Edit', edit_client_path(client.id), :class => 'btn btn-dark', :method => :get, :style => 'color: white' %></td>
+				<td><%= button_to 'Archive', client_archive_path_url(client.id), :class => 'btn btn-dark', :method => :get, :style => 'color: white' %></td>
 			</tr>
 		<% end %>
 	<% end %>
 </table>
 
-<table class='table'>
-<thead>
-	 <tr>
-		 <th>index</th>
-		 <th>date</th>
-		 <th>counselor</th>
-		 <th>event</th>
-	 </tr>
- </thead>
-
-<tbody><br><br>
-
-<% @clients = Client.all %>
-<% @clients.each do |client| %>
-		<%  client.versions.reverse.each do |version| %>
-			<tr>
-				<td><%= version.index %></td>
-				<td><%= version.created_at %></td>
-				<td><%= find_version_counselor_name(version) %></td>
-				<td><%= version.event.humanize %></td>
-				<td><%= link_to 'Diff', diff_client_version_path(client, version) %></td>
-				<td><%= link_to 'Rollback', rollback_client_version_path(client, version), method: 'PATCH' %></td>
-			</tr>
-		<% end %>
-<% end %>
-
-</tbody>
+<table class="table">
+  <thead class="thead-dark">
+	  <tr>
+		  <th>Client ID</th>
+		  <th>Date of Change</th>
+		  <th>Counselor Responsible</th>
+      <th>Event</th>
+      <th>Difference</th>
+      <th>Rollback</th>
+	  </tr>
+  </thead>
+  <tbody><br><br>
+  <% @clients = Client.all %>
+    <% @clients.each do |client| %>
+        <%  client.versions.reverse.each do |version| %>
+          <tr>
+            <td><%= version.index %></td>
+            <td><%= version.created_at %></td>
+            <td><%= find_version_counselor_name(version) %></td>
+            <td><%= version.event.humanize %></td>
+            <td><%= link_to 'Diff', diff_client_version_path(client, version), :class => 'btn btn-dark', :style => 'color: white' %></td>
+            <td><%= link_to 'Rollback', rollback_client_version_path(client, version), :class => 'btn btn-dark', method: 'PATCH', :style => 'color: white' %></td>
+          </tr>
+        <% end %>
+    <% end %>
+  </tbody>
 </table>
 
 <script>
